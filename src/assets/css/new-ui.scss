@@ -1,0 +1,1560 @@
+@import "variables";
+@import "mixins";
+@import url(./fonts/font.css);
+html {
+    scroll-behavior: smooth;
+}
+body {
+    padding: 0 ;
+    margin: 0;
+    direction: rtl;
+    overflow-x: hidden !important;
+    font-size: 15px;
+    font-family: "main-font";
+    color: $mainColor1;
+    line-height: unset!important;
+    width: 100% !important;
+    min-width: 300px;
+    background-color: $background1;
+    * {
+            box-sizing: border-box !important;
+            margin: 0;
+            padding: 0;
+    }
+    .search-modal {
+        position: fixed;
+        top: -100vh;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 100px);
+        padding-bottom: 100px;
+        // max-height: calc(100vh - 150px);
+        overflow-y: scroll;
+        z-index: 99;
+        @include styler($mainBlack , #DCDCDC , 16px, 0);
+        padding: 20px 0;
+        transition: all ease-in-out 0.6s;
+        .search-result {
+            width: 100%;
+            position: relative;
+            @include flexMixin(column, center, center);
+            padding: 0 15px 0 0;
+        }
+        .search-result-item {
+            width: 100%;
+            @include flexMixin(row, flex-start, center);
+            background-color: #fff;
+            border-radius: 0px 20px 20px 0px;
+            padding: 24px 13px;
+            margin: 20px 0px;
+            border: 0px;
+            img {
+                width: 80px;
+                border-radius: 15px;
+                box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.05);
+            }
+        }
+        .book-details{
+            @include flexMixin(column,flex-start,flex-start);
+            flex:0 0 250px;
+            .prices{
+                .discounted-price{
+                    display: none;
+                }
+            }
+            .has-discount{
+                .normal-price{
+                    text-decoration: line-through;
+                    font-size: 13px;
+                    color: $greenColor;
+                }
+                .discounted-price {
+                    color: $redColor;
+                    display: unset;
+                }
+            }
+        }
+    }
+    a {
+        text-decoration: none !important;
+    }
+}
+img{
+    max-width: 100%;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+}
+.root{
+    width: 100vw;
+    height: 100vh;
+    background-color: $background1;
+}
+.loading {
+    width: 100vw;
+    height: 100vh;
+    @include flexMixin(row, center, center);
+    font-size: 100px;
+    color: $mainColor1;
+    i{
+        animation-name: spinMF;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+    }
+    position: relative;
+    z-index: 99999;
+    background-color: #fff;
+}
+@keyframes spinMF {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+.pause {
+    width: 100vw;
+    height: 100vh;
+    color: $mainColor1;
+    font-size: 90px;
+    @include flexMixin(row, center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $background;
+    opacity: 0.6;
+
+    i {
+        animation-name: spinMF;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+    }
+
+    z-index: 999999;
+    display: none;
+}
+.error-modal {
+    width: 90vw;
+    height: 100px;
+    border-radius: 20px;
+    position: fixed;
+    top: 10px;
+    right: 5vw;
+    background-color: $background1;
+    border: 2px solid $mainColor1;
+    overflow: scroll;
+    box-shadow: 0px 10px 15px 0 #00000080;
+    transition: all ease-in-out .5s;
+    transform: scale(0);
+    visibility: hidden;
+    @include flexMixin(column, center, center);
+    z-index: 9999999;
+
+    .err-message {
+        color: $redColor;
+    }
+}
+.welcome {
+
+    footer,
+    .move-to-top {
+        display: none !important;
+    }
+}
+.move-to-top {
+    width: 60px;
+    height: 60px;
+    @include styler($background1 , $mainColor1 , 40px, 50%);
+    position: fixed;
+    right: 10px;
+    bottom: 90px;
+    z-index: 9999;
+    box-shadow: $boxShadow;
+    @include flexMixin(row, center, center);
+}
+.search-modal {
+    position: fixed;
+    top: -100vh;
+    left: 2vw;
+    width: 96vw;
+    min-height: 100px;
+    max-height: calc(100vh - 150px);
+    overflow-y: scroll;
+    z-index: 99;
+    @include styler($mainColor , $extraColor1 , 15px, 50px);
+    padding: 20px 0;
+    transition: all ease-in-out 0.6s;
+
+    input {
+        display: block;
+        margin: 0 auto 30px;
+        width: 80%;
+        height: 50px;
+        border: 2px solid $mainColor;
+        border-radius: 20px;
+        outline: none !important;
+        font-size: 15px;
+        font-family: "main-font";
+        padding: 10px;
+    }
+
+    .search-result {
+        position: relative;
+        @include flexMixin(column, center, center);
+    }
+
+    .search-result-item {
+        @include flexMixin(row, flex-start, center);
+        border-bottom: 1px solid $mainColor;
+        border-radius: 40px;
+        width: 90%;
+        padding: 0 30px;
+        margin: 20px 0px;
+
+        img {
+            width: 60px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0px 10px 15px 0 #00000080;
+        }
+
+        span {
+            margin-right: 20px;
+            font-size: 15px;
+        }
+    }
+}
+.modal-pacle-holder {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    z-index: -1;
+    transition: all ease-in-out 0.5s;
+    background-color: $background;
+    overflow-y: scroll;
+    padding: 30px 10px;
+}
+.filter-by-modal{
+    @include flexMixin(column , center , center);
+    transform: scale(0);
+    top: 0!important;
+    background-color: #00000042!important;
+    .wrapper-sort-by {
+        width: 80%;
+        background-color: #fff;
+        border: 2px solid $secondaryColor1;
+        @include styler($mainColor1 , #fff, 24px, 20px);
+        @include flexMixin(column, center, center);
+        height: 400px;
+        .sort-by-wrapper{
+            width: 100%;
+            @include flexMixin(column,center,center);
+        }
+        .sort {
+            width: 65%;
+            text-align: center;
+            margin: 0 0 30px;
+            @include flexMixin(row,flex-start,center);
+            &::before{
+                margin-left: 15px;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                content: ' ';
+                border: 1px solid $mainColor1;
+                background-color: $mainColor1;
+            }
+        }
+        .disabled{
+            &::before{
+                background-color: #fff!important;
+            }
+        }
+        .save_and_return_btn.srt{
+            @include styler(#fff , $mainColor1 , 23px , 50px);
+            padding: 5px 10px;
+            border: 1px solid $mainColor1;
+            width: 80%;
+            @include flexMixin(row,center,center);
+        }
+    }
+}
+.cart-pop-up {
+    height: 70vh;
+    width: 94vw;
+    border-radius: 40px;
+    right: 3vw;
+    box-shadow: 0px 0px 10px 0px;
+}
+/* welcome wrapper styles */
+.welcome-wrapper{
+    width: 100%;
+    height: 100%;
+    background-color: $mainColor1;
+    color: $background1;
+    transition: $transition;
+    transform: scale(0);
+    @include flexMixin(column , center , center);
+    .header{
+        @include flexMixin(row,flex-start , center);
+    }
+    .close-wrapper{
+        margin: 30px 30px 0;
+        background-color: $secondaryColor1;
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        //@include flexMixin(row,center,center);
+        position: relative;
+        div{
+            width: 25px;
+            height: 2px;
+            background-color: $background1;
+            position: absolute;
+            top: 18px;
+            right: 6px;
+        }
+        .close-right{
+            transform: rotate(45deg);
+        }
+        .close-left {
+            transform: rotate(-45deg);
+        }
+    }
+    .welcome-text{
+        font-size: 16px;
+        width: 100%;
+        @include flexMixin(column,flex-start,center);
+    }
+    .gif-wrapper{
+        width: 250px;
+        @include flexMixin(row,center,center);
+        margin: 50px 0;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #fffbff;
+        padding: 35px;
+        //img{}
+    }
+    .start-btn{
+        @include flexMixin(row,center,center);
+        //margin: 150px 0;
+        width: 100%;
+        .content{
+            width: 90%;
+            @include styler($mainColor1,$background,27px,25px);
+            border: 1px solid $background;
+            height: 60px;
+            @include flexMixin(row,center,center);
+        }
+    }
+}
+/* welcome wrapper styles */
+
+/* styles for main page */
+.main-page{
+    width: 100%;
+    transition: $transition;
+    @include flexMixin(column , flex-start , center);
+    transform: scale(0);
+    .header{
+        width: 100%;
+        padding: 20px 40px;
+        font-size: 24px;
+        .welcome-to-shop{
+            font-size: 16px;
+            margin: 10px 0 0 ;
+        }
+    }
+    .wallet-wrapper{
+        width: 90%;
+        @include styler($background1 , $mainColor1 , 16px ,20px);
+        padding: 20px 40px;
+        box-shadow: $boxShadow;
+        margin: 20px 0 0;
+        .wallet-title{
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            margin: 0 0 10px;
+        }
+    }
+    .more-credit-wrapper{
+        width: 90%;
+        @include styler($mainColor1 , #fff , 24px , 20px);
+        box-shadow: $boxShadow;
+        position: relative;
+        height: 60px;
+        margin: 20px 0 0 0;
+        @include flexMixin(row,center,center);
+        .plus-wrapper{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 27px;
+            right: 60px;
+            //background-color: red;
+            span{
+                display: block;
+                width: 27px;
+                height: 2px;
+                background-color: $secondaryColor1;
+            }
+            .plus-vertical{
+                transform: rotate(90deg);
+                position: relative;
+                top: 2px;
+            }
+        }
+        .credit-text{
+            margin-right: 50px;  
+        }
+    }
+    .books-and-class-btn-wrapper{
+        margin: 30px;
+        width: 100%;
+        @include flexMixin(row,center,center);
+        .box-btn{
+            margin: 0 20px;
+            width: 140px;
+            height: 140px;
+            box-shadow: $boxShadow;
+            @include flexMixin(column , center , center);
+            @include styler($background1 , $secondaryColor1 , 24px , 20px);
+            img{
+                width: 30px;
+                margin: 10px 0 0;
+            }
+            
+        }
+    }
+    .best-of-wrapper{
+        width: 80%;
+        @include flexMixin(column,center,center);
+        .best-of-box{
+            margin : 0 0 15px;
+            width: 100%;
+            @include styler($mainColor1 , #fff , 16px , 20px);
+            box-shadow: $boxShadow;
+            height: 60px;
+            @include flexMixin(row,center,center);
+        }
+        .best-of-title{
+            margin-right: 10px;
+            color: $secondaryColor1;
+        }
+    }
+}
+/* styles for main page */
+.books-page-wrapper{
+    width: 100%;
+    transition: $transition;
+    opacity: 0;
+    //transform: scale(0);
+    .header {
+        position: fixed;
+        width: 100vw;
+        background-color: $background1;
+        right: 0;
+        top: 0px;
+        padding: 30px 30px 10px;
+        z-index: 14;
+        border-radius: 20px;
+        @include flexMixin(row,space-between,center);
+        //box-shadow: $boxShadow;
+        .coin-wrapper , .wallet-wrapper{
+            position: relative;
+            top: -15px;
+            img{
+                width : 30px;
+            }
+        }
+        .coin-count{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            @include styler(#fff , $mainColor1 , 8px , 50%);
+            top: 15px;
+            right: 12px;
+            @include flexMixin(row,center,center);
+        }
+        .wallet-count{
+            min-width: 60px;
+            @include flexMixin(row,center,center);
+            position: absolute;
+            top: 17px;
+            left: 15px;
+            @include styler(#fff, $mainColor1 , 8px, 8px);
+        }
+    }
+    .search-back-wrapper{
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 0 20px;
+        @include flexMixin(row,center,center);
+        .search-wrapper{
+            position: relative;
+            width: 100%;
+            @include flexMixin(row,flex-start,center);
+            input{
+                font-family: "main-font";
+                width: 95%;
+                height: 40px;
+                border-radius: 8px;
+                border: 1px solid #C9C9C9;
+                background-color: $background1;
+                padding: 0 5px 0 30px;
+            }
+            img{
+                position: absolute;
+                width: 20px;
+                top: 9px;
+                left: 25px;
+            }
+        }
+        .back{
+            @include styler($mainColor, $secondaryColor1, 40px, 10px);
+            width: 40px;
+            height: 40px;
+            @include flexMixin (row, center, center);
+            flex: 0 0 40px;
+            img {
+                width: 20px;           
+            }
+        }
+    }
+    .books-page-title {
+        font-size: 24px;
+        text-align: center;
+        width: fit-content;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        top: -4px;
+    }
+    .main-content{
+        width: 100%;
+        @include flexMixin(column,flex-start,center);
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: $boxShadow;
+        padding: 20px;
+        padding: 100px 0 0;
+    }
+    .sort-by-wrapper{
+        width: 90%;
+        @include flexMixin(row,flex-start,center);
+        .content{
+            color: $mainColor1;
+            margin-left: 5px;
+            font-size: 16px;
+        }
+        .go-to-sort-by{
+            width: 20px;
+            height: 20px;
+        }
+        img{
+            width: 15px;
+            position: relative;
+            top: 5px;
+        }
+    }
+    .filters-wrapper{
+        margin: 20px 0;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: repeat(4 ,1fr);
+        width: 90%;
+        column-gap: 10px;
+        text-align: center;
+        .filter{
+            @include styler(#fff , $secondaryColor1 , 14px , 20px);
+            border: 1px solid $secondaryColor1;
+            padding: 15px 0;
+        }
+    }
+    .books-wrapper{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 25px;
+        row-gap: 25px;
+        width: 100%;
+        padding: 0 20px;
+    }
+    .filters-are-activated{
+        grid-template-columns: repeat(1, 1fr)!important;
+        width: 85%;
+        padding: 0 0 140px;
+    }
+    .book{
+        position: relative;
+        padding: 5px;
+        box-shadow: $boxShadow;
+        color: $mainBlack;
+        @include flexMixin(column,space-between,center);
+        border-radius: 8px;
+        .img-wrapper{
+            height: 181px;
+            background-color: #00000010;
+            width: 136px;
+            overflow: hidden;
+            border-radius: 10px;
+            @include flexMixin(row,center,center);
+        }
+        img{
+            border-radius: 10px;
+            width: 136px;
+            height: auto;
+        }
+        .title{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .publisher{
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .prices-wrapper{
+            font-size: 16px;
+            @include flexMixin(column,center,center);
+            margin-bottom: 10px;
+            .discounted {
+                    display: none;
+            }
+        }
+        .has-discount{
+            .price{
+                color: $greenColor;
+                text-decoration: line-through;
+            }
+            .discounted{
+                color: $redColor;
+                display: flex;
+            }
+        }
+        .btns-wrapper{
+            position: absolute;
+            background-color: $mainColor1;
+            z-index: 13;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            @include flexMixin(row,center,center);
+            top: 5px;
+            right: 10px;
+            transition: $transition;
+            img{
+                width: 14px;
+            }
+        }
+    }
+    .quan-0 {
+        .btns-wrapper {
+            transform: scale(0);
+        }
+    }
+    .page-count {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        direction: ltr;
+        margin: 20px 0 120px;
+        row-gap: 10px;
+        width: 90%;
+        .page-number {
+            @include styler($mainColor1 , #fff , 15px, 5px);
+            border: 1px solid $mainColor1;
+            @include flexMixin(row, center, center);
+            width: 30px;
+            height: 30px;
+            padding-top: 4px;
+        }
+
+        .active-page {
+            color: #FFF;
+            background-color: $mainColor1;
+        }
+
+        .previus-page,
+        .next-page {
+            padding-top: 0px;
+            font-size: 20px;
+        }
+
+        .next-page {
+            i {
+                position: relative;
+                left: 1px;
+            }
+        }
+    }
+    .publisher-item,
+    .book-year-item,
+    .subject-item,
+    .course-item {
+        width: 100%;
+        margin-bottom: 0px;
+        &::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background-color: $mainColor1;
+            border-radius: 50%;
+            border: 1px solid;
+            position: relative;
+            top: 5px;
+            margin-left: 11px;
+        }
+    }
+    .disabled {
+        &::before {
+            background-color: #fff !important;
+        }
+    }
+    .fixed-btn {
+        position: fixed;
+        top: 50vh;
+        left: 5vw;
+    }
+    .save_and_return_btn {
+        @include styler($mainColor1 , #fff , 15px, 50px);
+        border: 2px solid $mainColor1;
+        padding: 5px 20px;
+        margin: 40px auto;
+    }
+}
+@keyframes fadeMF {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.cart-page-wrapper{
+    transition: $transition;
+    opacity:0;
+    padding: 20px 20px 330px;
+    .cart-map-btns{
+        width: 100%;
+        @include flexMixin(row,space-between,center);
+        .clear-cart{
+            background-color: $mainColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            @include flexMixin(row,center,center);
+            img{
+                width: 20px;
+            }
+        }
+        .back{
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            @include flexMixin(row, center, center);
+            img {
+                width: 20px;
+            }
+        }
+    }
+    .page-title{
+        color: $grayColor;
+        font-size: 24px;
+        margin: 20px 0;
+    }
+    .cart-items-wrapper{
+        width: 100%;
+        @include flexMixin(column,center,center);
+        .cart-item{
+            width: 100%;
+            margin: 0 0 25px;
+            @include flexMixin(row-reverse,space-between,center);
+            .img-wrapper{
+                max-width: 100px;
+                img{
+                    border-radius: 16px;
+                    box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.05);
+                }
+            }
+        }
+        .prod-details{
+            @include flexMixin(column,center,flex-end);
+            width: 155px;
+        }
+        .prod-name{
+            font-size: 16px;
+            color: $grayColor;
+        }
+        .prod-price{
+            font-size: 16px;
+            color : #8A8A8A;
+            margin: 10px 0;
+        }
+        .prod-btn-action{
+            width: 100%;
+            @include flexMixin(row,space-between,center);
+            padding: 7px 15px;
+            border: 1px solid #C1C1C1;
+            background-color: #fff;
+            border-radius: 24px;
+            img{
+                width: 15px;
+            }
+        }
+        .quantity{
+            color: $mainBlack;
+            font-size: 16px;
+            margin: 0 30px;
+        }
+        .quan-1{
+            .trash{
+                display: none;
+            }
+        }
+        .remove-btn{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: $mainColor1;
+            @include flexMixin(row,center,center);
+            box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.05);
+            img{
+                width: 17px;
+            }
+        }
+    }
+    .cart-footer{
+        width: 100vw;
+        background-color: #fff;
+        border-radius: 20px 20px 0 0;
+        position: fixed;
+        bottom: 80px;
+        right: 0;
+        height:230px;
+        padding: 15px 30px;
+        @include flexMixin(column,flex-start,flex-start);
+    }
+    .date{
+        display: none;
+        color: $secondaryColor1;
+        font-size: 24px;
+        margin: 0 0 10px;
+    }
+    .total-price{
+        width: 100%;
+        margin: 20px 0 0;
+        @include flexMixin(row,space-between,center);
+        font-size: 26px;
+        .title{
+            color: #8A8A8A;
+        }
+        .total-price-amount{
+            color: $mainBlack;
+        }
+        .toman{
+            font-size: 8px;
+            color: $mainBlack;
+        }
+    }
+    .has-discount{
+        .total-price-amount{
+            text-decoration: line-through;
+            font-size: 20px;
+        }
+    }
+    .checkout-btn{
+        width: 100%;
+        @include styler(#fff,$mainColor1,24px,20px);
+        @include flexMixin(row,center,center);
+        height: 58px;
+        margin: 25px 0;
+    }
+    .has-item{
+        .cart-is-empty{
+            display: none;
+        }
+    }
+    .cart-is-empty{
+        width: 100%;
+        @include flexMixin(column,center,center);
+        img{
+            width: 170px;
+        }
+        .empty-text{
+            font-size: 24px;
+            margin: 10px 0;
+            color: $mainBlack;
+        }
+        .return-home{
+            font-size: 16px;
+            margin: 40px 0 0;
+            color: $secondaryColor1;
+        }
+    }
+}
+.single-prod-page-wrapper{
+    width: 100%;
+    @include flexMixin(column,center,center);
+    .single-prod-header{
+        width: 100%;
+        position: relative;
+        padding: 20px 30px; 
+        @include flexMixin(row,flex-start,center);
+        .single-prod-page-title{
+            font-size: 24px;
+            color: $mainColor1;
+        }
+        .back {
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            position: absolute;
+            top: 15px;
+            left: 30px;
+            @include flexMixin(row, center, center);
+            img {
+                width: 20px;
+            }
+        }
+    }
+    .main-content{
+        @include flexMixin(column,flex-start,center);
+        width: 100%;
+        background-color: #fff;
+        border-radius: 20px 20px 0 0;
+        padding: 30px;
+        //height: 120vh;
+        .book-img-price-wrapper{
+            @include flexMixin(row-reverse,flex-end,center);
+            width: 100%;
+            img{
+                width: 150px;
+                border-radius: 20px;
+                margin-right: 15px;
+            }
+            *{
+                flex: 1;
+            }
+        }
+        .price-wrapper{
+            @include flexMixin(column,center,flex-end);
+            text-align: left;
+            color: $mainBlack;
+            font-size: 17px;
+            .discounted-price{
+                display: none;
+            }
+        }
+        .has-discount{
+            .normal-price{
+                text-decoration: line-through;
+                font-size: 14px;
+                color: $greenColor;
+            }
+            .discounted-price {
+                display: unset;
+                color: $redColor;
+            }
+        }
+    }
+    .details{
+        margin: 30px 0 0;
+        font-size: 16px;
+        line-height: 35px;
+        .full-details-wrapper{
+            margin:20px 0 0;
+        }
+        .title{
+            font-size: 25px;
+        }
+    }
+    .add-to-cart-text{
+        color: $secondaryColor1;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        margin: 20px 0 0;
+        .q-0{
+            display: none;
+        }
+        .q-1{
+            display: block;
+        }
+    }
+    .add-to-cart-text.not-in-cart{
+        .q-0{
+            display: block;
+        }
+        .q-1 {
+            display: none;
+        }
+    }
+    .single-prod-footer{
+        width: 50%;
+        margin: 20px 0 200px;
+        @include flexMixin(row,center,center);
+        .more,.quantity,.less{
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid;
+            @include flexMixin(row,center,center);
+            img{
+                width: 20px;
+            }
+        }
+        .more{
+            background-color: $greenColor;
+            border-color: $greenColor;
+        }
+        .less {
+            background-color: $redColor;
+            border-color: $redColor;
+        }
+        .quantity{
+            font-size: 16px;
+            border-color: $grayColor;
+            margin: 0 5px;
+        }
+    }
+    .quan-0{
+        .less , .quantity{
+            display: none!important;
+        }
+    }
+}
+.single-modal{
+    padding: 0!important;
+}
+.cart-final-stage-page-wrapper{
+    width: 100%;
+    transition: $transition;
+    padding: 20px 30px;
+    @include flexMixin(column,center,center);
+    .cart-header{
+        width: 100%;
+        @include flexMixin(row-reverse,space-between,center);
+        .back {
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            @include flexMixin(row, center, center);
+            img {
+                width: 20px;
+            }
+        }
+        .cart-page-title{
+            font-size: 24px;
+            color: $grayColor;
+        }
+    }
+    .main-content{
+        width: 100%;
+        @include styler($grayColor , #fff , 16px , 16px);
+        box-shadow: $boxShadow;
+        padding: 30px 15px;
+        margin: 50px 0;
+        .cart-items-details{
+            div{
+                margin: 0 0 25px;
+                @include flexMixin(row,flex-start , center);
+            }
+            .label{
+                color: $mainColor1;
+                margin-left : 10px;
+            }
+        }
+    }
+    .cart-details{
+        width: 100%;
+        @include flexMixin(row,space-between,center);
+        .prods-incart-text{
+            color: $mainColor1;
+        }
+        .view-btn{
+            width: 114px;
+            height: 32px;
+            @include flexMixin(row,center,center);
+            @include styler(#fff , $secondaryColor1 , 16px , 20px);
+        }
+    }
+    a{
+        @include flexMixin(row,center,center);
+        width: 100%;
+        @include styler(#fff , $mainColor1 , 24px , 20px);
+        height: 58px;
+        margin: 20px 0 120px;
+    }
+}
+.wallet-wrapper-page{
+    width: 100%;
+    padding: 30px;
+    transition: $transition;
+    transform: scale(0);
+    @include flexMixin(column,flex-start,center);
+    .wallet-header{
+        width: 100%;
+        @include flexMixin(row,flex-end,center);
+    }
+    .back {
+        background-color: $secondaryColor1;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        @include flexMixin(row, center, center);
+        img {
+            width: 20px;
+        }
+    }
+    .wallet-page-title {
+        width: 100%;
+        @include flexMixin(row, flex-start, center);
+        font-size: 24px;
+        color: $mainBlack;
+        margin: 0 0 30px;
+    }
+    .main-content{
+        width: 100%;
+        @include flexMixin(column,center,flex-start);
+        padding: 15px;
+        @include styler(#fff,$mainColor1,24px,16px);
+        .wallet-title{
+            width: 100%;
+            @include flexMixin(row,space-between,center);
+            margin: 0 0 10px;
+        }
+        .img-wrapper{
+            @include flexMixin(row,flex-end,center);
+            flex: 0 0 22px;
+        }
+        img{
+            width: 22px;
+            float: left;
+        }
+    }
+    .increase-title{
+        width: 100%;
+        text-align: right;
+        margin: 30px 0 10px;
+        font-size: 16px;
+        color: $secondaryColor1;
+    }
+    .way-to-increase-wrapper{
+        @include styler(#000 , #fff , 16px , 16px);
+        padding: 25px 20px;
+        box-shadow: $boxShadow;
+        margin: 0 0 300px;
+    }
+}
+.modal{
+    opacity: 1;
+    position: relative;
+    .cart-footer{
+        position: absolute;
+        width: 100%;
+        bottom: -30px;
+        z-index: 99999;
+    }
+    .total-price{
+        font-size: 20px;
+    }
+    // .sina{
+    //     display: none!important;
+    // }
+}
+.user-data-page{
+    transition: $transition;
+    transform: scale(0);
+    width: 100%;
+    padding: 25px 30px 100px;
+    .header{
+        @include flexMixin(column,flex-end,flex-end);
+    }
+    .back {
+        background-color: $secondaryColor1;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        @include flexMixin(row, center, center);
+
+        img {
+            width: 20px;
+        }
+    }
+    .page-title{
+        width: 100%;
+        @include flexMixin(row,flex-start,center);
+        font-size: 24px;
+        color: $mainBlack;
+        margin: 18px 0;
+    }
+    .text{
+        width: 100%;
+        @include flexMixin(row, flex-start, center);
+        font-size: 14px;
+        color: $mainBlack;
+    }
+    .inputs-wrapper{
+        width: 100%;
+        margin: 40px 0 0 ;
+        @include flexMixin(column , flex-start,center);
+        .input-wrapper{
+            width: 100%;
+        }
+        input , textarea{
+            width: 100%;
+            height: 60px;
+            border: 1px solid #D6D6D6;
+            font-family: "main-font";
+            padding: 15px 40px 15px 20px;
+            background-color: $background1;
+            border-radius: 16px;
+            outline: none!important;
+            &:focus {
+                border-color: $greenColor;
+                box-shadow: 0px 0px 10px -2px $greenColor;
+            }
+        }
+        textarea{
+            height: 200px;
+            resize: none;
+        }
+        .has-error {
+            border-color: $redColor !important;
+            box-shadow: 0px 0px 10px -2px $redColor !important;
+        }
+        .error-loader {
+            @include styler($mainWhite , $redColor , 13px, 20px);
+            border: 1px solid $redColor;
+            padding: 10px 20px;
+            text-align: center;
+            margin: 10px 0 10px;
+            height: 0px;
+            opacity: 0;
+            @include flexMixin(row, center, center);
+            transition: all ease-in-out 0.3s;
+        }
+    }
+    .submit-user-data{
+        width: 100%;
+        @include styler(#fff , $mainColor1 , 24px , 20px);
+        @include flexMixin(row,center,center);
+        margin: 0 0 200px;
+        height: 60px;
+        font-family: "main-font";
+        outline: none;
+        border: none;
+    }
+    .dis{
+        background-color: $grayColor;
+    }
+    .label-and-input{
+        position: relative;
+        img{
+            position: absolute;
+            width: 20px;
+            top: 18px;
+            right: 10px;
+        }
+    }
+}
+.coin-page-wrapper{
+    @include flexMixin(column,flex-start,center);
+    width: 100%;
+    background-color: $mainColor1;
+    height: 100vh;
+    overflow-y: scroll;
+    padding:30px 30px 100px;
+    transition: $transition;
+    transform: scale(0);
+    color: #fff;
+    .header{
+        width: 100%;
+        position: relative;
+        @include flexMixin(row,center,center);
+        .back {
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            position: absolute;
+            top:0;
+            left: 0;
+            @include flexMixin(row, center, center);
+            img {
+                width: 20px;
+            }
+        }
+        .page-title{
+            font-size: 24px;
+            margin: 12px 0 0;
+        }
+    }
+    .coin-image-wrapper{
+        margin: 100px 0 20px;
+        @include flexMixin(row,center,center);
+        img{
+            width: 200px;
+        }
+    }
+    .expalin-text{
+        font-size: 24px;
+        display: none;
+    }
+    .ways-to-add-coin-wrapper{
+        margin: 20px 0 50px;
+        .title{
+            font-size: 16px;
+        }
+        display: none;
+    }
+    .coin-count-wrapper{
+        width: 100%;
+        @include flexMixin(column,flex-start,center);
+        .coin-count-title{
+            font-size: 16px;
+            color: $secondaryColor1;
+        }
+        .coin-count{
+            margin: 40px 0;
+            font-size: 32px;
+        }
+    }
+    .add-more-coin{
+        @include styler($mainColor1,#fff , 24px , 20px);
+        width: 300px;
+        height: 60px;
+        @include flexMixin(row,center,center);
+        margin: 0 0 100px;
+    }
+}
+.main-page-new-wrapper{
+    transition: $transition;
+    transform: scale(0);
+    padding: 30px 0 0;
+    width: 100%;
+    @include flexMixin(column,flex-start,center);
+    .header {
+        padding: 0 30px;
+        width: 100%;
+        background-color: $background1;
+        z-index: 14;
+        border-radius: 20px;
+        @include flexMixin(row, space-between, center);
+        .coin-wrapper,
+        .wallet-wrapper {
+            position: relative;
+            top: -15px;
+
+            img {
+                width: 30px;
+            }
+        }
+
+        .coin-count {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            @include styler(#fff, $mainColor1 , 8px, 50%);
+            top: 15px;
+            right: 12px;
+            @include flexMixin(row, center, center);
+        }
+
+        .wallet-count {
+            min-width: 60px;
+            @include flexMixin(row, center, center);
+            position: absolute;
+            top: 17px;
+            left: 15px;
+            @include styler(#fff, $mainColor1 , 8px, 8px);
+        }
+    }
+    .main-content{
+        width: 100%;
+        margin: 70px 0;
+        @include flexMixin(column,flex-start,center);
+    }
+    .main-btn-wrapper{
+        padding: 0 30px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2 , 1fr);
+        grid-template-rows: repeat(2,1fr);
+        grid-row-gap: 15px;
+        margin: 0 0 50px;
+        .item{
+            width: 150px;
+            height: 150px;
+            @include styler($mainBlack , #fff , 16px , 20px);
+            @include flexMixin(column,center,center);
+            box-shadow: $boxShadow;
+        }
+        .item-book{
+            color: #fff;
+            background-color: $mainColor1;
+        }
+        img{
+            width: 25px;
+        }
+        .title{
+            margin: 0 0 10px;
+        }
+    }
+    .special-offer-wrapper{
+        width: 100%;
+        .title{
+            padding: 0 30px;
+            font-size: 16px;
+            margin: 0 0 15px;
+        }
+    }
+    .special-offer-btns-wrapper{
+        width: 100%;
+        padding: 30px 0 50px 30px;
+        background-color: $secondaryColor1;
+        overflow-x: scroll;
+        direction: ltr;
+    }
+    .special-offer-box{
+        width: 905px;
+        display: grid;
+        grid-template-columns: repeat(5,175px);
+        //@include flexMixin(row,space-evenly,center);
+    }
+    .item-down{
+        width: 160px;
+        height: 160px;
+        @include styler($mainBlack , #fff , 16px , 20px);
+        @include flexMixin(column,center,center);
+        .title-item{
+            margin: 0 0 10px;
+        }
+    }
+}
+.buy-coin-page-wrapper{
+    width: 100%;
+    transition: $transition;
+    transform: scale(0);
+    @include flexMixin(column,flex-start,center);
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: #fff;
+    .header {
+        width: 100%;
+        position: relative;
+        @include flexMixin(row, center, center);
+        .back {
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            @include flexMixin(row, center, center);
+            img {
+                width: 20px;
+            }
+        }
+        .page-title {
+            font-size: 24px;
+            margin: 12px 0 0;
+            padding: 30px 0;
+        }
+    }
+    .coin-choose-wrapper{
+        @include styler($mainBlack , $mainColor1 , 16px , 16px 16px 0 0);
+        width: 100%;
+        @include flexMixin(column,center,center);
+    }
+    .options-wrapper{
+        width: 100%;
+        padding: 50px 40px;
+        @include flexMixin(column,flex-start,center);
+        .option{
+            width: 100%;
+            @include flexMixin(row,flex-start,center);
+            height: 65px;
+            @include styler($mainBlack ,#fff , 16px ,8px);
+            margin: 0 0 15px;
+            padding: 0 20px;
+        }
+        .status{
+            width: 25px;
+            height: 25px;
+            border : 1px solid $secondaryColor1;
+            border-radius: 50%;
+            margin-left: 15px;
+            transition: $transition;
+        }
+        .active{
+            background-color: $secondaryColor1;
+        }
+    }
+    .image-wrapper{
+        padding: 0 0 100px;
+    }
+    .coin-footer{
+        width: 100%;
+        @include styler(#fff , #fff , 24px , 16px 16px 0 0);
+        padding: 50px 30px 190px;
+        position: relative;
+        top: -20px;
+        z-index: 12;
+    }
+    .buy-coin-btn{
+        width: 100%;
+        @include flexMixin(row,center,center);
+        height: 100px;
+        background-color: $secondaryColor1;
+        border-radius: 16px;
+        
+    }
+}
+footer{
+    width: 100%;
+    position: fixed;
+    bottom: -1px;
+    right: 0;
+    z-index: 200;
+    @include styler($background1,$mainColor1,15px,20px 20px 0 0);
+    @include flexMixin(row,center,center);
+    height: 85px;
+    *{
+        flex : 1;
+    }
+    .footer-col{
+        @include flexMixin(column , center ,center);
+        width: 100%;
+        padding: 20px 0 0;
+    }
+    img{
+        width: 20px;
+        margin: 0 0 5px;
+    }
+    .cart-item-number {
+        position: absolute;
+        right: 40px;
+        top: 20px;
+        width: 22px;
+        height: 22px;
+        @include styler(#fff , $secondaryColor1 , 12px, 50%);
+        border: 1px solid $secondaryColor1;
+        @include flexMixin (row, center, center);
+        padding: 3px 0 0 0;
+    }
+}

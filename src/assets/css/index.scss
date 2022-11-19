@@ -1,0 +1,1379 @@
+@import "variables";
+@import "mixins";
+@import url(../fonts/font.css);
+html {
+    scroll-behavior: smooth;
+}
+body {
+    padding: 0;
+    margin: 0;
+    direction: rtl;
+    overflow-x: hidden !important;
+    font-size: 15px;
+    font-family: "main-font";
+    color: $mainColor1;
+    line-height: unset !important;
+    width: 100% !important;
+    min-width: 300px;
+    background-color: $background1;
+
+    * {
+        box-sizing: border-box !important;
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        text-decoration: none !important;
+    }
+}
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+}
+.move-to-top {
+    width: 60px;
+    height: 60px;
+    @include styler($background1 , $mainColor1 , 30px, 50%);
+    position: fixed;
+    right: 10px;
+    bottom: 90px;
+    z-index: 9999;
+    box-shadow: $boxShadow;
+    @include flexMixin(row, center, center);
+}
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: -1px;
+    right: 0;
+    z-index: 200;
+    @include styler($background1, $mainColor1, 15px, 20px 20px 0 0);
+    @include flexMixin(row, center, center);
+    height: 85px;
+
+    * {
+        flex: 1;
+    }
+
+    .footer-col {
+        @include flexMixin(column, center, center);
+        width: 100%;
+        padding: 20px 0 0;
+        color: #fff;
+    }
+
+    img {
+        width: 20px;
+        margin: 0 0 5px;
+    }
+
+    .cart-item-number {
+        position: absolute;
+        right: 40px;
+        top: 20px;
+        width: 22px;
+        height: 22px;
+        @include styler(#fff, $secondaryColor1 , 12px, 50%);
+        border: 1px solid $secondaryColor1;
+        @include flexMixin (row, center, center);
+        padding: 3px 0 0 0;
+    }
+}
+/* books */
+.books-page-wrapper {
+    width: 100%;
+    transition: $transition;
+    //transform: scale(0);
+    .header {
+        position: fixed;
+        width: 100vw;
+        background-color: $background1;
+        right: 0;
+        top: 0px;
+        padding: 30px 30px 10px;
+        z-index: 14;
+        border-radius: 20px;
+        @include flexMixin(row, space-between, center);
+
+        //box-shadow: $boxShadow;
+        .coin-wrapper,
+        .wallet-wrapper {
+            position: relative;
+            top: -15px;
+
+            img {
+                width: 30px;
+            }
+        }
+
+        .coin-count {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            @include styler(#fff, $mainColor1 , 8px, 50%);
+            top: 15px;
+            right: 12px;
+            @include flexMixin(row, center, center);
+        }
+
+        .wallet-count {
+            min-width: 60px;
+            @include flexMixin(row, center, center);
+            position: absolute;
+            top: 17px;
+            left: 15px;
+            @include styler(#fff, $mainColor1 , 8px, 8px);
+        }
+    }
+
+    .search-back-wrapper {
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 0 20px;
+        @include flexMixin(row, center, center);
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            @include flexMixin(row, flex-start, center);
+
+            input {
+                font-family: "main-font";
+                width: 95%;
+                height: 40px;
+                border-radius: 8px;
+                border: 1px solid #C9C9C9;
+                background-color: $background1;
+                padding: 0 5px 0 30px;
+            }
+
+            img {
+                position: absolute;
+                width: 20px;
+                top: 9px;
+                left: 25px;
+            }
+        }
+
+        .back {
+            @include styler($mainColor, $secondaryColor1, 40px, 10px);
+            width: 40px;
+            height: 40px;
+            @include flexMixin (row, center, center);
+            flex: 0 0 40px;
+
+            img {
+                width: 20px;
+            }
+        }
+    }
+
+    .books-page-title {
+        font-size: 24px;
+        text-align: center;
+        width: fit-content;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        top: -4px;
+    }
+
+    .main-content {
+        width: 100%;
+        @include flexMixin(column, flex-start, center);
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: $boxShadow;
+        padding: 20px;
+        padding: 100px 0 0;
+    }
+
+    .sort-by-wrapper {
+        width: 90%;
+        @include flexMixin(row, flex-start, center);
+
+        .content {
+            color: $mainColor1;
+            margin-left: 5px;
+            font-size: 16px;
+        }
+
+        .go-to-sort-by {
+            width: 20px;
+            height: 20px;
+        }
+
+        img {
+            width: 15px;
+            position: relative;
+            top: 5px;
+        }
+    }
+
+    .filters-wrapper {
+        margin: 20px 0;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: repeat(4, 1fr);
+        width: 90%;
+        column-gap: 10px;
+        text-align: center;
+
+        .filter {
+            @include styler(#fff, $secondaryColor1 , 14px, 20px);
+            border: 1px solid $secondaryColor1;
+            padding: 15px 0;
+        }
+    }
+
+    .books-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 25px;
+        row-gap: 25px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .filters-are-activated {
+        grid-template-columns: repeat(1, 1fr) !important;
+        width: 85%;
+        padding: 0 0 140px;
+    }
+
+    .book {
+        position: relative;
+        padding: 5px;
+        box-shadow: $boxShadow;
+        color: $mainBlack;
+        @include flexMixin(column, space-between, center);
+        border-radius: 8px;
+
+        .img-wrapper {
+            height: 181px;
+            background-color: #00000010;
+            width: 136px;
+            overflow: hidden;
+            border-radius: 10px;
+            @include flexMixin(row, center, center);
+        }
+
+        img {
+            border-radius: 10px;
+            width: 136px;
+            height: auto;
+        }
+
+        .title {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .publisher {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .prices-wrapper {
+            font-size: 16px;
+            @include flexMixin(column, center, center);
+            margin-bottom: 10px;
+
+            .discounted {
+                display: none;
+            }
+        }
+
+        .has-discount {
+            .price {
+                color: $greenColor;
+                text-decoration: line-through;
+            }
+
+            .discounted {
+                color: $redColor;
+                display: flex;
+            }
+        }
+
+        .btns-wrapper {
+            position: absolute;
+            background-color: $mainColor1;
+            z-index: 13;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            @include flexMixin(row, center, center);
+            top: 5px;
+            right: 10px;
+            transition: $transition;
+
+            img {
+                width: 14px;
+            }
+        }
+    }
+
+    .quan-0 {
+        .btns-wrapper {
+            transform: scale(0);
+        }
+    }
+
+    .page-count {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        direction: ltr;
+        margin: 20px 0 120px;
+        row-gap: 10px;
+        width: 90%;
+
+        .page-number {
+            @include styler($mainColor1 , #fff, 15px, 5px);
+            border: 1px solid $mainColor1;
+            @include flexMixin(row, center, center);
+            width: 30px;
+            height: 30px;
+            padding-top: 4px;
+        }
+
+        .active-page {
+            color: #FFF;
+            background-color: $mainColor1;
+        }
+
+        .previus-page,
+        .next-page {
+            padding-top: 0px;
+            font-size: 20px;
+        }
+
+        .next-page {
+            i {
+                position: relative;
+                left: 1px;
+            }
+        }
+    }
+
+    .publisher-item,
+    .book-year-item,
+    .subject-item,
+    .course-item {
+        width: 100%;
+        margin-bottom: 0px;
+
+        &::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background-color: $mainColor1;
+            border-radius: 50%;
+            border: 1px solid;
+            position: relative;
+            top: 5px;
+            margin-left: 11px;
+        }
+    }
+
+    .disabled {
+        &::before {
+            background-color: #fff !important;
+        }
+    }
+
+    .fixed-btn {
+        position: fixed;
+        top: 50vh;
+        left: 5vw;
+    }
+
+    .save_and_return_btn {
+        @include styler($mainColor1 , #fff, 15px, 50px);
+        border: 2px solid $mainColor1;
+        padding: 5px 20px;
+        margin: 40px auto;
+    }
+    .null {
+        animation: fadeMF 1s linear 0s infinite alternate;
+    }
+    .discount-label {
+        width: 32px;
+        height: 32px;
+        @include flexMixin(row, center, center);
+        @include styler(#fff, $secondaryColor1 , 12px, 50%);
+        position: absolute;
+        left: 18px;
+        top: 150px;
+        padding: 2px 0 0;
+    }
+
+    .dis-none {
+        display: none;
+    }
+}
+@keyframes fadeMF {
+    from {
+        opacity: 0.5;
+        filter: grayscale(1);
+    }
+
+    to {
+        opacity: 1;
+        filter: grayscale(0);
+    }
+}
+/* books */
+.wallet-wrapper-page {
+    width: 100%;
+    padding: 30px;
+    @include flexMixin(column, flex-start, center);
+
+    .wallet-header {
+        width: 100%;
+        @include flexMixin(row, flex-end, center);
+    }
+
+    .back {
+        background-color: $secondaryColor1;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        @include flexMixin(row, center, center);
+
+        img {
+            width: 20px;
+        }
+    }
+
+    .wallet-page-title {
+        width: 100%;
+        @include flexMixin(row, flex-start, center);
+        font-size: 24px;
+        color: $mainBlack;
+        margin: 0 0 30px;
+    }
+
+    .main-content {
+        width: 100%;
+        @include flexMixin(column, center, flex-start);
+        padding: 15px;
+        @include styler(#fff, $mainColor1, 24px, 16px);
+
+        .wallet-title {
+            width: 100%;
+            @include flexMixin(row, space-between, center);
+            margin: 0 0 10px;
+        }
+
+        .img-wrapper {
+            @include flexMixin(row, flex-end, center);
+            flex: 0 0 22px;
+        }
+
+        img {
+            width: 22px;
+            float: left;
+        }
+    }
+
+    .increase-title {
+        width: 100%;
+        text-align: right;
+        margin: 30px 0 10px;
+        font-size: 16px;
+        color: $secondaryColor1;
+    }
+
+    .way-to-increase-wrapper {
+        @include styler(#000, #fff, 16px, 16px);
+        padding: 25px 20px;
+        box-shadow: $boxShadow;
+        margin: 0 0 300px;
+    }
+}
+.coin-page-wrapper {
+    @include flexMixin(column, flex-start, center);
+    width: 100%;
+    background-color: $mainColor1;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 30px 30px 100px;
+    color: #fff;
+
+    .header {
+        width: 100%;
+        position: relative;
+        @include flexMixin(row, center, center);
+
+        .back {
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include flexMixin(row, center, center);
+
+            img {
+                width: 20px;
+            }
+        }
+
+        .page-title {
+            font-size: 24px;
+            margin: 12px 0 0;
+        }
+    }
+
+    .coin-image-wrapper {
+        margin: 100px 0 20px;
+        @include flexMixin(row, center, center);
+
+        img {
+            width: 200px;
+        }
+    }
+
+    .expalin-text {
+        font-size: 24px;
+        display: none;
+    }
+
+    .ways-to-add-coin-wrapper {
+        margin: 20px 0 50px;
+
+        .title {
+            font-size: 16px;
+        }
+
+        display: none;
+    }
+
+    .coin-count-wrapper {
+        width: 100%;
+        @include flexMixin(column, flex-start, center);
+
+        .coin-count-title {
+            font-size: 16px;
+            color: $secondaryColor1;
+        }
+
+        .coin-count {
+            margin: 40px 0;
+            font-size: 32px;
+        }
+    }
+
+    .add-more-coin {
+        @include styler($mainColor1, #fff, 24px, 20px);
+        width: 300px;
+        height: 60px;
+        @include flexMixin(row, center, center);
+        margin: 0 0 100px;
+    }
+}
+.buy-coin-page-wrapper {
+    width: 100%;
+    @include flexMixin(column, flex-start, center);
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: #fff;
+    .header {
+        width: 100%;
+        position: relative;
+        @include flexMixin(row, center, center);
+
+        .back {
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            @include flexMixin(row, center, center);
+
+            img {
+                width: 20px;
+            }
+        }
+
+        .page-title {
+            font-size: 24px;
+            margin: 12px 0 0;
+            padding: 30px 0;
+        }
+    }
+
+    .coin-choose-wrapper {
+        @include styler($mainBlack , $mainColor1 , 16px, 16px 16px 0 0);
+        width: 100%;
+        @include flexMixin(column, center, center);
+    }
+
+    .options-wrapper {
+        width: 100%;
+        padding: 50px 40px;
+        @include flexMixin(column, flex-start, center);
+
+        .option {
+            width: 100%;
+            @include flexMixin(row, flex-start, center);
+            height: 65px;
+            @include styler($mainBlack , #fff, 16px, 8px);
+            margin: 0 0 15px;
+            padding: 0 20px;
+        }
+
+        .status {
+            width: 25px;
+            height: 25px;
+            border: 1px solid $secondaryColor1;
+            border-radius: 50%;
+            margin-left: 15px;
+            transition: $transition;
+        }
+
+        .active {
+            background-color: $secondaryColor1;
+        }
+    }
+
+    .image-wrapper {
+        padding: 0 0 100px;
+    }
+
+    .coin-footer {
+        width: 100%;
+        @include styler(#fff, #fff, 24px, 16px 16px 0 0);
+        padding: 50px 30px 190px;
+        position: relative;
+        top: -20px;
+        z-index: 12;
+    }
+
+    .buy-coin-btn {
+        width: 100%;
+        @include flexMixin(row, center, center);
+        height: 100px;
+        background-color: $secondaryColor1;
+        border-radius: 16px;
+
+    }
+}
+.cart-page-wrapper {
+    padding: 20px 20px 330px;
+
+    .cart-map-btns {
+        width: 100%;
+        @include flexMixin(row, space-between, center);
+
+        .clear-cart {
+            background-color: $mainColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            @include flexMixin(row, center, center);
+
+            img {
+                width: 20px;
+            }
+        }
+
+        .back {
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            @include flexMixin(row, center, center);
+
+            img {
+                width: 20px;
+            }
+        }
+    }
+
+    .page-title {
+        color: $grayColor;
+        font-size: 24px;
+        margin: 20px 0;
+    }
+
+    .cart-items-wrapper {
+        width: 100%;
+        @include flexMixin(column, center, center);
+
+        .cart-item {
+            width: 100%;
+            margin: 0 0 25px;
+            @include flexMixin(row-reverse, space-between, center);
+
+            .img-wrapper {
+                max-width: 100px;
+
+                img {
+                    border-radius: 16px;
+                    box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.05);
+                }
+            }
+        }
+
+        .prod-details {
+            @include flexMixin(column, center, flex-end);
+            width: 155px;
+        }
+
+        .prod-name {
+            font-size: 16px;
+            color: $grayColor;
+        }
+
+        .prod-price {
+            font-size: 16px;
+            color: #8A8A8A;
+            margin: 10px 0;
+        }
+
+        .prod-btn-action {
+            width: 100%;
+            @include flexMixin(row, space-between, center);
+            padding: 7px 15px;
+            border: 1px solid #C1C1C1;
+            background-color: #fff;
+            border-radius: 24px;
+
+            img {
+                width: 15px;
+            }
+        }
+        .decrement-btn{
+            .trash{
+                display: none;
+            }
+        }
+        .decrement-btn.quan-1{
+            .trash{
+                display: unset;
+            }
+            .line{
+                display: none;
+            }
+        }
+        .quantity {
+            color: $mainBlack;
+            font-size: 16px;
+            margin: 0 30px;
+        }
+
+        .quan-1 {
+            .trash {
+                display: none;
+            }
+        }
+
+        .remove-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: $mainColor1;
+            @include flexMixin(row, center, center);
+            box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.05);
+
+            img {
+                width: 17px;
+            }
+        }
+    }
+
+    .cart-footer {
+        width: 100vw;
+        background-color: #fff;
+        border-radius: 20px 20px 0 0;
+        position: fixed;
+        bottom: 80px;
+        right: 0;
+        height: 230px;
+        padding: 15px 30px;
+        @include flexMixin(column, flex-start, flex-start);
+    }
+
+    .date {
+        display: none;
+        color: $secondaryColor1;
+        font-size: 24px;
+        margin: 0 0 10px;
+    }
+
+    .total-price {
+        width: 100%;
+        margin: 20px 0 0;
+        @include flexMixin(row, space-between, center);
+        font-size: 26px;
+
+        .title {
+            color: #8A8A8A;
+        }
+
+        .total-price-amount {
+            color: $mainBlack;
+        }
+
+        .toman {
+            font-size: 8px;
+            color: $mainBlack;
+        }
+    }
+
+    .has-discount {
+        .total-price-amount {
+            text-decoration: line-through;
+            font-size: 20px;
+        }
+    }
+
+    .checkout-btn {
+        width: 100%;
+        @include styler(#fff, $mainColor1, 24px, 20px);
+        @include flexMixin(row, center, center);
+        height: 58px;
+        margin: 25px 0;
+    }
+
+    .has-item {
+        .cart-is-empty {
+            display: none;
+        }
+    }
+
+    .cart-is-empty {
+        width: 100%;
+        @include flexMixin(column, center, center);
+
+        img {
+            width: 170px;
+        }
+
+        .empty-text {
+            font-size: 24px;
+            margin: 10px 0;
+            color: $mainBlack;
+        }
+
+        .return-home {
+            font-size: 16px;
+            margin: 40px 0 0;
+            color: $secondaryColor1;
+        }
+    }
+}
+.cart-final-stage-page-wrapper {
+    width: 100%;
+    transition: $transition;
+    padding: 20px 30px;
+    @include flexMixin(column, center, center);
+
+    .cart-header {
+        width: 100%;
+        @include flexMixin(row-reverse, space-between, center);
+
+        .back {
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            @include flexMixin(row, center, center);
+
+            img {
+                width: 20px;
+            }
+        }
+
+        .cart-page-title {
+            font-size: 24px;
+            color: $grayColor;
+        }
+    }
+
+    .main-content {
+        width: 100%;
+        @include styler($grayColor , #fff, 16px, 16px);
+        box-shadow: $boxShadow;
+        padding: 30px 15px;
+        margin: 50px 0;
+
+        .cart-items-details {
+            div {
+                margin: 0 0 25px;
+                @include flexMixin(row, flex-start, center);
+            }
+
+            .label {
+                color: $mainColor1;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .cart-details {
+        width: 100%;
+        @include flexMixin(row, space-between, center);
+
+        .prods-incart-text {
+            color: $mainColor1;
+        }
+
+        .view-btn {
+            width: 114px;
+            height: 32px;
+            @include flexMixin(row, center, center);
+            @include styler(#fff, $secondaryColor1 , 16px, 20px);
+        }
+    }
+
+    .pay-btn-wrapper{
+        @include flexMixin(row, center, center);
+        width: 100%;
+        @include styler(#fff, $mainColor1 , 24px, 20px);
+        height: 58px;
+        margin: 20px 0 120px;
+    }
+    .disabled{
+        background-color: $grayColor;
+    }
+}
+@keyframes comeMf {
+    from {
+        top: -100vh;
+    }
+
+    to {
+        top: 0;
+    }
+}
+.single-prod-page-wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 190;
+    transition: all ease-in-out 0s;
+    background-color: $background;
+    overflow-y: scroll;
+    padding: 0;
+    animation: comeMf 0.5s linear 0.2s 1 alternate;
+    @include flexMixin(column, flex-start, center);
+
+    .single-prod-header {
+        width: 100%;
+        //position: relative;
+        padding: 20px 30px;
+        @include flexMixin(row, flex-start, center);
+
+        .single-prod-page-title {
+            font-size: 24px;
+            color: $mainColor1;
+        }
+
+        .back {
+            background-color: $secondaryColor1;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            position: absolute;
+            top: 15px;
+            left: 30px;
+            @include flexMixin(row, center, center);
+
+            img {
+                width: 20px;
+            }
+        }
+    }
+
+    .main-content {
+        @include flexMixin(column, flex-start, center);
+        width: 100%;
+        background-color: #fff;
+        border-radius: 20px 20px 0 0;
+        padding: 30px;
+
+        //height: 120vh;
+        .book-img-price-wrapper {
+            @include flexMixin(row-reverse, flex-end, center);
+            width: 100%;
+
+            img {
+                width: 150px;
+                border-radius: 20px;
+                margin-right: 15px;
+            }
+
+            * {
+                flex: 1;
+            }
+        }
+
+        .price-wrapper {
+            @include flexMixin(column, center, flex-end);
+            text-align: left;
+            color: $mainBlack;
+            font-size: 17px;
+
+            .discounted-price {
+                display: none;
+            }
+        }
+
+        .has-discount {
+            .normal-price {
+                text-decoration: line-through;
+                font-size: 14px;
+                color: $greenColor;
+            }
+
+            .discounted-price {
+                display: unset;
+                color: $redColor;
+            }
+        }
+    }
+
+    .details {
+        margin: 30px 0 0;
+        font-size: 16px;
+        line-height: 35px;
+
+        .full-details-wrapper {
+            margin: 20px 0 0;
+        }
+
+        .title {
+            font-size: 25px;
+        }
+    }
+
+    .add-to-cart-text {
+        color: $secondaryColor1;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        margin: 20px 0 0;
+
+        .q-0 {
+            display: none;
+        }
+
+        .q-1 {
+            display: block;
+        }
+    }
+
+    .add-to-cart-text.not-in-cart {
+        .q-0 {
+            display: block;
+        }
+
+        .q-1 {
+            display: none;
+        }
+    }
+
+    .single-prod-footer {
+        width: 50%;
+        margin: 20px 0 200px;
+        @include flexMixin(row, center, center);
+
+        .more,
+        .quantity,
+        .less {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid;
+            @include flexMixin(row, center, center);
+
+            img {
+                width: 20px;
+            }
+        }
+
+        .more {
+            background-color: $greenColor;
+            border-color: $greenColor;
+        }
+
+        .less {
+            background-color: $redColor;
+            border-color: $redColor;
+        }
+
+        .quantity {
+            font-size: 16px;
+            border-color: $grayColor;
+            margin: 0 5px;
+        }
+    }
+
+    .quan-0 {
+
+        .less,
+        .quantity {
+            display: none !important;
+        }
+    }
+}
+@keyframes spinNow {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(3600deg);
+    }
+}
+.pause {
+    width: 100vw;
+    height: 100vh;
+    color: $mainColor1;
+    font-size: 90px;
+    @include flexMixin(row, center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $background;
+    opacity: 0.6;
+
+    svg {
+        animation-name: spinNow;
+        animation-duration: 10s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: unset;
+    }
+
+    z-index: 999999;
+}
+.pause.none{
+    display: none;
+}
+.modal {
+    opacity: 1;
+    position: relative;
+
+    .cart-footer {
+        position: absolute;
+        width: 100%;
+        bottom: -30px;
+        z-index: 99999;
+    }
+    .total-price {
+        font-size: 20px;
+    }
+}
+.cart-pop-up {
+    height: 70vh;
+    width: 94vw;
+    border-radius: 40px;
+    right: 3vw;
+    box-shadow: 0px 0px 10px 0px;
+    top: 15vh;
+    position: fixed;
+    z-index: 9999;
+    overflow-y: scroll;
+    background-color: $background1;
+}
+.search-modal {
+    position: fixed;
+    top: 150px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 100px);
+    padding-bottom: 100px;
+    // max-height: calc(100vh - 150px);
+    overflow-y: scroll;
+    z-index: 99;
+    @include styler($mainBlack , #DCDCDC, 16px, 0);
+    padding: 20px 0;
+    transition: all ease-in-out 0.6s;
+
+    .search-result {
+        width: 100%;
+        position: relative;
+        @include flexMixin(column, center, center);
+        padding: 0 15px 0 0;
+    }
+
+    .search-result-item {
+        width: 100%;
+        @include flexMixin(row, flex-start, center);
+        background-color: #fff;
+        border-radius: 0px 20px 20px 0px;
+        padding: 24px 13px;
+        margin: 20px 0px;
+        border: 0px;
+
+        img {
+            width: 80px;
+            border-radius: 15px;
+            box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    .book-details {
+        @include flexMixin(column, flex-start, flex-start);
+        flex: 0 0 250px;
+
+        .prices {
+            .discounted-price {
+                display: none;
+            }
+        }
+
+        .has-discount {
+            .normal-price {
+                text-decoration: line-through;
+                font-size: 13px;
+                color: $greenColor;
+            }
+
+            .discounted-price {
+                color: $redColor;
+                display: unset;
+            }
+        }
+    }
+}
+.user-data-page {
+    width: 100%;
+    padding: 25px 30px 100px;
+
+    .header {
+        @include flexMixin(column, flex-end, flex-end);
+    }
+
+    .back {
+        background-color: $secondaryColor1;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        @include flexMixin(row, center, center);
+
+        img {
+            width: 20px;
+        }
+    }
+
+    .page-title {
+        width: 100%;
+        @include flexMixin(row, flex-start, center);
+        font-size: 24px;
+        color: $mainBlack;
+        margin: 18px 0;
+    }
+
+    .text {
+        width: 100%;
+        @include flexMixin(row, flex-start, center);
+        font-size: 14px;
+        color: $mainBlack;
+    }
+
+    .inputs-wrapper {
+        width: 100%;
+        margin: 40px 0 0;
+        @include flexMixin(column, flex-start, center);
+
+        .input-wrapper {
+            width: 100%;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            height: 60px;
+            border: 1px solid #D6D6D6;
+            font-family: "main-font";
+            padding: 15px 40px 15px 20px;
+            background-color: $background1;
+            border-radius: 16px;
+            outline: none !important;
+
+            &:focus {
+                border-color: $greenColor;
+                box-shadow: 0px 0px 10px -2px $greenColor;
+            }
+        }
+
+        textarea {
+            height: 200px;
+            resize: none;
+        }
+
+        .has-error {
+            border-color: $redColor !important;
+            box-shadow: 0px 0px 10px -2px $redColor !important;
+        }
+
+        .error-loader {
+            @include styler($mainWhite , $redColor , 13px, 20px);
+            border: 1px solid $redColor;
+            padding: 10px 20px;
+            text-align: center;
+            margin: 10px 0 10px;
+            height: 0px;
+            opacity: 0;
+            @include flexMixin(row, center, center);
+            transition: all ease-in-out 0.3s;
+        }
+        .show-err{
+            height: 40px;
+            opacity: 1;
+        }
+    }
+    .sucsees-data{
+        background-color: $greenColor;
+        font-size: 16px;
+        width: 100%;
+        @include flexMixin(row,center,center);
+        height: 100px;
+        box-shadow: 0px 0px 10px -2px $greenColor !important;
+        border-radius: 20px;
+        color: #fff;
+        margin: 0 0 50px;
+        padding: 20px;
+        transition: $transition;
+    }
+    
+    .submit-user-data {
+        width: 100%;
+        @include styler(#fff, $mainColor1 , 24px, 20px);
+        @include flexMixin(row, center, center);
+        margin: 0 0 200px;
+        height: 60px;
+        font-family: "main-font";
+        outline: none;
+        border: none;
+    }
+    
+    .dis {
+        background-color: $grayColor;
+    }
+    
+
+    .label-and-input {
+        position: relative;
+
+        img {
+            position: absolute;
+            width: 20px;
+            top: 18px;
+            right: 10px;
+        }
+    }
+}
