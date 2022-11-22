@@ -8,9 +8,9 @@ function withBackEndData(Component) {
     const final_id = "341393410";
     return class withBackEndData extends Component {
         state = {
-            user:JSON.parse(localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")) : false,
-            books: JSON.parse(localStorage.getItem("books")) ? JSON.parse(localStorage.getItem("books")) : false,
-            cart: JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")) : false,
+            user:JSON.parse(sessionStorage.getItem("user")) ? JSON.parse(sessionStorage.getItem("user")) : false,
+            books: JSON.parse(sessionStorage.getItem("books")) ? JSON.parse(sessionStorage.getItem("books")) : false,
+            cart: JSON.parse(sessionStorage.getItem("cart")) ? JSON.parse(sessionStorage.getItem("cart")) : false,
             needed_book : [],
             searched_items : [],
             active_page: 1,
@@ -19,7 +19,9 @@ function withBackEndData(Component) {
             single_active: false,
             cart_active : false,
             active_single_book: false,
-            search_open : false,
+            search_open: false,
+            active_sort_by: false,
+            sort_by:JSON.parse(sessionStorage.getItem('sort')) ? JSON.parse(sessionStorage.getItem('sort')) : "normal",
             selected_items: {
                 active_publishers: JSON.parse(sessionStorage.getItem('selected_items'))?JSON.parse(sessionStorage.getItem('selected_items')).active_publishers : [],
                 active_subjects: JSON.parse(sessionStorage.getItem('selected_items'))?JSON.parse(sessionStorage.getItem('selected_items')).active_subjects : [],
@@ -218,9 +220,12 @@ function withBackEndData(Component) {
             axios
                 .get("https://daryaftyar.ir/storeV2/books")
                 .then((res) => {
-                    let books = res.data
-                    localStorage.setItem("books", JSON.stringify(books));
-                    this.setState({ books });
+                    let books = res.data;
+                    //let localBooks = JSON.parse(sessionStorage.getItem("books"));
+                    if (this.state.sort_by === "normal") {
+                        sessionStorage.setItem("books", JSON.stringify(books));
+                        this.setState({ books });
+                    }
                     // console.log(res.data)
                 })
                 .catch(err => console.log(err));
@@ -228,7 +233,7 @@ function withBackEndData(Component) {
                 .get(`https://daryaftyar.ir/storeV2/cart/${final_id}`)
                 .then((res) => {
                     let cart = res.data;
-                    localStorage.setItem("cart", JSON.stringify(cart));
+                    sessionStorage.setItem("cart", JSON.stringify(cart));
                     this.setState({ cart });
                     //console.log(cart);
                 })
@@ -247,7 +252,7 @@ function withBackEndData(Component) {
                 .then((res) => {
                     let user = res.data;
                     this.setState({ user });
-                    localStorage.setItem("user", JSON.stringify(user));
+                    sessionStorage.setItem("user", JSON.stringify(user));
                     //console.log(user)
                 })
                 .catch((err) => console.log(err.message));
@@ -337,29 +342,34 @@ function withBackEndData(Component) {
                 this.setState({ cart_active: true });
             }
             ids.push(book.id);
-            this.setState({pause : true});
-            axios   
-                .patch(`https://daryaftyar.ir/storeV2/cart/${final_id}`, ids)
-                .then(res => {
-                    const cart = res.data;
-                    this.setState({ cart });
-                    this.setState({ pause: false });
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                })
-                .catch(err => console.log(err))
+            this.update_cart(ids);
         }
         handle_decrement = (book) => {
             const old_cart = { ...this.state.cart };
             const ids = old_cart.cart_items_ids;
             const index = ids.indexOf(book.id);
             ids.splice(index, 1);
-            this.setState({pause : true});
+            this.update_cart(ids);
+        }
+        handle_remove = (book) => {
+            const old_cart = { ...this.state.cart };
+            let ids = old_cart.cart_items_ids;
+            ids = ids.filter(id => id !== book.id);
+            this.update_cart(ids);
+        }
+        clear_cart = () => {
+            const ids = [];
+            this.update_cart(ids)
+        }
+        update_cart = (ids) => {
+            this.setState({ pause: true });
             axios   
                 .patch(`https://daryaftyar.ir/storeV2/cart/${final_id}`, ids)
                 .then(res => {
                     const cart = res.data;
                     this.setState({ cart });
-                    this.setState({pause : false});
+                    this.setState({ pause: false });
+                    sessionStorage.setItem("cart", JSON.stringify(cart));
                 })
                 .catch(err => console.log(err))
         }
@@ -388,8 +398,60 @@ function withBackEndData(Component) {
             const searched_items = [];
             this.setState({ search_open: false });
         }
+        active_sort = () => {
+            //alert()
+            this.setState({ active_sort_by: true });
+        }
         handle_sort = (type) => {
-            
+            this.setState({ pause: true });
+            switch (type) {
+                case "normal":
+                    this.active_sort_item("normal" ,"normal")
+                    break;
+                case "least":
+                    this.active_sort_item("least" , "price");
+                    break;
+                case "most":
+                    this.active_sort_item("most" , "-price");
+                    break;
+                case "loved":
+                    this.active_sort_item("loved" , "-buys_count");
+                    break;
+            }
+        }
+        active_sort_item = (type , status) => {
+            const active_sort = this.state.sort_by;
+            let books = [];
+            sessionStorage.setItem("sort", JSON.stringify(type));
+            if (type !== active_sort) {
+                if (status === "normal") {
+                    axios
+                        .get("https://daryaftyar.ir/storeV2/books")
+                        .then(res => {
+                            books = res.data;
+                            sessionStorage.setItem("books", JSON.stringify(books));
+                            this.setState({ books });
+                            this.setState({ pause: false });
+                            this.setState({ sort_by: type });
+                        })
+                        .catch(err => console.log(err));
+                }
+                else {
+                    axios
+                        .get(`https://daryaftyar.ir/storeV2/sortbooks/${status}`)
+                        .then(res => {
+                            books = res.data.books;
+                            sessionStorage.setItem("books", JSON.stringify(books));
+                            this.setState({ books });
+                            this.setState({ pause: false });
+                            this.setState({ sort_by: type });
+                        })
+                        .catch(err => console.log(err));
+                }
+            }
+            else {
+                this.setState({ pause: false });
+            }
         }
         handle_popup_back = (which) => {
             if (which === "filters") {
@@ -400,7 +462,10 @@ function withBackEndData(Component) {
                 this.setState({ single_active: false });
             }
             else if (which === "pop-up-cart") {
-                this.setState({cart_active : false})
+                this.setState({ cart_active: false });
+            }
+            else if (which === "sort-pop-up") {
+                this.setState({ active_sort_by: false });
             }
         }
         handle_filter = () => {
@@ -556,6 +621,11 @@ function withBackEndData(Component) {
             }
             this.setState({ needed_book: filtered_book });
         }
+        close_web_app = () => {
+            setTimeout(() => {
+                window.Telegram.WebApp.close();
+            }, 1000);
+        }
         render() {
             return (
                 <Component
@@ -572,6 +642,11 @@ function withBackEndData(Component) {
                     search_focus={this.search_focus}
                     search_focus_out={this.search_focus_out}
                     back={this.handle_popup_back}
+                    sort={this.handle_sort}
+                    active_sort={this.active_sort}
+                    handle_remove={this.handle_remove}
+                    clear_cart={this.clear_cart}
+                    close_web_app = {this.close_web_app}
                 />
             );
         }

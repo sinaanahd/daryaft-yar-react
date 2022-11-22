@@ -1377,3 +1377,58 @@ footer {
         }
     }
 }
+.filter-by-modal {
+    @include flexMixin(column, center, center);
+    top: 0 !important;
+    background-color: #00000042 !important;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    padding: 30px 10px;
+    .wrapper-sort-by {
+        width: 80%;
+        background-color: #fff;
+        border: 2px solid $secondaryColor1;
+        @include styler($mainColor1 , #fff, 24px, 20px);
+        @include flexMixin(column, center, center);
+        height: 400px;
+
+        .sort-by-wrapper {
+            width: 100%;
+            @include flexMixin(column, center, center);
+        }
+
+        .sort {
+            width: 65%;
+            text-align: center;
+            margin: 0 0 30px;
+            @include flexMixin(row, flex-start, center);
+
+            &::before {
+                margin-left: 15px;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                content: ' ';
+                border: 1px solid $mainColor1;
+                background-color: $mainColor1;
+            }
+        }
+
+        .disabled {
+            &::before {
+                background-color: #fff !important;
+            }
+        }
+
+        .srt {
+            @include styler(#fff, $mainColor1 , 23px, 50px);
+            padding: 5px 10px;
+            border: 1px solid $mainColor1;
+            width: 80%;
+            @include flexMixin(row, center, center);
+            margin: 0;
+        }
+    }
+}

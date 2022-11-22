@@ -6,7 +6,7 @@ import deleteImg from "../../assets/images/trash-icon-btn.png";
 import FooterBot from '../shop-bot/botFooter';
 import EmptyCart from './empty-cart';
 import CartItem from './cart-item';
-import { Link } from 'react-browser-router';
+import { Link } from 'react-router-dom';
 import find_loc from '../functions/find-loc';
 import Loading from '../reusables/loading';
 import save_local_address from '../functions/save_local_address';
@@ -81,10 +81,10 @@ class Cart extends Component {
                             to={
                                 state.cart ?
                                     state.cart.cart_summary.pay_permission ?
-                                        "/bot-shop/cart-final" :
-                                        "/bot-shop/user-data"
+                                        "/bot/cart-final" :
+                                        "/bot/user-data"
                                     :
-                                    "/bot-shop/user-data"
+                                    "/bot/user-data"
                             }
                             className="checkout-btn">
                             ادامه فرآیند خرید

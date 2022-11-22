@@ -29,7 +29,8 @@ class ShopBody extends Component {
             , search_focus
             , search_focus_out
             , go
-            ,back
+            , back
+            , active_sort
         } = this.props;
         return (
             <div className="main-content">
@@ -43,7 +44,7 @@ class ShopBody extends Component {
                     back={back}
                     page={this.handle_filter_set}
                 />
-                <SortBy />
+                <SortBy active_sort={active_sort} />
                 <FilterBtn filterFunc={filterFunc} />
                 {
                     data.filter_active ?

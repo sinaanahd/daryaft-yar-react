@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withBackEndData from '../hoc/with-back-end-data';
 import split_in_three from '../functions/spilit_in_three';
 import FinalCartHeader from './final-cart-header';
-import { Link } from 'react-browser-router';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import FooterBot from '../shop-bot/botFooter';
 import find_loc from '../functions/find-loc';

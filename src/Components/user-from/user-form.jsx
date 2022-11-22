@@ -4,11 +4,9 @@ import userIcon from "../../assets/images/user-data-icon.png";
 import phoneIcon from "../../assets/images/phone-data-icon.png";
 import postIcon from "../../assets/images/post-data-icon.png";
 import addressIcon from "../../assets/images/address-data-icon.png";
-import withBackEndData from '../hoc/with-back-end-data';
 import FooterBot from '../shop-bot/botFooter';
 import axios from 'axios';
-import backImage from "../../assets/images/back-forward-btn.png"
-import { Link } from 'react-browser-router';
+import { Link } from 'react-router-dom';
 import Loading from '../reusables/loading';
 import find_loc from '../functions/find-loc';
 import save_local_address from '../functions/save_local_address';

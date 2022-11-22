@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withCartData from '../hoc/with-cart';
 import BackBtn from '../reusables/back';
 import split_in_three from '../functions/spilit_in_three';
-import { Link } from 'react-browser-router';
+import { Link } from 'react-router-dom';
 import CartItem from '../cart/cart-item';
 import EmptyCart from '../cart/empty-cart';
 import deleteImg from "../../assets/images/trash-icon-btn.png";
@@ -75,10 +75,10 @@ class PopUpCart extends Component {
                             to={
                                 state.cart ?
                                     state.cart.cart_summary.pay_permission ?
-                                        "/bot-shop/cart-final" :
-                                        "/bot-shop/user-data"
+                                        "/bot/cart-final" :
+                                        "/bot/user-data"
                                     :
-                                    "/bot-shop/user-data"
+                                    "/bot/user-data"
                             }
                             className="checkout-btn">
                             ادامه فرآیند خرید
@@ -91,4 +91,4 @@ class PopUpCart extends Component {
     }
 }
  
-export default withCartData(PopUpCart);
+export default PopUpCart;

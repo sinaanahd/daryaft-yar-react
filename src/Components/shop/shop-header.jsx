@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import coin_icon from "../../assets/images/coin-icon.png";
 import wallet_icon from "../../assets/images/wallet-icon.png";
 import axios from 'axios';
-import { Link } from 'react-browser-router';
+import { Link } from 'react-router-dom';
 import split_in_three from '../functions/spilit_in_three';
 class ShopHeader extends Component {
     state = { 

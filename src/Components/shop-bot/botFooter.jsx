@@ -2,9 +2,8 @@ import React, { Component, Fragment } from 'react';
 import footer1 from "../../../src/assets/images/footer-1.png";
 import footer2 from "../../../src/assets/images/footer-2.png";
 import footer3 from "../../../src/assets/images/user-icon.png";
-import axios from 'axios';
 import { FaAngleDoubleUp } from "react-icons/fa";
-import { Link } from 'react-browser-router';
+import { Link } from 'react-router-dom';
 class FooterBot extends Component {
     state = {
         // cart_details: [],

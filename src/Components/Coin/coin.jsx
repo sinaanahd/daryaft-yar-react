@@ -3,7 +3,7 @@ import find_loc from '../functions/find-loc';
 import withBackEndData from '../hoc/with-back-end-data';
 import CoinHeader from './coin-header';
 import coinImg from '../../assets/images/coin-page-image.png';
-import { Link } from 'react-browser-router';
+import { Link } from 'react-router-dom';
 import FooterBot from '../shop-bot/botFooter';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';

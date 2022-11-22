@@ -5,12 +5,12 @@ import ShopBody from '../shop/shop-body';
 import withBackEndData from '../hoc/with-back-end-data';
 import find_loc from '../functions/find-loc';
 import Single_product from '../single-prod/single-product';
-import { withRouter } from 'react-browser-router';
 import Loading from '../reusables/loading';
 import PopUpCart from '../popUpCart/popUpCart';
 import SearchResult from '../shop/search-wrapper/search-result';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
+import PopUpSort from '../sort-by-pop-up/sort-by-pop-up';
 
 class Shop extends Component {
     state = {
@@ -38,10 +38,14 @@ class Shop extends Component {
             search_focus,
             search_focus_out,
             back,
+            sort,
+            active_sort,
+            handle_remove,
+            clear_cart
         } = this.props;
         return (
             <div className='books-page-wrapper'>
-                <ShopHeader  />
+                <ShopHeader />
                 <ShopBody
                     data={state}
                     filterFunc={filterFunc}
@@ -57,6 +61,7 @@ class Shop extends Component {
                     search_focus_out={search_focus_out}
                     go={this.state.go}
                     back={back}
+                    active_sort={active_sort}
                 />
                 {state.single_active ?
                     <Single_product
@@ -71,18 +76,31 @@ class Shop extends Component {
                     ""
                 }
                 {state.single_active ?
-                    <></>:
-                    state.cart_active ? 
-                        <PopUpCart back={back} /> :
-                    <></>
+                    <></> :
+                    state.cart_active ?
+                        <PopUpCart
+                            back={back}
+                            handle_remove={handle_remove}
+                            clear_cart={clear_cart}
+                            state={state}
+                            cart_handler={cart_handler}
+                            handle_decrement={handle_decrement}
+                        /> :
+                        <></>
                 }
                 {
-                    state.search_open ? 
+                    state.search_open ?
                         <SearchResult searched_items={state.searched_items} />
                         :
                         <></>
                 }
-                <Loading pause={ state.pause } />
+                {
+                    state.active_sort_by ?
+                        <PopUpSort sort={sort} sort_by={state.sort_by} back={back} />
+                        :
+                        <></>
+                }
+                <Loading pause={state.pause} />
                 <FooterBot cart_count={state.cart ? state.cart.cart_details.length : 0} />
             </div>
         );

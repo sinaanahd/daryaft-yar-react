@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import el_by_id from '../functions/el-by-id';
-import BackBtn from '../reusables/back';
 import split_in_three from '../functions/spilit_in_three';
 import plusIcon from "../../assets/images/plus-white.png";
 import minusIcon from "../../assets/images/minus-line-white.png"
-import { indexOf } from 'lodash';
-import save_local_address from '../functions/save_local_address';
-import map_handler from '../functions/map_handler';
 import PopUpBack from '../reusables/back-for-pop-up';
 class Single_product extends Component {
     state = {

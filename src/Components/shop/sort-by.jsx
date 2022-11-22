@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import downIcon from '../../assets/images/down-icon.png';
 class SortBy extends Component {
-    state = {  } 
+    state = {} 
+    componentDidMount() {
+        // console.log(this.props);
+        // this.props.active_sort();
+    }
     render() { 
+        const { active_sort } = this.props;
         return (
-            <div className="sort-by-wrapper">
+            <div className="sort-by-wrapper" onClick={()=>active_sort()}>
                 <div className="content">
                     دسته بندی  بر اساس
                 </div>
