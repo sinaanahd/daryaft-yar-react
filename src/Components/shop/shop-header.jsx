@@ -4,30 +4,21 @@ import wallet_icon from "../../assets/images/wallet-icon.png";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import split_in_three from '../functions/spilit_in_three';
+import LittleLoading from '../reusables/little-loading';
 class ShopHeader extends Component {
     state = { 
         user: [],
     } 
     componentDidMount() {
-        let user = [];
-        axios
-            .get("https://daryaftyar.ir/storeV2/user/341393410")
-            .then((res) => {
-                user = res.data;
-                this.fill_user_data(user);
-            })
-            .catch(err => console.log(err));
-    }
-    fill_user_data = (data) => {
-        this.setState({user: data});
     }
     render() { 
+        const { user } = this.props;
         return (
             <header className="header">
                 <Link to="/bot/coin" className="coin-wrapper">
                     <img src={coin_icon} alt="coin-img" className="coin-img" loading="lazy" />
                     <span className="coin-count">
-                        {this.state.user.coin ? split_in_three(this.state.user.coin ): 0}
+                        {user.coin ? split_in_three(user.coin ): <LittleLoading />}
                     </span>
                 </Link>
                 <div className="books-page-title">
@@ -39,7 +30,7 @@ class ShopHeader extends Component {
                         T
                         &nbsp;
                         <bdi>
-                            {this.state.user.amount ? split_in_three(this.state.user.amount) : 0}
+                            {user.amount ? split_in_three(user.amount) : <LittleLoading />}
                         </bdi>
                     </span>
                 </Link>

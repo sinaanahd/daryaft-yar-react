@@ -11,7 +11,14 @@ import Loading from '../reusables/loading';
 import find_loc from '../functions/find-loc';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
-const final_id = "341393410";
+const us_id = window.Telegram.WebApp.initData;
+    let final_id = ""
+    if (us_id === "") {
+        final_id = "341393410";
+    }
+    else {
+        final_id = us_id.split("%22")[2].split("3A")[1].split("%")[0];
+    }
 class UserForm extends Component {
     state = {
         data_user: {

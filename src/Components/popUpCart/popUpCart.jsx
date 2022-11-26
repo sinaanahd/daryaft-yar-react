@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import withCartData from '../hoc/with-cart';
-import BackBtn from '../reusables/back';
 import split_in_three from '../functions/spilit_in_three';
 import { Link } from 'react-router-dom';
 import CartItem from '../cart/cart-item';
 import EmptyCart from '../cart/empty-cart';
 import deleteImg from "../../assets/images/trash-icon-btn.png";
 import Loading from '../reusables/loading';
-import save_local_address from '../functions/save_local_address';
-import map_handler from '../functions/map_handler';
 import PopUpBack from '../reusables/back-for-pop-up';
+import LittleLoading from '../reusables/little-loading';
 class PopUpCart extends Component {
     state = {
     } 
@@ -60,10 +57,10 @@ class PopUpCart extends Component {
                             </span>
                             <div className="prices">
                                 <span className="discounted-price">
-                                    {state.cart ? split_in_three(state.cart.cart_summary.final_price) : "Loading ... s"}
+                                    {state.cart ? split_in_three(state.cart.cart_summary.final_price) : <LittleLoading />}
                                 </span>
                                 <span className="total-price-amount">
-                                    {state.cart ? split_in_three(state.cart.cart_summary.total_price_of_items) : "Loading ..."}
+                                    {state.cart ? split_in_three(state.cart.cart_summary.total_price_of_items) : <LittleLoading />}
                                 </span>
                                 <span className="toman">
                                     تومان

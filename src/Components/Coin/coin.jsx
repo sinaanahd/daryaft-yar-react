@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import FooterBot from '../shop-bot/botFooter';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
+import LittleLoading from '../reusables/little-loading';
 
 class Coin extends Component {
     state = {
@@ -43,7 +44,7 @@ class Coin extends Component {
                             تعداد سکه های حسابت
                         </div>
                         <div className="coin-count">
-                            ${state.user.coin}
+                            {state.user.coin ? state.user.coin : <LittleLoading />}
                         </div>
                     </div>
                     <Link className="add-more-coin" to="/bot/buy-coin">

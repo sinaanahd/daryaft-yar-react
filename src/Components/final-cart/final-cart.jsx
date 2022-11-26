@@ -8,6 +8,7 @@ import FooterBot from '../shop-bot/botFooter';
 import find_loc from '../functions/find-loc';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
+import LittleLoading from '../reusables/little-loading';
 
 class FinalCart extends Component {
     state = {
@@ -20,7 +21,13 @@ class FinalCart extends Component {
         let go = map_handler();
         this.setState({ go });
         const us_id = window.Telegram.WebApp.initData;
-        const final_id = "341393410";
+        let final_id = ""
+        if (us_id === "") {
+            final_id = "341393410";
+        }
+        else {
+            final_id = us_id.split("%22")[2].split("3A")[1].split("%")[0];
+        }
         axios
             .get(`https://daryaftyar.ir/storeV2/payrequest/${final_id}`)
             .then(res => {
@@ -33,9 +40,15 @@ class FinalCart extends Component {
         if (this.state.url === "") {
             e.preventDefault();
         }
+        else {
+            this.props.close_web_app();
+        }
     }
     render() { 
-        const { state: data  , go_to , update_address} = this.props;
+        const {
+            state: data,
+            close_web_app
+        } = this.props;
         return (
             <>
                 <div className="cart-final-stage-page-wrapper">
@@ -51,7 +64,7 @@ class FinalCart extends Component {
                                     {data.cart ?
                                         split_in_three(data.cart.cart_summary.total_price_of_items)
                                         :
-                                        "Loading ..."
+                                        <LittleLoading />
                                     }
                                 </span>
                                 تومان
@@ -65,7 +78,7 @@ class FinalCart extends Component {
                                 <span className="price">
                                     {data.cart ?
                                         split_in_three(data.cart.cart_summary.total_discount_of_items) :
-                                        "Loading ..."
+                                        <LittleLoading />
                                     }
                                 </span>
                                 تومان
@@ -80,7 +93,7 @@ class FinalCart extends Component {
                                     {data.cart ?
                                         split_in_three(data.cart.cart_summary.credit_discount_final)
                                         :
-                                        "Loading ..."
+                                        <LittleLoading />
                                     }
                                 </span>
                                 تومان
@@ -98,7 +111,7 @@ class FinalCart extends Component {
                                             :
                                             split_in_three(data.cart.cart_summary.post_cost)
                                         :
-                                        "Loading ..."
+                                        <LittleLoading />
                                     }
                                 </span>
                                 <span>
@@ -106,7 +119,7 @@ class FinalCart extends Component {
                                         data.cart.cart_summary.post_cost === 0 ?
                                             " " : "تومان"
                                         :
-                                        "Loading ..."
+                                        <LittleLoading />
                                     }
                                 </span>
         
@@ -121,7 +134,7 @@ class FinalCart extends Component {
                                     {data.cart ?
                                         split_in_three(data.cart.cart_summary.final_price)
                                         :
-                                        "Loading ..."
+                                        <LittleLoading />
                                     }
                                 </span>
                                 تومان
@@ -135,16 +148,21 @@ class FinalCart extends Component {
                             {data.cart ?
                                 data.cart.cart_details.length
                                 :
-                                "Loading ..."
+                                <LittleLoading />
                             }
                         </span>
                         محصول در سبد خرید شما موجود است :
                     </div>
-                    <div className="view-btn">
+                    <Link to="/bot/cart" className="view-btn">
                         مشاهده
-                    </div>
+                    </Link>
                 </div>
-                <a href={this.state.url} className={this.state.url ? "pay-btn-wrapper" : "pay-btn-wrapper disabled"} target="_blank" onClick={(e)=>this.disactive_click(e)}>
+                    <a
+                        href={this.state.url}
+                        className={this.state.url ? "pay-btn-wrapper" : "pay-btn-wrapper disabled"}
+                        target="_blank"
+                        onClick={(e) => this.disactive_click(e)}
+                    >
                     پرداخت
                 </a>
                 </div>

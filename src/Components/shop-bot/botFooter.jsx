@@ -4,23 +4,10 @@ import footer2 from "../../../src/assets/images/footer-2.png";
 import footer3 from "../../../src/assets/images/user-icon.png";
 import { FaAngleDoubleUp } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import LittleLoading from '../reusables/little-loading';
 class FooterBot extends Component {
     state = {
-        // cart_details: [],
     } 
-    componentDidMount() {
-        // let cart = [];
-        // axios
-        //     .get("https://daryaftyar.ir/storeV2/cart/341393410")
-        //     .then((res) => {
-        //         cart = res.data;
-        //         this.fill_data(cart)
-        //     })
-        //     .catch(err => console.log(err));
-    }
-    // fill_data = (data) => {
-    //     this.setState({cart_details: data.cart_details});
-    // }
     render() { 
         const { cart_count } = this.props;
         return (
@@ -36,7 +23,7 @@ class FooterBot extends Component {
                         <span className="footer-title">
                             سبد خرید
                         </span>
-                        <span className="cart-item-number">{ cart_count }</span>
+                        <span className="cart-item-number">{ cart_count==="loading" ? <LittleLoading /> : cart_count }</span>
                     </Link>
                     <Link to="/bot/shop" className="footer-col footer-col-2">
                         <span className="icon-footer">

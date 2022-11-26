@@ -5,30 +5,36 @@ import find_loc from '../functions/find-loc';
 import el_by_id from '../functions/el-by-id';
 function withBackEndData(Component) {
     const us_id = window.Telegram.WebApp.initData;
-    const final_id = "341393410";
+    let final_id = ""
+    if (us_id === "") {
+        final_id = "341393410";
+    }
+    else {
+        final_id = us_id.split("%22")[2].split("3A")[1].split("%")[0];
+    }
     return class withBackEndData extends Component {
         state = {
-            user:JSON.parse(sessionStorage.getItem("user")) ? JSON.parse(sessionStorage.getItem("user")) : false,
+            user: JSON.parse(sessionStorage.getItem("user")) ? JSON.parse(sessionStorage.getItem("user")) : false,
             books: JSON.parse(sessionStorage.getItem("books")) ? JSON.parse(sessionStorage.getItem("books")) : false,
             cart: JSON.parse(sessionStorage.getItem("cart")) ? JSON.parse(sessionStorage.getItem("cart")) : false,
-            needed_book : [],
-            searched_items : [],
+            needed_book: [],
+            searched_items: [],
             active_page: 1,
             filter_active: false,
             active_filter: "none",
             single_active: false,
-            cart_active : false,
+            cart_active: false,
             active_single_book: false,
             search_open: false,
             active_sort_by: false,
-            sort_by:JSON.parse(sessionStorage.getItem('sort')) ? JSON.parse(sessionStorage.getItem('sort')) : "normal",
+            sort_by: JSON.parse(sessionStorage.getItem('sort')) ? JSON.parse(sessionStorage.getItem('sort')) : "normal",
             selected_items: {
-                active_publishers: JSON.parse(sessionStorage.getItem('selected_items'))?JSON.parse(sessionStorage.getItem('selected_items')).active_publishers : [],
-                active_subjects: JSON.parse(sessionStorage.getItem('selected_items'))?JSON.parse(sessionStorage.getItem('selected_items')).active_subjects : [],
-                active_grades: JSON.parse(sessionStorage.getItem('selected_items'))?JSON.parse(sessionStorage.getItem('selected_items')).active_grades : [],
-                active_course: JSON.parse(sessionStorage.getItem('selected_items'))?JSON.parse(sessionStorage.getItem('selected_items')).active_course : [],
+                active_publishers: JSON.parse(sessionStorage.getItem('selected_items')) ? JSON.parse(sessionStorage.getItem('selected_items')).active_publishers : [],
+                active_subjects: JSON.parse(sessionStorage.getItem('selected_items')) ? JSON.parse(sessionStorage.getItem('selected_items')).active_subjects : [],
+                active_grades: JSON.parse(sessionStorage.getItem('selected_items')) ? JSON.parse(sessionStorage.getItem('selected_items')).active_grades : [],
+                active_course: JSON.parse(sessionStorage.getItem('selected_items')) ? JSON.parse(sessionStorage.getItem('selected_items')).active_course : [],
             },
-            filters : JSON.parse(sessionStorage.getItem("filters")) ? JSON.parse(sessionStorage.getItem("filters")) : {
+            filters: JSON.parse(sessionStorage.getItem("filters")) ? JSON.parse(sessionStorage.getItem("filters")) : {
                 publishers: false,
                 courses: [
                     {
@@ -174,6 +180,10 @@ function withBackEndData(Component) {
                         name: "دوازدهم"
                     },
                     {
+                        id: 18,
+                        name: "کنکور"
+                    },
+                    {
                         id: 0,
                         clicked: false,
                         name: "فارغ التحصیل"
@@ -213,7 +223,14 @@ function withBackEndData(Component) {
                     price: 0,
                 },
             ],
-            pause: false,            
+            pause: false,
+            coin_url: "",
+            coin_amount: [
+                { amount: 50, price: 5000 },
+                { amount: 150, price: 9000 },
+                { amount: 500, price: 19000 }
+            ],
+            selected_coin : 50
         }
         componentDidMount() {
             //console.log(JSON.parse(sessionStorage.getItem("address")) , null);
@@ -338,7 +355,8 @@ function withBackEndData(Component) {
         handle_cart = (book) => {
             const old_cart = { ...this.state.cart };
             const ids = old_cart.cart_items_ids;
-            if (!ids.includes(book.id)) {
+            //console.log(this.state.single_active)
+            if ((!ids.includes(book.id)) && (!this.state.single_active)) {
                 this.setState({ cart_active: true });
             }
             ids.push(book.id);
@@ -396,7 +414,9 @@ function withBackEndData(Component) {
         }
         search_focus_out = (e) => {
             const searched_items = [];
-            this.setState({ search_open: false });
+            setTimeout(() => {
+                this.setState({ search_open: false });
+            } , 100)
         }
         active_sort = () => {
             //alert()
@@ -622,9 +642,25 @@ function withBackEndData(Component) {
             this.setState({ needed_book: filtered_book });
         }
         close_web_app = () => {
+            localStorage.clear();
             setTimeout(() => {
                 window.Telegram.WebApp.close();
             }, 1000);
+        }
+        handle_coin_amount = (amount) => {
+            this.setState({ pause: true });
+            this.setState({selected_coin : amount});
+            this.buy_coin(amount);
+        }
+        buy_coin = (amount) => {
+            axios
+                .get(`https://daryaftyar.ir/storeV2/buy_coin/id:${final_id}-amount:${amount}`)
+                .then(res => {
+                    const coin_url = res.data.url_to_pay;
+                    this.setState({coin_url})
+                    this.setState({ pause: false });
+                })
+                .catch(err => console.log(err));
         }
         render() {
             return (
@@ -646,7 +682,8 @@ function withBackEndData(Component) {
                     active_sort={this.active_sort}
                     handle_remove={this.handle_remove}
                     clear_cart={this.clear_cart}
-                    close_web_app = {this.close_web_app}
+                    close_web_app={this.close_web_app}
+                    handle_coin = {this.handle_coin_amount}
                 />
             );
         }

@@ -45,7 +45,7 @@ class Shop extends Component {
         } = this.props;
         return (
             <div className='books-page-wrapper'>
-                <ShopHeader />
+                <ShopHeader user={this.props.state.user} />
                 <ShopBody
                     data={state}
                     filterFunc={filterFunc}
@@ -90,7 +90,11 @@ class Shop extends Component {
                 }
                 {
                     state.search_open ?
-                        <SearchResult searched_items={state.searched_items} />
+                        <SearchResult
+                            searched_items={state.searched_items}
+                            open_single_book={open_single_book}
+                            close_search={search_focus_out}
+                        />
                         :
                         <></>
                 }
@@ -101,7 +105,7 @@ class Shop extends Component {
                         <></>
                 }
                 <Loading pause={state.pause} />
-                <FooterBot cart_count={state.cart ? state.cart.cart_details.length : 0} />
+                <FooterBot cart_count={state.cart ? state.cart.cart_details.length : "loading"} />
             </div>
         );
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import split_in_three from '../functions/spilit_in_three';
 import checkIcon from "../../assets/images/check-icon.png";
+import LittleLoading from '../reusables/little-loading';
 class WalletBody extends Component {
     state = {  } 
     render() { 
@@ -23,7 +24,7 @@ class WalletBody extends Component {
                         <div className="wallet-amount">
                             <span className="price">
                                 {state.user.amount ?
-                                    split_in_three(state.user.amount) : <bdi> Loading ...</bdi>
+                                    split_in_three(state.user.amount) :<LittleLoading />
                                 }
                             </span>
                             تومان
@@ -33,7 +34,7 @@ class WalletBody extends Component {
                                 {state.user.days_left ?
                                     state.user.days_left
                                     :
-                                    0
+                                    <LittleLoading/>
                                 }
                             </span>
                             روز مهلت استفاده

@@ -626,7 +626,7 @@ footer {
             width: 100%;
             @include flexMixin(row, flex-start, center);
             height: 65px;
-            @include styler($mainBlack , #fff, 16px, 8px);
+            @include styler($mainBlack , #fff, 15px, 8px);
             margin: 0 0 15px;
             padding: 0 20px;
         }
@@ -656,6 +656,9 @@ footer {
         position: relative;
         top: -20px;
         z-index: 12;
+        a{
+            color: #fff;
+        }
     }
 
     .buy-coin-btn {
@@ -1430,5 +1433,22 @@ footer {
             @include flexMixin(row, center, center);
             margin: 0;
         }
+    }
+}
+@keyframes spinLittle {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.inside-loader{
+    svg{
+        animation-name: spinLittle;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: unset;
     }
 }

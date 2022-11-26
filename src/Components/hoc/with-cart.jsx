@@ -4,10 +4,16 @@ import stop_repeatation_in_addres from '../functions/stop-reapet-in-address';
 import find_loc from '../functions/find-loc';
 function withCartData(Component) {
     const us_id = window.Telegram.WebApp.initData;
-    const final_id = "341393410";
+    let final_id = ""
+    if (us_id === "") {
+        final_id = "341393410";
+    }
+    else {
+        final_id = us_id.split("%22")[2].split("3A")[1].split("%")[0];
+    }
     return class withCartData extends Component {
         state = {
-            cart: JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")) : false,
+            cart: JSON.parse(sessionStorage.getItem("cart")) ? JSON.parse(sessionStorage.getItem("cart")) : false,
             go_to: "",
             pause: false
         }
@@ -52,7 +58,7 @@ function withCartData(Component) {
                     const cart = res.data;
                     this.setState({ cart });
                     this.setState({ pause: false });
-                    localStorage.setItem("cart", JSON.stringify(cart));
+                    sessionStorage.setItem("cart", JSON.stringify(cart));
                 })
                 .catch(err => console.log(err))
         }

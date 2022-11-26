@@ -11,6 +11,7 @@ import find_loc from '../functions/find-loc';
 import Loading from '../reusables/loading';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
+import LittleLoading from '../reusables/little-loading';
 class Cart extends Component {
     state = {
         go:"",
@@ -66,10 +67,10 @@ class Cart extends Component {
                             </span>
                             <div className="prices">
                                 <span className="discounted-price">
-                                    {state.cart ? split_in_three(state.cart.cart_summary.final_price) : "Loading ... s"}
+                                    {state.cart ? split_in_three(state.cart.cart_summary.final_price) : <LittleLoading/>}
                                 </span>
                                 <span className="total-price-amount">
-                                    {state.cart ? split_in_three(state.cart.cart_summary.total_price_of_items) : "Loading ..."}
+                                    {state.cart ? split_in_three(state.cart.cart_summary.total_price_of_items) : <LittleLoading/>}
                                 </span>
                                 <span className="toman">
                                     تومان

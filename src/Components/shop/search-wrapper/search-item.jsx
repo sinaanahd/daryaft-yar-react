@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import split_in_three from '../../functions/spilit_in_three';
 class SearchItem extends Component {
-    state = {  } 
+    state = {} 
+    componentDidMount() {
+        //console.log(this.props)
+    }
     render() { 
-        const { item } = this.props;
+        const { item ,open_single_book,close_search} = this.props;
         return (
             <>
                 {item === "موردی پیدا نشد" ?
@@ -11,7 +14,9 @@ class SearchItem extends Component {
                         متاسفانه موردی یافت نشد 
                     </div>
                     :
-                    <div className="search-result-item">
+                    <div className="search-result-item" onClick={() => {
+                        open_single_book(item);
+                    }}>
                         <img src={item.img_url} />
                         <div className="book-details">
                             <span id="search-txt-${item.id}">

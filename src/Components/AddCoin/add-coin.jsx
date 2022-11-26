@@ -5,6 +5,9 @@ import find_loc from '../functions/find-loc';
 import FooterBot from '../shop-bot/botFooter';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
+import CoinAmount from './coin_amount';
+import coin_image from "../../assets/images/coin-more.jpeg";
+import Loading from '../reusables/loading';
 class AddCoin extends Component {
     state = {
         go:"",
@@ -14,9 +17,11 @@ class AddCoin extends Component {
         save_local_address(place);
         let go = map_handler();
         this.setState({ go });
+        let selected_coin = this.props.state.selected_coin;
+        this.props.handle_coin(selected_coin);
     }
     render() { 
-        const { state } = this.props;
+        const { state , handle_coin } = this.props;
         return (
             <>
                 <div className="buy-coin-page-wrapper">
@@ -28,42 +33,25 @@ class AddCoin extends Component {
                     </div>
                     <div className="coin-choose-wrapper">
                         <div className="options-wrapper">
-                            <div className="option option-1">
-                                <span className="status active">
-
-                                </span>
-                                <span className="text">
-                                    ۵۰ سکه - ۵۰۰۰تومان (ارزانترین)
-                                </span>
-                            </div>
-                            <div className="option option-2">
-                                <span className="status">
-                    
-                                </span>
-                                <span className="text">
-                                    ۱۵۰سکه - ۹۰۰۰تومان (محبوب‌ترین)
-                                </span>
-                            </div>
-                            <div className="option option-3">
-                                <span className="status">
-                    
-                                </span>
-                                <span className="text">
-                                    ۵۰۰سکه - ۱۹۰۰۰ (به صرفه‌ترین)
-                                </span>
-                            </div>
+                            {state.coin_amount.map(a => <CoinAmount
+                                amount={a}
+                                handle_coin={handle_coin}
+                                key={a.price}
+                                selected={state.selected_coin}
+                            />)}
                         </div>
                         <div className="image-wrapper">
-                            <img src="./assets/images/coin-more.jpeg" loading="lazy" alt="" />
+                            <img src={coin_image} loading="lazy" alt="" />
                         </div>
                     </div>
                     <div className="coin-footer">
-                        <div className="buy-coin-btn">
+                        <a href={state.coin_url} target="_blank" className="buy-coin-btn">
                             خرید سکه
-                        </div>
+                        </a>
                     </div>
                 </div>
-                <FooterBot cart_count={ state.cart ? state.cart.cart_details.length : 0 }/>
+                <FooterBot cart_count={state.cart ? state.cart.cart_details.length : 0} />
+                {state.pause ? <Loading pause={state.pause} /> : <></>}
             </>
         );
     }
