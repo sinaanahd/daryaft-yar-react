@@ -27,6 +27,8 @@ function withBackEndData(Component) {
             active_single_book: false,
             search_open: false,
             active_sort_by: false,
+            discount_active: false,
+            re_url : false,
             sort_by: JSON.parse(sessionStorage.getItem('sort')) ? JSON.parse(sessionStorage.getItem('sort')) : "normal",
             selected_items: {
                 active_publishers: JSON.parse(sessionStorage.getItem('selected_items')) ? JSON.parse(sessionStorage.getItem('selected_items')).active_publishers : [],
@@ -487,6 +489,9 @@ function withBackEndData(Component) {
             else if (which === "sort-pop-up") {
                 this.setState({ active_sort_by: false });
             }
+            else if (which === "discount-pop-up") {
+                this.setState({ discount_active: false });
+            }
         }
         handle_filter = () => {
             let filterd_by_pubs = [];
@@ -662,6 +667,28 @@ function withBackEndData(Component) {
                 })
                 .catch(err => console.log(err));
         }
+        active_discount_pop_up = () => {
+            this.setState({discount_active:true});
+        }
+        handle_discount = (code) => {
+            this.setState({ pause: true });
+            axios
+                .patch(`https://daryaftyar.ir/storeV2/cart_summary/${final_id}`, { "dis_code": code })
+                .then(res => {
+                    const cart = { ...this.state.cart };
+                    cart.cart_summary = res.data;
+                    sessionStorage.setItem("cart", JSON.stringify(cart));
+                    this.setState({ cart });
+                    axios
+                    .get(`https://daryaftyar.ir/storeV2/payrequest/${final_id}`)
+                    .then(res => {
+                        this.setState({ pause: false });
+                        this.setState({ re_url: res.data.url_to_pay });
+                        })
+                        .catch(err => console.log(err))
+                })
+                .catch(err => console.log(err.message))
+        }
         render() {
             return (
                 <Component
@@ -683,7 +710,9 @@ function withBackEndData(Component) {
                     handle_remove={this.handle_remove}
                     clear_cart={this.clear_cart}
                     close_web_app={this.close_web_app}
-                    handle_coin = {this.handle_coin_amount}
+                    handle_coin={this.handle_coin_amount}
+                    handle_discount_pop_up={this.active_discount_pop_up}
+                    handle_discount={this.handle_discount}
                 />
             );
         }

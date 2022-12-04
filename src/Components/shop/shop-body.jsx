@@ -52,6 +52,7 @@ class ShopBody extends Component {
                             filters={data.filters}
                             filter={data.active_filter}
                             clickHandler={clickHandler}
+                            back={back}
                         />
                         :
                         data.needed_book.length !==0 ?

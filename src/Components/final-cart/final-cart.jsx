@@ -9,7 +9,8 @@ import find_loc from '../functions/find-loc';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
 import LittleLoading from '../reusables/little-loading';
-
+import DiscountPopUp from './discount-code/discount-pop-up';
+import Loading from '../reusables/loading';
 class FinalCart extends Component {
     state = {
         url: "",
@@ -20,6 +21,9 @@ class FinalCart extends Component {
         save_local_address(place);
         let go = map_handler();
         this.setState({ go });
+        this.set_url();
+    }
+    set_url = (entry) => {
         const us_id = window.Telegram.WebApp.initData;
         let final_id = ""
         if (us_id === "") {
@@ -27,7 +31,7 @@ class FinalCart extends Component {
         }
         else {
             final_id = us_id.split("%22")[2].split("3A")[1].split("%")[0];
-        }
+        }   
         axios
             .get(`https://daryaftyar.ir/storeV2/payrequest/${final_id}`)
             .then(res => {
@@ -47,126 +51,155 @@ class FinalCart extends Component {
     render() { 
         const {
             state: data,
-            close_web_app
+            close_web_app,
+            back,
+            handle_discount_pop_up,
+            handle_discount
         } = this.props;
         return (
             <>
                 <div className="cart-final-stage-page-wrapper">
-                    <FinalCartHeader state={data} go={ this.state.go} />
-                <div className="main-content">
-                    <div className="cart-items-details">
-                        <div className="cart-total-price">
-                            <span className="label">
-                                مجموع مبلغ سبد خرید شما :
-                            </span>
-                            <span className="total-price">
-                                <span className="price">
-                                    {data.cart ?
-                                        split_in_three(data.cart.cart_summary.total_price_of_items)
-                                        :
-                                        <LittleLoading />
-                                    }
+                    <FinalCartHeader state={data} go={this.state.go} />
+                    <div className="main-content">
+                        <div className="cart-items-details">
+                            <div className="cart-total-price">
+                                <span className="label">
+                                    مجموع مبلغ سبد خرید شما :
                                 </span>
-                                تومان
-                            </span>
-                        </div>
-                        <div className="cart-discount">
-                            <span className="label">
-                                تخفیف :
-                            </span>
-                            <span className="total-price">
-                                <span className="price">
-                                    {data.cart ?
-                                        split_in_three(data.cart.cart_summary.total_discount_of_items) :
-                                        <LittleLoading />
-                                    }
-                                </span>
-                                تومان
-                            </span>
-                        </div>
-                        <div className="cart-wallet">
-                            <span className="label">
-                                اعتبار کیف پول :
-                            </span>
-                            <span className="total-price">
-                                <span className="price">
-                                    {data.cart ?
-                                        split_in_three(data.cart.cart_summary.credit_discount_final)
-                                        :
-                                        <LittleLoading />
-                                    }
-                                </span>
-                                تومان
-                            </span>
-                        </div>
-                        <div className="cart-wallet">
-                            <span className="label">
-                                هزینه پست :
-                            </span>
-                            <span className="total-price">
-                                <span className="price">
-                                    {data.cart ?
-                                        data.cart.cart_summary.post_cost === 0 ?
-                                            "رایگان"
+                                <span className="total-price">
+                                    <span className="price">
+                                        {data.cart ?
+                                            split_in_three(data.cart.cart_summary.total_price_of_items)
                                             :
-                                            split_in_three(data.cart.cart_summary.post_cost)
-                                        :
-                                        <LittleLoading />
-                                    }
+                                            <LittleLoading />
+                                        }
+                                    </span>
+                                    تومان
                                 </span>
-                                <span>
-                                    {data.cart ?
-                                        data.cart.cart_summary.post_cost === 0 ?
-                                            " " : "تومان"
-                                        :
-                                        <LittleLoading />
-                                    }
+                            </div>
+                            <div className="cart-discount">
+                                <span className="label">
+                                    تخفیف :
                                 </span>
+                                <span className="total-price">
+                                    <span className="price">
+                                        {data.cart ?
+                                            split_in_three(data.cart.cart_summary.total_discount_of_items) :
+                                            <LittleLoading />
+                                        }
+                                    </span>
+                                    تومان
+                                </span>
+                            </div>
+                            <div className="cart-wallet">
+                                <span className="label">
+                                    اعتبار کیف پول :
+                                </span>
+                                <span className="total-price">
+                                    <span className="price">
+                                        {data.cart ?
+                                            split_in_three(data.cart.cart_summary.credit_discount_final)
+                                            :
+                                            <LittleLoading />
+                                        }
+                                    </span>
+                                    تومان
+                                </span>
+                            </div>
+                            <div className="cart-wallet">
+                                <span className="label">
+                                    هزینه پست :
+                                </span>
+                                <span className="total-price">
+                                    <span className="price">
+                                        {data.cart ?
+                                            data.cart.cart_summary.post_cost === 0 ?
+                                                "رایگان"
+                                                :
+                                                split_in_three(data.cart.cart_summary.post_cost)
+                                            :
+                                            <LittleLoading />
+                                        }
+                                    </span>
+                                    <span>
+                                        {data.cart ?
+                                            data.cart.cart_summary.post_cost === 0 ?
+                                                " " : "تومان"
+                                            :
+                                            <LittleLoading />
+                                        }
+                                    </span>
         
-                            </span>
-                        </div>
-                        <div className="cart-final-pay">
-                            <span className="label">
-                                قابل پرداخت :
-                            </span>
-                            <span className="total-price">
-                                <span className="price">
-                                    {data.cart ?
-                                        split_in_three(data.cart.cart_summary.final_price)
-                                        :
-                                        <LittleLoading />
-                                    }
                                 </span>
-                                تومان
-                            </span>
+                            </div>
+                            <div className={data.cart.cart_summary.dis_code_details.status ? "cart-wallet" : "cart-wallet dis-none"}>
+                                <span className="label">
+                                    مقدار کد تخفیف :
+                                </span>
+                                <span className="total-price">
+                                    <span className="price">
+                                        {split_in_three(data.cart.cart_summary.dis_code_details.amount)}
+                                    </span>
+                                    تومان
+                                </span>
+                            </div>
+                            <div className="cart-final-pay">
+                                <span className="label">
+                                    قابل پرداخت :
+                                </span>
+                                <span className="total-price">
+                                    <span className="price">
+                                        {data.cart ?
+                                            split_in_three(data.cart.cart_summary.final_price)
+                                            :
+                                            <LittleLoading />
+                                        }
+                                    </span>
+                                    تومان
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="cart-details">
-                    <div className="prods-incart-text">
-                        <span className="number">
-                            {data.cart ?
-                                data.cart.cart_details.length
-                                :
-                                <LittleLoading />
-                            }
+                    <div className="discount-code">
+                        <span className="d-text">
+                            کد تخفیف دارید ؟
                         </span>
-                        محصول در سبد خرید شما موجود است :
+                        <span className="d-btn" onClick={()=>{handle_discount_pop_up()}}>
+                            وارد کنید
+                        </span>
                     </div>
-                    <Link to="/bot/cart" className="view-btn">
-                        مشاهده
-                    </Link>
-                </div>
+                    <div className="cart-details">
+                        <div className="prods-incart-text">
+                            <span className="number">
+                                {data.cart ?
+                                    data.cart.cart_details.length
+                                    :
+                                    <LittleLoading />
+                                }
+                            </span>
+                            محصول در سبد خرید شما موجود است :
+                        </div>
+                        <Link to="/bot/cart" className="view-btn">
+                            مشاهده
+                        </Link>
+                    </div>
                     <a
-                        href={this.state.url}
+                        href={!data.re_url ? this.state.url : data.re_url}
                         className={this.state.url ? "pay-btn-wrapper" : "pay-btn-wrapper disabled"}
                         target="_blank"
                         onClick={(e) => this.disactive_click(e)}
                     >
-                    پرداخت
-                </a>
+                        پرداخت
+                    </a>
                 </div>
-                <FooterBot cart_count={ data.cart ? data.cart.cart_details.length : 0 }/>
+                {data.discount_active ? <DiscountPopUp
+                    back={back}
+                    data={data}
+                    set_url={this.set_url}
+                    handle_code={handle_discount}
+                /> : <></>}
+                <Loading pause={ data.pause} />
+                <FooterBot cart_count={data.cart ? data.cart.cart_details.length : 0} />
             </>
         );
     }
