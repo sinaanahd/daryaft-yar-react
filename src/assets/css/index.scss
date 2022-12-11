@@ -1542,4 +1542,625 @@ footer {
 }
 /* website */
 
+#root{
+    @include flexMixin(column,flex-start,center);
+}
+
+/* header */
+.site-header{
+    max-width: 1200px;
+    margin: 30px 0 0 ;
+    @include flexMixin(column,flex-start,center);
+    width: 100%;
+    @include styler(#2C2C2C , #fff , 16px , 16px);
+    padding: 10px 30px 30px;
+    .first-row{
+        @include flexMixin(row-reverse,space-between,center);
+        width: 100%;
+    }
+    .btns-wrapper{
+        @include flexMixin(row,space-between,center);
+        flex: 0 0 27%;
+        img{
+            width: 16px;
+            max-width: 100%;
+        }
+    }
+    .header-btn{
+        width: 150px;
+        height: 40px;
+        @include flexMixin(row-reverse,center,center);
+        border: 2px solid $mainColor1;
+        a{
+            @include flexMixin(row,space-between,center);
+            width: 100%;
+            padding: 10px;
+        }
+    }
+    .enter-btn-wrapper{
+        @include styler(#fff , $mainColor1 , 16px , 8px);
+        a{
+            color: #fff;
+            justify-content: center;
+            .text{
+                margin-left: 10px;
+            }
+        }
+    }
+    .cart-btn {
+        @include styler($mainColor1, #fff , 16px, 8px);
+        a {
+            color: $mainColor1;
+        }
+        .cart-count{
+            width: 24px;
+            height: 24px;
+            @include styler(#fff , $mainColor1 , 16px , 4px);
+            border: 1px solid;
+            text-align: center;
+        }
+    }
+    .logo-wrapper{
+        @include flexMixin(row,center,center);
+        flex: 0 0 40%;
+        a{
+            width: 100%;
+            @include flexMixin(row,center,center);
+        }
+    }
+    .search-wrapper{
+        @include flexMixin(row, flex-start, center);
+        flex: 0 0 27%;
+        position: relative;
+        img{
+            width: 20px;
+        }
+        input{
+            width: 277px;
+            max-width: 280px;
+            height: 40px;
+            border: 1px solid #BEBEBE;
+            background-color: $background1;
+            font-family: "main-font";
+            font-size: 16px;
+            padding: 10px 40px 10px 0;
+            border-radius: 8px;
+            outline: none;
+            color : #000;
+            &::placeholder{
+                color: #ABABAB;
+            }
+        }
+        .header-search-icon{
+            position: absolute;
+            right: 15px;
+            top: 10px;
+        }
+    }
+    .second-row{
+        width: 100%;
+        margin-top: 50px;
+        @include flexMixin(row,center,center);
+        nav{
+            width: 100%;
+            ul{
+                width: 100%;
+            }
+        }
+        .main-nav{
+            @include flexMixin(row,center,center);
+            li{
+                margin-left: 25px;
+            }
+            a{
+                @include flexMixin(row,center,center);
+                color: #000;
+                transition: $transition;
+                &:hover{
+                    color: $secondaryColor1;
+                }
+            }
+            img{
+                width: 11px;
+                margin-right: 5px;
+            }
+        }
+        li{
+            list-style-type:none;
+        }
+    }
+}
+/* header */
+/* shop */
+.shop-wrapper{
+    margin: 40px 0 0;
+    @include flexMixin(row,space-between,flex-start);
+    width: 100%;
+    .main-content{
+        flex : 0 0 75%;
+        @include flexMixin(column,flex-start,center);
+        width: 100%;
+        .sort-by-btn-wrapper{
+            width: 100%;
+            @include styler(#000 , #fff , 13px , 8px);
+            box-shadow: $boxShadow2;
+            height: 80px;
+            padding: 40px;
+            @include flexMixin(row,flex-start,center);
+            .title{
+                font-size: 16px;
+            }
+            .sort-by-item{
+                margin-left: 30px;
+                padding: 5px 12px;
+            }
+            .active{
+                box-shadow: $boxShadow2;
+                border-radius: 8px;
+            }
+        }
+    }
+    .books-wrapper{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        column-gap: 20px;
+        row-gap: 25px;
+        margin: 41px 0;
+        .img-wrapper{
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            background-color: #D9D9D9;
+            @include flexMixin(row,center,center);
+            border-radius: 2px;
+        }
+        .book{
+            position: relative;
+            padding: 10px 20px 20px;
+            @include styler(#000 , #fff , 16px , 8px);
+            @include flexMixin(column,flex-start,center);
+            width: 100%;
+            transition: $transition;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0);
+            &:hover{
+                box-shadow: $boxShadow2;
+                cursor: pointer;
+                transform: translateY(-10px) scale(1.1);
+            }
+        }
+        .book-title{
+            width: 100%;
+            margin: 13px 0 20px;
+            font-size: 15px;
+            text-align: center;
+            min-height: 45px;
+            @include flexMixin(row,center,center);
+            a{
+                width: 100%;
+                color: #000;
+                transition: all ease-in-out 0.3s;
+                &:hover{
+                    color: $secondaryColor1;
+                }
+            }
+        }
+        img{
+            max-width: 100%;
+            width: 100%;
+            display: block;
+            height: auto;
+            margin: 0 auto;
+        }
+        .add-to-cart{
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            right: 20px;
+            top: 3px;
+            @include styler(#fff , $mainColor1 , 16px,50%);
+            @include flexMixin(row,center,center);
+            img{
+                width: 11px;
+            }
+        }
+        .price-currency{
+            width: 100%;
+            @include flexMixin(row-reverse,flex-end,flex-start);
+            flex:0 0 55%;
+        }
+        .price-discount{
+            width: 100%;
+            @include flexMixin(row-reverse,space-between,center);
+            .prices{
+                width: 100%;
+                @include flexMixin(column,flex-start,flex-end);
+            }
+            .dis{
+                text-decoration: line-through;
+            }
+            .discounted{
+                font-weight: bold;
+            }
+        }
+        .curency{
+            font-size: 12px;
+        }
+        .discount-precent{
+            flex: 0 0 20%;
+            width: 40px;
+            height: 25px;
+            @include styler(#fff, $secondaryColor1 , 12px,4px);
+            @include flexMixin(row,center,center);
+        }
+    }
+    .side-bar{
+        flex: 0 0 20%;
+        @include flexMixin(column, flex-start, center);
+        .page-text{
+            color: #000;
+            font-size: 24px;
+            margin: 20px 0 45px;
+        }
+        .show-in-stock{
+            width: 100%;
+            @include styler(#000 , #fff , 12px , 8px);
+            box-shadow: $boxShadow2;
+            height: 64px;
+            @include flexMixin(row,space-between,center);
+            padding: 0 15px;
+        }
+        .btn{
+            width: 40px;
+            height: 20px;
+            position: relative;
+            @include styler(unset , #D9D9D9 , 0 , 100px);
+            // box-shadow:  inset 0px 0px 2px 0px #949494;
+            .circle{
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background-color: $secondaryColor1;
+                display: inline-block;
+                position: absolute;
+                top: 1px;
+                right: 1px;
+                transition: $transition;
+            }
+            .disactive{
+                left : 1px;
+                right: unset;
+                background-color: #000;
+            }
+        }
+        .filters_wrapper{
+            width: 100%;
+            @include flexMixin(column,flex-start,center);
+            padding: 20px 15px;
+            @include styler(#000 , #fff , 12px , 8px);
+            box-shadow: $boxShadow2;
+            margin: 17px 0;
+            .filter{
+                width: 100%;
+                @include flexMixin(row,space-between,center);
+                height: 52px;
+                border-bottom: 1px solid #DDDDDD;
+                &:last-child{
+                    border-bottom: none!important;
+                }
+            }
+            img{
+                width: 11px;
+            }
+        }
+    }
+    .pagination{
+        width: 100%;
+        margin: 0 0px 50px;
+        height: 105px;
+        padding: 0 20px;
+        @include flexMixin(row,space-between,center);
+        @include styler(#000 , #fff , 16px,8px);
+        box-shadow: $boxShadow2;
+        .move-btn{
+            flex: 0 0 20%;
+            @include flexMixin(row,center,center);
+            img{
+                width: 24px;
+            }
+            .text{
+                margin: 0 7px;
+            }
+        }
+        .pages-wrapper{
+            @include flexMixin(row,space-between,center);
+            flex-basis: 0 0 60%;
+            width: 200px;
+            .page-number{
+                width: 30px;
+                height: 40px;
+                @include styler(#000 , #EAEAEA , 16px , 4px);
+                @include flexMixin(row,center,center);
+            }
+            .active{
+                background-color: $secondaryColor1;
+                color: #fff;
+            }
+            .dots{
+                @include flexMixin(row,center,center);
+            }
+        }
+    }
+}
+/* shop */
+/* single book */
+.single-book-page-wrapper{
+    @include styler(#000 , #fff , 16px ,8px);
+    width: 100%;
+    box-shadow: $boxShadow2;
+    margin: 40px 0 0;
+    @include flexMixin(row,space-between,flex-start);
+    padding: 16px 35px 50px;
+    .right-col{
+        flex : 0 0 25%;
+    }
+    .img-wrapper{
+        width: 280px;
+        height: 280px;
+        border-radius: 8px;
+        overflow: hidden;
+        @include flexMixin(row,center,center);
+        background-color: #d9d9d9;
+        margin: 0 0 40px;
+        img{
+            transition: $transition;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+    .prod-cart-deatials{
+        width: 100%;
+        @include styler(#000, #fff, 12px, 8px);
+        box-shadow: 4px 4px 8px 1px rgba(0, 0, 0, 0.1);
+        padding: 25px 17px;
+        @include flexMixin(column , flex-start , flex-end);
+        .cart-title
+        {
+            width: 100%;
+            margin: 0 0 17px;
+        }
+        .price-wrapper{
+            width: 100%;
+            @include flexMixin(row-reverse,flex-start,center);
+            .discount-amount{
+                @include styler(#fff, $secondaryColor1 ,12px ,4px);
+                width: 40px;
+                height: 24px;
+                @include flexMixin(row,center,center);
+                margin: 0 0 0 10px;
+            }
+            .price-curency{
+                @include flexMixin(row-reverse,space-between,flex-start);
+                font-size: 16px;
+            }
+            .currency{
+                margin-left: 5px;
+                position: relative;
+                top: 5px;
+            }
+            .prices{
+                @include flexMixin(column,center,flex-end);
+                font-size: 20px;
+                .has-discount{
+                    text-decoration: line-through;
+                    color: $grayColor;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    .quan-counter-wrapper{
+        width: 90px;
+        height: 30px;
+        @include flexMixin(row,space-between,center);
+        padding: 0 10px;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        img{
+            width: 13px;
+        }
+    }
+    .add-to-cart{
+        width: 100%;
+        @include flexMixin(row,center,center);
+        @include styler(#fff , $mainColor1 , 16px ,16px );
+        height: 40px;
+        margin: 30px 0 0 ;
+    }
+    .left-col{
+        flex: 0 0 70%;
+        display: flex;
+        flex-direction: column;
+    }
+    .single-book-header{
+        width: 100%;
+        @include flexMixin(row,space-between,center);
+        border-bottom: 1px solid #d9d9d9;
+        padding: 0 0 30px;
+        margin: 0 0 40px;
+        .btns{
+            @include flexMixin(row,space-between,center);
+            span{
+                border: 2px solid #d9d9d9;
+                border-radius: 4px;
+                width: 40px;
+                height: 40px;
+                @include flexMixin(row,center,center);
+                margin: 0 5px 0 0;
+            }
+            img{
+                width: 20px;
+            }
+        }
+        .titles{
+            h1{
+                font-size: 20px;
+                margin: 0 0 10px;
+            }
+            h2{
+                font-size: 16px;
+                font-weight: normal;
+            }
+        }
+    }
+    .main-content{
+        width: 100%;
+    }
+    .pub-details{
+        @include flexMixin(row,flex-start,center);
+        .result {
+            margin: 0 30px 0 30px;
+        }
+    }
+    .result{
+        font-weight: normal;
+    }
+    .big-title{
+        font-weight: bold;
+        display: inline-block;
+    }
+    .book-details{
+        width: 100%;
+    }
+    .details-name  {
+        margin: 40px 0 15px;
+    }
+    .detail{
+        padding: 0 20px 0 0;
+        .result{
+            line-height: 50px;
+            &::before{
+                display: inline-block;
+                width: 9px;
+                height: 9px;
+                @include styler(#fff , $secondaryColor1 , 16px , 50%);
+                content: "";
+                margin-left: 10px;
+            }
+        }
+    }
+    .tab-options{
+        width: 100%;
+        padding: 0 0 10px;
+        margin: 50px 0 20px;
+        position: relative;
+        border-bottom: 2px solid #d9d9d9;
+        .tab{
+            margin: 0 5px 0 30px;
+            display: inline-block;
+        }
+        .active-tab{
+            &::before{
+                width: 110px;
+                height: 5px;
+                background-color: $mainColor1;
+                position: absolute;
+                border-radius : 10px;
+                content: "";
+                bottom: -3px;
+            }
+        }
+        .active-tab.tab-1{
+            &::before {
+                    right: 0px;
+                }
+        }
+        .active-tab.tab-2{
+            &::before {
+                    right: 130px;
+                }
+        }
+    }
+    .tab-contents{
+        width: 100%;
+        transition: $transition;
+        padding: 0 0 40px;
+        border-bottom: 2px solid #d9d9d9;
+    }
+    .about-tab{
+        .prod-details{
+            font-size: 14px;
+            line-height: 30px;
+            padding: 0 20px;
+        }
+    }
+    .title-tab{
+        font-weight: bold;
+        font-size: 16px;
+        margin: 0 0 15px;
+    }
+    .details-tab{
+        .tab-detail{
+            font-weight: normal;
+            font-size: 14px;
+            margin : 0 0 15px;
+            padding: 0 20px 0 0;
+        }
+        .content{
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    }
+}
+/* single book */
+li{
+    list-style: none;
+}
+.mm-width{
+    max-width: 1200px;
+}
+
+/* responsive */
+
+@media (max-width:1200px){
+    .shop-wrapper{
+        padding: 0 30px;
+    }
+}
+@media (max-width:1100px) {
+    .shop-wrapper {
+        .books-wrapper{
+            grid-template-columns: repeat(3,1fr);
+        }
+    }
+}
+@media (max-width:991px) {
+    .site-header{
+        display: none!important;
+    }
+    .shop-wrapper {
+        padding: 0 10px;
+        .books-wrapper {
+            grid-template-columns: repeat(2, 1fr);
+            .img-wrapper{
+                width: 130px;
+                height: 130px;
+            }
+        }
+        @include flexMixin(column,flex-start,center);
+        .side-bar{
+            width: 100%;
+        }
+        .main-content{
+            .sort-by-btn-wrapper{
+                @include flexMixin(column,flex-start,center);
+                height: auto;
+            }    
+        }
+    }
+
+}
+
+/* responsive */
 /* website */

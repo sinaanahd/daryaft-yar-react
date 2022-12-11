@@ -243,6 +243,7 @@ function withBackEndData(Component) {
                     //let localBooks = JSON.parse(sessionStorage.getItem("books"));
                     if (this.state.sort_by === "normal") {
                         sessionStorage.setItem("books", JSON.stringify(books));
+                        localStorage.setItem("sina", JSON.stringify(books));
                         this.setState({ books });
                     }
                     // console.log(res.data)

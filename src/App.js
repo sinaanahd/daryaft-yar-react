@@ -13,6 +13,13 @@ import Cart from './Components/cart/cart';
 import FinalCart from './Components/final-cart/final-cart';
 import UserForm from './Components/user-from/user-form';
 import { Redirect } from 'react-router-dom';
+import HomePage from './Components/webiste/Home/HomePage';
+import LoginPage from './Components/webiste/Login-SignUp/login';
+import ShopPage from './Components/webiste/Shop/shop-page';
+import SingleProdPage from './Components/webiste/single-prod/single';
+
+
+
 class App extends Component {
   componentDidMount() {
   }
@@ -28,6 +35,10 @@ class App extends Component {
           <Route path="/bot/cart" component={Cart} />
           <Route path="/bot/cart-final" component={FinalCart} />
           <Route path="/bot/user-data" component={UserForm} />
+          <Route path="/home" component={HomePage} />
+          <Route path="/Login" component={LoginPage} />
+          <Route path="/single-id" component={SingleProdPage} />
+          <Route path="/shop" component={ShopPage} />
           <Redirect from="/" exact to="/bot/shop" />
         </Switch>
       </React.Fragment>
