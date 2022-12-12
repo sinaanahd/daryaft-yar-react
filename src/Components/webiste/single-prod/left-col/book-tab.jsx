@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 class BookTab extends Component {
     state = {  
-        tab : 2,
+        tab : 1,
     } 
     handle_tab = (tab) => {
         this.setState({ tab });

@@ -15,7 +15,7 @@ class FooterBot extends Component {
                 <a href="#top" className="move-to-top">
                     <FaAngleDoubleUp/>
                 </a>
-                <footer>
+                <footer className='bot-footer'>
                     <Link to="/bot/cart" className="footer-col footer-col-1">
                         <span className="icon-footer">
                             <img src={footer1} alt="" className="footer-icon-img" />

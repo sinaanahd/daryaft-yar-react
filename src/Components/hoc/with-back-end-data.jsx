@@ -255,6 +255,7 @@ function withBackEndData(Component) {
                     let cart = res.data;
                     sessionStorage.setItem("cart", JSON.stringify(cart));
                     this.setState({ cart });
+                    localStorage.setItem("sina2", JSON.stringify(cart));
                     //console.log(cart);
                 })
                 .catch(err => console.log(err));

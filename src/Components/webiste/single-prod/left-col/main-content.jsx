@@ -44,7 +44,6 @@ class MainContent extends Component {
                 </div>
                 <BookTab book={ book } />
             </div>
-
         );
     }
 }

@@ -17,7 +17,7 @@ import HomePage from './Components/webiste/Home/HomePage';
 import LoginPage from './Components/webiste/Login-SignUp/login';
 import ShopPage from './Components/webiste/Shop/shop-page';
 import SingleProdPage from './Components/webiste/single-prod/single';
-
+import WebsiteCart from './Components/webiste/cart/cart';
 
 
 class App extends Component {
@@ -39,6 +39,7 @@ class App extends Component {
           <Route path="/Login" component={LoginPage} />
           <Route path="/single-id" component={SingleProdPage} />
           <Route path="/shop" component={ShopPage} />
+          <Route path="/cart" component={WebsiteCart} />
           <Redirect from="/" exact to="/bot/shop" />
         </Switch>
       </React.Fragment>

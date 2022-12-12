@@ -1,0 +1,48 @@
+import React, { Component } from 'react';
+import minusIcon from "../../../../assets/images/website/minus-icon-cart.png";
+import plusIcon from "../../../../assets/images/website/plus-icon-cart.png";
+import deleteIcon from "../../../../assets/images/website/delete-icon-cart.png";
+class SiteCartItem extends Component {
+    state = {  } 
+    render() { 
+        const { item } = this.props;
+        return (
+            <div className="cart-item">
+                <span className="img-wrapper">
+                    <img src={item.img_url} alt={item.name} />
+                </span>
+                <span className="cart-item-details">
+                    <h3 className="item-title">
+                        {item.name}
+                    </h3>
+                    <h4 className="details">
+                        انتشارات
+                        {item.publisher}
+                        سال چاپ
+                        {"وارد نشده"}
+                    </h4>
+                </span>
+                <span className="price-btn-wrapper">
+                    <span className="price">
+                        {item.price}
+                        <span className="currency">
+                            تومان
+                        </span>
+                    </span>
+                    <span className="btn-wrapper">
+                        <img src={minusIcon} alt="کم کردن" className="minus" />
+                        <span className="quantity">
+                            {item.count_in_user_cart}
+                        </span>
+                        <img src={plusIcon} alt="اضافه کردن" className="plus" />
+                    </span>
+                </span>
+                <span className="delete-icon">
+                    <img src={deleteIcon} alt="حذف محصول" className="delete" />
+                </span>
+            </div>
+        );
+    }
+}
+ 
+export default SiteCartItem;
