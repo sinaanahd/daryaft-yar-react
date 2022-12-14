@@ -5,11 +5,12 @@ import footer3 from "../../../src/assets/images/user-icon.png";
 import { FaAngleDoubleUp } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import LittleLoading from '../reusables/little-loading';
+import Errors from '../reusables/errors';
 class FooterBot extends Component {
     state = {
     } 
     render() { 
-        const { cart_count } = this.props;
+        const { cart_count  , error} = this.props;
         return (
             <>
                 <a href="#top" className="move-to-top">
@@ -42,6 +43,7 @@ class FooterBot extends Component {
                         </span>
                     </Link>
                 </footer>
+                {error ? <Errors error={error } /> : <></>}
             </>
         );
     }

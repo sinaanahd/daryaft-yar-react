@@ -11,7 +11,7 @@ import SearchResult from '../shop/search-wrapper/search-result';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
 import PopUpSort from '../sort-by-pop-up/sort-by-pop-up';
-
+import YaldaPopUp from '../campaign/yalda/yalda-pop-up/yalda_pop_up';
 class Shop extends Component {
     state = {
         go:"",
@@ -41,7 +41,8 @@ class Shop extends Component {
             sort,
             active_sort,
             handle_remove,
-            clear_cart
+            clear_cart,
+            campaign_close
         } = this.props;
         return (
             <div className='books-page-wrapper'>
@@ -105,7 +106,15 @@ class Shop extends Component {
                         <></>
                 }
                 <Loading pause={state.pause} />
-                <FooterBot cart_count={state.cart ? state.cart.cart_details.length : "loading"} />
+                <FooterBot
+                    cart_count={state.cart ? state.cart.cart_details.length : "loading"}
+                    error={state.error}
+                />
+                {state.campaign_pop_up ?
+                    <YaldaPopUp campaign_close={campaign_close } />
+                    :
+                    <></>
+                }
             </div>
         );
     }

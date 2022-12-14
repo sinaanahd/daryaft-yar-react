@@ -35,7 +35,6 @@ class UserForm extends Component {
         post_status : false,
         address_err: false,
         address_status : false,
-        cart: JSON.parse(localStorage.getItem("cart")),
         url: false,
         pause: false,
         go: false,
@@ -145,6 +144,7 @@ class UserForm extends Component {
         }
     }
     render() {
+        const { state } = this.props;
         return (
             <>
                 <div className="user-data-page">
@@ -243,7 +243,10 @@ class UserForm extends Component {
                             </Link>
                         </div>}
                 </div>
-                <FooterBot cart_count={this.state.cart ? this.state.cart.cart_details.length : 0} />
+                <FooterBot
+                    cart_count={state.cart ? state.cart.cart_details.length : "loading"}
+                    error={state.error}
+                />
                 {this.state.pause ?
                     <Loading pause={true} />
                     :

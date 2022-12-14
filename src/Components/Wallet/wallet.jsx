@@ -26,7 +26,10 @@ class Wallet extends Component {
                     <WalletBody state={state} />
                     <WalletIncreaseText />
                 </div>
-                <FooterBot cart_count={ state.cart ? state.cart.cart_details.length : 0 }/>
+                <FooterBot
+                    cart_count={state.cart ? state.cart.cart_details.length : "loading"}
+                    error={state.error}
+                />
             </>
         );
     }

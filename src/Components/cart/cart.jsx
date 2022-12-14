@@ -12,6 +12,7 @@ import Loading from '../reusables/loading';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
 import LittleLoading from '../reusables/little-loading';
+import withBackEndData from '../hoc/with-back-end-data';
 class Cart extends Component {
     state = {
         go:"",
@@ -93,10 +94,13 @@ class Cart extends Component {
                     </div>
                 </div>
                 <Loading pause={state.pause} />
-                <FooterBot cart_count={state.cart ? state.cart.cart_details.length : 0} />
+                <FooterBot
+                    cart_count={state.cart ? state.cart.cart_details.length : "loading"}
+                    error={state.error}
+                />
             </>
         );
     }
 }
  
-export default withCartData(Cart);
+export default withBackEndData(Cart);

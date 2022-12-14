@@ -85,7 +85,7 @@ class SiteFooter extends Component {
                     </div>
                 </div>
             </footer>
-        );
+        ); 
     }
 }
  

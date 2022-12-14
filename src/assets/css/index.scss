@@ -672,7 +672,7 @@ img {
 }
 .cart-page-wrapper {
     padding: 20px 20px 330px;
-
+    width: 100%;
     .cart-map-btns {
         width: 100%;
         @include flexMixin(row, space-between, center);
@@ -1540,6 +1540,280 @@ img {
         height: 40px;
     }
 }
+.errors-wrapper {
+    width: 90vw;
+    height: 100px;
+    border-radius: 20px;
+    position: fixed;
+    top: 10px;
+    right: 5vw;
+    background-color: $background1;
+    border: 2px solid $mainColor1;
+    overflow: scroll;
+    box-shadow: 0px 10px 15px 0 #00000080;
+    transition: all ease-in-out .5s;
+    @include flexMixin(column, center, center);
+    z-index: 9999999;
+    .err-message {
+        color: $redColor;
+    }
+}
+
+/* yalda */
+.banner_wrapper{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    background-color: rgba(30, 30, 30 , 0.3);
+    top: 0;
+    right: 0;
+    @include flexMixin(column,center,center);
+    padding: 0 16px;
+    .img-btn-wrapper{
+        position: relative;
+        width: 100%;
+        @include flexMixin(row,center,center);
+    }
+    .close-yalda{
+        position: absolute;
+        top: -15px;
+        right: -10px;
+        background-color: $secondaryColor1;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        transform: rotate(45deg);
+        @include flexMixin(row,center,center);
+        border: 1px solid #fff;
+        img{
+            width: 20px;
+        }
+    }
+    .yalda-photo{
+        border-radius: 8px;
+    }
+    a{
+        @include styler(#fff , $yalda_red ,24px, 20px);
+        @include flexMixin(row,center,center);
+        width: calc(100% - 30px);
+        margin: 20px 0;
+        height: 60px;
+    }
+}
+.yalda-banner{
+    width: calc(100% - 30px);
+    border: 3px solid $yalda_red;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 0 10px;
+}
+.yalda-btn{
+    .back {
+        background-color: $yalda_red;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        position: absolute;
+        top: 15px;
+        left: 30px;
+        @include flexMixin(row, center, center);
+
+        img {
+            width: 20px;
+        }
+    }
+}
+.yalda-page{
+    .yalda-header{
+        width: 100%;
+        @include flexMixin(row,center,center);
+        height: 80px;
+        font-size: 24px;
+        color: $yalda_red;
+        font-weight: bold;
+    }
+    .main-content{
+        width: 100%;
+        @include styler(#000 , #fff , 16px ,20px 20px 0 0);
+        padding: 25px 30px 250px;
+        p{
+            margin: 0px 0px 20px;
+        }
+        .read-rules{
+            a{
+                font-weight: bold;
+                color: $yalda_red;
+            }
+        }
+    }
+    .chest-wrapper{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        margin: 50px 0 0;
+        column-gap: 10px;
+        .chest{
+            @include flexMixin(column,center,center);
+            width: 100%;
+            color: $mainColor;
+            span{
+                margin: 10px 0 0;
+            }
+        }
+    }
+}
+.chest-pp-wrapper{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    background-color: rgba(30, 30, 30, 0.3);
+    top: 0;
+    right: 0;
+    @include flexMixin(column, center, center);
+    padding: 0 40px;
+    .content{
+        width: 100%;
+        height: 190px;
+        @include flexMixin(column,center,center);
+        @include styler(#000 , #fff , 20px , 8px);
+        border: 3px solid $yalda_red;
+        padding: 20px 20px;
+        font-weight: bold;
+        position: relative;
+    }
+    .text-btn{
+        width: 100%;
+        height: 130px;
+        @include flexMixin(column,space-between,center);
+    }
+    .text{
+        width: 100%;
+        text-align: center;
+        line-height: 36px;
+    }
+    .btns{
+        width: 50%;
+        @include flexMixin(row,space-between,center);
+        .yes{
+            a{
+                color: $yalda_green;
+            }
+        }
+        .no{
+            color: $yalda_red;
+        }
+    }
+    .frame-top{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 65px;
+    }
+    .frame-bottom{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+    }
+}
+.open-chest{
+    width: 100%;
+    @include flexMixin(column,flex-start,center);
+    .chest-header{
+        width: 100%;
+        padding: 10px 30px;
+        @include flexMixin(row,space-between,center);
+        .back {
+            background-color: $yalda_red;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            @include flexMixin(row, center, center);
+            img {
+                width: 20px;
+            }
+        }
+        .user-name{
+            font-weight: bold;
+            font-size: 16px;
+            color: $yalda_red;
+        }
+    }
+    .main-contet{
+        width: 100%;
+        padding: 65px 30px 200px;
+        @include styler(#000 , #fff , 16px , 20px 20px 0 0);
+        @include flexMixin(column,flex-start,center);
+        .prize-wrapper{
+            @include styler(#000 , #fff , 14px , 8px);
+            border: 3px solid $yalda_red;
+            height: 250px;
+            @include flexMixin(column,center,center);
+            position: relative;
+            overflow: hidden;
+            box-shadow: $boxShadow2;
+            padding: 0 30px;
+        }
+        .prize-text{
+            position: relative;
+            z-index: 2;
+        }
+    }
+    .top-right{
+        position: absolute;
+        z-index: 1;
+        top: -3px;
+        right: 0;
+        width: 60px;
+    }
+    .top-left{
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 80px;
+    }
+    .bottom-right{
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        right: 0;
+        width: 100px;
+    }
+    .bottom-left{
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        width: 70px;
+    }
+    .open-chest{
+        margin: 30px 0;
+    }
+    .fal-wrapper{
+        @include flexMixin(row,space-between,center);
+        width: 150px;
+        img{
+            width: 18px;
+        }
+        a{
+            color: $yalda_red;
+            font-weight: bold;
+        }
+    }
+}
+
+.fal-page{
+    p{
+        font-family: "nastaliq";
+    }
+}
+
+/* yalda */
+
+
 /* website */
 
 #root{

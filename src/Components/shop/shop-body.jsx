@@ -6,6 +6,7 @@ import Search from './search';
 import SortBy from './sort-by';
 import FilterOptions from './filter-options';
 import SearchResult from './search-wrapper/search-result';
+import YaldaBanner from '../campaign/yalda/yalda-banner';
 class ShopBody extends Component {
     state = { 
         current_page : 1,
@@ -44,6 +45,9 @@ class ShopBody extends Component {
                     back={back}
                     page={this.handle_filter_set}
                 />
+                {/* yalda banner */}
+                <YaldaBanner />
+                {/* yalda banner */}
                 <SortBy active_sort={active_sort} />
                 <FilterBtn filterFunc={filterFunc} />
                 {

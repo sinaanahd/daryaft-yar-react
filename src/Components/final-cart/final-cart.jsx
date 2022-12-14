@@ -21,7 +21,7 @@ class FinalCart extends Component {
         save_local_address(place);
         let go = map_handler();
         this.setState({ go });
-        this.set_url();
+        this.set_url("entry");
     }
     set_url = (entry) => {
         const us_id = window.Telegram.WebApp.initData;
@@ -37,6 +37,7 @@ class FinalCart extends Component {
             .then(res => {
                 let url = res.data.url_to_pay;
                 this.setState({ url });
+                console.log("fc")
             })
             .catch(err => console.log(err))
     }
@@ -199,7 +200,10 @@ class FinalCart extends Component {
                     handle_code={handle_discount}
                 /> : <></>}
                 <Loading pause={ data.pause} />
-                <FooterBot cart_count={data.cart ? data.cart.cart_details.length : 0} />
+                <FooterBot
+                    cart_count={data.cart ? data.cart.cart_details.length : "loading"}
+                    error={data.error}
+                />
             </>
         );
     }

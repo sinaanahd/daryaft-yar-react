@@ -18,8 +18,9 @@ import LoginPage from './Components/webiste/Login-SignUp/login';
 import ShopPage from './Components/webiste/Shop/shop-page';
 import SingleProdPage from './Components/webiste/single-prod/single';
 import WebsiteCart from './Components/webiste/cart/cart';
-
-
+import Yalda from './Components/campaign/yalda/yalda';
+import OpenChest from './Components/campaign/yalda/chest-open/open-chest';
+import FalPage from './Components/campaign/yalda/fal/fal';
 class App extends Component {
   componentDidMount() {
   }
@@ -27,6 +28,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Switch >
+          {/* bot route */}
           <Route path="/bot/shop" component={Shop} />
           <Route path="/bot/home" component={Home} />
           <Route path="/bot/coin" component={Coin} />
@@ -35,6 +37,10 @@ class App extends Component {
           <Route path="/bot/cart" component={Cart} />
           <Route path="/bot/cart-final" component={FinalCart} />
           <Route path="/bot/user-data" component={UserForm} />
+          <Route path="/bot/yalda" component={Yalda} />
+          <Route path="/bot/openChest" component={OpenChest} />
+          <Route path="/bot/falPage" component={FalPage} />
+          {/* website route */}
           <Route path="/home" component={HomePage} />
           <Route path="/Login" component={LoginPage} />
           <Route path="/single-id" component={SingleProdPage} />

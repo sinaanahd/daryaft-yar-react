@@ -28,7 +28,10 @@ function withBackEndData(Component) {
             search_open: false,
             active_sort_by: false,
             discount_active: false,
-            re_url : false,
+            re_url: false,
+            error: false,
+            campaign: true,
+            campaign_pop_up: true,
             sort_by: JSON.parse(sessionStorage.getItem('sort')) ? JSON.parse(sessionStorage.getItem('sort')) : "normal",
             selected_items: {
                 active_publishers: JSON.parse(sessionStorage.getItem('selected_items')) ? JSON.parse(sessionStorage.getItem('selected_items')).active_publishers : [],
@@ -232,54 +235,72 @@ function withBackEndData(Component) {
                 { amount: 150, price: 9000 },
                 { amount: 500, price: 19000 }
             ],
-            selected_coin : 50
+            selected_coin: 50
         }
         componentDidMount() {
             //console.log(JSON.parse(sessionStorage.getItem("address")) , null);
-            axios
-                .get("https://daryaftyar.ir/storeV2/books")
-                .then((res) => {
-                    let books = res.data;
-                    //let localBooks = JSON.parse(sessionStorage.getItem("books"));
-                    if (this.state.sort_by === "normal") {
-                        sessionStorage.setItem("books", JSON.stringify(books));
-                        localStorage.setItem("sina", JSON.stringify(books));
-                        this.setState({ books });
-                    }
-                    // console.log(res.data)
-                })
-                .catch(err => console.log(err));
-            axios
-                .get(`https://daryaftyar.ir/storeV2/cart/${final_id}`)
-                .then((res) => {
-                    let cart = res.data;
-                    sessionStorage.setItem("cart", JSON.stringify(cart));
-                    this.setState({ cart });
-                    localStorage.setItem("sina2", JSON.stringify(cart));
-                    //console.log(cart);
-                })
-                .catch(err => console.log(err));
-            axios
-                .get("https://daryaftyar.ir/storeV2/pubs")
-                .then((res) => {
-                    let publishers = res.data;
-                    const filters = { ...this.state.filters }
-                    filters.publishers = [...publishers]
-                    this.setState({ filters });
-                })
-                .catch(err => console.log(err));
-            axios
-                .get(`https://daryaftyar.ir/storeV2/user/${final_id}`)
-                .then((res) => {
-                    let user = res.data;
-                    this.setState({ user });
-                    sessionStorage.setItem("user", JSON.stringify(user));
-                    //console.log(user)
-                })
-                .catch((err) => console.log(err.message));
+            if (!this.state.books) {
+                axios
+                    .get("https://daryaftyar.ir/storeV2/books")
+                    .then((res) => {
+                        let books = res.data;
+                        //let localBooks = JSON.parse(sessionStorage.getItem("books"));
+                        if (this.state.sort_by === "normal") {
+                            sessionStorage.setItem("books", JSON.stringify(books));
+                            localStorage.setItem("sina", JSON.stringify(books));
+                            this.setState({ books });
+                            this.setState({ err: false })
+                        }
+                        // console.log(res.data)
+                    })
+                    .catch(err => {
+                        this.setState({ error: err.message });
+                        setTimeout(() => {
+                            this.setState({ error: false });
+                        }, 2000);
+                    });
+            }
+            if (!this.state.cart) {
+                axios
+                    .get(`https://daryaftyar.ir/storeV2/cart/${final_id}`)
+                    .then((res) => {
+                        let cart = res.data;
+                        sessionStorage.setItem("cart", JSON.stringify(cart));
+                        this.setState({ cart });
+                        localStorage.setItem("sina2", JSON.stringify(cart));
+                        this.setState({ err: false })
+                        //console.log(cart);
+
+                    })
+                    .catch(err => this.setState({ err: err.message }));
+            }
+            if (!this.state.filters.publishers) {
+                axios
+                    .get("https://daryaftyar.ir/storeV2/pubs")
+                    .then((res) => {
+                        let publishers = res.data;
+                        const filters = { ...this.state.filters }
+                        filters.publishers = [...publishers]
+                        this.setState({ filters });
+                        this.setState({ err: false })
+                    })
+                    .catch(err => this.setState({ err: err.message }));
+            }
+            if (!this.state.user) {
+                axios
+                    .get(`https://daryaftyar.ir/storeV2/user/${final_id}`)
+                    .then((res) => {
+                        let user = res.data;
+                        this.setState({ user });
+                        sessionStorage.setItem("user", JSON.stringify(user));
+                        this.setState({ err: false })
+                        //console.log(user)
+                    })
+                    .catch((err) => console.log(err.message));
+            }
         }
         handle_filter_state = (state) => {
-            this.setState({ active_filter: state , filter_active : true});
+            this.setState({ active_filter: state, filter_active: true });
         }
         handle_click = (item) => {
             const filters = { ... this.state.filters };
@@ -293,7 +314,7 @@ function withBackEndData(Component) {
                 }
                 else {
                     const index = active_publishers.indexOf(item.id)
-                    active_publishers.splice(index , 1);
+                    active_publishers.splice(index, 1);
                 }
                 publishers[index].clicked = !item.clicked;
 
@@ -307,7 +328,7 @@ function withBackEndData(Component) {
                 }
                 else {
                     const index = active_subjects.indexOf(item.id)
-                    active_subjects.splice(index , 1);
+                    active_subjects.splice(index, 1);
                 }
                 subjects[index].clicked = !item.clicked;
             }
@@ -320,7 +341,7 @@ function withBackEndData(Component) {
                 }
                 else {
                     const index = active_grades.indexOf(item.id);
-                    active_grades.splice(index , 1);
+                    active_grades.splice(index, 1);
                 }
                 grades[index].clicked = !item.clicked;
             }
@@ -333,7 +354,7 @@ function withBackEndData(Component) {
                 }
                 else {
                     const index = active_course.indexOf(item.id);
-                    active_course.splice(index , 1);
+                    active_course.splice(index, 1);
                 }
                 courses[index].clicked = !item.clicked;
             }
@@ -385,15 +406,22 @@ function withBackEndData(Component) {
         }
         update_cart = (ids) => {
             this.setState({ pause: true });
-            axios   
+            axios
                 .patch(`https://daryaftyar.ir/storeV2/cart/${final_id}`, ids)
                 .then(res => {
                     const cart = res.data;
                     this.setState({ cart });
                     this.setState({ pause: false });
                     sessionStorage.setItem("cart", JSON.stringify(cart));
+                    this.setState({ err: false })
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                    this.setState({ pause: false });
+                    this.setState({ error: err.message });
+                    setTimeout(() => {
+                        this.setState({ error: false });
+                    }, 2000)
+                })
         }
         handle_search = (value) => {
             //console.log(value.length)
@@ -403,7 +431,7 @@ function withBackEndData(Component) {
             if (value.length > 2) {
                 books.forEach(book => {
                     //console.log(book)
-                    if (book.name.includes(value)) { 
+                    if (book.name.includes(value)) {
                         searched_items.push(book);
                     }
                 });
@@ -420,7 +448,7 @@ function withBackEndData(Component) {
             const searched_items = [];
             setTimeout(() => {
                 this.setState({ search_open: false });
-            } , 100)
+            }, 100)
         }
         active_sort = () => {
             //alert()
@@ -430,20 +458,20 @@ function withBackEndData(Component) {
             this.setState({ pause: true });
             switch (type) {
                 case "normal":
-                    this.active_sort_item("normal" ,"normal")
+                    this.active_sort_item("normal", "normal")
                     break;
                 case "least":
-                    this.active_sort_item("least" , "price");
+                    this.active_sort_item("least", "price");
                     break;
                 case "most":
-                    this.active_sort_item("most" , "-price");
+                    this.active_sort_item("most", "-price");
                     break;
                 case "loved":
-                    this.active_sort_item("loved" , "-buys_count");
+                    this.active_sort_item("loved", "-buys_count");
                     break;
             }
         }
-        active_sort_item = (type , status) => {
+        active_sort_item = (type, status) => {
             const active_sort = this.state.sort_by;
             let books = [];
             sessionStorage.setItem("sort", JSON.stringify(type));
@@ -457,8 +485,15 @@ function withBackEndData(Component) {
                             this.setState({ books });
                             this.setState({ pause: false });
                             this.setState({ sort_by: type });
+                            this.setState({ error: false });
                         })
-                        .catch(err => console.log(err));
+                        .catch(err => {
+                            this.setState({ pause: false });
+                            this.setState({ error: err.message });
+                            setTimeout(() => {
+                                this.setState({ error: false });
+                            }, 2000)
+                        });
                 }
                 else {
                     axios
@@ -469,8 +504,15 @@ function withBackEndData(Component) {
                             this.setState({ books });
                             this.setState({ pause: false });
                             this.setState({ sort_by: type });
+                            this.setState({ error: false });
                         })
-                        .catch(err => console.log(err));
+                        .catch(err => {
+                            this.setState({ pause: false });
+                            this.setState({ error: err.message });
+                            setTimeout(() => {
+                                this.setState({ error: false });
+                            }, 2000)
+                        });
                 }
             }
             else {
@@ -652,11 +694,11 @@ function withBackEndData(Component) {
             localStorage.clear();
             setTimeout(() => {
                 window.Telegram.WebApp.close();
-            }, 1000);
+            }, 2000);
         }
         handle_coin_amount = (amount) => {
             this.setState({ pause: true });
-            this.setState({selected_coin : amount});
+            this.setState({ selected_coin: amount });
             this.buy_coin(amount);
         }
         buy_coin = (amount) => {
@@ -664,13 +706,20 @@ function withBackEndData(Component) {
                 .get(`https://daryaftyar.ir/storeV2/buy_coin/id:${final_id}-amount:${amount}`)
                 .then(res => {
                     const coin_url = res.data.url_to_pay;
-                    this.setState({coin_url})
+                    this.setState({ coin_url })
                     this.setState({ pause: false });
+                    this.setState({ error: false });
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    this.setState({ pause: false });
+                    this.setState({ error: err.message });
+                    setTimeout(() => {
+                        this.setState({ error: false });
+                    }, 2000)
+                });
         }
         active_discount_pop_up = () => {
-            this.setState({discount_active:true});
+            this.setState({ discount_active: true });
         }
         handle_discount = (code) => {
             this.setState({ pause: true });
@@ -682,14 +731,30 @@ function withBackEndData(Component) {
                     sessionStorage.setItem("cart", JSON.stringify(cart));
                     this.setState({ cart });
                     axios
-                    .get(`https://daryaftyar.ir/storeV2/payrequest/${final_id}`)
-                    .then(res => {
-                        this.setState({ pause: false });
-                        this.setState({ re_url: res.data.url_to_pay });
+                        .get(`https://daryaftyar.ir/storeV2/payrequest/${final_id}`)
+                        .then(res => {
+                            this.setState({ pause: false });
+                            this.setState({ re_url: res.data.url_to_pay });
+                            this.setState({ error: false });
                         })
-                        .catch(err => console.log(err))
+                        .catch(err => {
+                            this.setState({ pause: false });
+                            this.setState({ error: err.message });
+                            setTimeout(() => {
+                                this.setState({ error: false });
+                            }, 2000)
+                        })
                 })
-                .catch(err => console.log(err.message))
+                .catch(err => {
+                    this.setState({ pause: false });
+                    this.setState({ error: err.message });
+                    setTimeout(() => {
+                        this.setState({ error: false });
+                    }, 2000)
+                });
+        }
+        campaign_close = () => {
+            this.setState({ campaign_pop_up: false });
         }
         render() {
             return (
@@ -715,6 +780,7 @@ function withBackEndData(Component) {
                     handle_coin={this.handle_coin_amount}
                     handle_discount_pop_up={this.active_discount_pop_up}
                     handle_discount={this.handle_discount}
+                    campaign_close={this.campaign_close}
                 />
             );
         }
