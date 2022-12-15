@@ -29,6 +29,21 @@ function map_handler() {
         case "coin":
             url = "coin";
             break;
+        case "yalda":
+            url = "yalda";
+            break;
+        case "openChest":
+            url = "openChest";
+            break;
+        case "falPage":
+            url = "falPage";
+            break;
+        case "increaseToken":
+            url = "increaseToken";
+            break;
+        case "rules":
+            url = "rules";
+            break;
     }
     //console.log(url);
     return url;

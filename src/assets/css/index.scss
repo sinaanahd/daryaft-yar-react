@@ -1568,12 +1568,13 @@ img {
     background-color: rgba(30, 30, 30 , 0.3);
     top: 0;
     right: 0;
-    @include flexMixin(column,center,center);
+    @include flexMixin(column,flex-start,center);
     padding: 0 16px;
     .img-btn-wrapper{
         position: relative;
         width: 100%;
         @include flexMixin(row,center,center);
+        margin-top: 50px;
     }
     .close-yalda{
         position: absolute;
@@ -1671,7 +1672,7 @@ img {
     background-color: rgba(30, 30, 30, 0.3);
     top: 0;
     right: 0;
-    @include flexMixin(column, center, center);
+    @include flexMixin(column, flex-start, center);
     padding: 0 40px;
     .content{
         width: 100%;
@@ -1682,6 +1683,7 @@ img {
         padding: 20px 20px;
         font-weight: bold;
         position: relative;
+        margin-top: 140px;
     }
     .text-btn{
         width: 100%;
@@ -2037,6 +2039,101 @@ img {
             width: 150px;
         }
     }
+}
+.rules-page{
+    width: 100%;
+    
+        .rules-header {
+            width: 100%;
+            padding: 24px 10px;
+            @include flexMixin(row, space-between, center);
+    
+            .token-icon {
+                flex: 0 0 20%;
+                @include flexMixin(row, center, center);
+                position: relative;
+    
+                img {
+                    width: 22px;
+                }
+    
+                .token-count {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    @include styler(#fff, $yalda_green , 15px, 50%);
+                    width: 22px;
+                    height: 22px;
+                    @include flexMixin(row, center, center);
+                    padding: 2px 0 0;
+                }
+            }
+    
+            .back-place {
+                flex: 0 0 20%;
+                @include flexMixin(row, center, center);
+            }
+    
+            .back {
+                background-color: $yalda_red;
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                @include flexMixin(row, center, center);
+    
+                img {
+                    width: 20px;
+                }
+            }
+    
+            .page-title {
+                flex: 0 0 50%;
+                @include flexMixin(row, center, center);
+                font-weight: bold;
+                font-size: 24px;
+                color: $yalda_red;
+            }
+        }
+    
+        .main-content {
+            width: 100%;
+            padding: 140px 30px 300px;
+            @include styler(#000, #fff, 16px, 20px 20px 0 0);
+            @include flexMixin(column, flex-start, center);
+            position: relative;
+    
+            .big-pom {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 150px;
+            }
+    
+            .rule {
+                line-height: 25px;
+                @include flexMixin(row, center, flex-start);
+                text-align: justify;
+                margin: 0 0 20px;
+                &::before {
+                    flex: 0 0 12px;
+                    width: 12px;
+                    height: 12px;
+                    content: "";
+                    border-radius: 50%;
+                    background-color: $yalda_red;
+                    display: block;
+                    position: relative;
+                    top: 5px;
+                    margin-left: 5px;
+                }
+            }
+            .big-leaf {
+                position: absolute;
+                bottom: 120px;
+                right: 0;
+                width: 150px;
+            }
+        }
 }
 /* yalda */
 

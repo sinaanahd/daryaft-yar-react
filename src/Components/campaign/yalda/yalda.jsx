@@ -45,7 +45,7 @@ class Yalda extends Component {
                         <p className="read-rules">
                             حتما
                             &nbsp;
-                            <Link to="./yaldaRules">
+                            <Link to="./rules">
                                 قوانین
                             </Link>
                             &nbsp;
