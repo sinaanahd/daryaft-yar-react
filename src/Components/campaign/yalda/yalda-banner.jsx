@@ -6,7 +6,7 @@ class YaldaBanner extends Component {
     render() { 
         return (
             <div className="yalda-banner">
-                <Link to="./yalda">
+                <Link to="./falPage">
                     <img src={yaldaBanner} alt="جشنواره یلدا" />
                 </Link>
             </div>

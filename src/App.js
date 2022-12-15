@@ -21,6 +21,7 @@ import WebsiteCart from './Components/webiste/cart/cart';
 import Yalda from './Components/campaign/yalda/yalda';
 import OpenChest from './Components/campaign/yalda/chest-open/open-chest';
 import FalPage from './Components/campaign/yalda/fal/fal';
+import IncreaseToken from "./Components/campaign/yalda/increase-token/increase-token";
 class App extends Component {
   componentDidMount() {
   }
@@ -40,6 +41,7 @@ class App extends Component {
           <Route path="/bot/yalda" component={Yalda} />
           <Route path="/bot/openChest" component={OpenChest} />
           <Route path="/bot/falPage" component={FalPage} />
+          <Route path="/bot/increaseToken" component={IncreaseToken} />
           {/* website route */}
           <Route path="/home" component={HomePage} />
           <Route path="/Login" component={LoginPage} />

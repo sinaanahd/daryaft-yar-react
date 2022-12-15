@@ -56,7 +56,7 @@ class OpenChest extends Component {
                     <div className="open-chest">
                         <img src={openChest} alt="صندوق باز شده" />
                     </div>
-                    <div className="fal-wrapper">
+                    {/* <div className="fal-wrapper">
                         <img src={star} alt="" />
                         <span className="text">
                             &nbsp;
@@ -66,7 +66,7 @@ class OpenChest extends Component {
                             &nbsp;
                             یادت نره
                         </span>
-                    </div>
+                    </div> */}
                 </div>
                 </div>
                 <FooterBot

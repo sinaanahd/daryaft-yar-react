@@ -21,7 +21,7 @@ class YaldaPopUp extends Component {
                         className='yalda-photo'
                     />
                 </div>
-                <Link to="./yalda">
+                <Link to="./falPage">
                     ورود
                 </Link>
             </div>
