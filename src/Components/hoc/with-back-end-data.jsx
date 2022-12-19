@@ -5,6 +5,7 @@ import find_loc from '../functions/find-loc';
 import el_by_id from '../functions/el-by-id';
 function withBackEndData(Component) {
     const us_id = window.Telegram.WebApp.initData;
+    // let us_id = ""
     let final_id = ""
     if (us_id === "") {
         final_id = "341393410";
