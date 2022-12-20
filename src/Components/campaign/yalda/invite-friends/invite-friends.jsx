@@ -9,7 +9,7 @@ import withYalda from '../../../hoc/with-yalda';
 class InviteFreinds extends Component {
     state = {  } 
     render() { 
-        const { data } = this.props;
+        const { user } = this.props;
         return (
             <>
                 <SampleHeader />
@@ -26,8 +26,8 @@ class InviteFreinds extends Component {
                             <span className="user-link">
                                 <bdi>
                                     {
-                                        data.user ?
-                                        data.user.campaign.referral_link
+                                        user ?
+                                        user.campaign.referral_link
                                             :
                                             "در حال آماده سازی"
                                     }
@@ -36,7 +36,7 @@ class InviteFreinds extends Component {
                             <span
                                 className="copy-wrapper"
                                 onClick={() => {
-                                    const to = data.user ? data.user.campaign.referral_link : "none";
+                                    const to = user ? user.campaign.referral_link : "none";
                                     copy_to_clip_board(to);
                                 }}
                             >

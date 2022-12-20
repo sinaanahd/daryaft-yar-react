@@ -2224,7 +2224,24 @@ img {
                 border: 0px solid $yalda_red;
                 padding: 0 40px 0 20px;
                 font-family: "main-font";
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button
+                {
+                    -webkit-appearance: none;
+                }
             }
+        }
+        .error{
+            color: $yalda_red;
+            margin: 40px 0 0;
+        }
+        .code_err{
+            color: $yalda_red;
+            margin: 20px 0 10px;
+        }
+        .code_success {
+            color: $yalda_green;
+            margin: 20px 0 10px;
         }
         .submit{
             @include styler(#fff , $yalda_red , 16px, 16px);
@@ -2239,12 +2256,20 @@ img {
                 font-size: 16px;
                 margin: 0 0 12px;
             }
+            .inputs-wrapper{
+                direction: ltr;
+            }
             input{
                 width: 40px;
                 height: 40px;
                 border: 1px solid #d0d0d0;
                 @include styler(#000 , #f8f8f8 , 16px , 8px);
                 margin: 0 8px;
+                text-align: center;
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
             }
             .confirm{
                 @include styler(#fff, $yalda_red , 16px, 16px);
@@ -2325,6 +2350,10 @@ img {
             border: 0px solid $yalda_red;
             padding: 0 40px 0 20px;
             font-family: "main-font";
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
         }
     }
     .grades-wrapper{
@@ -2337,6 +2366,7 @@ img {
             width: 70px;
             height: 40px;
             @include flexMixin(row,center,center);
+            cursor: pointer;
         }
         .selected{
             @include styler(#fff , $yalda_red, 16px, 8px);
@@ -2348,6 +2378,15 @@ img {
         height: 36px;
         @include flexMixin(row, center, center);
         margin: 40px 0 0;
+    }
+    .error{
+        color: $yalda_red;
+        margin: 20px 0;
+        height: 40px;
+        padding: 0 20px;
+        border: 1px solid $yalda_red;
+        border-radius: 8px;
+        @include flexMixin(row,center,center);
     }
 }
 .yalda-page-w {

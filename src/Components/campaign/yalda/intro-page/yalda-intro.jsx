@@ -3,9 +3,11 @@ import banner from "../../../../assets/images/yalda-banner-2.jpg";
 import { Link } from 'react-router-dom';
 import SampleHeader from '../sample/sample-header';
 import SampleFooter from '../sample/sample-footer';
+import withYalda from '../../../hoc/with-yalda';
 class YaldaIntro extends Component {
     state = {  } 
     render() { 
+        const { user } = this.props;
         return (
             <>
                 <SampleHeader />
@@ -30,7 +32,10 @@ class YaldaIntro extends Component {
                         <br />
                     </p>
                 </div>
-                <Link to="./Ylogin" className='go-to-campaging'>
+                    <Link
+                        to={user ? "./yalda" : "./Ylogin"}
+                        className='go-to-campaging'
+                    >
                     ورود به کمپین
                 </Link>
                 </div>
@@ -40,4 +45,4 @@ class YaldaIntro extends Component {
     }
 }
  
-export default YaldaIntro;
+export default withYalda(YaldaIntro);

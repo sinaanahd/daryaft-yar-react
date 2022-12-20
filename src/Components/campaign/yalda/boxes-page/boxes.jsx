@@ -27,7 +27,7 @@ class YaldaPage extends Component {
         this.setState({ pop_up: true , clicked_chest : num});
     }
     render() { 
-        const { data } = this.props;
+        const { user } = this.props;
         return (
             <>
                 <SampleHeader />
@@ -60,7 +60,7 @@ class YaldaPage extends Component {
                                 key={num}
                                 num={num}
                                 chest_click={this.chest_click}
-                                opened_chests={data.user ? data.user.campaign.opened_boxes : []}
+                                opened_chests={user ? user.campaign.opened_boxes : []}
                             />)}
                         </div>
                     <img src={bigLeaf } className="b-r" alt="" />
@@ -69,7 +69,8 @@ class YaldaPage extends Component {
                     this.state.pop_up ? 
                         <ChestConfirmation
                             chest_number={this.state.clicked_chest}
-                            handle_pop_up={this.handle_pop_up}
+                                handle_pop_up={this.handle_pop_up}
+                                user={user}
                         /> :
                         <></>
                 }

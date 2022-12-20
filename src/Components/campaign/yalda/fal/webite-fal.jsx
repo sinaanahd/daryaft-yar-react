@@ -20,7 +20,7 @@ class FalPageW extends Component {
         this.setState({ more });
     }
     render() { 
-        const { data } = this.props;
+        const { user } = this.props;
         return (
             <>
                 <SampleHeader />
@@ -30,7 +30,7 @@ class FalPageW extends Component {
                             <img src={anarBala} alt="" className="top-right" />
                             <img src={bargBala} alt="" className="top-left" />
                             <span className="fal-text">
-                                {data.user ? data.user.campaign.faal.text.map((t , i) => <p key={i++}>{t }</p>) : "درحال بارگذاری"}
+                                {user ? user.campaign.faal.text.map((t , i) => <p key={i++}>{t }</p>) : "درحال بارگذاری"}
                             </span>
                             <img src={anarPaen} alt="" className="bottom-left" />
                             <img src={bargPaen} alt="" className="bottom-right" />
@@ -43,15 +43,15 @@ class FalPageW extends Component {
                                 تعبیر:
                             </span>
                             <p className="result-text">
-                                {data.user ? data.user.campaign.faal.tabir : "در حال بارگذاری"}
+                                {user ? user.campaign.faal.tabir : "در حال بارگذاری"}
                             </p>
                         </div>
                         <div className="fal-wrapper more">
                             <img src={anarBala} alt="" className="top-right" />
                             <img src={bargBala} alt="" className="top-left" />
                             <span className="prize-text">
-                                {data.user ?
-                                    data.user.campaign.prize.slice(1,data.user.campaign.prize.length).map((t, i) => <p key={ i++ }>{t}</p> )
+                                {user ?
+                                    user.campaign.prize.slice(1,user.campaign.prize.length).map((t, i) => <p key={ i++ }>{t}</p> )
                                     :
                                     "در حال بارگذاری"
                                 }
