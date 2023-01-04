@@ -8,27 +8,24 @@ import cartIcon from "../../../assets/images/website/cart-icon.png";
 import arrowDown from "../../../assets/images/website/arrow-down-icon.png";
 class SiteHeader extends Component {
     state = { 
-        user_is_loged: false,
-        user: {
-            name: "اسم کاربر",
-        },
-        cart: {
-            cart_count : 3,
-        }
     } 
+    componentDidMount() {
+       
+    }
     render() { 
+        const { cart_count, name , is_logged_in} = this.props;
         return (
             <header className="site-header">
                 <div className="first-row">
                     <div className="btns-wrapper">
                         <span className="enter-btn-wrapper header-btn">
-                            <Link to="./Login" >
-                                {!this.state.user_is_loged ?
+                            <Link to="/Login" >
+                                {!is_logged_in ?
                                     "ثبت‌نام / ورود"
                                     :
                                     <>
                                         <span className='text'>
-                                            {this.state.user.name}
+                                            {name}
                                         </span>
                                         <span className="btn-logo">
                                             <img src={account_icon} alt="ورود کاربر" />
@@ -38,7 +35,7 @@ class SiteHeader extends Component {
                             </Link>
                         </span>
                         <span className="header-btn cart-btn">
-                            <Link to="./Cart">
+                            <Link to="/Cart">
                                 <span className="cart-icon">
                                     <img src={cartIcon} alt="سبد خرید" />
                                 </span>
@@ -46,13 +43,13 @@ class SiteHeader extends Component {
                                     سبد خرید
                                 </span>
                                 <span className="cart-count">
-                                    {this.state.cart.cart_count}
+                                    {cart_count}
                                 </span>
                             </Link>
                         </span>
                     </div>
                     <div className="logo-wrapper">
-                        <Link to="./home">
+                        <Link to="/home">
                             <img src={mainLogo} alt="" />
                         </Link>
                     </div>
@@ -67,43 +64,43 @@ class SiteHeader extends Component {
                     <nav>
                         <ul className='main-nav'>
                             <li className="has-sub">
-                                <Link to="./#">
+                                <Link to="/#">
                                     رشته
                                     <img src={arrowDown} alt="فلش پایین" />
                                 </Link>
                             </li>
                             <li className="has-sub">
-                                <Link to="./#">
+                                <Link to="/#">
                                     پایه
                                     <img src={arrowDown} alt="فلش پایین" />
                                 </Link>
                             </li>
                             <li className="has-sub">
-                                <Link to="./#">
+                                <Link to="/#">
                                     انتشارات
                                     <img src={arrowDown} alt="فلش پایین" />
                                 </Link>
                             </li>
                             <li className="has-sub">
-                                <Link to="./#">
+                                <Link to="/#">
                                     دروس
                                     <img src={arrowDown} alt="فلش پایین" />
                                 </Link>
                             </li>
                             <li className="has-sub">
-                                <Link to="./#">
+                                <Link to="/#">
                                     راهنمای خرید
                                     <img src={arrowDown} alt="فلش پایین" />
                                 </Link>
                             </li>
                             <li className="has-sub">
-                                <Link to="./#">
+                                <Link to="/#">
                                     نحوه ارسال
                                     <img src={arrowDown} alt="فلش پایین" />
                                 </Link>
                             </li>
                             <li className="has-sub">
-                                <Link to="./#">
+                                <Link to="/#">
                                     تماس با ما
                                     <img src={arrowDown} alt="فلش پایین" />
                                 </Link>

@@ -30,6 +30,7 @@ import YaldaPage from "./Components/campaign/yalda/boxes-page/boxes";
 import FalPageW from './Components/campaign/yalda/fal/webite-fal';
 import InviteFreinds from "./Components/campaign/yalda/invite-friends/invite-friends";
 import YaldaRulesW from "./Components/campaign/yalda/rules-page/website-rules";
+import NotFound from "./Components/webiste/404/not-found";
 class App extends Component {
   componentDidMount() {
   }
@@ -65,10 +66,12 @@ class App extends Component {
           {/* website route */}
           <Route path="/home" component={HomePage} />
           <Route path="/Login" component={LoginPage} />
-          <Route path="/single-id" component={SingleProdPage} />
+          <Route path="/single-id/:id" component={SingleProdPage} />
           <Route path="/shop" component={ShopPage} />
           <Route path="/cart" component={WebsiteCart} />
-          <Redirect from="/" exact to="/bot/shop" />
+          <Route path="/not-found" component={NotFound} />
+          <Redirect from="/" exact to="/home" />
+          <Redirect to="/not-found" />
         </Switch>
       </React.Fragment>
     );

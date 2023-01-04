@@ -2,15 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import stop_repeatation_in_addres from '../functions/stop-reapet-in-address';
 import find_loc from '../functions/find-loc';
+import get_telegram_data from '../functions/get-telegram-data';
 function withCartData(Component) {
-    const us_id = window.Telegram.WebApp.initData;
-    let final_id = ""
-    if (us_id === "") {
-        final_id = "341393410";
-    }
-    else {
-        final_id = us_id.split("%22")[2].split("3A")[1].split("%")[0];
-    }
+    const final_id = get_telegram_data();
     return class withCartData extends Component {
         state = {
             cart: JSON.parse(sessionStorage.getItem("cart")) ? JSON.parse(sessionStorage.getItem("cart")) : false,
@@ -19,7 +13,7 @@ function withCartData(Component) {
         }
         componentDidMount() {
             axios
-                .get(`https://daryaftyar.ir/storeV2/cart/${final_id}`)
+                .get(`https://daryaftyar.ir/backend/api/cart/${final_id}`)
                 .then((res) => {
                     let cart = res.data;
                     this.setState({ cart });
@@ -53,7 +47,7 @@ function withCartData(Component) {
         update_cart = (ids) => {
             this.setState({pause : true});
             axios   
-                .patch(`https://daryaftyar.ir/storeV2/cart/${final_id}`, ids)
+                .patch(`https://daryaftyar.ir/backend/api/cart/${final_id}`, ids)
                 .then(res => {
                     const cart = res.data;
                     this.setState({ cart });

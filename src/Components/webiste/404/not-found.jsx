@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Login from './Login/login';
-import SiteHeader from '../header/header';
 import SiteFooter from '../footer/site-footer';
-import SignUp from './singUp/singup';
+import SiteHeader from '../header/header';
 import withWebsiteData from '../../hoc/with-website-data';
-class LoginPage extends Component {
+import notFound from "../../../assets/images/website/not-found.svg"
+class NotFound extends Component {
     state = {  } 
     render() { 
         const { cart, user, data } = this.props;
@@ -15,9 +14,11 @@ class LoginPage extends Component {
                     name={user.name}
                     is_logged_in={data.is_logged_in}
                 />
-                <section className="login-signup">
-                    <Login />
-                    <SignUp />
+                <section className="not-found mm-width">
+                    <h1>
+                        صفحه مورد نظر یافت نشد
+                    </h1>
+                    <img src={notFound} alt="" />
                 </section>
                 <SiteFooter />
             </>
@@ -25,4 +26,4 @@ class LoginPage extends Component {
     }
 }
  
-export default withWebsiteData(LoginPage);
+export default withWebsiteData(NotFound);

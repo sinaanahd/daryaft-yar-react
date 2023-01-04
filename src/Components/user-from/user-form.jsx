@@ -11,14 +11,8 @@ import Loading from '../reusables/loading';
 import find_loc from '../functions/find-loc';
 import save_local_address from '../functions/save_local_address';
 import map_handler from '../functions/map_handler';
-const us_id = window.Telegram.WebApp.initData;
-    let final_id = ""
-    if (us_id === "") {
-        final_id = "341393410";
-    }
-    else {
-        final_id = us_id.split("%22")[2].split("3A")[1].split("%")[0];
-    }
+import get_telegram_data from '../functions/get-telegram-data';
+const final_id = get_telegram_data();
 class UserForm extends Component {
     state = {
         data_user: {
@@ -115,9 +109,8 @@ class UserForm extends Component {
         save_local_address(place);
         let go_to = map_handler();
         this.setState({ go_to });
-        const us_id = window.Telegram.WebApp.initData;
         axios
-            .get(`https://daryaftyar.ir/storeV2/user_real_data/${final_id}`)
+            .get(`https://daryaftyar.ir/backend/api/user_real_data/${final_id}`)
             .then((res) => {
                 let data_user = this.state.data_user;
                 data_user = res.data;
@@ -132,7 +125,7 @@ class UserForm extends Component {
         if ((name_status&& phone_status&& post_status&& address_status)) {
             this.setState({ pause: true });
             axios
-                .patch(`https://daryaftyar.ir/storeV2/user_real_data/${final_id}`, this.state.data_user)
+                .patch(`https://daryaftyar.ir/backend/api/user_real_data/${final_id}`, this.state.data_user)
                 .then((res) => {
                     let data_user = res.data;
                     this.setState({ url: "cart-final" });

@@ -3,16 +3,9 @@ import axios from 'axios';
 import stop_repeatation_in_addres from '../functions/stop-reapet-in-address';
 import find_loc from '../functions/find-loc';
 import el_by_id from '../functions/el-by-id';
+import get_telegram_data from '../functions/get-telegram-data';
 function withBackEndData(Component) {
-    const us_id = window.Telegram.WebApp.initData;
-    // let us_id = ""
-    let final_id = ""
-    if (us_id === "") {
-        final_id = "341393410";
-    }
-    else {
-        final_id = us_id.split("%22")[2].split("3A")[1].split("%")[0];
-    }
+    const final_id = get_telegram_data();
     return class withBackEndData extends Component {
         state = {
             user: JSON.parse(sessionStorage.getItem("user")) ? JSON.parse(sessionStorage.getItem("user")) : false,
@@ -31,8 +24,8 @@ function withBackEndData(Component) {
             discount_active: false,
             re_url: false,
             error: false,
-            campaign: true,
-            campaign_pop_up: true,
+            campaign: false,
+            campaign_pop_up: false,
             sort_by: JSON.parse(sessionStorage.getItem('sort')) ? JSON.parse(sessionStorage.getItem('sort')) : "normal",
             selected_items: {
                 active_publishers: JSON.parse(sessionStorage.getItem('selected_items')) ? JSON.parse(sessionStorage.getItem('selected_items')).active_publishers : [],
@@ -242,7 +235,7 @@ function withBackEndData(Component) {
             //console.log(JSON.parse(sessionStorage.getItem("address")) , null);
             if (!this.state.books) {
                 axios
-                    .get("https://daryaftyar.ir/storeV2/books")
+                    .get("https://daryaftyar.ir/backend/api/books")
                     .then((res) => {
                         let books = res.data;
                         //let localBooks = JSON.parse(sessionStorage.getItem("books"));
@@ -263,7 +256,7 @@ function withBackEndData(Component) {
             }
             if (!this.state.cart) {
                 axios
-                    .get(`https://daryaftyar.ir/storeV2/cart/${final_id}`)
+                    .get(`https://daryaftyar.ir/backend/api/cart/${final_id}`)
                     .then((res) => {
                         let cart = res.data;
                         sessionStorage.setItem("cart", JSON.stringify(cart));
@@ -277,7 +270,7 @@ function withBackEndData(Component) {
             }
             if (!this.state.filters.publishers) {
                 axios
-                    .get("https://daryaftyar.ir/storeV2/pubs")
+                    .get("https://daryaftyar.ir/backend/api/pubs")
                     .then((res) => {
                         let publishers = res.data;
                         const filters = { ...this.state.filters }
@@ -289,7 +282,7 @@ function withBackEndData(Component) {
             }
             if (!this.state.user) {
                 axios
-                    .get(`https://daryaftyar.ir/storeV2/user/${final_id}`)
+                    .get(`https://daryaftyar.ir/backend/api/user/${final_id}`)
                     .then((res) => {
                         let user = res.data;
                         this.setState({ user });
@@ -408,7 +401,7 @@ function withBackEndData(Component) {
         update_cart = (ids) => {
             this.setState({ pause: true });
             axios
-                .patch(`https://daryaftyar.ir/storeV2/cart/${final_id}`, ids)
+                .patch(`https://daryaftyar.ir/backend/api/cart/${final_id}`, ids)
                 .then(res => {
                     const cart = res.data;
                     this.setState({ cart });
@@ -479,7 +472,7 @@ function withBackEndData(Component) {
             if (type !== active_sort) {
                 if (status === "normal") {
                     axios
-                        .get("https://daryaftyar.ir/storeV2/books")
+                        .get("https://daryaftyar.ir/backend/api/books")
                         .then(res => {
                             books = res.data;
                             sessionStorage.setItem("books", JSON.stringify(books));
@@ -498,7 +491,7 @@ function withBackEndData(Component) {
                 }
                 else {
                     axios
-                        .get(`https://daryaftyar.ir/storeV2/sortbooks/${status}`)
+                        .get(`https://daryaftyar.ir/backend/api/sortbooks/${status}`)
                         .then(res => {
                             books = res.data.books;
                             sessionStorage.setItem("books", JSON.stringify(books));
@@ -704,7 +697,7 @@ function withBackEndData(Component) {
         }
         buy_coin = (amount) => {
             axios
-                .get(`https://daryaftyar.ir/storeV2/buy_coin/id:${final_id}-amount:${amount}`)
+                .get(`https://daryaftyar.ir/backend/api/buy_coin/id:${final_id}-amount:${amount}`)
                 .then(res => {
                     const coin_url = res.data.url_to_pay;
                     this.setState({ coin_url })
@@ -725,14 +718,14 @@ function withBackEndData(Component) {
         handle_discount = (code) => {
             this.setState({ pause: true });
             axios
-                .patch(`https://daryaftyar.ir/storeV2/cart_summary/${final_id}`, { "dis_code": code })
+                .patch(`https://daryaftyar.ir/backend/api/cart_summary/${final_id}`, { "dis_code": code })
                 .then(res => {
                     const cart = { ...this.state.cart };
                     cart.cart_summary = res.data;
                     sessionStorage.setItem("cart", JSON.stringify(cart));
                     this.setState({ cart });
                     axios
-                        .get(`https://daryaftyar.ir/storeV2/payrequest/${final_id}`)
+                        .get(`https://daryaftyar.ir/backend/api/payrequest/${final_id}`)
                         .then(res => {
                             this.setState({ pause: false });
                             this.setState({ re_url: res.data.url_to_pay });

@@ -11,6 +11,7 @@ import map_handler from '../functions/map_handler';
 import LittleLoading from '../reusables/little-loading';
 import DiscountPopUp from './discount-code/discount-pop-up';
 import Loading from '../reusables/loading';
+import get_telegram_data from '../functions/get-telegram-data';
 class FinalCart extends Component {
     state = {
         url: "",
@@ -24,16 +25,9 @@ class FinalCart extends Component {
         this.set_url("entry");
     }
     set_url = (entry) => {
-        const us_id = window.Telegram.WebApp.initData;
-        let final_id = ""
-        if (us_id === "") {
-            final_id = "341393410";
-        }
-        else {
-            final_id = us_id.split("%22")[2].split("3A")[1].split("%")[0];
-        }   
+        const final_id = get_telegram_data();
         axios
-            .get(`https://daryaftyar.ir/storeV2/payrequest/${final_id}`)
+            .get(`https://daryaftyar.ir/backend/api/payrequest/${final_id}`)
             .then(res => {
                 let url = res.data.url_to_pay;
                 this.setState({ url });

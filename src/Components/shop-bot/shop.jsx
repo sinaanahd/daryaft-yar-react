@@ -110,11 +110,11 @@ class Shop extends Component {
                     cart_count={state.cart ? state.cart.cart_details.length : "loading"}
                     error={state.error}
                 />
-                {state.campaign_pop_up ?
+                {/* {state.campaign_pop_up ?
                     <YaldaPopUp campaign_close={campaign_close } />
                     :
                     <></>
-                }
+                } */}
             </div>
         );
     }

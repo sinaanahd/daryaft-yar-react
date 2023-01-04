@@ -46,7 +46,7 @@ class ShopBody extends Component {
                     page={this.handle_filter_set}
                 />
                 {/* yalda banner */}
-                <YaldaBanner />
+                {/* <YaldaBanner /> */}
                 {/* yalda banner */}
                 <SortBy active_sort={active_sort} />
                 <FilterBtn filterFunc={filterFunc} />

@@ -9,7 +9,7 @@ function withYalda(Component) {
         componentDidMount() {
             if (final_id) {
                 axios
-                    .get(`https://daryaftyar.ir/storeV2/user/${final_id}`)
+                    .get(`https://daryaftyar.ir/backend/api/user/${final_id}`)
                     .then(res => {
                         let user = res.data;
                         this.setState({ user });

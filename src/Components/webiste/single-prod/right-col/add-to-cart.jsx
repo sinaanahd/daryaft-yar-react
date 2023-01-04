@@ -6,7 +6,7 @@ import minusIcon from "../../../../assets/images/website/minus-icon.png";
 class SingleCartDetails extends Component {
     state = {} 
     componentDidMount() {
-        console.log(this.props.book);
+        
     }
     render() { 
         const { book } = this.props;

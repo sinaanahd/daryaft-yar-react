@@ -13,7 +13,7 @@ class YaldaIntro extends Component {
                 <SampleHeader />
                 <div className="yalda-intro mm-width">
                 <div className="img-wrapper">
-                    <Link to="./yalda/login">
+                    <Link to={user ? "./yalda" : "./Ylogin"}>
                         <img src={banner} alt="کمپین یلدا" />   
                     </Link>
                 </div>
