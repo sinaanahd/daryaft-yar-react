@@ -10,12 +10,42 @@ import arrowLeftWhite from '../../../assets/images/website/arrow-left-w-icon.png
 // import arr from '../../functions/matlan';
 class HomePage extends Component {
     state = { 
+        carousel_states: [
+            {
+                id: 1,
+                scrolled: 1,
+                reverse : false,
+            },
+            {
+                id : 2,
+                scrolled : 1,
+                reverse : false,
+            },
+        ],
     } 
     componentDidMount() {
         // console.log(this.props.books);
         // arr.forEach(a => {
         //     console.log(arr.indexOf(a) + 1, a.length);
         // })
+    }
+    hanle_carousel = (id) => {
+        const carousel_states = this.state.carousel_states;
+        const selected = carousel_states[id - 1];
+        // alert()
+        if (selected.reverse) {
+            selected.scrolled = selected.scrolled - 1;
+        }
+        else {
+            selected.scrolled = selected.scrolled + 1;
+        }
+        if (selected.scrolled === 4) {
+            selected.reverse = true;
+        }
+        else if (selected.scrolled === 1) {
+            selected.reverse = false;
+        }
+        this.setState(carousel_states);
     }
     render() { 
         const {
@@ -27,6 +57,7 @@ class HomePage extends Component {
             change_active,
         } = this.props;
         const needed_book = books ? books.slice(0, 5) : false;
+        const needed_book2 = books ? books.slice(0, 20) : false;
         return (
             <>
                 <SiteHeader
@@ -43,13 +74,17 @@ class HomePage extends Component {
                             <img src={smallBanner} alt="" />
                         </div>
                     </section>
-                    <section className="cant-say-no">
+
+                    <h3 className='res-title white'>
+                            پیشنهاد‌های رد ‌نشدنی
+                    </h3>
+                    <section className="cant-say-no in">
                         <h3 className='title'>
                             پیشنهاد‌های رد ‌نشدنی
                         </h3>
                         <div className="books-wrapper">
                             {
-                                needed_book ? 
+                                needed_book ?
                                     needed_book.map(b => <Book
                                         book={b}
                                         key={b.id}
@@ -58,18 +93,21 @@ class HomePage extends Component {
                                         change_active={change_active}
                                     />)
                                     :
-                                    null_books.map(b => <Book book={b} key={b.id} add_to_cart={add_to_cart } />)
+                                    null_books.map(b => <Book book={b} key={b.id} add_to_cart={add_to_cart} />)
                             }
                         </div>
                     </section>
-                    <section className="circle-title">
+                    <h3 className='res-title'>
+                            محبوب‌ترین کتاب‌ها
+                    </h3>
+                    <section className="circle-title in">
                         <h3 className='title'>
                             محبوب‌ترین کتاب‌ها
                         </h3>
-                        <div className="books-wrapper">
+                        <div className={`books-wrapper carousel-type s-${this.state.carousel_states[0].scrolled}`}>
                             {
-                                needed_book ? 
-                                    needed_book.map(b => <Book
+                                needed_book2 ?
+                                    needed_book2.map(b => <Book
                                         ids={cart ? cart.cart_items_ids : []}
                                         change_active={change_active}
                                         book={b}
@@ -85,19 +123,27 @@ class HomePage extends Component {
                                         add_to_cart={add_to_cart}
                                     />)
                             }
-                            <div className="continue-carousel">
-                                <img src={arrowLeftWhite} alt="" />
-                            </div>
+                        </div>
+                        <div
+                            className={this.state.carousel_states[0].reverse ? "continue-carousel rev" : "continue-carousel"}
+                            onClick={() => { this.hanle_carousel(1) }}>
+                            <img
+                                src={arrowLeftWhite}
+                                alt=""
+                            />
                         </div>
                     </section>
 
-                    <section className="most-sale">
+                    <h3 className='res-title'>
+                            پرفروش ترین کتاب‌ها
+                    </h3>
+                    <section className="most-sale in">
                         <h3 className='title'>
                             پرفروش ترین کتاب‌ها
                         </h3>
-                        <div className="books-wrapper">
+                        <div className={`books-wrapper`}>
                             {
-                                needed_book ? 
+                                needed_book ?
                                     needed_book.map(b => <Book
                                         ids={cart ? cart.cart_items_ids : []}
                                         change_active={change_active}
@@ -114,21 +160,28 @@ class HomePage extends Component {
                                         add_to_cart={add_to_cart}
                                     />)
                             }
-                            <div className="continue-carousel">
-                                <img src={arrowLeftWhite} alt="" />
-                            </div>
+                            {/* <div
+                                className="continue-carousel"
+                            >
+                                <img
+                                    src={arrowLeftWhite}
+                                    alt=""
+                                />
+                            </div> */}
                         </div>
                     </section>
                     
-                    
-                    <section className="circle-title">
+                    <h3 className='res-title'>
+                            آخرین کتاب‌ها
+                    </h3>
+                    <section className="circle-title in">
                         <h3 className='title'>
                             آخرین کتاب‌ها
                         </h3>
-                        <div className="books-wrapper">
+                        <div className={`books-wrapper carousel-type s-${this.state.carousel_states[1].scrolled}`}>
                             {
-                                needed_book ? 
-                                    needed_book.map(b => <Book
+                                needed_book2 ?
+                                    needed_book2.map(b => <Book
                                         book={b}
                                         key={b.id}
                                         add_to_cart={add_to_cart}
@@ -144,9 +197,12 @@ class HomePage extends Component {
                                         change_active={change_active}
                                     />)
                             }
-                            <div className="continue-carousel">
-                                <img src={arrowLeftWhite} alt="" />
-                            </div>
+                        </div>
+                        <div
+                            className={this.state.carousel_states[1].reverse ? "continue-carousel rev" : "continue-carousel"}
+                            onClick={() => { this.hanle_carousel(2) }}
+                        >
+                            <img src={arrowLeftWhite} alt="" />
                         </div>
                     </section>
                 </section>

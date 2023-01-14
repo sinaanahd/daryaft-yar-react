@@ -3659,13 +3659,39 @@ li{
     }
     .books-wrapper{
         @include flexMixin(row,space-between,center);
-        position: relative;
+    }
+    .carousel-type{
+        width: 4000px;
+        display: grid;
+        grid-template-columns: repeat(20 , 1fr);
+        column-gap: 10px;
+    }
+    .s-1 {
+        .book {
+            right: 0px;
+        }
+    }
+    .s-2{
+        .book{
+            right: -1100px;
+        }
+    }
+    .s-3 {
+        .book {
+            right: -2200px;
+        }
+    }
+    .s-4 {
+        .book {
+            right: -3300px;
+        }
     }
     .circle-title{
+        overflow: hidden;
         width: 100%;
         margin: 40px 0;
         @include flexMixin(column, flex-start, flex-start);
-        padding: 20px 30px 30px 50px;
+        padding: 20px 30px 30px 30px;
         position: relative;
         .title {
             font-size: 20px;
@@ -3685,22 +3711,29 @@ li{
                opacity: 90%;
             }
         }
-        .continue-carousel{
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: $mainColor1;
-            left: -50px;
-            @include flexMixin(row,center,center);
-            img{
-                width: 25px;
-            }
-            box-shadow: $boxShadow2;
-        }
         .book{
             box-shadow: unset;
         }
+    }
+    .continue-carousel{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $mainColor1;
+        left: 2px;
+        z-index: 9999;
+        top: 200px;
+        cursor: pointer;
+        transition: $transition;
+        @include flexMixin(row,center,center);
+        img{
+            width: 25px;
+        }
+        box-shadow: $boxShadow2;
+    }
+    .rev{
+        transform: rotateY(180deg);
     }
 
     .most-sale{
@@ -3718,7 +3751,9 @@ li{
             color: #000;
         }
     }
-
+    .res-title{
+        display: none;
+    }
 
 
 
@@ -4123,14 +4158,110 @@ li{
         flex-direction: column;
 
     }
-        .site-footer{
-            .main-wrapper{
-                grid-template-columns: 1fr;
+    .home-page{
+        .res-title{
+            font-size: 20px;
+            display: block;
+            position: relative;
+            top: 92px;
+            z-index: 2;
+            width: 100%;
+            text-align: right;
+            padding-right: 20px;
+            color: #000;
+        }
+        .white{
+            color: #fff;
+        }
+        .in{
+            overflow: scroll;
+            position: relative;
+            .continue-carousel
+            {
+                display: none;
             }
-            .footer-col-4{
-                @include flexMixin(column,center,center);
+            .title{
+                visibility: hidden;
             }
         }
+        .books-wrapper{
+            width: 1000px;
+        }
+        .circle-title{
+            .books-wrapper{
+                width: 4000px;
+            }
+        }
+    }
+    .single-book-page-wrapper{
+        flex-direction: column;
+        .single-book-header{
+            flex-direction: column-reverse;
+            margin: 50px 0 0;
+        }
+        .right-col,.left-col{
+            width: 100%;
+            flex : unset;
+            .img-wrapper{
+                margin: 0 0 20px;
+                width: 100%;
+            }
+        }
+        .titles{
+            margin: 20px 0 0;
+        }
+    }
+    .suggested-books{
+        width: 80%;
+    }
+    .website-cart{
+        flex-direction: column;
+        padding: 0 20px;
+        .right-col , .left-col{
+            flex : unset;
+            width: 100%;
+        }
+        .cart-item{
+            flex-direction: column;
+            height: unset;
+            .img-wrapper{
+                width: 150px;
+                height: 150px;
+            }
+            .cart-item-details{
+                margin: 20px 0;
+                h3{
+                    font-size: 15px;
+                }
+                h4{
+                    font-size: 13px;
+                }
+            }
+            .price-btn-wrapper{
+                @include flexMixin(column,center,center);
+                .price{
+                    margin: 0 0 30px;
+                }
+            }
+        }
+    }
+    .site-footer{
+        .main-wrapper{
+            grid-template-columns: 1fr;
+        }
+        .footer-col-4{
+            @include flexMixin(column,center,center);
+        }
+        .points{
+            @include flexMixin(column,center,flex-start);
+            .point{
+                margin: 0 0 20px;
+            }
+            img{
+                margin-left: 10px;
+            }
+        }
+    }
 }
 
 /* responsive */

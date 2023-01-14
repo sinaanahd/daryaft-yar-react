@@ -14,7 +14,7 @@ class ChestConfirmation extends Component {
         const prize_id = user.campaign.prize[0];
         if (user.campaign.user_token > 0) {
             axios
-                .patch(`https://daryaftyar.ir/storeV2/user/${user.user_id}`, { opening_box_number: num, user_token, prize_id })
+                .patch(`https://daryaftyar.ir/storeV2/user/${user.user_id}`, { opening_box_number: num, user_token })
                 .then(res => {
                     let user = res.data;
                     localStorage.setItem("user", JSON.stringify(user));

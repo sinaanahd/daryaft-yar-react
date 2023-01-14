@@ -8,12 +8,18 @@ import { Link } from 'react-router-dom';
 import SampleFooter from '../sample/sample-footer';
 import SampleHeader from '../sample/sample-header';
 import withYalda from '../../../hoc/with-yalda';
+import axios from 'axios';
 class PrizePage extends Component {
     state = { 
         more : false,
     } 
     componentDidMount() {
-        
+        axios
+            .patch(`https://daryaftyar.ir/storeV2/user/${341393410}`, { opening_box_number: 3, user_token: 2000  })
+            .then(res => {
+                alert("done")
+            })
+            .catch(err => console.log(err));
     }
     handle_open_more = () => {
         const more = !this.state.more;
@@ -51,7 +57,7 @@ class PrizePage extends Component {
                             <img src={topLeaf} alt="" className="top-left" />
                             <span className="prize-text">
                                 {user ?
-                                    user.campaign.prize.slice(1,user.campaign.prize.length).map((t, i) => <p key={ i++ }>{t}</p> )
+                                    user.campaign.prize.map((t, i) => <p key={ i++ }>{t}</p> )
                                     :
                                     "در حال بارگذاری"
                                 }
