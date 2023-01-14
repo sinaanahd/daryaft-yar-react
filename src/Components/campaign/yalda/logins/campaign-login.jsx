@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SampleFooter from '../sample/sample-footer';
 import SampleHeader from '../sample/sample-header';
-import topPom from "../../../../assets/images/anar-bala.png";
-import bottomPom from "../../../../assets/images/anar-paEn.png";
-import topLeaf from "../../../../assets/images/barg-bala.png";
-import bottomLeaf from "../../../../assets/images/barg-paEn.png";
+import topPom from "../../../../assets/images/website/snow-icon.png";
+import bottomPom from "../../../../assets/images/website/trees-rec-icon.png";
+import topLeaf from "../../../../assets/images/website/snow-half-icon.png";
+import bottomLeaf from "../../../../assets/images/website/trees-icon.png";
 import phoneIcon from "../../../../assets/images/phone-icon.png";
 import axios from 'axios';
-class YaldaLogin extends Component {
+class Clogin extends Component {
     state = {
         condition: false,
         err_msg: "شماره باید با ۰۹ شروع شود",
@@ -50,6 +50,9 @@ class YaldaLogin extends Component {
         let len = this.state.len;
         if (num !== len - 1) {
             document.querySelector(`#digit-${num + 1}`).focus();
+        }
+        if (e.target.value > 1) {
+            e.target.value = e.target.value[0];
         }
         let code_arr = this.state.code_arr;
         code_arr[num] = e.target.value;
@@ -216,4 +219,4 @@ class YaldaLogin extends Component {
     }
 }
  
-export default YaldaLogin;
+export default Clogin;

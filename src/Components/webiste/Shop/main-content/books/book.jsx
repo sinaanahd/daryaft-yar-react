@@ -7,24 +7,35 @@ class Book extends Component {
     state = { 
     } 
     componentDidMount() {
-        console.log(this.props)
     }
     render() { 
-        const { book, change_active, add_to_cart, ids } = this.props;
+        const {
+            book,
+            change_active,
+            add_to_cart,
+            ids,
+        } = this.props;
         
         return (
             <div className="book">
                 {
-                    !ids.includes(book.id)
-                    ?
-                    <span className="add-to-cart">
-                        <img
-                            src={cartWhite}
-                            onClick={()=>{add_to_cart(book.id)}}
-                            alt="اضافه کردن به سبد خرید" />
-                    </span>
+                    ids ? !ids.includes(book.id)
+                        ?
+                        <span className="add-to-cart">
+                            <img
+                                src={cartWhite}
+                                onClick={() => { add_to_cart(book.id) }}
+                                alt="اضافه کردن به سبد خرید" />
+                        </span>
                         :
-                    <></>
+                        <></>
+                        :
+                        <span className="add-to-cart">
+                            <img
+                                src={cartWhite}
+                                onClick={() => { add_to_cart(book.id) }}
+                                alt="اضافه کردن به سبد خرید" />
+                        </span>
                 }
                 <span className="img-wrapper">
                     <Link to={`/single-id/${book.id}`} onClick={()=>{change_active(book)}}>

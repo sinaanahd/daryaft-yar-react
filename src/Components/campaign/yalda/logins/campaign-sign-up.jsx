@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import topPom from "../../../../assets/images/anar-bala.png";
-import bottomPom from "../../../../assets/images/anar-paEn.png";
-import topLeaf from "../../../../assets/images/barg-bala.png";
-import bottomLeaf from "../../../../assets/images/barg-paEn.png";
 import phoneIcon from "../../../../assets/images/phone-icon.png";
 import userIcon from "../../../../assets/images/user-filed-icon.png";
 import { Redirect } from 'react-router-dom';
 import SampleFooter from '../sample/sample-footer';
 import SampleHeader from '../sample/sample-header';
-class YaldaSignUp extends Component {
+import topPom from "../../../../assets/images/website/snow-icon.png";
+import bottomPom from "../../../../assets/images/website/trees-rec-icon.png";
+import topLeaf from "../../../../assets/images/website/snow-half-icon.png";
+import bottomLeaf from "../../../../assets/images/website/trees-icon.png";
+class CSignUp extends Component {
     state = {
         grade: 10,
         major: 1,
@@ -198,4 +198,4 @@ class YaldaSignUp extends Component {
     }
 }
  
-export default YaldaSignUp;
+export default CSignUp;

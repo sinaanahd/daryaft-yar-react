@@ -7,11 +7,15 @@ import null_books from '../reusable/null_books';
 import smallBanner from "../../../assets/images/website/small-banner.png";
 import bigBanner from "../../../assets/images/website/big-banner.png";
 import arrowLeftWhite from '../../../assets/images/website/arrow-left-w-icon.png';
+// import arr from '../../functions/matlan';
 class HomePage extends Component {
     state = { 
     } 
     componentDidMount() {
         // console.log(this.props.books);
+        // arr.forEach(a => {
+        //     console.log(arr.indexOf(a) + 1, a.length);
+        // })
     }
     render() { 
         const {
@@ -19,7 +23,8 @@ class HomePage extends Component {
             cart,
             user,
             data,
-            add_to_cart
+            add_to_cart,
+            change_active,
         } = this.props;
         const needed_book = books ? books.slice(0, 5) : false;
         return (
@@ -50,6 +55,7 @@ class HomePage extends Component {
                                         key={b.id}
                                         add_to_cart={add_to_cart}
                                         ids={cart ? cart.cart_items_ids : []}
+                                        change_active={change_active}
                                     />)
                                     :
                                     null_books.map(b => <Book book={b} key={b.id} add_to_cart={add_to_cart } />)
@@ -65,6 +71,7 @@ class HomePage extends Component {
                                 needed_book ? 
                                     needed_book.map(b => <Book
                                         ids={cart ? cart.cart_items_ids : []}
+                                        change_active={change_active}
                                         book={b}
                                         key={b.id}
                                         add_to_cart={add_to_cart}
@@ -72,6 +79,7 @@ class HomePage extends Component {
                                     :
                                     null_books.map(b => <Book
                                         ids={cart ? cart.cart_items_ids : []}
+                                        change_active={change_active}
                                         book={b}
                                         key={b.id}
                                         add_to_cart={add_to_cart}
@@ -92,6 +100,7 @@ class HomePage extends Component {
                                 needed_book ? 
                                     needed_book.map(b => <Book
                                         ids={cart ? cart.cart_items_ids : []}
+                                        change_active={change_active}
                                         book={b}
                                         key={b.id}
                                         add_to_cart={add_to_cart}
@@ -99,6 +108,7 @@ class HomePage extends Component {
                                     :
                                     null_books.map(b => <Book
                                         ids={cart ? cart.cart_items_ids : []}
+                                        change_active={change_active}
                                         book={b}
                                         key={b.id}
                                         add_to_cart={add_to_cart}
@@ -118,9 +128,21 @@ class HomePage extends Component {
                         <div className="books-wrapper">
                             {
                                 needed_book ? 
-                                    needed_book.map(b => <Book book={b} key={b.id} add_to_cart={add_to_cart } />)
+                                    needed_book.map(b => <Book
+                                        book={b}
+                                        key={b.id}
+                                        add_to_cart={add_to_cart}
+                                        ids={cart ? cart.cart_items_ids : []}
+                                        change_active={change_active}
+                                    />)
                                     :
-                                    null_books.map(b => <Book book={b} key={b.id} add_to_cart={add_to_cart} />)
+                                    null_books.map(b => <Book
+                                        book={b}
+                                        key={b.id}
+                                        add_to_cart={add_to_cart}
+                                        ids={cart ? cart.cart_items_ids : []}
+                                        change_active={change_active}
+                                    />)
                             }
                             <div className="continue-carousel">
                                 <img src={arrowLeftWhite} alt="" />
@@ -128,7 +150,10 @@ class HomePage extends Component {
                         </div>
                     </section>
                 </section>
-                <SiteFooter />
+                <SiteFooter
+                    pause={data.pause}
+                    error={data.error}
+                />
             </>
         );
     }

@@ -43,7 +43,7 @@ class ChestConfirmation extends Component {
                         <span className="btns">
                             <span className="yes">
                                 <Link
-                                    to={user.campaign.user_token > 0 ? "./w-fal" : "./invite"}
+                                    to={user.campaign.user_token > 0 ? "./w-prize" : "./invite"}
                                     onClick={()=>{this.prize_open(chest_number)}}
                                 >
                                     بله

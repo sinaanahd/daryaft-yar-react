@@ -5,7 +5,7 @@ import deleteIcon from "../../../../assets/images/website/delete-icon-cart.png";
 class SiteCartItem extends Component {
     state = {  } 
     render() { 
-        const { item } = this.props;
+        const { item , handle_quan , delete_item } = this.props;
         return (
             <div className="cart-item">
                 <span className="img-wrapper">
@@ -30,15 +30,30 @@ class SiteCartItem extends Component {
                         </span>
                     </span>
                     <span className="btn-wrapper">
-                        <img src={minusIcon} alt="کم کردن" className="minus" />
+                        <img
+                            src={minusIcon}
+                            alt="کم کردن"
+                            className="minus"
+                            onClick={()=>{handle_quan(item.id , "-")}}
+                        />
                         <span className="quantity">
                             {item.count_in_user_cart}
                         </span>
-                        <img src={plusIcon} alt="اضافه کردن" className="plus" />
+                        <img
+                            src={plusIcon}
+                            alt="اضافه کردن"
+                            className="plus"
+                            onClick={()=>{handle_quan(item.id , "+")}}
+                        />
                     </span>
                 </span>
                 <span className="delete-icon">
-                    <img src={deleteIcon} alt="حذف محصول" className="delete" />
+                    <img
+                        src={deleteIcon}
+                        alt="حذف محصول"
+                        className="delete"
+                        onClick={()=>{delete_item(item.id)}}
+                    />
                 </span>
             </div>
         );

@@ -5,11 +5,21 @@ import Pagination from './pagination/pagination';
 class MainContent extends Component {
     state = {  } 
     render() { 
-        const { books } = this.props;
+        const {
+            books,
+            add_to_cart,
+            ids,
+            change_active
+        } = this.props;
         return (
             <div className="main-content">
                 <SortBy></SortBy>
-                <Books books={ books } />
+                <Books
+                    books={books}
+                    add_to_cart={add_to_cart}
+                    ids={ids}
+                    change_active={change_active}
+                />
                 <Pagination />
             </div>
         );

@@ -16,7 +16,11 @@ class CartLeftCol extends Component {
                         </h5>
                         <span className="result">
                             <span className="amount">
-                                {split_in_three(cart_summary.total_price_of_items)}
+                                {cart_summary ?
+                                    split_in_three(cart_summary.total_price_of_items)
+                                    :
+                                    0
+                                }
                             </span>
                             <span className="currency">
                                 تومان
@@ -29,7 +33,11 @@ class CartLeftCol extends Component {
                         </h5>
                         <span className="result">
                             <span className="amount">
-                                {split_in_three(cart_summary.total_discount_of_items)}
+                                {cart_summary ?
+                                    split_in_three(cart_summary.total_discount_of_items)
+                                    :
+                                    0
+                                }
                             </span>
                             <span className="currency">
                                 تومان
@@ -41,7 +49,7 @@ class CartLeftCol extends Component {
                             هزینه ارسال:
                         </h5>
                         <span className="result">
-                            {cart_summary.post_cost === 0 ?
+                            {cart_summary ? cart_summary.post_cost === 0 ?
                                 "رایگان"
                                 :
                                 <>
@@ -52,6 +60,8 @@ class CartLeftCol extends Component {
                                         تومان
                                     </span>
                                 </>
+                                : 
+                                0
                             }
                         </span>
                     </span>
@@ -61,7 +71,11 @@ class CartLeftCol extends Component {
                         </h5>
                         <span className="result">
                             <span className="amount">
-                                {split_in_three(cart_summary.final_price)}
+                                {cart_summary ?
+                                    split_in_three(cart_summary.final_price)
+                                    :
+                                    0
+                                }
                             </span>
                             <span className="currency">
                                 تومان

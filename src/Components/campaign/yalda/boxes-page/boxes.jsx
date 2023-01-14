@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ChestConfirmation from './chest-text';
-import YaldaChest from './yalda-chest';
-import pomLeaf from '../../../../assets/images/pom-leaft.png'
-import bigLeaf from '../../../../assets/images/leaf-big.png';
 import SampleFooter from '../sample/sample-footer';
 import SampleHeader from '../sample/sample-header';
 import withYalda from '../../../hoc/with-yalda';
-class YaldaPage extends Component {
+import Chest from './chest';
+class Campagin extends Component {
     state = { 
         go: "",
         pop_up: false,
@@ -39,7 +37,7 @@ class YaldaPage extends Component {
                         <BackBtn state={state} go={this.state.go} />
                     </div> */}
                     <div className="main-content">
-                    <img src={pomLeaf } className="t-l" alt="" />
+                    {/* <img src={pomLeaf } className="t-l" alt="" /> */}
                         <p className="yalda-text">
                             جایزه نقدی ۳ میلیون تومانی
                             ، کلاس و کتاب و مشاوره رایگان
@@ -56,14 +54,14 @@ class YaldaPage extends Component {
                             رو مطالعه کن
                         </p>
                         <div className="chest-wrapper">
-                            {this.state.numbers.map(num => <YaldaChest
+                            {this.state.numbers.map(num => <Chest
                                 key={num}
                                 num={num}
                                 chest_click={this.chest_click}
-                                opened_chests={user ? user.campaign.opened_boxes : []}
+                                opened_boxes={user ? user.campaign.opened_boxes : []}
                             />)}
                         </div>
-                    <img src={bigLeaf } className="b-r" alt="" />
+                    {/* <img src={bigLeaf } className="b-r" alt="" /> */}
                     </div>
                 {
                     this.state.pop_up ? 
@@ -85,4 +83,4 @@ class YaldaPage extends Component {
     }
 }
  
-export default withYalda(YaldaPage);
+export default withYalda(Campagin);

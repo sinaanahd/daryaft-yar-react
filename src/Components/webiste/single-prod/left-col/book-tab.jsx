@@ -6,6 +6,9 @@ class BookTab extends Component {
     handle_tab = (tab) => {
         this.setState({ tab });
     }
+    componentDidMount() {
+        //! there is a problem with states
+    }
     render() { 
         const { book } = this.props;
         return (
@@ -30,7 +33,11 @@ class BookTab extends Component {
                             <p className='title-tab'>
                                 توضیحات:
                             </p>
-                            {book.details.map((text, i) => <p className="prod-details" key={i++}>{text}</p>)}
+                            {book.name === "" ?
+                                book.details.map((text, i) => <p className="prod-details" key={i++}>{text}</p>)
+                                :
+                                <></>
+                            }
                         </div>
                         :
                         <div className="details-tab tab-contents">
@@ -43,7 +50,7 @@ class BookTab extends Component {
                                         نویسنده  :
                                     </span>
                                     <span className="content">
-                                        {book.author}
+                                        {book ? book.author : <></>}
                                     </span>
                                 </li>
                                 <li className="tab-detail">
@@ -51,7 +58,7 @@ class BookTab extends Component {
                                         پایه  :
                                     </span>
                                     <span className="content">
-                                        {book.book_year}
+                                        {book ? book.book_year : <></>}
                                     </span>
                                 </li>
                                 <li className="tab-detail">
@@ -59,7 +66,7 @@ class BookTab extends Component {
                                         رشته  :
                                     </span>
                                     <span className="content">
-                                        {book.subject}
+                                        {book ? book.subject : <></>}
                                     </span>
                                 </li>
                                 <li className="tab-detail">
@@ -75,7 +82,7 @@ class BookTab extends Component {
                                         موضوع  :
                                     </span>
                                     <span className="content">
-                                        {book.subject}
+                                        {book ? book.subject : <></>}
                                     </span>
                                 </li>
                             </ul>

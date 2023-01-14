@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import bargBala from '../../../../assets/images/barg-bala.png';
-import bargPaen from '../../../../assets/images/barg-paEn.png';
-import anarBala from '../../../../assets/images/anar-bala.png';
-import anarPaen from '../../../../assets/images/anar-paEn.png';
+import topPom from "../../../../assets/images/website/snow-icon.png";
+import bottomPom from "../../../../assets/images/website/trees-rec-icon.png";
+import topLeaf from "../../../../assets/images/website/snow-half-icon.png";
+import bottomLeaf from "../../../../assets/images/website/trees-icon.png";
 import openChest from "../../../../assets/images/yalda-chest-open.png";
 import { Link } from 'react-router-dom';
 import SampleFooter from '../sample/sample-footer';
 import SampleHeader from '../sample/sample-header';
 import withYalda from '../../../hoc/with-yalda';
-class FalPageW extends Component {
+class PrizePage extends Component {
     state = { 
         more : false,
     } 
@@ -26,7 +26,7 @@ class FalPageW extends Component {
                 <SampleHeader />
                 <div className="fal-page-w">
                     <div className="main-content">
-                        <div className={this.state.more ? "fal-wrapper more" : "fal-wrapper"}>
+                        {/* <div className={this.state.more ? "fal-wrapper more" : "fal-wrapper"}>
                             <img src={anarBala} alt="" className="top-right" />
                             <img src={bargBala} alt="" className="top-left" />
                             <span className="fal-text">
@@ -45,10 +45,10 @@ class FalPageW extends Component {
                             <p className="result-text">
                                 {user ? user.campaign.faal.tabir : "در حال بارگذاری"}
                             </p>
-                        </div>
+                        </div> */}
                         <div className="fal-wrapper more">
-                            <img src={anarBala} alt="" className="top-right" />
-                            <img src={bargBala} alt="" className="top-left" />
+                            <img src={topPom} alt="" className="top-right" />
+                            <img src={topLeaf} alt="" className="top-left" />
                             <span className="prize-text">
                                 {user ?
                                     user.campaign.prize.slice(1,user.campaign.prize.length).map((t, i) => <p key={ i++ }>{t}</p> )
@@ -56,8 +56,8 @@ class FalPageW extends Component {
                                     "در حال بارگذاری"
                                 }
                             </span>
-                            <img src={anarPaen} alt="" className="bottom-left" />
-                            <img src={bargPaen} alt="" className="bottom-right" />
+                            <img src={bottomPom} alt="" className="bottom-left" />
+                            <img src={bottomLeaf} alt="" className="bottom-right" />
                         </div>
                         <div className="open-chest">
                             <img src={openChest} alt="" />
@@ -70,4 +70,4 @@ class FalPageW extends Component {
     }
 }
  
-export default withYalda(FalPageW);
+export default withYalda(PrizePage);

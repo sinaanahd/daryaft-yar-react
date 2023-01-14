@@ -23,11 +23,11 @@ import OpenChest from './Components/campaign/yalda/chest-open/open-chest';
 import FalPage from './Components/campaign/yalda/fal/fal';
 import IncreaseToken from "./Components/campaign/yalda/increase-token/increase-token";
 import Rules from './Components/campaign/yalda/rules/yalda-rules';
-import YaldaLogin from "./Components/campaign/yalda/logins/yalda-login";
-import YaldaIntro from './Components/campaign/yalda/intro-page/yalda-intro';
-import YaldaSignUp from "./Components/campaign/yalda/logins/yalda-sign-up";
-import YaldaPage from "./Components/campaign/yalda/boxes-page/boxes";
-import FalPageW from './Components/campaign/yalda/fal/webite-fal';
+import Clogin from "./Components/campaign/yalda/logins/campaign-login";
+import CampagingIntro from './Components/campaign/yalda/intro-page/intro';
+import CSignUp from "./Components/campaign/yalda/logins/campaign-sign-up";
+import Campagin from "./Components/campaign/yalda/boxes-page/boxes";
+import PrizePage from './Components/campaign/yalda/fal/webite-fal';
 import InviteFreinds from "./Components/campaign/yalda/invite-friends/invite-friends";
 import YaldaRulesW from "./Components/campaign/yalda/rules-page/website-rules";
 import NotFound from "./Components/webiste/404/not-found";
@@ -47,7 +47,7 @@ class App extends Component {
           <Route path="/bot/cart" component={Cart} />
           <Route path="/bot/cart-final" component={FinalCart} />
           <Route path="/bot/user-data" component={UserForm} />
-          {/* Yalda */}
+          {/* zemestane */}
           {/* bot */}
           <Route path="/bot/yalda" component={Yalda} />
           <Route path="/bot/openChest" component={OpenChest} />
@@ -55,14 +55,14 @@ class App extends Component {
           <Route path="/bot/increaseToken" component={IncreaseToken} />
           <Route path="/bot/rules" component={Rules} />
           {/* bot */}
-          <Route path="/yalda-intro" component={YaldaIntro} />
-          <Route path="/Ylogin" component={YaldaLogin} />
-          <Route path="/YsingUp" component={YaldaSignUp} />
-          <Route path="/yalda" component={YaldaPage} />
-          <Route path="/w-fal" component={FalPageW} />
+          <Route path="/intro" component={CampagingIntro} />
+          <Route path="/Clogin" component={Clogin} />
+          <Route path="/CsingUp" component={CSignUp} />
+          <Route path="/campaign" component={Campagin} />
+          <Route path="/w-prize" component={PrizePage} />
           <Route path="/invite" component={InviteFreinds} />
           <Route path="/rules" component={YaldaRulesW} />
-          {/* Yalda */}
+          {/* zemestane */}
           {/* website route */}
           <Route path="/home" component={HomePage} />
           <Route path="/Login" component={LoginPage} />

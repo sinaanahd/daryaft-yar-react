@@ -9,7 +9,7 @@ class SingleCartDetails extends Component {
         
     }
     render() { 
-        const { book } = this.props;
+        const { book,handle_quan , cart } = this.props;
         return (
             <div className="prod-cart-deatials">
                 <h3 className="cart-title-price cart-title">
@@ -18,12 +18,14 @@ class SingleCartDetails extends Component {
                 <div className="price-wrapper">
                     <span className="price-curency">
                         <span className="prices">
-                            {book.discounted_price === book.price ?
+                            {book ? book.discounted_price === book.price ?
                                 <></>
                                 :
                                 <span className="discounted">
                                     {spilit_in_three(book.discounted_price)}
                                 </span>
+                                :
+                                0
                             }
                             <span className={book.discounted_price === book.price ? "normal" : "normal has-discount"}>
                                 {spilit_in_three(book.price)}
@@ -42,13 +44,28 @@ class SingleCartDetails extends Component {
                 </h3>
                 <div className="quan-counter-wrapper">
                     <span className="dec">
-                        <img src={minusIcon} alt="کم کردن" />
+                        <img
+                            src={minusIcon}
+                            alt="کم کردن"
+                            onClick={() => { handle_quan(book.id, "-") }} />
                     </span>
                     <span className="quan">
-                        1
+                        {cart?
+                            cart.cart_details.find(c => c.id === book.id)
+                                ?
+                                cart.cart_details.find(c => c.id === book.id).count_in_user_cart
+                                :
+                                0
+                            :
+                            0
+                        }
                     </span>
                     <span className="inc">
-                        <img src={plusIcon} alt="اضافه کردن" />
+                        <img
+                            src={plusIcon}
+                            alt="اضافه کردن"
+                            onClick={()=>{handle_quan(book.id , "+")}}
+                        />
                     </span>
                 </div>
                 <div className="add-to-cart">

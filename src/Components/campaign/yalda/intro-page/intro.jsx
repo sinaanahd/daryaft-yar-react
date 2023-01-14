@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import banner from "../../../../assets/images/yalda-banner-2.jpg";
 import { Link } from 'react-router-dom';
 import SampleHeader from '../sample/sample-header';
 import SampleFooter from '../sample/sample-footer';
 import withYalda from '../../../hoc/with-yalda';
-class YaldaIntro extends Component {
+import banner from "../../../../assets/images/campaign-banner.jpg";
+class CampagingIntro extends Component {
     state = {  } 
     render() { 
         const { user } = this.props;
@@ -13,8 +13,8 @@ class YaldaIntro extends Component {
                 <SampleHeader />
                 <div className="yalda-intro mm-width">
                 <div className="img-wrapper">
-                    <Link to={user ? "./yalda" : "./Ylogin"}>
-                        <img src={banner} alt="کمپین یلدا" />   
+                    <Link to={user ? "./campaign" : "./Clogin"}>
+                        <img src={banner} alt="کمپین زمستانه" />   
                     </Link>
                 </div>
                 <div className="intro-text">
@@ -23,17 +23,20 @@ class YaldaIntro extends Component {
                     </h1>
                     <p>
                         سلام دوست خوبم ،
-                        به جشنواره یلدایی دریافت یار خوش اومدی !
+                            به جشنواره
+                        &nbsp;
+                        <b>زمستان داغ</b>
+                        &nbsp;
+                            دریافت یار خوش اومدی !
                         <br />
-                        قراره فال بگیری و جایزه ببری :{")"}
-                        کلی جایزه نقدی و تخفیف انتظارتو میکشن.
+                        قراره جایزه ببری :{")"}&nbsp;کلی جایزه نقدی و تخفیف انتظارتو میکشن. 
                         <br />
                         فقط کافیه <b> صندوقا</b> رو باز کنی !
                         <br />
                     </p>
                 </div>
                     <Link
-                        to={user ? "./yalda" : "./Ylogin"}
+                        to={user ? "./campaign" : "./Clogin"}
                         className='go-to-campaging'
                     >
                     ورود به کمپین
@@ -45,4 +48,4 @@ class YaldaIntro extends Component {
     }
 }
  
-export default withYalda(YaldaIntro);
+export default withYalda(CampagingIntro);

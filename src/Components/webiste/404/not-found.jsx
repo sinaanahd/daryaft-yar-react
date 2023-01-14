@@ -10,8 +10,8 @@ class NotFound extends Component {
         return (
             <>
                 <SiteHeader
-                    cart_count={cart.cart_summary.items_count}
-                    name={user.name}
+                    cart_count={cart ? cart.cart_summary.items_count : 0}
+                    name={user ? user.name : "none"}
                     is_logged_in={data.is_logged_in}
                 />
                 <section className="not-found mm-width">
@@ -20,7 +20,10 @@ class NotFound extends Component {
                     </h1>
                     <img src={notFound} alt="" />
                 </section>
-                <SiteFooter />
+                <SiteFooter
+                    pause={data.pause}
+                    error={data.error}
+                />
             </>
         );
     }

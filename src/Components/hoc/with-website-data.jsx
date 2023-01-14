@@ -54,7 +54,11 @@ function withWebsiteData(Component) {
                     sessionStorage.setItem("website_books", JSON.stringify(books));
                 })
                 .catch(err => {
-                    alert(err.message)
+                    this.setState({ pause: false });
+                    this.setState({ error: err.message });
+                    setTimeout(() => {
+                        this.setState({ error: false });
+                    }, 2000)
                 })
         }
         get_cart = (id) => {
@@ -64,10 +68,14 @@ function withWebsiteData(Component) {
                     const cart = res.data;
                     this.setState({ cart });
                     sessionStorage.setItem("website_cart", JSON.stringify(cart));
-                    console.log(cart);
+                    //console.log(cart);
                 })
                 .catch(err => {
-                    alert(err.message)
+                    this.setState({ pause: false });
+                    this.setState({ error: err.message });
+                    setTimeout(() => {
+                        this.setState({ error: false });
+                    }, 2000)
                 })
         }
         make_guest_user = () => {
@@ -92,7 +100,7 @@ function withWebsiteData(Component) {
                     this.setState({ pause: false });
                     sessionStorage.setItem("website_cart", JSON.stringify(cart));
                     this.setState({ err: false });
-                    alert()
+                    
                 })
                 .catch(err => {
                     this.setState({ pause: false });
@@ -101,6 +109,25 @@ function withWebsiteData(Component) {
                         this.setState({ error: false });
                     }, 2000)
                 })
+        }
+        handle_quan = (id , sign)=>{
+            this.setState({pause:true});
+            const old_cart = { ...this.state.cart };
+            const ids = old_cart.cart_items_ids;
+            if(sign === "+"){
+                ids.push(id);
+            }
+            else if(sign === "-"){
+                const index = ids.indexOf(id)
+                ids.splice(index , 1);
+            }
+            this.update_cart(ids);
+        }
+        delete_item = (id)=>{
+            const old_cart = { ...this.state.cart };
+            let ids = old_cart.cart_items_ids;
+            ids = ids.filter(i=> i !== id);
+            this.update_cart(ids);
         }
         render() {
             return (
@@ -112,6 +139,8 @@ function withWebsiteData(Component) {
                     cart={this.state.cart}
                     change_active={this.handle_active_signle}
                     add_to_cart = {this.add_to_cart}
+                    handle_quan={this.handle_quan}
+                    delete_item={this.delete_item}
                 />
             );
         }

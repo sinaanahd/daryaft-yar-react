@@ -81,6 +81,7 @@ img {
         padding: 3px 0 0 0;
     }
 }
+
 /* books */
 .books-page-wrapper {
     width: 100%;
@@ -2176,18 +2177,19 @@ img {
     padding: 20px 60px 60px;
     overflow: hidden!important;
     margin: 50px 0;
+    overflow: hidden;
     .top-right,.top-left,.bottom-right,.bottom-left{
         position: absolute;
     }
     .top-right{
-        top: 0;
-        right: 0;
-        width: 60px;
+        top: -25px;
+        right: -25px;
+        width: 100px;
     }
     .top-left{
-        top: 0;
+        top: 50px;
         left: 0;
-        width: 80px;
+        width: 50px;
     }
     .bottom-right{
         bottom: 0;
@@ -2197,7 +2199,7 @@ img {
     .bottom-left{
         bottom: 0;
         left: 0;
-        width: 80px;
+        width: 200px;
     }
     .main-content{
         width: 100%;
@@ -2251,6 +2253,7 @@ img {
             width: 120px;
             height: 36px;
             @include flexMixin(row,center,center);
+            cursor: pointer;
         }
         .confirm-code{
             margin: 40px 0;
@@ -2293,7 +2296,7 @@ img {
     padding: 20px 60px 60px;
     overflow: hidden !important;
     margin: 50px 0;
-
+    overflow: hidden;
     .top-right,
     .top-left,
     .bottom-right,
@@ -2302,15 +2305,15 @@ img {
     }
 
     .top-right {
-        top: 0;
-        right: 0;
-        width: 60px;
+        top: -25px;
+        right: -25px;
+        width: 100px;
     }
 
     .top-left {
-        top: 0;
+        top: 50px;
         left: 0;
-        width: 80px;
+        width: 50px;
     }
 
     .bottom-right {
@@ -2322,7 +2325,7 @@ img {
     .bottom-left {
         bottom: 0;
         left: 0;
-        width: 80px;
+        width: 200px;
     }
     .main-content {
         width: 100%;
@@ -2462,15 +2465,21 @@ img {
             @include styler(#000, #fff, 14px, 8px);
             border: 3px solid $yalda_red;
             height: 400px;
-            @include flexMixin(column, flex-start, center);
+            @include flexMixin(column, center, center);
             position: relative;
             overflow: hidden;
             box-shadow: $boxShadow2;
             padding: 30px 30px 50px;
         }
-
+        .prize-text{
+            width: 100%;
+            font-size: 20px;
+            text-align: center;
+        }
         .more {
             height: auto;
+            min-height: 300px;
+            overflow: hidden;
         }
 
         .fal-text {
@@ -2483,36 +2492,34 @@ img {
 
         }
 
-        .top-right {
+        .top-right,
+        .top-left,
+        .bottom-right,
+        .bottom-left {
             position: absolute;
-            z-index: 3;
-            top: -3px;
-            right: 0;
-            width: 60px;
+        }
+        .top-right {
+            top: -25px;
+            right: -25px;
+            width: 100px;
         }
 
         .top-left {
-            position: absolute;
-            z-index: 3;
-            top: 0;
+            top: 50px;
             left: 0;
-            width: 80px;
+            width: 50px;
         }
 
         .bottom-right {
-            position: absolute;
-            z-index: 3;
             bottom: 0;
             right: 0;
             width: 100px;
         }
 
         .bottom-left {
-            position: absolute;
-            z-index: 3;
             bottom: 0;
             left: 0;
-            width: 70px;
+            width: 200px;
         }
     }
 
@@ -2630,7 +2637,7 @@ img {
             @include flexMixin(row, center, center);
             font-weight: bold;
             color: $yalda_red;
-
+            cursor: pointer;
             img {
                 width: 30px;
                 margin-left: 5px;
@@ -2660,12 +2667,13 @@ img {
         @include styler(#000, #fff, 16px, 20px);
         @include flexMixin(column, flex-start, center);
         position: relative;
+        overflow: hidden;
 
         .big-pom {
             position: absolute;
-            left: 0;
-            top: 0;
-            width: 150px;
+            left: -20px;
+            top: -20px;
+            width: 100px;
         }
 
         .rule {
@@ -2691,9 +2699,9 @@ img {
 
         .big-leaf {
             position: absolute;
-            bottom: -20px;
-            right: 0;
-            width: 150px;
+            bottom: 1px;
+            right: 10px;
+            width: 100px;
         }
     }
 }
@@ -2701,9 +2709,16 @@ img {
     width: 100%;
     @include flexMixin(row,space-between,center);
     @include styler(#000 , #fff , 16px , 16px);
-    margin: 10px 0 0;
+    margin: 10px 0 100px;
     padding: 20px;
     position: relative;
+    .snow-header{
+        position: absolute;
+        width: 100px;
+        left: 5px;
+        bottom: -87px;
+        z-index: -1;
+    }
     .logo-link{
         flex: 0 0 50%;
     }
@@ -2721,7 +2736,7 @@ img {
         font-size: 30px;
         @include flexMixin(row,center,center);
         p{
-            color: $yalda_red;
+            color: $mainColor1;
         }
         img{
             width: 80px;
@@ -2736,26 +2751,20 @@ img {
     width: 100%;
     position: relative;
     @include flexMixin(row,space-between,center);
-    overflow: hidden;
     img{
         width: 100px;
         display: unset;
         margin: unset;
     }
     padding: 40px 50px;
-    margin: 0 0 20px;
+    margin: 100px 0 20px;
     @include styler(#000 , #EAEAEA , 16px , 16px);
     .b-l{
         position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-    }
-    .t-r{
-        position: absolute;
         right: 0;
-        top: 0;
-        width: 50px;
+        top: -80px;
+        width: 100px;
+        z-index: -1;
     }
     a{
         color: $yalda_red;
@@ -3816,9 +3825,31 @@ li{
 .site-footer{
     margin: 50px 0 20px;
     width: 100%;
-    @include flexMixin(row,center,center);
+    @include flexMixin(column,center,center);
     @include styler($mainBlack , #eaeaea , 12px ,24px );
-    padding: 80px 40px 30px;
+    padding: 40px 40px 30px;
+    .points{
+        width: 100%;
+        @include flexMixin(row,space-between,center);
+        margin: 0 0 30px;
+        padding: 0 10px;
+        div{
+            flex: 1;
+        }
+        .point{
+            @include flexMixin(row,center,center);
+            h4{
+                font-size: 13px;
+            }
+            img{
+                width: 40px!important;
+            }
+            p{
+                font-size: 12px;
+                margin-top: 5px;
+            }
+        }
+    }
     .main-wrapper{
         width: 100%;
         display: grid;
@@ -4104,3 +4135,18 @@ li{
 
 /* responsive */
 /* website */
+
+@media (min-width : 1000px) {
+    .books-page-wrapper {
+        .books-wrapper {
+            grid-template-columns: repeat(4, 1fr) ;
+            padding: 50px 100px;
+        }
+    }
+
+    .books-page-wrapper {
+        .page-count{
+            grid-template-columns: repeat(30, 1fr);
+        }
+    }
+}

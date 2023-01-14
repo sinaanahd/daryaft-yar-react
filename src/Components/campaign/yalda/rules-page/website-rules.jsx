@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import tokenIcon from '../../../../assets/images/token.png';
-import bigPom from '../../../../assets/images/anar-leaf-big.png';
-import bigLeaf from '../../../../assets/images/leaf-big.png';
 import SampleFooter from '../sample/sample-footer';
 import SampleHeader from '../sample/sample-header';
+import bigPom from '../../../../assets/images/website/snow-icon.png';
+import bigLeaf from '../../../../assets/images/website/trees-icon.png';
 class YaldaRulesW extends Component {
     state = { 
         go: "",

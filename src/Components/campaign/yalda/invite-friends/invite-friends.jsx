@@ -15,7 +15,7 @@ class InviteFreinds extends Component {
                 <SampleHeader />
                 <div className="increase-token-page-w mm-width">
                     <div className="main-content">
-                        <img src={bigPom} alt="" className='big-pom' />
+                        {/* <img src={bigPom} alt="" className='big-pom' /> */}
                         <h1>
                             دعوت از دوستان
                         </h1>
@@ -48,7 +48,7 @@ class InviteFreinds extends Component {
                                 </span>
                             </span>
                         </div>
-                        <img src={bigLeaf} alt="" className='big-leaf' />
+                        {/* <img src={bigLeaf} alt="" className='big-leaf' /> */}
                     </div>
                 </div>
                 <SampleFooter />

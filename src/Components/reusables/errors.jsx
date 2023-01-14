@@ -4,12 +4,18 @@ class Errors extends Component {
     render() { 
         const {error} = this.props;
         return (
-            <div className="errors-wrapper">
-                متاسفانه ارور زیر رخ داده است :
-                <span className="err-message">
-                    {error}
-                </span>
-            </div>
+            <>
+                {error ?
+                    <div className="errors-wrapper">
+                        متاسفانه ارور زیر رخ داده است :
+                        <span className="err-message">
+                            {error}
+                        </span>
+                    </div>
+                    :
+                    <></>
+                }
+            </>
         );
     }
 }
