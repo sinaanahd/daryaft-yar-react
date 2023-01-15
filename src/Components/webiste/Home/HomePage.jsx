@@ -64,6 +64,7 @@ class HomePage extends Component {
                     cart_count={cart ? cart.cart_summary.items_count : 0}
                     name={user ? user.name : "none"}
                     is_logged_in={data.is_logged_in}
+                    books = {books}
                 />
                 <section className="home-page mm-width">
                     <section className="banners-wrapper">

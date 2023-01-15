@@ -7,13 +7,14 @@ import withWebsiteData from '../../hoc/with-website-data';
 class LoginPage extends Component {
     state = {  } 
     render() { 
-        const { cart, user, data } = this.props;
+        const { cart, user, data , books } = this.props;
         return (
             <>
                 <SiteHeader
                     cart_count={cart ? cart.cart_summary.items_count : 0}
                     name={user ? user.name : "none"}
                     is_logged_in={data.is_logged_in}
+                    books = {books}
                 />
                 <section className="login-signup">
                     <Login />

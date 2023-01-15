@@ -17,9 +17,13 @@ class SiteCartItem extends Component {
                     </h3>
                     <h4 className="details">
                         انتشارات
-                        {item.publisher}
+                        <b>&nbsp;{item.publisher}&nbsp;</b>
                         سال چاپ
-                        {"وارد نشده"}
+                        <b>
+                            &nbsp;
+                            {"وارد نشده"} 
+                            &nbsp;
+                        </b>
                     </h4>
                 </span>
                 <span className="price-btn-wrapper">

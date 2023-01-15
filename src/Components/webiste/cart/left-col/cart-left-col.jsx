@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom';
 class CartLeftCol extends Component {
     state = {  } 
     render() { 
-        const { cart_summary } = this.props;
+        const {
+            cart_summary,
+            pop_up,
+            open_pop_up,
+        } = this.props;
         return (
             <div className="left-col">
                 <div className="cart-details">
@@ -83,10 +87,27 @@ class CartLeftCol extends Component {
                         </span>
                     </span>
                 </div>
-                <div className="complete-buy">
-                    <Link to="./final-cart">
+                <div
+                    className="complete-buy"
+                    onClick={() => {
+                        if (cart_summary.pay_permission) {
+                            open_pop_up();
+                        }
+                    }}
+                >
+                    {
+                        !cart_summary.pay_permission ?
+                            <Link to="./final-cart">
+                                تمکیل فرایند خرید
+                            </Link>
+                        :
+                            <span>
+                                تمکیل فرایند خرید
+                            </span>
+                    }
+                    {/* <Link to="./final-cart">
                         تمکیل فرایند خرید
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         );

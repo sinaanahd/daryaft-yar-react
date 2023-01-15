@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import  account_icon  from "../../../assets/images/website/account-icon.png"
+import Search from './search';
+import account_icon  from "../../../assets/images/website/account-icon.png"
 import mainLogo from "../../../assets/images/website/main-logo.png";
-import magnifier from "../../../assets/images/website/magnifier-icon.png";
 import cartIcon from "../../../assets/images/website/cart-icon.png";
 //import { FaAngleDown } from "react-icons/fa";
 import arrowDown from "../../../assets/images/website/arrow-down-icon.png";
@@ -13,7 +13,12 @@ class SiteHeader extends Component {
        
     }
     render() { 
-        const { cart_count, name , is_logged_in} = this.props;
+        const {
+            cart_count,
+            name,
+            is_logged_in,
+            books,
+        } = this.props;
         return (
             <header className="site-header">
                 <div className="first-row">
@@ -53,12 +58,7 @@ class SiteHeader extends Component {
                             <img src={mainLogo} alt="" />
                         </Link>
                     </div>
-                    <div className="search-wrapper">
-                        <input type="text" placeholder='جستجو' />
-                        <span className="header-search-icon">
-                                <img src={magnifier} alt="جستجو" />
-                        </span>
-                    </div>
+                    <Search books={books } />
                 </div>
                 <div className="second-row">
                     <nav>

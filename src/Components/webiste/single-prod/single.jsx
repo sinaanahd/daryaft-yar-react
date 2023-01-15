@@ -23,7 +23,8 @@ class SingleProdPage extends Component {
             user,
             data,
             change_active,
-            handle_quan
+            handle_quan,
+            books,
         } = this.props;
         return (
             <>
@@ -31,6 +32,7 @@ class SingleProdPage extends Component {
                     cart_count={cart ? cart.cart_summary.items_count : 0}
                     name={user ? user.name : "none"}
                     is_logged_in={data.is_logged_in}
+                    books = {books}
                 />
                 <section className="single-book-page-wrapper mm-width">
                     {
