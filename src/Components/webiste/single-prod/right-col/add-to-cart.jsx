@@ -68,7 +68,7 @@ class SingleCartDetails extends Component {
                         />
                     </span>
                 </div>
-                <div className="add-to-cart">
+                <div className="add-to-cart" onClick={()=>{handle_quan(book.id , "+")}}>
                     افزودن به سبد خرید
                 </div>
             </div>

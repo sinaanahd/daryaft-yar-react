@@ -3,6 +3,11 @@ import Filters from './filters/filters';
 class SideBar extends Component {
     state = {  } 
     render() { 
+        const {
+            original_books,
+            handle_needed_book,
+            change_active_page,
+        } = this.props;
         return (
             <div className="side-bar">
                 <div className="page-text">
@@ -20,7 +25,11 @@ class SideBar extends Component {
                         </span>
                     </span>
                 </div>
-                <Filters></Filters>
+                <Filters
+                    original_books={original_books}
+                    handle_needed_book={handle_needed_book}
+                    change_active_page={change_active_page}
+                />
             </div>
         );
     }

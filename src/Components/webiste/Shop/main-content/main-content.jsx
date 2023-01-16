@@ -3,13 +3,19 @@ import SortBy from '../sort-by/sort-by';
 import Books from "./books/books";
 import Pagination from './pagination/pagination';
 class MainContent extends Component {
-    state = {  } 
+    state = { 
+        
+    }
+    componentDidMount () {
+    }
     render() { 
         const {
             books,
             add_to_cart,
             ids,
-            change_active
+            change_active,
+            active_page,
+            change_active_page,
         } = this.props;
         return (
             <div className="main-content">
@@ -19,8 +25,13 @@ class MainContent extends Component {
                     add_to_cart={add_to_cart}
                     ids={ids}
                     change_active={change_active}
+                    active_page={active_page}
                 />
-                <Pagination />
+                <Pagination
+                    len={books.length}
+                    active_page={active_page}
+                    change_active_page={change_active_page}
+                />
             </div>
         );
     }

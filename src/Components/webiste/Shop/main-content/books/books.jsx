@@ -13,10 +13,11 @@ class Books extends Component {
             add_to_cart,
             ids,
             change_active,
+            active_page,
         } = this.props;
         return (
             <div className="books-wrapper">
-                {books ? books.slice(0,40).map(book => <Book
+                {books ? books.slice((active_page-1)*40,active_page*40).map(book => <Book
                     key={book.id}
                     book={book}
                     add_to_cart={add_to_cart}

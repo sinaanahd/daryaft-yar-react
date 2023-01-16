@@ -2898,6 +2898,7 @@ img {
             overflow: scroll;
             @include flexMixin(column , flex-start , center);
             padding: 16px;
+            z-index: 99999;
             .search-item{
                 @include flexMixin(row,flex-start,center);
                 width: 100%;
@@ -3151,12 +3152,85 @@ img {
                 @include flexMixin(row,space-between,center);
                 height: 52px;
                 border-bottom: 1px solid #DDDDDD;
-                &:last-child{
-                    border-bottom: none!important;
+                // &:last-child{
+                //     border-bottom: none!important;
+                // }
+            }
+            // .l{
+            //     border-bottom: none !important;
+            // }
+            .arrow{
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                @include flexMixin(row,center,center);
+                transition: $transition;
+            }
+            .reverse{
+                transform: rotate(180deg);
+            }
+            .sub-item{
+                width: 100%;
+                line-height: 40px;
+                padding: 0 20px;
+                color: $grayColor;
+                li{
+                    @include flexMixin(row,flex-start,center);
+                    cursor: pointer;
+                    &::before{
+                        width: 10px;
+                        height: 10px;
+                        border: 1px solid $grayColor;
+                        content: " ";
+                        display: inline-block;
+                        border-radius: 3px;
+                        margin-left: 5px;
+                    }
+                }
+                .selected{
+                    font-weight: bold;
+                    &::before{
+                        background-color: $grayColor
+                    }
                 }
             }
             img{
                 width: 11px;
+            }
+        }
+        .filter-bts{
+            width: 100%;
+            margin: 0px 0 0;
+            padding: 0 10px;
+            @include flexMixin(row,space-between,center);
+            span{
+                border-radius: 10px;
+                border: 2px solid;
+                width: 100px;
+                @include flexMixin(row,center,center);
+                height: 40px;
+                color: #fff;
+                box-shadow: $boxShadow;
+                transition: $transition;
+                cursor: pointer;
+                &:hover{
+                    color: #000;
+                    background-color: #fff;
+                }
+            }
+            .reset-filters{
+                background-color: $redColor;
+                border-color: $redColor;
+                &:hover {
+                    color: $redColor;
+                }
+            }
+            .enable-filters{
+                background-color: $greenColor;
+                border-color: $greenColor;
+                &:hover {
+                   color: $greenColor;
+                }
             }
         }
     }
@@ -3179,7 +3253,7 @@ img {
             }
         }
         .pages-wrapper{
-            @include flexMixin(row,space-between,center);
+            @include flexMixin(row,flex-start,center);
             flex-basis: 0 0 60%;
             width: 200px;
             .page-number{
@@ -3187,6 +3261,8 @@ img {
                 height: 40px;
                 @include styler(#000 , #EAEAEA , 16px , 4px);
                 @include flexMixin(row,center,center);
+                cursor: pointer;
+                margin-left: 5px;
             }
             .active{
                 background-color: $secondaryColor1;
@@ -3275,6 +3351,7 @@ img {
         border-radius: 4px;
         img{
             width: 13px;
+            cursor: pointer;
         }
     }
     .add-to-cart{
@@ -3283,6 +3360,7 @@ img {
         @include styler(#fff , $mainColor1 , 16px ,16px );
         height: 40px;
         margin: 30px 0 0 ;
+        cursor: pointer;
     }
     .left-col{
         flex: 0 0 70%;
@@ -3671,6 +3749,7 @@ li{
             margin-right: 10px;
             img{
                 width: 12px;
+                cursor: pointer;
             }
         }
         .cart-item-details{

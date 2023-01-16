@@ -60,7 +60,7 @@ class Clogin extends Component {
     }
     get_user = () => {
         axios
-            .get(`https://daryaftyar.ir/storeV2/verify_phone_number/${this.state.phone_number}`)
+            .get(`https://daryaftyar.ir/backend/api/verify_phone_number/${this.state.phone_number}`)
             .then(res => {
                 this.setState({ pause: false });
                 let answer = res.data;
@@ -72,7 +72,7 @@ class Clogin extends Component {
                 if (answer.been_before) {
                     this.setState({ url: "./yalda" });
                     axios
-                        .get(`https://daryaftyar.ir/storeV2/user/${answer.user_id}`)
+                        .get(`https://daryaftyar.ir/backend/api/user/${answer.user_id}`)
                         .then(res => {
                             let user = res.data;
                             localStorage.setItem("user", JSON.stringify(user));

@@ -84,12 +84,12 @@ class CSignUp extends Component {
             major
         }
         axios
-            .post(`https://daryaftyar.ir/storeV2/register_user` , obj)
+            .post(`https://daryaftyar.ir/backend/api/register_user` , obj)
             .then(res => {
                 console.log(res.data);
                 let data = res.data;
                 axios
-                    .get(`https://daryaftyar.ir/storeV2/user/${data.user_id}`)
+                    .get(`https://daryaftyar.ir/backend/api/user/${data.user_id}`)
                     .then(res => {
                         let user = res.data;
                         localStorage.setItem("user", JSON.stringify(user));
