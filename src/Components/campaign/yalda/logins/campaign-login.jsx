@@ -64,13 +64,14 @@ class Clogin extends Component {
             .then(res => {
                 this.setState({ pause: false });
                 let answer = res.data;
-                if (answer.verification_code.length === 5) {
-                    this.setState({ len: 5 });
-                    this.setState({code_arr : [1,1,1,1,1]})
-                }
+                // if (answer.verification_code.length === 5) {
+                //     this.setState({ len: 5 });
+                //     this.setState({code_arr : [1,1,1,1,1]})
+                // }
+                console.log(res.data);
                 this.setState({ confirm_code: answer.verification_code });
                 if (answer.been_before) {
-                    this.setState({ url: "./yalda" });
+                    this.setState({ url: "./campaign" });
                     axios
                         .get(`https://daryaftyar.ir/backend/api/user/${answer.user_id}`)
                         .then(res => {
@@ -80,7 +81,7 @@ class Clogin extends Component {
                         .catch(err => alert(err.message));
                 }
                 else {
-                    this.setState({ url: "./YsingUp" });
+                    this.setState({ url: "./Csingup" });
                 }
             })
             .catch(err => alert(err.message));

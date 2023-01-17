@@ -83,6 +83,7 @@ class CSignUp extends Component {
             grade,
             major
         }
+        console.log("hi")
         axios
             .post(`https://daryaftyar.ir/backend/api/register_user` , obj)
             .then(res => {
@@ -93,7 +94,7 @@ class CSignUp extends Component {
                     .then(res => {
                         let user = res.data;
                         localStorage.setItem("user", JSON.stringify(user));
-                        window.location.replace("./yalda");
+                        window.location.replace("./campaign");
                     })
                     .catch(err => alert(err.message));
             })
