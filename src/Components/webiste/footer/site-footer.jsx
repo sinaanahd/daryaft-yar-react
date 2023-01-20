@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../../reusables/loading';
 import Errors from '../../reusables/errors';
-import logo from "../../../assets/images/website/main-logo.png";
+import logo from "../../../assets/images/welcome-photo.png";
 import whatsappLogo from "../../../assets/images/website/whats-app.png";
 import telegramLogo from "../../../assets/images/website/instagram.png";
 import instagramLogo from "../../../assets/images/website/telegram.png";

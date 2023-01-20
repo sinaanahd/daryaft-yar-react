@@ -11,7 +11,7 @@ class ChestConfirmation extends Component {
     prize_open = (num) =>{
         const user = this.props.user;
         const user_token = user.campaign.user_token - 1 ;
-        const prize_id = user.campaign.prize[0];
+        // const prize_id = user.campaign.prize[0];
         if (user.campaign.user_token > 0) {
             axios
                 .patch(`https://daryaftyar.ir/backend/api/user/${user.user_id}`, { opening_box_number: num, user_token })

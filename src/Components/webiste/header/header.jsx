@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Search from './search';
 import account_icon  from "../../../assets/images/website/account-icon.png"
-import mainLogo from "../../../assets/images/website/main-logo.png";
+import mainLogo from "../../../assets/images/welcome-photo.png";
 import cartIcon from "../../../assets/images/website/cart-icon.png";
 //import { FaAngleDown } from "react-icons/fa";
 import arrowDown from "../../../assets/images/website/arrow-down-icon.png";
@@ -24,7 +24,7 @@ class SiteHeader extends Component {
                 <div className="first-row">
                     <div className="btns-wrapper">
                         <span className="enter-btn-wrapper header-btn">
-                            <Link to="/Login" >
+                            <Link to={name !== "ورود / ثبت نام" ? "/home": "/Login"} >
                                 {!is_logged_in ?
                                     "ثبت‌نام / ورود"
                                     :

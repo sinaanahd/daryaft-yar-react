@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import withYalda from '../../../hoc/with-yalda';
 import SampleFooter from '../sample/sample-footer';
 import SampleHeader from '../sample/sample-header';
 import topPom from "../../../../assets/images/website/snow-icon.png";
@@ -87,9 +88,10 @@ class Clogin extends Component {
             .catch(err => alert(err.message));
     }
     render() { 
+        const { user } = this.props;
         return (
             <>
-                <SampleHeader />
+                <SampleHeader tokens={user ? user.campaign.user_token : 0} />
                 <div className="yalda-login mm-width">
                     <img src={topPom} className="top-right" />
                     <img src={topLeaf} className="top-left" />
@@ -220,4 +222,4 @@ class Clogin extends Component {
     }
 }
  
-export default Clogin;
+export default withYalda(Clogin);

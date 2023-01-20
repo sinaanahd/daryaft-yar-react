@@ -12,7 +12,7 @@ class InviteFreinds extends Component {
         const { user } = this.props;
         return (
             <>
-                <SampleHeader />
+                <SampleHeader tokens={user ? user.campaign.user_token : 0} />
                 <div className="increase-token-page-w mm-width">
                     <div className="main-content">
                         {/* <img src={bigPom} alt="" className='big-pom' /> */}

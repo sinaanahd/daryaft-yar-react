@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import SiteHeader from '../header/header';
+import SiteFooter from '../footer/site-footer';
 import SideBar from './main-content/side-bar/side-bar';
 import MainContent from './main-content/main-content';
 import withWebsiteData from '../../hoc/with-website-data';
-import SiteFooter from '../footer/site-footer';
+import ResponsiveFilters from './responsive-filters/responsive-filters';
 class ShopPage extends Component {
     state = {
         needed_books: false,
@@ -22,13 +23,14 @@ class ShopPage extends Component {
             user,
             data,
             add_to_cart,
-            change_active
+            change_active,
+            active_sort_item
         } = this.props;
         return (
             <>
                 <SiteHeader
                     cart_count={cart ? cart.cart_summary.items_count : 0}
-                    name={user ? user.name : "none"}
+                    name={user ? user.name : "ورود / ثبت نام"}
                     is_logged_in={data.is_logged_in}
                     books={books}
                 />
@@ -39,6 +41,17 @@ class ShopPage extends Component {
                         active_page={this.state.active_page}
                         change_active_page={this.change_active_page}
                     />
+                    <ResponsiveFilters
+                        original_books={books ? books : []} 
+                        handle_needed_book={this.handle_needed_book}
+                        active_page={this.state.active_page}
+                        change_active_page={this.change_active_page}
+                        books={this.state.needed_books ? this.state.needed_books :books}
+                        add_to_cart={add_to_cart}
+                        ids={cart ? cart.cart_items_ids : []}
+                        change_active={change_active}
+                        active_sort_item={active_sort_item}
+                    />
                     <MainContent
                         books={this.state.needed_books ? this.state.needed_books :books}
                         add_to_cart={add_to_cart}
@@ -46,6 +59,7 @@ class ShopPage extends Component {
                         change_active={change_active}
                         active_page={this.state.active_page}
                         change_active_page={this.change_active_page}
+                        active_sort_item={active_sort_item}
                     />
                 </section>
                 <SiteFooter

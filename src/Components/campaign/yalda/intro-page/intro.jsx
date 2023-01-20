@@ -10,7 +10,7 @@ class CampagingIntro extends Component {
         const { user } = this.props;
         return (
             <>
-                <SampleHeader />
+                <SampleHeader tokens={user ? user.campaign.user_token : 0} />
                 <div className="yalda-intro mm-width">
                 <div className="img-wrapper">
                     <Link to={user ? "./campaign" : "./Clogin"}>

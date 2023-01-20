@@ -28,7 +28,7 @@ class WebsiteCart extends Component {
             <>
                 <SiteHeader
                     cart_count={cart ? cart.cart_summary.items_count : 0}
-                    name={user ? user.name : "none"}
+                    name={user ? user.name : "ورود / ثبت نام"}
                     is_logged_in={data.is_logged_in}
                     books={books}
                 />
@@ -39,7 +39,7 @@ class WebsiteCart extends Component {
                         delete_item={delete_item}
                     />
                     <CartLeftCol
-                        cart_summary={cart.cart_summary}
+                        cart_summary={cart ? cart.cart_summary : ""}
                         pop_up={this.state.pop_up}
                         open_pop_up={this.open_pop_up}
                     />

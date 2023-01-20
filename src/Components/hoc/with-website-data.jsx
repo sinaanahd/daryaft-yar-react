@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-const local_user = JSON.parse(sessionStorage.getItem("website_user")) ? JSON.parse(sessionStorage.getItem("website_user")) : false;
-const local_books = JSON.parse(sessionStorage.getItem("website_books")) ? JSON.parse(sessionStorage.getItem("website_books")) : false;
-const local_cart =  JSON.parse(sessionStorage.getItem("website_cart")) ? JSON.parse(sessionStorage.getItem("website_cart")) : false;
+const local_user = JSON.parse(localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")) : false;
+const local_books = JSON.parse(localStorage.getItem("website_books")) ? JSON.parse(localStorage.getItem("website_books")) : false;
+const local_cart =  JSON.parse(localStorage.getItem("website_cart")) ? JSON.parse(localStorage.getItem("website_cart")) : false;
 function withWebsiteData(Component) {
     return class withWebsiteData extends Component {
         state = {
@@ -15,16 +15,11 @@ function withWebsiteData(Component) {
             error: false,
         }
         componentDidMount() {
-            this.get_user(341393410);
+            if(this.state.user){
+                this.get_user(this.state.user.user_id);
+                this.get_cart(this.state.user.user_id);
+            }
             this.get_books();
-            this.get_cart(341393410);
-            // if (!this.state.user) {
-            // }
-            // if (!this.state.books) {
-            // }
-            // if (!this.state.cart) {
-            //     console.log("1")
-            // }
         }
         get_user = (id) => {
             axios
@@ -33,7 +28,7 @@ function withWebsiteData(Component) {
                     const user = res.data;
                     this.setState({ user });
                     this.setState({ is_logged_in: true });
-                    sessionStorage.setItem("website_user", JSON.stringify(user));
+                    localStorage.setItem("user", JSON.stringify(user));
                 })
                 .catch(err => {
                     const { status } = err.response;
@@ -51,7 +46,7 @@ function withWebsiteData(Component) {
                 .then(res => {
                     const books = res.data;
                     this.setState({ books });
-                    sessionStorage.setItem("website_books", JSON.stringify(books));
+                    localStorage.setItem("website_books", JSON.stringify(books));
                 })
                 .catch(err => {
                     this.setState({ pause: false });
@@ -67,7 +62,7 @@ function withWebsiteData(Component) {
                 .then(res => {
                     const cart = res.data;
                     this.setState({ cart });
-                    sessionStorage.setItem("website_cart", JSON.stringify(cart));
+                    localStorage.setItem("website_cart", JSON.stringify(cart));
                     //console.log(cart);
                 })
                 .catch(err => {
@@ -98,7 +93,7 @@ function withWebsiteData(Component) {
                     const cart = res.data;
                     this.setState({ cart });
                     this.setState({ pause: false });
-                    sessionStorage.setItem("website_cart", JSON.stringify(cart));
+                    localStorage.setItem("website_cart", JSON.stringify(cart));
                     this.setState({ err: false });
                     
                 })
@@ -129,6 +124,39 @@ function withWebsiteData(Component) {
             ids = ids.filter(i=> i !== id);
             this.update_cart(ids);
         }
+        active_sort_item = (type, status , active) => {
+            let books = [];
+            this.setState({ pause: true });
+            if (type !== active) {
+                if (status === "normal") {
+                    axios
+                        .get("https://daryaftyar.ir/backend/api/books")
+                        .then(res => {
+                            books = res.data;
+                            localStorage.setItem("website_books", JSON.stringify(books));
+                            this.setState({ books , pause : false});
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        });
+                }
+                else {
+                    axios
+                        .get(`https://daryaftyar.ir/backend/api/sortbooks/${status}`)
+                        .then(res => {
+                            books = res.data.books;
+                            localStorage.setItem("website_books", JSON.stringify(books));
+                            this.setState({ books, pause: false });
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        });
+                }
+            }
+            else {
+                this.setState({ pause: false });
+            }
+        }
         render() {
             return (
                 <Component
@@ -141,6 +169,7 @@ function withWebsiteData(Component) {
                     add_to_cart = {this.add_to_cart}
                     handle_quan={this.handle_quan}
                     delete_item={this.delete_item}
+                    active_sort_item={this.active_sort_item}
                 />
             );
         }

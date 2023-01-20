@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import withYalda from '../../../hoc/with-yalda';
 import tokenIcon from '../../../../assets/images/token.png';
 import SampleFooter from '../sample/sample-footer';
 import SampleHeader from '../sample/sample-header';
@@ -13,9 +14,10 @@ class YaldaRulesW extends Component {
         
     } 
     render() { 
+        const { user } = this.props;
         return (
             <>
-                <SampleHeader />
+                <SampleHeader tokens={user ? user.campaign.user_token : 0} />
                 <div className="rules-page-w mm-width">
                     <div className="main-content">
                         <h1>
@@ -45,4 +47,4 @@ class YaldaRulesW extends Component {
     }
 }
  
-export default YaldaRulesW;
+export default withYalda(YaldaRulesW);

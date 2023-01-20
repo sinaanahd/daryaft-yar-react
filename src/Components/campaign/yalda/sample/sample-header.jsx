@@ -5,7 +5,11 @@ import tokenImg from '../../../../assets/images/token.png';
 import snow_img from '../../../../assets/images/website/snow-icon.png'
 class SampleHeader extends Component {
     state = {  } 
+    componentDidMount() {
+        
+    }
     render() { 
+        const { tokens } = this.props;
         return (
             <header className="sample-header mm-width">
                 <span className="welcome">
@@ -22,6 +26,9 @@ class SampleHeader extends Component {
                 </Link>
                 <Link to="/invite" className='token-link'>
                     <img src={tokenImg} alt="" className="token" />
+                    <span className="token-count">
+                        {tokens}
+                    </span>
                 </Link>
                 <img src={snow_img} alt="" className='snow-header'/>
             </header>

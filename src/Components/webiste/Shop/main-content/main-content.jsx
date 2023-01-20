@@ -16,10 +16,11 @@ class MainContent extends Component {
             change_active,
             active_page,
             change_active_page,
+            active_sort_item,
         } = this.props;
         return (
             <div className="main-content">
-                <SortBy></SortBy>
+                <SortBy active_sort_item={ active_sort_item} />
                 <Books
                     books={books}
                     add_to_cart={add_to_cart}

@@ -11,7 +11,7 @@ class NotFound extends Component {
             <>
                 <SiteHeader
                     cart_count={cart ? cart.cart_summary.items_count : 0}
-                    name={user ? user.name : "none"}
+                    name={user ? user.name : "ورود / ثبت نام"}
                     is_logged_in={data.is_logged_in}
                     books = {books}
                 />

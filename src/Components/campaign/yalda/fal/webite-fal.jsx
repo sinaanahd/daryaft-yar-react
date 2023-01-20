@@ -14,12 +14,14 @@ class PrizePage extends Component {
         more : false,
     } 
     componentDidMount() {
-        axios
-            .patch(`https://daryaftyar.ir/storeV2/user/${341393410}`, { opening_box_number: 3, user_token: 2000  })
-            .then(res => {
-                alert("done")
-            })
-            .catch(err => console.log(err));
+        // const { user } = this.props;
+        // console.log(user);
+        // axios
+        //     .patch(`https://daryaftyar.ir/backend/api/user/${user.user_id}`, { opening_box_number: 3, user_token: 2000  })
+        //     .then(res => {
+        //         console.log(user);
+        //     })
+        //     .catch(err => console.log(err));
     }
     handle_open_more = () => {
         const more = !this.state.more;
@@ -29,7 +31,7 @@ class PrizePage extends Component {
         const { user } = this.props;
         return (
             <>
-                <SampleHeader />
+                <SampleHeader tokens={user ? user.campaign.user_token : 0} />
                 <div className="fal-page-w">
                     <div className="main-content">
                         {/* <div className={this.state.more ? "fal-wrapper more" : "fal-wrapper"}>

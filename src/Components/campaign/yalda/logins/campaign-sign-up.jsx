@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import withYalda from '../../../hoc/with-yalda';
 import phoneIcon from "../../../../assets/images/phone-icon.png";
 import userIcon from "../../../../assets/images/user-filed-icon.png";
 import { Redirect } from 'react-router-dom';
@@ -101,9 +102,10 @@ class CSignUp extends Component {
             .catch(err => console.log(err));
     }
     render() { 
+        const { user } = this.props;
         return (
             <>
-                <SampleHeader />
+                <SampleHeader tokens={user ? user.campaign.user_token : 0} />
                 <div className="yalda-sing-up mm-width">
                     <img src={topPom} className="top-right" />
                     <img src={topLeaf} className="top-left" />
@@ -199,4 +201,4 @@ class CSignUp extends Component {
     }
 }
  
-export default CSignUp;
+export default withYalda(CSignUp);
