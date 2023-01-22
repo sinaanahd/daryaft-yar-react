@@ -15,7 +15,7 @@ class CSignUp extends Component {
         grade: 10,
         major: 1,
         name: "",
-        phone: "",
+        phone: JSON.parse(localStorage.getItem("phone_number")),
         err_msg: "",
     } 
     componentDidMount() {
@@ -62,19 +62,19 @@ class CSignUp extends Component {
             this.setState({ err_msg: "نام وارد شده کوتاه است" });
         }
     }
-    handle_phone = (target) => {
-        if (target.value.startsWith("09")) {
-            if (target.value.length === 11) {
-                this.setState({ phone : target.value , err_msg : "" });
-            }
-            else {
-                this.setState({ err_msg: "شماره تلفن باید ۱۱ رقم باشد" });
-            }
-        }
-        else {
-            this.setState({ err_msg: "شماره تلفن باید با ۰۹ شروع شود" });
-        }
-    }
+    // handle_phone = (target) => {
+    //     if (target.value.startsWith("09")) {
+    //         if (target.value.length === 11) {
+    //             this.setState({ phone : target.value , err_msg : "" });
+    //         }
+    //         else {
+    //             this.setState({ err_msg: "شماره تلفن باید ۱۱ رقم باشد" });
+    //         }
+    //     }
+    //     else {
+    //         this.setState({ err_msg: "شماره تلفن باید با ۰۹ شروع شود" });
+    //     }
+    // }
     make_user = () => {
         let grade = this.grade_convert(this.state.grade);
         let major = this.major_convert(this.state.major);
@@ -122,7 +122,7 @@ class CSignUp extends Component {
                                 onInput={({target})=>{this.handle_name(target)}}
                             />
                         </div>
-                        <div className="input-wrapper">
+                        {/* <div className="input-wrapper">
                             <img src={phoneIcon} alt="" />
                             <input
                                 type="number"
@@ -130,7 +130,7 @@ class CSignUp extends Component {
                                 placeholder='شماره تلفن'
                                 onInput={({target})=>{this.handle_phone(target)}}
                             />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="grades-wrapper">
                         <span

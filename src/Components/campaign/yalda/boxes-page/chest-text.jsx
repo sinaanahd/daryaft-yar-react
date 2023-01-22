@@ -23,7 +23,8 @@ class ChestConfirmation extends Component {
         }
     }
     render() { 
-        const { chest_number , handle_pop_up , user } = this.props;
+        const { chest_number, handle_pop_up, user } = this.props;
+        //user.sina = 0;
         return (
             <div className="chest-pp-wrapper">
                 <div className="content">
@@ -33,21 +34,33 @@ class ChestConfirmation extends Component {
                         className="frame-top"
                     />
                     <div className="text-btn">
-                        <span className="text">
-                            از باز کردن صندوق شماره
-                            &nbsp;
-                            {chest_number}
-                            &nbsp;
-                            مطمئنی؟
+                        <span className={user.campaign.user_token > 0 ? "text" : "text text-sm"}>
+                            {
+                                user.campaign.user_token > 0?
+                                `از باز کردن صندوق شماره
+                            ${chest_number}
+                            مطمئنی؟`
+                                :
+                                    `دوست عزیزم تو دیگه توکنی نداری که باهاش صندوق بازکنی . رفتن به صفحه ی افزایش توکن؟`
+                            }
                         </span>
                         <span className="btns">
                             <span className="yes">
-                                <Link
-                                    to={user.campaign.user_token > 0 ? "./w-prize" : "./invite"}
-                                    onClick={()=>{this.prize_open(chest_number)}}
-                                >
-                                    بله
-                                </Link>
+                                {user.campaign.user_token > 0 ?
+                                    <Link
+                                        to={ "./w-prize" }
+                                        onClick={()=>{this.prize_open(chest_number)}}
+                                    >
+                                        بله
+                                    </Link>
+                                    :
+                                        <Link
+                                        to={ "./invite" }
+                                    >
+                                        بله
+                                    </Link>
+
+                            }
                             </span>
                             <span
                                 className="no"

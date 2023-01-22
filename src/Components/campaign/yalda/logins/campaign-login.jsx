@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import withYalda from '../../../hoc/with-yalda';
 import SampleFooter from '../sample/sample-footer';
 import SampleHeader from '../sample/sample-header';
+import LittleLoading from '../../../reusables/little-loading';
 import topPom from "../../../../assets/images/website/snow-icon.png";
 import bottomPom from "../../../../assets/images/website/trees-rec-icon.png";
 import topLeaf from "../../../../assets/images/website/snow-half-icon.png";
@@ -20,7 +21,10 @@ class Clogin extends Component {
         len: 4,
         confirm_code: "",
         code_arr: [1, 1, 1, 1],
-        code_err : false,
+        code_err: false,
+        new_pause: false,
+        here: false,
+        user : false,
     } 
     handle_user = (target) => {
         if (target.value.startsWith("09")) {
@@ -41,7 +45,15 @@ class Clogin extends Component {
         let code_str = "";
         code_arr.forEach(c => code_str += c);
         if (code_str === this.state.confirm_code) {
-            this.setState({ condition: true , code_err : false  });
+            this.setState({ condition: true, code_err: false });
+            if (this.state.here) {
+                window.location.href = window.location.href.replace("Clogin", "campaign");
+                localStorage.setItem("user", JSON.stringify(this.state.user));
+                
+            }
+            else {
+                window.location.href = window.location.href.replace("Clogin" , "CsingUp");
+            }
         }
         else {
             this.setState({ code_err: true });
@@ -58,8 +70,12 @@ class Clogin extends Component {
         let code_arr = this.state.code_arr;
         code_arr[num] = e.target.value;
         this.setState({ code_arr });
+        if (num === len - 1) {
+            this.handle_check_code();
+        }
     }
     get_user = () => {
+        this.setState({ new_pause: true });
         axios
             .get(`https://daryaftyar.ir/backend/api/verify_phone_number/${this.state.phone_number}`)
             .then(res => {
@@ -69,20 +85,23 @@ class Clogin extends Component {
                 //     this.setState({ len: 5 });
                 //     this.setState({code_arr : [1,1,1,1,1]})
                 // }
-                console.log(res.data);
+                //console.log(res.data);
+                this.setState({ new_pause: false });
                 this.setState({ confirm_code: answer.verification_code });
+                localStorage.setItem("phone_number", JSON.stringify(this.state.phone_number));
+                // document.querySelector('#digit-4').focus();
                 if (answer.been_before) {
-                    this.setState({ url: "./campaign" });
+                    this.setState({ url: "./campaign"  , here : true});
                     axios
                         .get(`https://daryaftyar.ir/backend/api/user/${answer.user_id}`)
                         .then(res => {
                             let user = res.data;
-                            localStorage.setItem("user", JSON.stringify(user));
+                            this.setState({ user });
                         })
                         .catch(err => alert(err.message));
                 }
                 else {
-                    this.setState({ url: "./Csingup" });
+                    this.setState({ url: "./Csingup" , here : false });
                 }
             })
             .catch(err => alert(err.message));
@@ -123,7 +142,7 @@ class Clogin extends Component {
                             className="submit"
                             onClick={() => { this.get_user() }}
                         >
-                            ثبت
+                            {!this.state.new_pause ? "ثبت" : <LittleLoading />}
                         </span>
                         {this.state.has_err ?
                             <></> :
@@ -139,6 +158,7 @@ class Clogin extends Component {
                                             type="number"
                                             name="digit-0"
                                             id="digit-0"
+                                            autoFocus={true}
                                             onInput={(e) => {
                                                 this.handle_small_input(e, 0);
                                             }}
