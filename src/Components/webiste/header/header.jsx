@@ -1,13 +1,52 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Search from './search';
+import MenuItem from './menu/menu-item';
 import account_icon  from "../../../assets/images/website/account-icon.png"
 import mainLogo from "../../../assets/images/welcome-photo.png";
 import cartIcon from "../../../assets/images/website/cart-icon.png";
 //import { FaAngleDown } from "react-icons/fa";
 import arrowDown from "../../../assets/images/website/arrow-down-icon.png";
 class SiteHeader extends Component {
-    state = { 
+    state = {
+        menu_items: [
+            {
+                text: "خانه",
+                link_to: "/home",
+                children: [],
+                id:1
+            },
+            {
+                text: "فروشگاه",
+                link_to: "/shop",
+                children: [],
+                id:2
+            },
+            {
+                text: "سبد خرید",
+                link_to: "/cart",
+                children: [],
+                id:3
+            },
+            {
+                text: "ورود / ثبت نام",
+                link_to: "/login",
+                children: [],
+                id:6
+            },
+            {
+                text: "درباره ما",
+                link_to: "#",
+                children: [],
+                id:4
+            },
+            {
+                text: "تماس با ما",
+                link_to: "#",
+                children: [],
+                id:5
+            }
+        ],
     } 
     componentDidMount() {
        
@@ -63,7 +102,8 @@ class SiteHeader extends Component {
                 <div className="second-row">
                     <nav>
                         <ul className='main-nav'>
-                            <li className="has-sub">
+                            {this.state.menu_items.map(item => <MenuItem key={item.id} item={item} />)}
+                            {/* <li className="has-sub">
                                 <Link to="/#">
                                     رشته
                                     <img src={arrowDown} alt="فلش پایین" />
@@ -104,7 +144,7 @@ class SiteHeader extends Component {
                                     تماس با ما
                                     <img src={arrowDown} alt="فلش پایین" />
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </nav>
                 </div>

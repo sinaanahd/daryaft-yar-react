@@ -15,7 +15,7 @@ function withWebsiteData(Component) {
             error: false,
         }
         componentDidMount() {
-            if(this.state.user){
+            if (this.state.user) {
                 this.get_user(this.state.user.user_id);
                 this.get_cart(this.state.user.user_id);
             }
@@ -77,18 +77,23 @@ function withWebsiteData(Component) {
             alert("new user request")
         }
         handle_active_signle = (book) => {
-            this.setState({active_single : book});
+            this.setState({ active_single: book });
         }
         add_to_cart = (id) => {
             const old_cart = { ...this.state.cart };
-            const ids = old_cart.cart_items_ids;
-            ids.push(id);
-            this.update_cart(ids);
+            if (this.state.cart) {
+                const ids = old_cart.cart_items_ids;
+                ids.push(id);
+                this.update_cart(ids);
+            }
+            else {
+                window.location.pathname = "/login"
+            }
         }
         update_cart = (ids) => {
             this.setState({ pause: true });
             axios
-                .patch(`https://daryaftyar.ir/backend/api/cart/${341393410}`, ids)
+                .patch(`https://daryaftyar.ir/backend/api/cart/${this.state.user.user_id}`, ids)
                 .then(res => {
                     const cart = res.data;
                     this.setState({ cart });
@@ -105,26 +110,31 @@ function withWebsiteData(Component) {
                     }, 2000)
                 })
         }
-        handle_quan = (id , sign)=>{
-            this.setState({pause:true});
+        handle_quan = (id, sign) => {
+            this.setState({ pause: true });
             const old_cart = { ...this.state.cart };
-            const ids = old_cart.cart_items_ids;
-            if(sign === "+"){
-                ids.push(id);
+            if (this.state.cart) {
+                const ids = old_cart.cart_items_ids;
+                if (sign === "+") {
+                    ids.push(id);
+                }
+                else if (sign === "-") {
+                    const index = ids.indexOf(id)
+                    ids.splice(index, 1);
+                }
+                this.update_cart(ids);
             }
-            else if(sign === "-"){
-                const index = ids.indexOf(id)
-                ids.splice(index , 1);
+            else {
+                window.location.pathname = "/login";
             }
-            this.update_cart(ids);
         }
-        delete_item = (id)=>{
+        delete_item = (id) => {
             const old_cart = { ...this.state.cart };
             let ids = old_cart.cart_items_ids;
-            ids = ids.filter(i=> i !== id);
+            ids = ids.filter(i => i !== id);
             this.update_cart(ids);
         }
-        active_sort_item = (type, status , active) => {
+        active_sort_item = (type, status, active) => {
             let books = [];
             this.setState({ pause: true });
             if (type !== active) {
@@ -134,7 +144,7 @@ function withWebsiteData(Component) {
                         .then(res => {
                             books = res.data;
                             localStorage.setItem("website_books", JSON.stringify(books));
-                            this.setState({ books , pause : false});
+                            this.setState({ books, pause: false });
                         })
                         .catch(err => {
                             console.log(err)
@@ -166,10 +176,12 @@ function withWebsiteData(Component) {
                     books={this.state.books}
                     cart={this.state.cart}
                     change_active={this.handle_active_signle}
-                    add_to_cart = {this.add_to_cart}
+                    add_to_cart={this.add_to_cart}
                     handle_quan={this.handle_quan}
                     delete_item={this.delete_item}
                     active_sort_item={this.active_sort_item}
+                    get_cart={this.get_cart}
+                    get_user={this.get_user}
                 />
             );
         }

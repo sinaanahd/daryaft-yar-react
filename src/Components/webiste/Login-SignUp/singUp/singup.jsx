@@ -12,8 +12,9 @@ class SignUp extends Component {
         grade: 10,
         major: 1,
         name: "",
-        phone: "",
+        phone: JSON.parse(localStorage.getItem("phone_number")),
         err_msg: "",
+
     } 
     handle_agree = () => {
         const agreed_to_terms = !this.state.agreed_to_terms;
@@ -66,19 +67,19 @@ class SignUp extends Component {
             this.setState({ err_msg: "نام وارد شده کوتاه است" });
         }
     }
-    handle_phone = (target) => {
-        if (target.value.startsWith("09")) {
-            if (target.value.length === 11) {
-                this.setState({ phone : target.value , err_msg : "" });
-            }
-            else {
-                this.setState({ err_msg: "شماره تلفن باید ۱۱ رقم باشد" });
-            }
-        }
-        else {
-            this.setState({ err_msg: "شماره تلفن باید با ۰۹ شروع شود" });
-        }
-    }
+    // handle_phone = (target) => {
+    //     if (target.value.startsWith("09")) {
+    //         if (target.value.length === 11) {
+    //             this.setState({ phone : target.value , err_msg : "" });
+    //         }
+    //         else {
+    //             this.setState({ err_msg: "شماره تلفن باید ۱۱ رقم باشد" });
+    //         }
+    //     }
+    //     else {
+    //         this.setState({ err_msg: "شماره تلفن باید با ۰۹ شروع شود" });
+    //     }
+    // }
     make_user = () => {
         let grade = this.grade_convert(this.state.grade);
         let major = this.major_convert(this.state.major);
@@ -91,13 +92,15 @@ class SignUp extends Component {
         axios
             .post(`https://daryaftyar.ir/backend/api/register_user` , obj)
             .then(res => {
-                console.log(res.data);
+                //console.log(res.data);
                 let data = res.data;
                 axios
                     .get(`https://daryaftyar.ir/backend/api/user/${data.user_id}`)
                     .then(res => {
                         let user = res.data;
                         localStorage.setItem("user", JSON.stringify(user));
+                        localStorage.removeItem("answer");
+                        localStorage.removeItem("phone_number");
                         window.location.href = window.location.href.replace("signUp" , "home");
                     })
                     .catch(err => alert(err.message));
@@ -133,7 +136,7 @@ class SignUp extends Component {
                                 onInput={({target})=>{this.handle_name(target)}}
                             />
                         </div>
-                        <div className="input-wrapper">
+                        {/* <div className="input-wrapper">
                             <img src={phoneIcon} alt="" />
                             <input
                                 type="number"
@@ -141,7 +144,7 @@ class SignUp extends Component {
                                 placeholder='شماره تلفن'
                                 onInput={({target})=>{this.handle_phone(target)}}
                             />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="grades-wrapper">
                         <span

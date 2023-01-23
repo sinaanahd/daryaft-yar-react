@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useReducer } from 'react';
 import SiteHeader from "../header/header";
 import SiteFooter from "../footer/site-footer";
 import CartLeftCol from './left-col/cart-left-col';
@@ -7,7 +7,7 @@ import withWebsiteData from '../../hoc/with-website-data';
 import PopDetails from './popup/pop-cart';
 class WebsiteCart extends Component {
     state = {
-        pop_up : true,
+        pop_up : false,
     }
     close_pop_up = () => {
         this.setState({ pop_up: false });
@@ -22,7 +22,9 @@ class WebsiteCart extends Component {
             data,
             handle_quan,
             delete_item,
-            books
+            books,
+            get_user,
+            get_cart,
         } = this.props;
         return (
             <>
@@ -42,12 +44,18 @@ class WebsiteCart extends Component {
                         cart_summary={cart ? cart.cart_summary : ""}
                         pop_up={this.state.pop_up}
                         open_pop_up={this.open_pop_up}
+                        user={user ? user : ""}
                     />
                 </section>
                 {
                     this.state.pop_up ?
                         <section className="pop-up-bg">
-                            <PopDetails close_pop_up={ this.close_pop_up } />
+                            <PopDetails
+                                close_pop_up={this.close_pop_up}
+                                user={user ? user : false}
+                                get_cart={get_cart}
+                                get_user={get_user}
+                            />
                         </section>
                         :
                         <></>

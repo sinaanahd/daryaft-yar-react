@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
 import factorIcon from "../../../../assets/images/website/factor-icon-cart.png";
 import split_in_three from '../../../functions/spilit_in_three';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+import LittleLoading from '../../../reusables/little-loading';
 class CartLeftCol extends Component {
-    state = {  } 
+    state = {
+        pause : false,
+    } 
+    componentDidMount() {
+        //console.log(this.props.cart_summary)
+    }
+    go_to_bank = () => {
+        this.setState({pause : true});
+        axios
+            .get(`https://daryaftyar.ir/backend/api/payrequest/${this.props.user.user_id}`)
+            .then(res => {
+                const response = res.data;
+                console.log(res.data);
+                window.location.href = response.url_to_pay;
+            })
+            .catch(err => console.log(err))
+    }
     render() { 
         const {
             cart_summary,
@@ -93,13 +111,16 @@ class CartLeftCol extends Component {
                         if (cart_summary.pay_permission) {
                             open_pop_up();
                         }
+                        else {
+                            this.go_to_bank()
+                        }
                     }}
                 >
                     {
                         !cart_summary.pay_permission ?
-                            <Link to="./final-cart">
-                                تمکیل فرایند خرید
-                            </Link>
+                            <span>
+                                {this.state.pause ? <LittleLoading /> : "تمکیل فرایند خرید"}
+                            </span>
                         :
                             <span>
                                 تمکیل فرایند خرید

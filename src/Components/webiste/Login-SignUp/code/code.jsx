@@ -28,6 +28,9 @@ class CodePage extends Component {
         let code_arr = this.state.code_arr;
         code_arr[num] = e.target.value;
         this.setState({ code_arr });
+        if (num === len - 1) {
+            this.handle_check_code();
+        }
     }
     handle_check_code = () => {
         this.setState({ pause: true });
@@ -83,6 +86,7 @@ class CodePage extends Component {
                             type="number"
                             name="digit-0"
                             id="digit-0"
+                            autoFocus={true}
                             onInput={(e) => {
                                 this.handle_small_input(e, 0);
                             }}

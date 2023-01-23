@@ -33,6 +33,7 @@ import YaldaRulesW from "./Components/campaign/yalda/rules-page/website-rules";
 import NotFound from "./Components/webiste/404/not-found";
 import CodePage from './Components/webiste/Login-SignUp/code/code';
 import SignUp from "./Components/webiste/Login-SignUp/singUp/singup";
+import FinalCartPage from './Components/webiste/final-cart/final-cart';
 class App extends Component {
   componentDidMount() {
   }
@@ -73,6 +74,7 @@ class App extends Component {
           <Route path="/shop" component={ShopPage} />
           <Route path="/cart" component={WebsiteCart} />
           <Route path="/verification-code" component={CodePage} />
+          <Route path="/final-cart" component={FinalCartPage} />
           <Route path="/not-found" component={NotFound} />
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />

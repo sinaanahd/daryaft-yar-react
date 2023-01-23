@@ -31,6 +31,7 @@ class Login extends Component {
                 this.setState({ pause: false });
                 let answer = res.data;
                 localStorage.setItem("answer", JSON.stringify(answer));
+                localStorage.setItem("phone_number", JSON.stringify(this.state.phone_number));
                 window.location.href = window.location.href.replace("Login" , "verification-code")
             })
             .catch(err => alert(err.message));
