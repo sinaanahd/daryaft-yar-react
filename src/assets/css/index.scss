@@ -4207,6 +4207,331 @@ li{
 
 /* site footer */
 
+/* panel */
+.panel-header{
+    width: 100%;
+    @include flexMixin(row,space-between,center);
+    padding: 24px 0;
+    .site-logo{
+        width: 100px;
+    }
+    .middle{
+        width: 50%;
+        @include flexMixin(row,center,center);
+        // background-color: red;
+    }
+    .user-avatar{
+        margin-left: 24px;
+    }
+    .user-name{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .side{
+        width: 25%;
+        @include flexMixin(row, flex-start, center);
+    }
+    .end{
+        justify-content: flex-end;
+        .icons{
+            @include flexMixin(row,center,center);
+            position: relative;
+            margin: 0 20px;
+            img{
+                position: relative;
+                z-index: 2;
+            }
+            span{
+                position: absolute;
+                @include styler(#fff , $mainColor1 , 8px , 8px);
+                min-width: 40px;
+                height: 18px;
+                z-index: 3;
+                @include flexMixin(row,center,center);
+                font-weight: bold;
+                bottom: -8px;
+                right: -25px;
+            }
+        }
+        .coin{
+            span {
+                position: absolute;
+                @include styler(#fff, $mainColor1 , 8px, 50%);
+                min-width: unset;
+                width: 22px;
+                height: 22px;
+                bottom: -8px;
+                left: -8px;
+                right: unset;
+            }
+        }
+        .bell{
+            width: 40px;
+            height: 40px;
+            background-color: $mainColor1;
+            border-radius: 8px;
+        }
+    }
+}
+.panel-sidebar{
+    transition: $transition;
+    max-height: 830px;
+    height: 700px;
+    width: 100px;
+    border-radius: 24px;
+    background-color: $mainColor1;
+    color: #fff;
+    padding: 30px;
+    margin-left: 50px;
+    @include flexMixin(column,center,center);
+    position: relative;
+    .open-closer{
+        position: absolute;
+        top: 40px;
+        left: -15px;
+        width: 35px;
+        height: 35px;
+        background-color: #fff;
+        box-shadow: 0px 2px 10px -1px #d7d7d7;
+        border-radius: 50%;
+        @include flexMixin(row,center,center);
+        cursor: pointer;
+        img{
+            width: 16px;
+            transform: rotate(90deg);
+            transition: $transition
+        }
+        .close{
+            transform: rotate(-90deg);
+        }
+    }
+    ul{
+        width: 100%;
+        // height: 400px;
+        @include flexMixin(column,center,center);
+        li{
+            margin: 0 0 45px;
+            a{
+                width: 100%;
+                @include flexMixin(row,space-between,center);
+                color: #fff;
+            }
+        }
+        .description{
+            display: none;
+            margin-right: 13px;
+        }
+    }
+}
+.panel-opened{
+    width: 200px;
+    ul {
+        .description {
+            display: block;
+        }
+    }
+}
+.panel-main-area{
+    width: 100%;
+    @include flexMixin(row-reverse,space-between,center);
+    margin: 0 0 50px;
+    .panel-grid{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: repeat(7,50px);
+        column-gap: 40px;
+        row-gap: 50px;
+        color: #000;
+        .g-item{
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 17px;
+        }
+    }
+    .latest-order{
+        grid-row-start: 1;
+        grid-row-end: 5;
+        box-shadow: 0px 0px 5px 5px #d3d3d35f;
+        overflow-y: scroll;
+        table{
+            margin: 10px 0 0;
+            width: 100%;
+            font-size: 12px;
+            text-align: right;
+            padding: 0 30px;
+            tr{
+                width: 100%;
+            }
+            th{
+                font-weight: bold;
+                color: #707070;
+            }
+            td,
+            th {
+                padding: 0 0 20px;
+            }
+        }
+    }
+    .my-orders{
+        grid-row-start: 5;
+        grid-row-end: 8;
+        box-shadow: 0px 0px 5px 5px #d3d3d35f;
+        overflow-y: scroll;
+        table {
+            margin: 10px 0 0;
+            width: 100%;
+            font-size: 12px;
+            text-align: right;
+            padding: 0 30px;
+            tr {
+                width: 100%;
+            }
+            th {
+                font-weight: bold;
+                color: #707070;
+            }
+            td,th{
+                padding: 0 0 20px;
+            }
+            .prod-imgs{
+                @include flexMixin(row,space-between,flex-end);
+                width: 100px;
+            }
+        }
+    }
+    .scores{
+        grid-row-start: 1;
+        grid-row-end: 6;
+        border: 3px solid #0091B5;
+        .content{
+            padding: 0 10px;
+            width: 100%;
+            margin: 50px 0 100px;
+        }
+        .sub-title{
+            color: $secondaryColor1;
+            font-weight: normal;
+            &::before{
+                display: inline-block;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                margin-left: 5px;
+                background-color: $secondaryColor1;
+                content: " ";
+            }
+        }
+        .s-item{
+            @include flexMixin(row,space-between,flex-start);
+            width: 100%;
+            margin: 0 0 50px;
+            .details{
+                @include flexMixin(column,flex-start,flex-start);
+                color: $mainColor1;
+                font-weight: bold;
+            }
+        }
+        .btn-wrapper{
+            width: 100%;
+            @include flexMixin(row,center,center);
+        }
+        .add-coin{
+            @include flexMixin(row,center,center);
+            width: 270px;
+            height: 46px;
+            border-radius: 20px;
+            border: 2px solid $mainColor1;
+            color: $mainColor1;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+}
+.usesr-info-section{
+    width: 100%;
+    @include flexMixin(row-reverse,space-between,center);
+    color: #000;
+    .layout{
+        width: 100%;
+        @include flexMixin(row,space-between,flex-start);
+    }
+    .user-info{
+        flex: 0 0 50%;
+    }
+    .title{
+        font-size: 24px;
+        margin: 0 0 25px;
+    }
+    .forms{
+        padding-right: 30px;
+    }
+    .form{
+        position: relative;
+        margin-bottom: 30px;
+        display: inline-block;
+        input , textarea{
+            width: 300px;
+            height: 60px;
+            border: 1px solid #979797;
+            background-color: #efefef;
+            border-radius: 16px;
+            color: #000;
+            padding-right: 40px;
+            outline: 0px solid red;
+            resize: none;
+            font-family: "main-font";
+            &:focus{
+                outline : 2px solid $mainColor1;
+            }
+        }
+        textarea{
+            padding-top: 5px;
+        }
+        img{
+            position: absolute;
+            top: 20px;
+            right: 10px;
+        }
+    }
+    .submit{
+        width: 254px;
+        height: 40px;
+        @include styler(#fff, $mainColor1,16px,16px);
+        @include flexMixin(row,center,center);
+        margin-right: 50px;
+    }
+    .student-data{
+        flex: 0 0 50%;
+    }
+    select{
+        width: 300px;
+        height: 60px;
+        border: 1px solid #979797;
+        background-color: #efefef;
+        border-radius: 16px;
+        color: #000;
+        padding:0 40px 0 10px;
+        outline: 0px solid red;
+        resize: none;
+        font-family: "main-font";
+        margin: 0 0 30px;
+    }
+    .selects{
+        position: relative;
+        img{
+            position: absolute;
+            top: 2px;
+            right: 10px;
+        }
+    }
+}
+
+
+/* panel */
+
+
+
 
 /* login signup */
 .login-signup {

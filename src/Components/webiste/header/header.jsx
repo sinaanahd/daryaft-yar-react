@@ -32,20 +32,26 @@ class SiteHeader extends Component {
                 text: "ورود / ثبت نام",
                 link_to: "/login",
                 children: [],
-                id:6
+                id:4
+            },
+            {
+                text: "کمپین",
+                link_to: "/intro",
+                children: [],
+                id:5
             },
             {
                 text: "درباره ما",
                 link_to: "#",
                 children: [],
-                id:4
+                id:6
             },
             {
                 text: "تماس با ما",
                 link_to: "#",
                 children: [],
-                id:5
-            }
+                id:7
+            },
         ],
     } 
     componentDidMount() {

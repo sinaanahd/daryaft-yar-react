@@ -31,13 +31,11 @@ function withWebsiteData(Component) {
                     localStorage.setItem("user", JSON.stringify(user));
                 })
                 .catch(err => {
-                    const { status } = err.response;
-                    if (status === 404) {
-                        this.make_guest_user();
-                    }
-                    else if (status === 500) {
-                        console.log("server error");
-                    }
+                    this.setState({ pause: false });
+                    this.setState({ error: err.message });
+                    setTimeout(() => {
+                        this.setState({ error: false });
+                    }, 2000)
                 })
         }
         get_books = () => {

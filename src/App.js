@@ -34,6 +34,8 @@ import NotFound from "./Components/webiste/404/not-found";
 import CodePage from './Components/webiste/Login-SignUp/code/code';
 import SignUp from "./Components/webiste/Login-SignUp/singUp/singup";
 import FinalCartPage from './Components/webiste/final-cart/final-cart';
+import Panel from './Components/webiste/panel/panel';
+import PanelSettings from './Components/webiste/panel/panel-settings/panel-settings';
 class App extends Component {
   componentDidMount() {
   }
@@ -75,6 +77,8 @@ class App extends Component {
           <Route path="/cart" component={WebsiteCart} />
           <Route path="/verification-code" component={CodePage} />
           <Route path="/final-cart" component={FinalCartPage} />
+          <Route path="/panel" component={Panel} />
+          <Route path="/user-info" component={PanelSettings} />
           <Route path="/not-found" component={NotFound} />
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />
