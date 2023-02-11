@@ -68,6 +68,23 @@ class CartLeftCol extends Component {
                     </span>
                     <span className="detail-row">
                         <h5 className="title-detail">
+                            کیف پول :
+                        </h5>
+                        <span className="result">
+                            <span className="amount">
+                                {cart_summary ?
+                                    split_in_three(cart_summary.credit_discount_final)
+                                    :
+                                    0
+                                }
+                            </span>
+                            <span className="currency">
+                                تومان
+                            </span>
+                        </span>
+                    </span>
+                    <span className="detail-row">
+                        <h5 className="title-detail">
                             هزینه ارسال:
                         </h5>
                         <span className="result">

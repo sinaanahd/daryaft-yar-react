@@ -3,9 +3,10 @@ import withWebsiteData from '../../hoc/with-website-data';
 import SiteHeader from '../header/header';
 import SiteFooter from '../footer/site-footer';
 import Book from "../Shop/main-content/books/book";
+import Slider from './slider/slider';
+import { Link } from 'react-router-dom';
 import null_books from '../reusable/null_books';
-import smallBanner from "../../../assets/images/website/small-banner.png";
-import bigBanner from "../../../assets/images/website/big-banner.png";
+import bigBanner1 from "../../../assets/images/website/big-banner-1.jpg";
 import arrowLeftWhite from '../../../assets/images/website/arrow-left-w-icon.png';
 // import arr from '../../functions/matlan';
 class HomePage extends Component {
@@ -69,11 +70,11 @@ class HomePage extends Component {
                 <section className="home-page mm-width">
                     <section className="banners-wrapper">
                         <div className="big-banner">
-                            <img src={bigBanner} alt="" />
+                            <Link to="/shop">
+                                <img src={bigBanner1} alt="" />
+                            </Link>
                         </div>
-                        <div className="small-banner">
-                            <img src={smallBanner} alt="" />
-                        </div>
+                        <Slider />
                     </section>
 
                     <h3 className='res-title white'>

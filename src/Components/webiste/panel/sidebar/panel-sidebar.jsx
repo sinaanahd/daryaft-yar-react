@@ -15,6 +15,8 @@ class PanelSideBar extends Component {
         this.setState({ open : !open });
     }
     render() { 
+        let loc = window.location.pathname + "";
+        loc = loc.replace("/", "");
         return (
             <div className={this.state.open ? "panel-sidebar panel-opened" : "panel-sidebar"}>
                 <span
@@ -42,7 +44,7 @@ class PanelSideBar extends Component {
                     </li>
 
                     <li>
-                        <Link to="#">
+                        <Link to="/porseshkadeh">
                             <img src={sideBarIcon4} alt="" />
                             <span className='description'>
                                 پرسشکده
@@ -68,6 +70,9 @@ class PanelSideBar extends Component {
                         </Link>
                     </li>
                 </ul>
+                <span className={ loc + "-loc" + " active-item"}>
+
+                </span>
             </div>
         );
     }

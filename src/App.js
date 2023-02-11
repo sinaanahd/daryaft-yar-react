@@ -36,6 +36,10 @@ import SignUp from "./Components/webiste/Login-SignUp/singUp/singup";
 import FinalCartPage from './Components/webiste/final-cart/final-cart';
 import Panel from './Components/webiste/panel/panel';
 import PanelSettings from './Components/webiste/panel/panel-settings/panel-settings';
+import IncreaseCoin from './Components/webiste/panel/increase-coin/increase-coin';
+import MainPagePK from './Components/webiste/porseshkadeh/main-page/main-page';
+import QuestionsPage from './Components/webiste/porseshkadeh/questions/questions';
+import ReturnProd from './Components/webiste/return-prod/return-prod';
 class App extends Component {
   componentDidMount() {
   }
@@ -77,8 +81,16 @@ class App extends Component {
           <Route path="/cart" component={WebsiteCart} />
           <Route path="/verification-code" component={CodePage} />
           <Route path="/final-cart" component={FinalCartPage} />
+          <Route path="/return-prod" component={ReturnProd} />
+          {/* Panel */}
           <Route path="/panel" component={Panel} />
+          <Route path="/increase-coin" component={IncreaseCoin} />
           <Route path="/user-info" component={PanelSettings} />
+          {/* Panel */}
+          {/* porseshkadeh */}
+          <Route path="/porseshkadeh" component={MainPagePK} />
+          <Route path="/questions" component={QuestionsPage} />
+          {/* porseshkadeh */}
           <Route path="/not-found" component={NotFound} />
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" />
