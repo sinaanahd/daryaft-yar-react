@@ -56,15 +56,18 @@ class SiteFooter extends Component {
             <div className="footer-col footer-col-1">
               <h3 className="footer-title">راهنمای خرید</h3>
               <ul className="footer-links">
-                <li>
+                {/* <li>
                   <Link to="./#">نحوه ی ثبت سفارشات</Link>
+                </li> */}
+                <li>
+                  <Link to="/how-to-send">نحوه ارسال سفارشات</Link>
                 </li>
                 <li>
-                  <Link to="./#">مراحل ارسال سفارشات</Link>
+                  <Link to="/return-prod">نحوه بازگرداندن کالا</Link>
                 </li>
               </ul>
             </div>
-            <div className="footer-col footer-col-2">
+            {/* <div className="footer-col footer-col-2">
               <h3 className="footer-title">خدمات مشتریان</h3>
               <ul className="footer-links">
                 <li>
@@ -73,19 +76,16 @@ class SiteFooter extends Component {
                 <li>
                   <Link to="./#">نحوه بازگرداندن کالا</Link>
                 </li>
-              </ul>
-            </div>
+              </ul> 
+            </div> */}
             <div className="footer-col footer-col-3">
               <h3 className="footer-title">درباره ما</h3>
               <ul className="footer-links">
                 <li>
-                  <Link to="./#">درباره ما</Link>
+                  <Link to="/contact-us">تماس با ما</Link>
                 </li>
                 <li>
-                  <Link to="./#">تماس با ما</Link>
-                </li>
-                <li>
-                  <Link to="./#">پرسش های متداول</Link>
+                  <Link to="/faq">پرسش های متداول</Link>
                 </li>
               </ul>
             </div>

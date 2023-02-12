@@ -40,6 +40,9 @@ import IncreaseCoin from './Components/webiste/panel/increase-coin/increase-coin
 import MainPagePK from './Components/webiste/porseshkadeh/main-page/main-page';
 import QuestionsPage from './Components/webiste/porseshkadeh/questions/questions';
 import ReturnProd from './Components/webiste/return-prod/return-prod';
+import ContactUs from './Components/webiste/contact-us/contact-us';
+import HowToSend from './Components/webiste/how-to-send/how-to-send';
+import FAQ from './Components/webiste/faq/faq';
 class App extends Component {
   componentDidMount() {
   }
@@ -82,6 +85,9 @@ class App extends Component {
           <Route path="/verification-code" component={CodePage} />
           <Route path="/final-cart" component={FinalCartPage} />
           <Route path="/return-prod" component={ReturnProd} />
+          <Route path="/contact-us" component={ContactUs} />
+          <Route path="/how-to-send" component={HowToSend} />
+          <Route path="/faq" component={FAQ} />
           {/* Panel */}
           <Route path="/panel" component={Panel} />
           <Route path="/increase-coin" component={IncreaseCoin} />
