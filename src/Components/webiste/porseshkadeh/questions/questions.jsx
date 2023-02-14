@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import withWebsiteData from "../../../hoc/with-website-data";
 import PanelHeader from "../../panel/header/panel-header";
 import { Link } from "react-router-dom";
-import PanelSideBar from "../../panel/sidebar/panel-sidebar";
+import PKSideBar from "../../panel/sidebar/pk-side-bar";
 import arrowIcon from "../../../../assets/images/svg/arrow-right.svg";
 import filterIcon from "../../../../assets/images/svg/filter-icon.svg";
 class QuestionsPage extends Component {
@@ -125,7 +125,7 @@ class QuestionsPage extends Component {
               </span>
             </div>
           </div>
-          <PanelSideBar />
+          <PKSideBar />
         </section>
       </>
     );

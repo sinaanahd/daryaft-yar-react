@@ -180,6 +180,7 @@ function withWebsiteData(Component) {
         .then((res) => {
           const cart_summary = res.data;
           const cart = { ...this.state.cart };
+          console.log(cart_summary);
           cart.cart_summary = cart_summary;
           this.setState({ cart });
           localStorage.setItem("website_cart", JSON.stringify(cart));

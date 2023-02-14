@@ -4571,10 +4571,14 @@ li{
         @include flexMixin(column,center,center);
         li{
             margin: 0 0 45px;
+            width: 100%;
             a{
                 width: 100%;
-                @include flexMixin(row,space-between,center);
+                @include flexMixin(row,flex-start,center);
                 color: #fff;
+                img{
+                    margin: 0;
+                }
             }
         }
         .description{
@@ -4602,6 +4606,35 @@ li{
     .porseshkadeh-loc{
         top: 292px;
     }
+    .return-to-panel{
+        position: absolute;
+        bottom: 43px;
+        width: 20px;
+    }
+}
+.pk-sideBar{
+    ul {
+        li {
+            margin: 0 0 65px;
+        }
+    }
+    .porseshkadeh-loc{
+        top: 150px;
+    }
+    .questions-loc{
+        top: 238px;
+    }
+    .ask-question-loc{
+        top: 420px;
+    }
+}
+.pk-sideBar.panel-opened{
+    padding: 20px;
+}
+.paper-bgc{
+    background-image: url(../images/website/paper-bgc.jpg);
+    background-size: 100%;
+    background-attachment: fixed;
 }
 .panel-opened{
     width: 200px;
@@ -5131,6 +5164,106 @@ li{
                 height: 22px;
                 padding-bottom: 5px;
             }
+        }
+    }
+}
+.ask-question-wrapper{
+    width: 100%;
+    @include flexMixin(row-reverse,flex-start,flex-start);
+    color: #000;
+    .question-wrapper{
+        @include flexMixin(column,flex-start,center);
+        width: 100%;
+    }
+    .ask-question-content{
+        width: 100%;
+        margin: 30px 0 0;
+        @include flexMixin(column,flex-start,center);
+        .question-title{
+            font-size: 20px;
+            margin: 24px 0 0;
+            &:before{
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                content: " ";
+                display: inline-block;
+                margin-left: 5px;
+                background-color: $secondaryColor1;
+            }
+        }
+        .user-and-like{
+            width: 100%;
+            @include flexMixin(row,space-between,center);
+            margin: 35px 0;
+            .user-avatar-wrapper{
+                @include flexMixin(row,center,center);
+                font-size: 20px;
+            }
+            .image{
+                border: 2px solid $secondaryColor1;
+                border-radius: 50%;
+                padding: 0px;
+                width: 60px;
+                height: 60px;
+                @include flexMixin(row,center,center);
+                margin-left: 10px;
+            }
+            .thumbs{
+                @include flexMixin(row,space-between,center);
+                width: 120px;
+                .thumb{
+                    @include flexMixin(row,center,center);
+                    margin-left: 15px;
+                    span{
+                        @include flexMixin(row,center,center);
+                    }
+                    .number{
+                        font-size: 16px;
+                    }
+                }
+                img{
+                    margin-left: 5px;
+                }
+            }
+        }
+        .question-details{
+            width: 50%;
+            @include flexMixin(row,space-between,center);
+            color: #000C5E;
+            font-weight: bold;
+            .count{
+                margin-right: 5px;
+            }
+        }
+        .is-also-my-question{
+            width: 150px;
+            height: 42px;
+            border-radius: 8px;
+            color: $secondaryColor1;
+            background-color: #fff;
+            font-size: 14px;
+            @include flexMixin(row,center,center);
+            border: 2px solid $secondaryColor1;
+            margin: 30px 0;
+            cursor: pointer;
+            transition: $transition;
+            &:hover{
+                background-color: $secondaryColor1;
+                color: #fff;
+            }
+        }
+        .is-also-my-question.active{
+            background-color: $secondaryColor1;
+            color: #fff;
+        }
+    }
+    .question-img{
+        width: 800px;
+    }
+    .answer{
+        .answer-img{
+            width: 600px;
         }
     }
 }
