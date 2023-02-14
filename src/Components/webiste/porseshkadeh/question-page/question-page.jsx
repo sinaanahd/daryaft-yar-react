@@ -65,24 +65,131 @@ class QuestionPage extends Component {
               <p className="text">
                 پاسخی که برای سوال داری رو میتونی اینجا ارسال کنی
               </p>
-              <textarea placeholder="type ..."></textarea>
+              <span className="text-area-wrapper">
+                <textarea placeholder="type ..."></textarea>
+                <img src={photoIcon} />
+                <img src={attachLink} className="att" />
+              </span>
               <span className="send-wrapper">
                 <span className="send-btn">ارسال</span>
               </span>
-              <span className="icons-wrapper">
-                <img src={photoIcon} />
-                <img src={attachLink} />
-              </span>
+              <span className="icons-wrapper"></span>
             </div>
             <div className="answers-wrapper">
               <div className="answer">
-                <span className="user-name">
-                  <img src={userAviator} alt="" className="avatar" />
+                <span className="user-name-wrapper">
+                  <span className="avatar">
+                    <img src={userAviator} alt="" className="" />
+                  </span>
                   <span className="user-name">نام کاربری</span>
                 </span>
                 <img src={sampleQuestion} alt="" className="answer-img" />
                 <span className="answer-wrapper">
-                  <p className="title">متن جواب-</p>
+                  <p className="title">متن جواب -</p>
+                  <p className="answer-text">
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                    با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                    و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                    تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                    کاربردی می باشد.
+                  </p>
+                </span>
+                <span className="starts">
+                  <img src={starFill} className="star" />
+                  <img src={starFill} className="star" />
+                  <img src={starEmpty} className="star" />
+                  <img src={starEmpty} className="star" />
+                  <img src={starEmpty} className="star" />
+                </span>
+              </div>
+              <div className="answer">
+                <span className="user-name-wrapper">
+                  <span className="avatar">
+                    <img src={userAviator} alt="" className="" />
+                  </span>
+                  <span className="user-name">نام کاربری</span>
+                </span>
+                {/* <img src={sampleQuestion} alt="" className="answer-img" /> */}
+                <span className="answer-wrapper">
+                  <p className="title">متن جواب -</p>
+                  <p className="answer-text">
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                    با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                    و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                    تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                    کاربردی می باشد.
+                  </p>
+                </span>
+                <span className="starts">
+                  <img src={starFill} className="star" />
+                  <img src={starFill} className="star" />
+                  <img src={starEmpty} className="star" />
+                  <img src={starEmpty} className="star" />
+                  <img src={starEmpty} className="star" />
+                </span>
+              </div>
+              <div className="answer">
+                <span className="user-name-wrapper">
+                  <span className="avatar">
+                    <img src={userAviator} alt="" className="" />
+                  </span>
+                  <span className="user-name">نام کاربری</span>
+                </span>
+                {/* <img src={sampleQuestion} alt="" className="answer-img" /> */}
+                <span className="answer-wrapper">
+                  <p className="title">متن جواب -</p>
+                  <p className="answer-text">
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                    با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                    و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                    تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                    کاربردی می باشد.
+                  </p>
+                </span>
+                <span className="starts">
+                  <img src={starFill} className="star" />
+                  <img src={starFill} className="star" />
+                  <img src={starEmpty} className="star" />
+                  <img src={starEmpty} className="star" />
+                  <img src={starEmpty} className="star" />
+                </span>
+              </div>
+              <div className="answer">
+                <span className="user-name-wrapper">
+                  <span className="avatar">
+                    <img src={userAviator} alt="" className="" />
+                  </span>
+                  <span className="user-name">نام کاربری</span>
+                </span>
+                {/* <img src={sampleQuestion} alt="" className="answer-img" /> */}
+                <span className="answer-wrapper">
+                  <p className="title">متن جواب -</p>
+                  <p className="answer-text">
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                    با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                    و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                    تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                    کاربردی می باشد.
+                  </p>
+                </span>
+                <span className="starts">
+                  <img src={starFill} className="star" />
+                  <img src={starFill} className="star" />
+                  <img src={starEmpty} className="star" />
+                  <img src={starEmpty} className="star" />
+                  <img src={starEmpty} className="star" />
+                </span>
+              </div>
+              <div className="answer">
+                <span className="user-name-wrapper">
+                  <span className="avatar">
+                    <img src={userAviator} alt="" className="" />
+                  </span>
+                  <span className="user-name">نام کاربری</span>
+                </span>
+                {/* <img src={sampleQuestion} alt="" className="answer-img" /> */}
+                <span className="answer-wrapper">
+                  <p className="title">متن جواب -</p>
                   <p className="answer-text">
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
                     با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
