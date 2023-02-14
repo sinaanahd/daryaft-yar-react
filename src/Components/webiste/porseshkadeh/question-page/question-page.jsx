@@ -10,7 +10,7 @@ import attachLink from "../../../../assets/images/svg/attach-link.svg";
 import photoIcon from "../../../../assets/images/svg/photo-icon.svg";
 import starEmpty from "../../../../assets/images/svg/star-empty.svg";
 import starFill from "../../../../assets/images/svg/star-fill.svg";
-class AskQuestion extends Component {
+class QuestionPage extends Component {
   state = {};
   componentDidMount() {
     document.querySelector("#root").classList.add("paper-bgc");
@@ -65,7 +65,10 @@ class AskQuestion extends Component {
               <p className="text">
                 پاسخی که برای سوال داری رو میتونی اینجا ارسال کنی
               </p>
-              <textarea name="" id=""></textarea>
+              <textarea placeholder="type ..."></textarea>
+              <span className="send-wrapper">
+                <span className="send-btn">ارسال</span>
+              </span>
               <span className="icons-wrapper">
                 <img src={photoIcon} />
                 <img src={attachLink} />
@@ -105,4 +108,4 @@ class AskQuestion extends Component {
   }
 }
 
-export default withWebsiteData(AskQuestion);
+export default withWebsiteData(QuestionPage);

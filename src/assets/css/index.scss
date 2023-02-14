@@ -5258,6 +5258,36 @@ li{
             color: #fff;
         }
     }
+    .quick-answer{
+        width: 100%;
+        @include flexMixin(column , flex-start , flex-start);
+        .text{
+            @include flexMixin(row,space-between,center);
+            margin: 0 0 13px;
+            &::before{
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background-color: $secondaryColor1;
+                display: inline-block;
+                margin-left: 10px;
+                content: " ";
+            }
+        }
+        textarea{
+            width: 100%;
+            height: 200px;
+            resize: none;
+            border-radius: 16px;
+            border-color: #ababab;
+            background-color: #fff;
+            padding: 10px;
+            font-family: "main-font";
+            &:focus{
+                outline: $mainColor1;
+            }
+        }
+    }
     .question-img{
         width: 800px;
     }

@@ -43,7 +43,7 @@ import ReturnProd from './Components/webiste/return-prod/return-prod';
 import ContactUs from './Components/webiste/contact-us/contact-us';
 import HowToSend from './Components/webiste/how-to-send/how-to-send';
 import FAQ from './Components/webiste/faq/faq';
-import AskQuestion from "./Components/webiste/porseshkadeh/ask-question/ask-question";
+import QuestionPage from "./Components/webiste/porseshkadeh/question-page/question-page";
 class App extends Component {
   componentDidMount() {
   }
@@ -97,7 +97,7 @@ class App extends Component {
           {/* porseshkadeh */}
           <Route path="/porseshkadeh" component={MainPagePK} />
           <Route path="/questions" component={QuestionsPage} />
-          <Route path="/ask-question" component={AskQuestion} />
+          <Route path="/question/:id" component={QuestionPage} />
           {/* porseshkadeh */}
           <Route path="/not-found" component={NotFound} />
           <Redirect from="/" exact to="/home" />
