@@ -63,7 +63,7 @@ class SiteHeader extends Component {
         <div className="first-row">
           <div className="btns-wrapper">
             <span className="enter-btn-wrapper header-btn">
-              <Link to={name !== "ورود / ثبت نام" ? "/home" : "/Login"}>
+              <Link to={name !== "ورود / ثبت نام" ? "/panel" : "/Login"}>
                 {!is_logged_in ? (
                   "ثبت‌نام / ورود"
                 ) : (

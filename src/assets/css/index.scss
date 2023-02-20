@@ -4445,6 +4445,10 @@ li{
     .side{
         width: 25%;
         @include flexMixin(row, flex-start, center);
+        a{
+            color: $mainColor1;
+            font-weight: bold;
+        }
     }
     .end{
         justify-content: flex-end;
@@ -4489,6 +4493,9 @@ li{
             cursor: pointer;
         }
     }
+    .responsive-menu{
+        display: none;
+    }
 }
 .notifactions{
     width: 271px;
@@ -4503,6 +4510,7 @@ li{
     padding: 5px;
     color: #000;
     font-size: 14px;
+    z-index: 9999;
     .notif{
         width: 100%;
         height: 135px;
@@ -4530,6 +4538,29 @@ li{
             border: 2px solid $secondaryColor1;
             font-weight: bold;
 
+        }
+    }
+    .login-first{
+        @include flexMixin(column , space-between, center);
+        width: 100%;
+        @include styler(#000 , $background1 , 14px , 8px);
+        padding: 20px 5px;
+        p{
+            width: 100%;
+            text-align: center;
+        }
+        a{
+            @include styler($secondaryColor1 , unset, 12px, 8px);
+            width: 100px;
+            @include flexMixin(row,center,center);
+            border: 2px solid $secondaryColor1;
+            height: 32px;
+            margin: 20px 0 0;
+            transition: $transition;
+            &:hover{
+                background-color: $secondaryColor1;
+                color: #fff;
+            }
         }
     }
 }
@@ -4598,10 +4629,10 @@ li{
         transition: $transition;
     }
     .panel-loc{
-        top: 220px;
+        top: 258px;
     }
     .user-info-loc{
-        top: 435px;
+        top: 400px;
     }
     .porseshkadeh-loc{
         top: 292px;
@@ -4610,6 +4641,9 @@ li{
         position: absolute;
         bottom: 43px;
         width: 20px;
+    }
+    .main-panel-loc{
+        top : 191px;
     }
 }
 .pk-sideBar{
@@ -4725,6 +4759,7 @@ li{
         .sub-title{
             color: $secondaryColor1;
             font-weight: normal;
+            @include flexMixin(row,flex-start,center);
             &::before{
                 display: inline-block;
                 width: 13px;
@@ -4758,6 +4793,11 @@ li{
             color: $mainColor1;
             text-align: center;
             font-weight: bold;
+            transition: $transition;
+            &:hover {
+                color: #fff;
+                background-color: $mainColor1;
+            }
         }
     }
 }
@@ -4863,6 +4903,150 @@ li{
     }
 }
 
+.main-panel-wrapper{
+    @include flexMixin(row-reverse,space-between,flex-start);
+    width: 100%;
+    color: #000;
+    margin: 0 0 40px;
+    .main-content-wrapper{
+        @include flexMixin(column , flex-start , center);
+        // width: 100%;
+        .banners{
+            @include flexMixin(row,space-between,center);
+            .banner{
+                img{
+                    width: 300px;
+                }
+            }
+            .banner-1{
+                margin-left: 32px;
+            }
+        }
+        .recent-visits{
+            width: 100%;
+            margin: 20px 0;
+            border: 2px dashed $secondaryColor1;
+            @include styler(#000 , #fff , 15px , 16px);
+            height : 300px;
+            padding: 15px;
+            .title{
+                font-size: 24px;
+            }
+        }
+    }
+    .shop-and-pk-wrapper{
+        width: 100%;
+        @include flexMixin(row,space-between,flex-start);
+        .wrapper{
+            padding: 10px 20px;
+            box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.1);
+            border: 2px solid #dedede;
+            border-radius: 16px;
+            width: 100%;
+            min-height: 400px;
+            background-color: #fff;
+            @include flexMixin(column , space-between , center);
+            .title{
+                font-size: 24px;
+                width: 100%;
+            }
+        }
+        .btn-wrapper{
+            width: 100%;
+            @include flexMixin(row,flex-end , center);
+            .border{
+                @include styler($secondaryColor1 , #fff ,13px ,8px);
+                @include flexMixin(row,center,center);
+                margin-right: 5px;
+                border: 2px solid $secondaryColor1;
+                padding: 0 15px;
+                font-weight: bold;
+                height: 42px;
+                transition: $transition;
+                &:hover{
+                    color: #fff;
+                    background-color: $secondaryColor1;
+                }
+            }
+            .blue-btn{
+                @include styler(#fff , $mainColor1, 13px, 8px);
+                @include flexMixin(row, center, center);
+                margin-right: 5px;
+                border: 2px solid $mainColor1;
+                padding: 0 15px;
+                font-weight: bold;
+                height: 42px;
+                transition: $transition;
+                &:hover{
+                    color: $mainColor1;
+                    background-color: #fff;
+                }
+            }
+        }
+        .shop{
+            margin-left: 32px;
+        }
+    }
+    .scores {
+        border: 3px solid #0091B5;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 17px;
+        .content {
+            padding: 0 10px;
+            width: 100%;
+            margin: 50px 0 100px;
+        }
+    
+        .sub-title {
+            color: $secondaryColor1;
+            font-weight: normal;
+    
+            &::before {
+                display: inline-block;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                margin-left: 5px;
+                background-color: $secondaryColor1;
+                content: " ";
+            }
+        }
+    
+        .s-item {
+            @include flexMixin(row, space-between, flex-start);
+            width: 100%;
+            margin: 0 0 50px;
+    
+            .details {
+                @include flexMixin(column, flex-start, flex-start);
+                color: $mainColor1;
+                font-weight: bold;
+            }
+        }
+    
+        .btn-wrapper {
+            width: 100%;
+            @include flexMixin(row, center, center);
+        }
+    
+        .add-coin {
+            @include flexMixin(row, center, center);
+            width: 270px;
+            height: 46px;
+            border-radius: 20px;
+            border: 2px solid $mainColor1;
+            color: $mainColor1;
+            text-align: center;
+            font-weight: bold;
+            transition: $transition;
+            &:hover{
+                color: #fff;
+                background-color: $mainColor1;
+            }
+        }
+    }
+}
 /* panel */
 
 /*  porseshkadeh */
@@ -5474,7 +5658,119 @@ li{
 }
 .my-questions{
     width: 100%;
-    @include flexMixin(row,space-between,flex-start);
+    @include flexMixin(row-reverse,space-between,flex-start);
+    color: #000;
+    .main-boxses{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 30px;
+        column-gap: 50px;
+        margin : 0 0 50px;
+    }
+    .my-questions{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        width: 100%;
+        @include flexMixin(column,flex-start,center);
+        @include styler(#000 , #fff ,20px , 16px);
+        border: 1px solid #bbb;
+        min-height: 351px;
+        padding: 15px 15px 0;
+    }
+    .title{
+        font-size: 24px;
+        width: 100%;
+        margin: 0 0 15px;
+        @include flexMixin(row,flex-start,center);
+        &:before{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #b34fae;
+            display: inline-block;
+            margin-left: 10px;
+            content: " ";
+        }
+    }
+    .questions{
+        width: 100%;
+        height: 300px;
+        overflow-y: scroll;
+    }
+    .question{
+        width: 100%;
+        height: 185px;
+        border: 1px solid #dadada;
+        background-color: #fff;
+        border-radius: 8px;
+        margin: 0 0 10px;
+        padding: 15px;
+        @include flexMixin(column , space-between , center);
+        .question-title{
+            font-weight: normal;
+            font-size: 20px;
+            width: 100%;
+        }
+        .btn-tags{
+            width: 100%;
+            @include flexMixin(row,space-between,center);
+            font-size: 14px;
+        }
+        .answer-btn{
+            @include styler(#fff , $secondaryColor1 , 14px ,8px );
+            width: 109px;
+            height: 42px;
+            @include flexMixin(row,center,center);
+            font-weight: bold;
+            transition: $transition;
+            border: 2px solid $secondaryColor1;
+            cursor: pointer;
+            &:hover{
+                background-color: #fff;
+                color: $secondaryColor1;
+            }
+        }
+        .tags-wrapper{
+            @include flexMixin(row,space-between,center);
+            .tag{
+                width: 89px;
+                height: 41px;
+                border-radius: 8px;
+                border: 1px solid #ededed;
+                @include flexMixin(row,center,center);
+                margin-right: 8px;
+            }
+        }
+    }
+    .second-row-boxes{
+        @include styler(#000 , #f3f3f3 , 14px , 8px );
+        padding: 16px 16px 0;
+        .question {
+            width: 100%;
+            height: 165px;
+        }
+        .title{
+            &::before{
+                width:15px;
+                height: 15px;
+            }
+        }
+    }
+    .answered-questions{
+        .title{
+            &::before{
+                background-color: #0080c5;
+            }
+        }
+    }
+    .also-my-question{
+        .title {
+            &::before {
+                background-color: #FBF932;
+            }
+        }
+    }
 }
 /* porseshkadeh */
 
@@ -5660,6 +5956,240 @@ li{
     }
 }
 @media (max-width:991px) {
+    .ask-question-wrapper{
+        padding: 0 10px;
+    }
+    .questions-page-wrapper{
+        padding: 0 10px;
+        .questions-wrapper{
+            .question{
+                .title{
+                    font-size: 16px;
+                }
+                .tags-btns{
+                    @include flexMixin(row , space-between , center);
+                }
+                .tags{
+                    .tag{
+                        margin: 0 5px;
+                        &:nth-child(2),&:nth-child(3){
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    .main-page-pk{
+        padding : 0 20px 40px;
+        margin: 20px 0 40px;
+        .second-row-pk{
+            margin: 30px 0 0;
+            @include flexMixin(column-reverse , flex-start , center );
+            .cols{
+                width : 100%;
+                padding: 20px 10px;
+            }
+            .ask-question{
+                margin: 90px 0 0;
+            }
+        }
+        .latest-question{
+            .title{
+                &::before{
+                    right: 5px;
+                    top: 30px;
+                }
+            }
+            .btns-wrapper{
+                .answer-btn{
+                    font-size: 12px;
+                    width: 84px;
+                    height: 35px;
+                }
+                .tags{
+                    width: unset;
+                    .tag{
+                        font-size: 12px;
+                        width: 79px;
+                        height: 35px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+            .question{
+                padding: 10px;
+                justify-content: space-between;
+            }
+            .all-question{
+                left: calc(50% - 55px);
+            }
+        }
+    }
+    .panel-header{
+        .start , .middle{
+            display: none;
+        }
+        .responsive-menu {
+            @include flexMixin(row,center,center);
+            width: 80px;
+        }
+        .end{
+            width: auto;
+            .icons{
+                margin: 0 0 0 20px;
+            }
+        }
+    }
+    .rm-resposvie-sider-bar{
+        transition: $transition;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top:0;
+        right: 0;
+        @include flexMixin(row,space-between,flex-start);
+        z-index: 999999;
+        background-color: #fff;
+        .blue-close{
+            height: 100%;
+            border-radius: 16px 0 0 16px;
+            background-color: $mainColor1;
+            width: 56px;
+            @include flexMixin(row,center,flex-start);
+            padding: 20px 0;
+            position: relative;
+            img{
+                width: 25px;
+            }
+        }
+        .rs-menu-data{
+            @include flexMixin(column , flex-start ,center);
+            width: calc(100% - 56px);
+            padding: 30px 20px 40px;
+            height: 100%;
+        }
+        .rs-user-wrapper{
+            a{
+                @include flexMixin(row,center,center);
+                color: $mainColor1;
+                font-weight: bold;
+                font-size: 20px;
+                img{
+                    margin-left: 10px;
+                    width: 40px;
+                }
+            }
+        }
+        .side-bar-items{
+            width: 100%;
+            height: 300px;
+            @include flexMixin(column,space-between,center);
+            margin: 65px 0 100px;
+            li,a{
+                width: 100%;
+            }
+            img{
+                margin: 0 0 0 20px;
+            }
+            a{
+                @include flexMixin(row,flex-start,center);
+                color: $mainColor1;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+        .rm-back-btn{
+            width: 100%;
+            position: absolute;
+            bottom: 40px;
+            right: 76px;
+            @include flexMixin(row,flex-start,center);
+            font-size: 18px;
+            font-weight: bold;
+            color: $mainColor1;
+            img{
+                margin:0 0 0 20px;
+                width: 26px;
+            }
+        }
+        .rs-active-identifier{
+            position: absolute;
+            width:13px;
+            height: 62px;
+            border-radius: 0px 8px 8px 0px;
+            display: block;
+            background-color: #fff;
+            left: 0;
+            top: -100px;
+        }
+        .panel-top , .questions-top{
+            top : 205px;
+        }
+        .main-panel-top , .porseshkadeh-top{
+            top: 120px;
+        }
+        .user-info-top , .ask-question-top{
+            top: 392px;
+        }
+        .my-questions-top{
+            top: 300px;
+        }
+    }
+    .delay {
+        right: -100vw;
+    }
+    .panel-sidebar{
+        display: none;
+    }
+    .usesr-info-section {
+        .layout{
+            flex-direction: column;
+            @include flexMixin(column, flex-start, center);
+        }
+        .user-info{
+            @include flexMixin(column,flex-start,center);
+            flex: unset;
+            width: 100%;
+            margin: 40px 0;
+        }
+        .student-data{
+            @include flexMixin(column, flex-start, center);
+            flex: unset;
+            width: 100%;
+            margin:  0 0 50px;
+        }
+        .forms{
+            @include flexMixin(column, flex-start, center);
+            width: 100%;
+            padding: 0;
+            .form{
+                textarea{
+                    padding:20px 40px;
+                }
+            }
+        }
+        .submit{
+            margin-right: 0;
+        }
+        .selects{ 
+            img{
+                top:20px;
+            }
+        }
+    }
+    .panel-main-area{
+        .panel-grid{
+            @include flexMixin(column , flex-start , center);
+        }
+        .latest-order{
+            height: 300px;
+        }
+    }
+    .main-panel-wrapper{
+        flex-direction: column;
+    }
     .site-header{
         padding: 0;
         background-color: unset;

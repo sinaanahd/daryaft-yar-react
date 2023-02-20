@@ -32,7 +32,7 @@ class PanelSideBar extends Component {
         </span>
         <ul>
           <li>
-            <Link to="/panel">
+            <Link to="/main-panel">
               <img src={sideBarIcon2} alt="" />
               <span className="description">پیشخوان</span>
             </Link>
@@ -51,12 +51,12 @@ class PanelSideBar extends Component {
             </Link>
           </li>
 
-          <li>
+          {/* <li>
             <Link to="#">
               <img src={sideBarIcon5} alt="" />
               <span className="description">گزارشیار</span>
             </Link>
-          </li>
+          </li> */}
 
           <li>
             <Link to="/user-info">
@@ -67,8 +67,8 @@ class PanelSideBar extends Component {
         </ul>
         <span className={loc + "-loc" + " active-item"}></span>
         <span className="return-to-panel">
-          <Link to="/panel">
-            <img src={backArrow} alt="بازگشت به پنل" />
+          <Link to="/home">
+            <img src={backArrow} alt=" خروج از پنل" />
           </Link>
         </span>
       </div>

@@ -60,7 +60,7 @@ class PKSideBar extends Component {
         </ul>
         <span className={loc + "-loc" + " active-item"}></span>
         <span className="return-to-panel">
-          <Link to="/porseshkadeh">
+          <Link to="/main-panel">
             <img src={backArrow} alt="بازگشت به پنل" />
           </Link>
         </span>
