@@ -7,6 +7,12 @@ import { Link } from "react-router-dom";
 import sampleBanner from "../../../../assets/images/svg/sample-rectangle.svg";
 class MainPanel extends Component {
   state = {};
+  componentDidMount() {
+    const { user } = this.props;
+    if (!user) {
+      window.location.pathname = "/Login";
+    }
+  }
   render() {
     const { user } = this.props;
     return (

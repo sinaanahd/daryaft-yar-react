@@ -7,6 +7,12 @@ import Scores from "./scores/scores";
 import Orders from "./orders/orders";
 class Panel extends Component {
   state = {};
+  componentDidMount() {
+    const { user } = this.props;
+    if (!user) {
+      window.location.pathname = "/Login";
+    }
+  }
   render() {
     const { user } = this.props;
     return (

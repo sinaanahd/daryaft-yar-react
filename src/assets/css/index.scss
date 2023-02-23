@@ -5956,6 +5956,38 @@ li{
     }
 }
 @media (max-width:991px) {
+    .aq-page-wrapper{
+        padding: 0 16px;
+    }
+    .my-questions {
+        .main-boxses{
+            @include flexMixin(column , flex-start , center);
+            padding: 0 16px;
+            .title {
+                font-size: 18px;
+            }
+            .question{
+                .question-title{
+                    font-size: 16px;
+                }
+                .answer-btn{
+                    width: 84px;
+                    height: 32px;
+                    font-size: 12px;
+                }
+                .tag {
+                    min-width: 79px;
+                    height: 35px;
+                    font-size: 12px;
+                    &:nth-child(3),
+                    &:nth-child(4),
+                    &:nth-child(5){
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
     .ask-question-wrapper{
         padding: 0 10px;
     }
@@ -5972,7 +6004,7 @@ li{
                 .tags{
                     .tag{
                         margin: 0 5px;
-                        &:nth-child(2),&:nth-child(3){
+                        &:nth-child(3),&:nth-child(4){
                             display: none;
                         }
                     }
@@ -6125,16 +6157,16 @@ li{
             top: -100px;
         }
         .panel-top , .questions-top{
-            top : 205px;
+            top : 250px;
         }
         .main-panel-top , .porseshkadeh-top{
-            top: 120px;
+            top: 158px;
         }
         .user-info-top , .ask-question-top{
-            top: 392px;
+            top: 432px;
         }
         .my-questions-top{
-            top: 300px;
+            top: 345px;
         }
     }
     .delay {
