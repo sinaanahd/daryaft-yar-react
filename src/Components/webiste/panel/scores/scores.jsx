@@ -1,39 +1,43 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import walletScore from "../../../../assets/images/svg/wallet-score.svg";
+import coinScore from "../../../../assets/images/svg/coins-score-vector.svg";
 class Scores extends Component {
   state = {};
   render() {
     const { user, wallet, coin } = this.props;
     return (
-      <div className="scores g-item">
-        <h3 className="title">امتیازات</h3>
-        <div className="content">
-          <span className="s-item">
-            <h4 className="sub-title">اعتبار کیف پول</h4>
-            <span className="details">
-              <span className="amount">
-                {user ? wallet.amount : 0}
-                &nbsp; تومان
-              </span>
-              <span className="days">
-                {user ? wallet.days : 0}
-                &nbsp; روز مهلت استفاده
-              </span>
-            </span>
+      <div className="scores">
+        <div className="details-wrapper">
+          <h3 className="title">اعتبار کیف پول</h3>
+          <span className="amount-wrpper">
+            <span className="amount">{user.amount}</span>
+            تومان
           </span>
-          <span className="s-item">
-            <h4 className="sub-title">تعداد سکه های حسابت</h4>
-            <span className="details">
-              {user ? coin : 0}
-              &nbsp; سکه
-            </span>
+          <span className="days">
+            <span className="amount">{user.days_left}</span>
+            روز مهلت استفاده
           </span>
+          <img src={walletScore} className="vactor-img" />
         </div>
-        <div className="btn-wrapper">
-          <Link to={user ? "/increase-coin" : "/Login"} className="add-coin">
-            افزایش سکه‌ها
-          </Link>
+        <div className="details-wrapper">
+          <h3 className="title">تعداد سکه های حسابت</h3>
+          <span className="amount-wrpper">
+            <span className="amount">{user.coin}</span>
+            سکه
+          </span>
+          <img src={coinScore} className="vactor-img" />
         </div>
+        <p className="text">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+          از طراحان گرافیک است.
+        </p>
+        <Link to="#" className="btns-class">
+          دعوت از دوستان
+        </Link>
+        <Link to="/increase-coin" className="btns-class">
+          خرید سکه
+        </Link>
       </div>
     );
   }

@@ -4,9 +4,15 @@ import PanleHeader from "../header/panel-header";
 import PanelSideBar from "../sidebar/panel-sidebar";
 import Scores from "../scores/scores";
 import { Link } from "react-router-dom";
+import Book from "../../Shop/main-content/books/book";
+import RecentVisit from "./recent-visit/recent-visit";
 import sampleBanner from "../../../../assets/images/svg/sample-rectangle.svg";
+import shopIcon from "../../../../assets/images/svg/shop-icon-vector.svg";
+import pkIcon from "../../../../assets/images/svg/pk-icon-vector.svg";
 class MainPanel extends Component {
-  state = {};
+  state = {
+    active_recent: "shop",
+  };
   componentDidMount() {
     const { user } = this.props;
     if (!user) {
@@ -14,7 +20,7 @@ class MainPanel extends Component {
     }
   }
   render() {
-    const { user } = this.props;
+    const { user, books, change_active, add_to_cart, ids } = this.props;
     return (
       <>
         <PanleHeader user={user} />
@@ -36,12 +42,19 @@ class MainPanel extends Component {
                 <img src={sampleBanner} alt="" />
               </div>
             </div>
-            <div className="recent-visits">
-              <h2 className="title">بازدید‌های اخیر شما</h2>
-            </div>
+            <RecentVisit
+              books={books}
+              change_active={change_active}
+              add_to_cart={add_to_cart}
+              ids={ids}
+              active_recent={this.state.active_recent}
+            />
             <div className="shop-and-pk-wrapper">
               <div className="wrapper shop">
-                <h2 className="title">فروشگاه</h2>
+                <span className="title-wrapper">
+                  <img src={shopIcon} />
+                  <h2 className="title">فروشگاه</h2>
+                </span>
                 <span className="btn-wrapper">
                   <Link to="/shop" className="blue-btn">
                     مخزن کتاب‌ها
@@ -52,12 +65,97 @@ class MainPanel extends Component {
                 </span>
               </div>
               <div className="wrapper pk">
-                <h2 className="title">پرسشکده</h2>
+                <span className="title-wrapper">
+                  <img src={pkIcon} />
+                  <h2 className="title">پرسشکده</h2>
+                </span>
+                <h3 className="hotetst-question">داغ ترین سوالات</h3>
+                <span className="questions-wrapper">
+                  <span className="question">
+                    <h4 className="question-title">
+                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
+                      اکسایش محسوب میشن ؟
+                    </h4>
+                    <span className="tag-btn-wrapper">
+                      <span className="answer-btn">پاسخ دادن</span>
+                      <span className="tags">
+                        <span className="tag">زیست</span>
+                        <span className="tag">زیست</span>
+                      </span>
+                    </span>
+                  </span>
+                  <span className="question">
+                    <h4 className="question-title">
+                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
+                      اکسایش محسوب میشن ؟
+                    </h4>
+                    <span className="tag-btn-wrapper">
+                      <span className="answer-btn">پاسخ دادن</span>
+                      <span className="tags">
+                        <span className="tag">زیست</span>
+                        <span className="tag">زیست</span>
+                      </span>
+                    </span>
+                  </span>
+                  <span className="question">
+                    <h4 className="question-title">
+                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
+                      اکسایش محسوب میشن ؟
+                    </h4>
+                    <span className="tag-btn-wrapper">
+                      <span className="answer-btn">پاسخ دادن</span>
+                      <span className="tags">
+                        <span className="tag">زیست</span>
+                        <span className="tag">زیست</span>
+                      </span>
+                    </span>
+                  </span>
+                  <span className="question">
+                    <h4 className="question-title">
+                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
+                      اکسایش محسوب میشن ؟
+                    </h4>
+                    <span className="tag-btn-wrapper">
+                      <span className="answer-btn">پاسخ دادن</span>
+                      <span className="tags">
+                        <span className="tag">زیست</span>
+                        <span className="tag">زیست</span>
+                      </span>
+                    </span>
+                  </span>
+                  <span className="question">
+                    <h4 className="question-title">
+                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
+                      اکسایش محسوب میشن ؟
+                    </h4>
+                    <span className="tag-btn-wrapper">
+                      <span className="answer-btn">پاسخ دادن</span>
+                      <span className="tags">
+                        <span className="tag">زیست</span>
+                        <span className="tag">زیست</span>
+                      </span>
+                    </span>
+                  </span>
+                  <span className="question">
+                    <h4 className="question-title">
+                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
+                      اکسایش محسوب میشن ؟
+                    </h4>
+                    <span className="tag-btn-wrapper">
+                      <span className="answer-btn">پاسخ دادن</span>
+                      <span className="tags">
+                        <span className="tag">زیست</span>
+                        <span className="tag">زیست</span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
                 <span className="btn-wrapper">
                   <Link to="/porseshkadeh" className="blue-btn">
                     رفتن به پرسشکده
                   </Link>
                 </span>
+                <span className="white-blur"></span>
               </div>
             </div>
           </div>
