@@ -4,15 +4,14 @@ import PanleHeader from "../header/panel-header";
 import PanelSideBar from "../sidebar/panel-sidebar";
 import Scores from "../scores/scores";
 import { Link } from "react-router-dom";
-import Book from "../../Shop/main-content/books/book";
+import Question from "../../porseshkadeh/Question/question";
+import make_arr_question from "../../../functions/questions_arr";
 import RecentVisit from "./recent-visit/recent-visit";
 import sampleBanner from "../../../../assets/images/svg/sample-rectangle.svg";
 import shopIcon from "../../../../assets/images/svg/shop-icon-vector.svg";
 import pkIcon from "../../../../assets/images/svg/pk-icon-vector.svg";
 class MainPanel extends Component {
-  state = {
-    active_recent: "shop",
-  };
+  state = {};
   componentDidMount() {
     const { user } = this.props;
     if (!user) {
@@ -20,7 +19,16 @@ class MainPanel extends Component {
     }
   }
   render() {
-    const { user, books, change_active, add_to_cart, ids } = this.props;
+    const {
+      user,
+      books,
+      change_active,
+      add_to_cart,
+      ids,
+      recenet_visit_arr,
+      recenet_place,
+      add_to_recent_visit,
+    } = this.props;
     return (
       <>
         <PanleHeader user={user} />
@@ -47,7 +55,9 @@ class MainPanel extends Component {
               change_active={change_active}
               add_to_cart={add_to_cart}
               ids={ids}
-              active_recent={this.state.active_recent}
+              recenet_place={recenet_place}
+              recenet_visit_arr={recenet_visit_arr}
+              add_to_recent_visit={add_to_recent_visit}
             />
             <div className="shop-and-pk-wrapper">
               <div className="wrapper shop">
@@ -70,86 +80,11 @@ class MainPanel extends Component {
                   <h2 className="title">پرسشکده</h2>
                 </span>
                 <h3 className="hotetst-question">داغ ترین سوالات</h3>
-                <span className="questions-wrapper">
-                  <span className="question">
-                    <h4 className="question-title">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </h4>
-                    <span className="tag-btn-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </span>
-                  <span className="question">
-                    <h4 className="question-title">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </h4>
-                    <span className="tag-btn-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </span>
-                  <span className="question">
-                    <h4 className="question-title">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </h4>
-                    <span className="tag-btn-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </span>
-                  <span className="question">
-                    <h4 className="question-title">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </h4>
-                    <span className="tag-btn-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </span>
-                  <span className="question">
-                    <h4 className="question-title">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </h4>
-                    <span className="tag-btn-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </span>
-                  <span className="question">
-                    <h4 className="question-title">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </h4>
-                    <span className="tag-btn-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </span>
-                </span>
+                <div className="questions-wrapper">
+                  {make_arr_question(10).map((i) => (
+                    <Question key={i} />
+                  ))}
+                </div>
                 <span className="btn-wrapper">
                   <Link to="/porseshkadeh" className="blue-btn">
                     رفتن به پرسشکده

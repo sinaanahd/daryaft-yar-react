@@ -74,16 +74,20 @@ class CartLeftCol extends Component {
               <span className="currency">تومان</span>
             </span>
           </span>
-          {cart_summary.dis_code_details.status ? (
-            <span className="detail-row">
-              <h5 className="title-detail">کد تخفیف :</h5>
-              <span className="result">
-                <span className="amount">
-                  {split_in_three(cart_summary.dis_code_details.amount)}
+          {cart_summary ? (
+            cart_summary.dis_code_details.status ? (
+              <span className="detail-row">
+                <h5 className="title-detail">کد تخفیف :</h5>
+                <span className="result">
+                  <span className="amount">
+                    {split_in_three(cart_summary.dis_code_details.amount)}
+                  </span>
+                  <span className="currency">تومان</span>
                 </span>
-                <span className="currency">تومان</span>
               </span>
-            </span>
+            ) : (
+              <></>
+            )
           ) : (
             <></>
           )}
@@ -123,7 +127,9 @@ class CartLeftCol extends Component {
               src={arrowDown}
               className={this.state.discount ? "arrow down" : "arrow"}
               onClick={() => {
-                this.open_discount_modal();
+                if (cart_summary) {
+                  this.open_discount_modal();
+                }
               }}
             />
           </span>

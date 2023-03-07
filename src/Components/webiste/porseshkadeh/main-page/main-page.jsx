@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import withWebsiteData from "../../../hoc/with-website-data";
 import PanleHeader from "../../panel/header/panel-header";
 import PKSideBar from "../../panel/sidebar/pk-side-bar";
+import { Link } from "react-router-dom";
+import Question from "../Question/question";
+import make_arr_question from "../../../functions/questions_arr";
 import bigSlider from "../../../../assets/images/website/big-banner-1.jpg";
 import plusQuestion from "../../../../assets/images/svg/plus-question.svg";
-import { Link } from "react-router-dom";
 class MainPagePK extends Component {
   state = {
     active: 0,
@@ -86,123 +88,9 @@ class MainPagePK extends Component {
               <div className="latest-question cols">
                 <h3 className="title">آخرین سوال ها</h3>
                 <div className="questions-wrapper">
-                  <div className="question">
-                    <p className="question-text">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </p>
-                    <span className="btns-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="question">
-                    <p className="question-text">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </p>
-                    <span className="btns-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="question">
-                    <p className="question-text">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </p>
-                    <span className="btns-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="question">
-                    <p className="question-text">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </p>
-                    <span className="btns-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="question">
-                    <p className="question-text">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </p>
-                    <span className="btns-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="question">
-                    <p className="question-text">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </p>
-                    <span className="btns-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="question">
-                    <p className="question-text">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </p>
-                    <span className="btns-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="question">
-                    <p className="question-text">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </p>
-                    <span className="btns-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </div>
-                  <div className="question">
-                    <p className="question-text">
-                      قندکافت و اکسایش پیرووات و چرخه کربس هر سه تا یه نوع
-                      اکسایش محسوب میشن ؟
-                    </p>
-                    <span className="btns-wrapper">
-                      <span className="answer-btn">پاسخ دادن</span>
-                      <span className="tags">
-                        <span className="tag">زیست</span>
-                        <span className="tag">زیست</span>
-                      </span>
-                    </span>
-                  </div>
+                  {make_arr_question(20).map((i) => (
+                    <Question key={i} />
+                  ))}
                 </div>
                 <Link to="/questions" className="all-question">
                   همه سوال‌ها

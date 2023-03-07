@@ -7,10 +7,10 @@ class Book extends Component {
   state = {};
   componentDidMount() {}
   render() {
-    const { book, change_active, add_to_cart, ids } = this.props;
-
+    const { book, change_active, add_to_cart, ids, add_to_recent_visit } =
+      this.props;
     return (
-      <div className="book">
+      <div className={"book " + "book-" + book.id}>
         {ids ? (
           !ids.includes(book.id) ? (
             <span className="add-to-cart">
@@ -41,6 +41,8 @@ class Book extends Component {
             to={`/single-id/${book.id}`}
             onClick={() => {
               change_active(book);
+              //alert();
+              add_to_recent_visit(book, "shop");
             }}>
             <img src={book.img_url} alt={book.name} />
           </Link>
@@ -50,6 +52,7 @@ class Book extends Component {
             to={`/single-id/${book.id}`}
             onClick={() => {
               change_active(book);
+              add_to_recent_visit(book, "shop");
             }}>
             {book.name}
           </Link>

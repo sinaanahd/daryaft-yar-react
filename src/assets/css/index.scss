@@ -4772,13 +4772,20 @@ li{
         height: 340px;
         overflow: hidden;
         .imgs-td{
-            width: 350px;
+            width: 350px!important;
         }
         .imgs-wrapper{
             @include flexMixin(row,flex-start , center);
+            flex-wrap: wrap;
             gap: 5px;
+            a{
+                width: 60px;
+                height: 60px;
+            }
             img{
+                width: 100%;
                 margin: 0;
+                border-radius: 10px;
             }
         }
         .table-wrapper{
@@ -4788,11 +4795,20 @@ li{
             overflow-y: scroll;
         }
         table{
-            width: 100%;
+            max-width: 1050px;
+            min-width: 1000px;
             font-size: 12px;
             text-align: right;
             padding: 0 30px;
             border-collapse: collapse;
+            table-layout: fixed;
+            overflow-x: scroll;
+            .price-td{
+                width: 150px;
+            }
+            .date-td{
+                width: 100px;
+            }
             thead{
                 tr{
                     border-bottom: 1px solid #d3d3d3;
@@ -4807,13 +4823,66 @@ li{
             }
             td,
             th {
-                padding: 20px 0 20px;
+                padding: 20px 10px 20px;
+            }
+            td,th{
+                &:nth-child(1){
+                    width: 150px!important;
+                    overflow-x: scroll;
+                    line-break: anywhere;
+                }
             }
         }
+    }
+    .code-r{
+        color: $redColor;
+        font-weight: bold;
+    }
+    .code-g{
+        color: $greenColor;
+        font-weight: bold;
     }
     .my-orders{
         box-shadow: 0px 0px 5px 5px #d3d3d35f;
         overflow-y: scroll;
+        .tabs{
+            width: 100%;
+            @include flexMixin(row,flex-start , center);
+            gap: 40px;
+            border-bottom: 1px solid #C5C5C5;
+            padding: 0 0 10px;
+            margin: 10px 0 0;
+            font-size: 14px;
+            font-weight: bold;
+            .tab{
+                @include flexMixin(row,flex-start,center);
+                gap: 10px;
+                position: relative;
+            }
+            .active{
+                &::after{
+                    position: absolute;
+                    bottom: -12px;
+                    display: block;
+                    width: calc(100% + 10px);
+                    height: 3px;
+                    background-color: $secondaryColor1;
+                    content: " ";
+                    border-radius: 5px;
+                    right: -10px;
+                }
+            }
+            .number-label{
+                @include flexMixin(row,center,center);
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                background-color: $secondaryColor1;
+                color: #fff;
+                padding: 2px 0 0;
+                font-size: 12px;
+            }
+        }
         table {
             margin: 10px 0 0;
             width: 100%;
@@ -4858,7 +4927,19 @@ li{
     .form{
         position: relative;
         margin-bottom: 30px;
-        display: inline-block;
+        @include flexMixin(column , flex-start , flex-start);
+        .ui-error-wrapper{
+            height: 30px;
+            @include flexMixin (row,center,center);
+            padding: 0 20px;
+            color : $redColor;
+            font-size: 13px;
+            border: 1px solid $redColor;
+            border-radius: 8px;
+            margin: 10px 0 0;
+            transition: $transition;
+            overflow: hidden;
+        }
         input , textarea{
             width: 300px;
             height: 60px;
@@ -4870,8 +4951,14 @@ li{
             outline: 0px solid red;
             resize: none;
             font-family: "main-font";
+            outline: 0px solid #fff;
             &:focus{
                 outline : 2px solid $mainColor1;
+                border: 0px solid #fff;
+            }
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
             }
         }
         textarea{
@@ -4889,6 +4976,18 @@ li{
         @include styler(#fff, $mainColor1,16px,16px);
         @include flexMixin(row,center,center);
         margin-right: 50px;
+        cursor: pointer;
+    }
+    .y-s-result{
+        width: 254px;
+        height: 40px;
+        @include styler(#fff, $greenColor, 13px, 16px);
+        @include flexMixin(row, center, center);
+        margin-right: 50px;
+        margin-top: 20px;
+    }
+    .y-s-result.f{
+        @include styler(#fff, $redColor, 13px, 16px);
     }
     .student-data{
         flex: 0 0 50%;
@@ -4913,6 +5012,26 @@ li{
             top: 2px;
             right: 10px;
         }
+    }
+    .data-sucsess{
+        width: 254px;
+        height: 40px;
+        font-size: 13px;
+        color: #fff;
+        background-color: $greenColor;
+        border-radius: 16px;
+        @include flexMixin(row,center,center);
+        margin: 20px 50px 0 0;
+    }
+    .data-fail{
+        width: 254px;
+        height: 40px;
+        font-size: 13px;
+        color: #fff;
+        background-color: $redColor;
+        border-radius: 16px;
+        @include flexMixin(row, center, center);
+        margin: 20px 50px 0 0;
     }
 }
 .increase-token{
@@ -4949,14 +5068,17 @@ li{
         // width: 100%;
         .banners{
             @include flexMixin(row,space-between,center);
+            width: 100%;
+            gap: 20px;
             .banner{
+                width: 100%;
+                @include flexMixin(row,center,center);
                 img{
-                    width: 300px;
+                    width: 100%;
+                    margin: 0;
                 }
             }
-            .banner-1{
-                margin-left: 32px;
-            }
+            
         }
     }
     .recent-visits{
@@ -5155,38 +5277,8 @@ li{
             overflow-y: scroll;
             margin: 20px 0 0;
             padding: 0 0 80px;
-        }
-        .question{
-            @include flexMixin(column , space-between , center);
-            height: 164px;
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid #dadada;
-            margin: 0 0 20px;
-            padding: 10px;
-        }
-        .tag-btn-wrapper{
-            width: 100%;
-            @include flexMixin(row,space-between,center);
-            .answer-btn{
-                @include styler(#fff , $secondaryColor1 , 12px , 8px);
-                width: 80px;
-                height: 32px;
-                @include flexMixin(row,center,center);
-            }
-            .tags{
-                @include flexMixin(row,space-between,center);
-                gap: 5px;
-                .tag{
-                    color: #000;
-                    border: 1px solid #EDEDED;
-                    border-radius: 8px;
-                    @include flexMixin(row,center,center);
-                    padding: 0 15px;
-                    height: 32px;
-                    font-size: 12px;
-                }
-            }
+            @include flexMixin(column , flex-start , center);
+            gap: 16px;
         }
         .wrapper{
             padding: 10px 20px;
@@ -5270,7 +5362,7 @@ li{
             width: 100%;
             @include flexMixin(column , flex-start , center);
             .title{
-                font-size: 24px;
+                font-size: 21px;
                 color: $secondaryColor1;
                 width: 100%;
                 margin: 0 0 18px;
@@ -5317,6 +5409,70 @@ li{
             &:hover{
                 color: #fff;
                 background-color: $mainColor1;
+            }
+        }
+    }
+    .books-wrapper.questions-wrapper{
+        .question-wrapper{
+            margin-left: 10px;
+            flex: 0 0 350px;
+            .question-title {
+                font-size: 16px;
+            }
+        }
+    }
+    .question-wrapper {
+        .question-title {
+            font-size: 16px;
+        }
+
+        .also-my-question {
+            display: none;
+        }
+
+        .question-tags-btn-wrapper {
+            font-size: 12px;
+        }
+
+        .question-answer-btn {
+            width: 84px;
+            height: 35px;
+        }
+
+        .tags {
+            .tag {
+                height: 35px;
+
+                &:nth-child(3),
+                &:nth-child(4) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+.empty-last-visits{
+    width: 100%;
+    @include flexMixin(column , space-between , center);
+    height: 100px;
+    margin: 20px 0 0;
+    .go-to-other-places{
+        width: 100%;
+        @include flexMixin(row,center,center);
+        gap: 10px;
+        a{
+            transition: $transition;
+            color: #fff;
+            background-color: $secondaryColor1;
+            width: 100px;
+            height: 42px;
+            border-radius: 8px;
+            border: 2px solid $secondaryColor1;
+            @include flexMixin(row,center,center);
+            font-weight: bold;
+            &:hover{
+                color : $secondaryColor1;
+                background-color: #fff ;
             }
         }
     }
@@ -5441,19 +5597,27 @@ li{
             }
         }
         .questions-wrapper{
-            height: 328px;
+        height: 328px;
             overflow-y: scroll;
             width: 100%;
             margin: 16px 0 0;
-        }
-        .question{
-            width: 100%;
-            @include styler(#000 , #fff ,16px , 8px);
-            @include flexMixin(column,center , center);
-            height: 164px;
-            margin:0 0 16px;
-            padding: 16px;
-            border: 1px solid #dadada;
+            @include flexMixin(column , flex-start , center);
+            gap: 15px;
+            .question-wrapper{
+                .also-my-question{
+                    display: none;
+                }
+                .question-title{
+                    font-size: 17px;
+                }
+                .tags{
+                    .tag{
+                        &:nth-child(3),&:nth-child(4){
+                            display: none;
+                        }
+                    }
+                }
+            }
         }
         .btns-wrapper{
             width: 100%;
@@ -5528,53 +5692,7 @@ li{
     .questions-wrapper{
         width: 100%;
         @include flexMixin(column,flex-start,flex-start);
-        .question{
-            margin: 0 0 16px;
-            width: 100%;
-            height: 185px;
-            @include flexMixin(column,space-between,center);
-            color: #000;
-            border: 1px solid #dadada;
-            border-radius: 8px;
-            padding: 16px;
-            background-color: #fff;
-            .title{
-                font-size: 20px;
-                width: 100%;
-                a{
-                    color: #000;
-                    transition: $transition;
-                    font-weight: normal;
-                    &:hover{
-                        display: block;
-                        color: $mainColor1;
-                        font-weight: bold;
-                    }
-                }
-            }
-            .tags-btns{
-                width: 100%;
-                @include flexMixin(row,space-between,center);
-            }
-            .answer-btn{
-                width: 109px;
-                height: 42px;
-                @include flexMixin(row,center,center);
-                @include styler(#fff , $secondaryColor1 ,14px , 8px );
-                font-weight: bold;
-            }
-            .tags{
-                @include flexMixin(row,center,center);
-                .tag{
-                    @include flexMixin(row,center,center);
-                    width: 89px;
-                    height: 41px;
-                    border: 1px solid #ededed;
-                    margin-right: 8px;
-                    border-radius: 8px;
-                }
-            }
-        }
+        gap : 16px;
     }
     .paginations{
         width: 100%;
@@ -5971,58 +6089,30 @@ li{
         width: 100%;
         height: 300px;
         overflow-y: scroll;
-    }
-    .question{
-        width: 100%;
-        height: 185px;
-        border: 1px solid #dadada;
-        background-color: #fff;
-        border-radius: 8px;
-        margin: 0 0 10px;
-        padding: 15px;
-        @include flexMixin(column , space-between , center);
-        .question-title{
-            font-weight: normal;
-            font-size: 20px;
-            width: 100%;
-        }
-        .btn-tags{
-            width: 100%;
-            @include flexMixin(row,space-between,center);
-            font-size: 14px;
-        }
-        .answer-btn{
-            @include styler(#fff , $secondaryColor1 , 14px ,8px );
-            width: 109px;
-            height: 42px;
-            @include flexMixin(row,center,center);
-            font-weight: bold;
-            transition: $transition;
-            border: 2px solid $secondaryColor1;
-            cursor: pointer;
-            &:hover{
-                background-color: #fff;
-                color: $secondaryColor1;
-            }
-        }
-        .tags-wrapper{
-            @include flexMixin(row,space-between,center);
-            .tag{
-                width: 89px;
-                height: 41px;
-                border-radius: 8px;
-                border: 1px solid #ededed;
-                @include flexMixin(row,center,center);
-                margin-right: 8px;
-            }
-        }
+        @include flexMixin(column , flex-start , center);
+        gap : 15px;
     }
     .second-row-boxes{
         @include styler(#000 , #f3f3f3 , 14px , 8px );
         padding: 16px 16px 0;
-        .question {
-            width: 100%;
-            height: 165px;
+        .question-wrapper {
+            height: 180px;
+            .question-title{
+                font-size: 18px;
+            }
+            .tags{
+                .tag{
+                    &:nth-child(3),&:nth-child(4){
+                        display: none;
+                    }
+                }
+            }
+            .also-my-question{
+                display : none;
+            }
+            .question-answer-btn{
+                width: 94px;
+            }
         }
         .title{
             &::before{
@@ -6043,6 +6133,69 @@ li{
             &::before {
                 background-color: #FBF932;
             }
+        }
+    }
+}
+.question-wrapper{
+    @include flexMixin(column , space-between , center);
+    width: 100%;
+    min-height: 164px;
+    @include styler(#000 , #fff ,20px , 8px );
+    border: 1px solid #dadada;
+    padding: 16px;
+    .question-title{
+        width: 100%;
+    }
+    .question-tags-btn-wrapper{
+        width : 100%;
+        @include flexMixin(row,space-between , center);
+        font-size: 14px;
+    }
+    .answer-is-my-question{
+        @include flexMixin(row,flex-start , center);
+        gap: 10px;
+        span,a{
+            @include flexMixin(row,center,center);
+        }
+    }
+    .question-answer-btn{
+        width: 109px;
+        height: 42px;
+        border-radius: 8px;
+        background-color: $secondaryColor1;
+        color: #fff;
+        border: 2px solid $secondaryColor1;
+        transition: $transition;
+        font-weight: bold;
+        &:hover{
+            color: $secondaryColor1;
+            background-color: #fff;
+        }
+    }
+    .also-my-question{
+        width: 120px;
+        height: 42px;
+        border-radius: 8px;
+        color: $secondaryColor1;
+        background-color: #fff;
+        border: 2px solid $secondaryColor1;
+        font-weight: bold;
+        transition: $transition;
+        cursor: pointer;
+        &:hover {
+            color: #fff;
+            background-color: $secondaryColor1;
+        }
+    }
+    .tags{
+        @include flexMixin(row,flex-end,center);
+        gap: 8px;
+        .tag{
+            border: 1px solid #ededed;
+            border-radius: 8px;
+            @include flexMixin(row,center,center);
+            height: 42px;
+            padding: 0 24px;
         }
     }
 }
