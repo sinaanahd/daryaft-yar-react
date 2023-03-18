@@ -47,6 +47,7 @@ import QuestionPage from "./Components/webiste/porseshkadeh/question-page/questi
 import AskQuestionPage from "./Components/webiste/porseshkadeh/ask-question/ask-question";
 import MyQuestions from "./Components/webiste/porseshkadeh/my-questions/my-questions";
 import MainPanel from './Components/webiste/panel/main-panel/main-panel';
+import OrderDetails from './Components/webiste/panel/order-details/order-detail';
 class App extends Component {
   componentDidMount() {
   }
@@ -97,6 +98,7 @@ class App extends Component {
           <Route path="/main-panel" component={MainPanel} />
           <Route path="/increase-coin" component={IncreaseCoin} />
           <Route path="/user-info" component={PanelSettings} />
+          <Route path="/order-detail/:id" component={OrderDetails} />
           {/* Panel */}
           {/* porseshkadeh */}
           <Route path="/porseshkadeh" component={MainPagePK} />

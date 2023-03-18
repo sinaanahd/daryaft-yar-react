@@ -21,13 +21,15 @@ class IncreaseCoin extends Component {
   }
   buy_coin = (amount) => {
     this.setState({ url: "" });
+    // .patch(`https://daryaftyar.ir/backend/api/kir`, { bullshit: "bullshit" })
     axios
       .get(
         `https://daryaftyar.ir/backend/api/buy_coin/id:${this.props.user.user_id}-amount:${amount}`
       )
       .then((res) => {
+        //console.log(res.data);
         const answer = res.data;
-        console.log(res.data);
+        // console.log(res.data);
         this.setState({ url: answer.url_to_pay });
       })
       .catch((err) => {
@@ -45,6 +47,7 @@ class IncreaseCoin extends Component {
         <PanleHeader user={user} />
         <section className="increase-token mm-width">
           <div className="buy-coin-page-wrapper">
+            <h1>خرید سکه</h1>
             <div className="coin-choose-wrapper">
               <div className="options-wrapper">
                 <div
@@ -89,9 +92,6 @@ class IncreaseCoin extends Component {
                     تومان (به‌صرفه‌ترین)
                   </span>
                 </div>
-              </div>
-              <div className="image-wrapper">
-                <img src={coin_image} loading="lazy" alt="" />
               </div>
               {this.state.url !== "" ? (
                 <a

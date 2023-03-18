@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import spilit_in_three from "../../../functions/spilit_in_three";
+import LittleLoading from "../../../reusables/little-loading";
 import Order from "./order/order";
 class LastOrders extends Component {
   state = {};
@@ -26,7 +26,26 @@ class LastOrders extends Component {
                   <Order order={order} books={books} key={order.pay_refId} />
                 ))
               ) : (
-                <></>
+                <tr>
+                  <td>
+                    <LittleLoading />
+                  </td>
+                  <td>
+                    <LittleLoading />
+                  </td>
+                  <td>
+                    <LittleLoading />
+                  </td>
+                  <td>
+                    <LittleLoading />
+                  </td>
+                  <td>
+                    <LittleLoading />
+                  </td>
+                  <td>
+                    <LittleLoading />
+                  </td>
+                </tr>
               )}
             </tbody>
           </table>

@@ -55,7 +55,11 @@ class StudentsDataFrom extends Component {
     if (send_obj.subject === -1) {
       send_obj.subject = user.subject;
     }
-    //console.log(send_obj);
+    console.log(send_obj);
+    // .patch(
+    //   `https://daryaftyar.ir/backend/api/user_year_and_subject/${user.user_id}`,
+    //   send_obj
+    // )
     axios
       .patch(
         `https://daryaftyar.ir/backend/api/user_year_and_subject/${user.user_id}`,
@@ -63,6 +67,7 @@ class StudentsDataFrom extends Component {
       )
       .then((res) => {
         const data = res.data;
+        console.log(data);
         user.year = data.year;
         user.subject = data.subject;
         this.props.change_user(user);

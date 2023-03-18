@@ -12,7 +12,9 @@ import axios from "axios";
 class Panel extends Component {
   state = {
     pause: true,
-    orders: [],
+    orders: JSON.parse(localStorage.getItem("orders"))
+      ? JSON.parse(localStorage.getItem("orders"))
+      : [],
   };
   componentDidMount() {
     // const date = new Date();
@@ -27,6 +29,12 @@ class Panel extends Component {
         this.setState({ pause: false });
         const response = res.data;
         console.log(response);
+        localStorage.setItem("orders", JSON.stringify(res.data));
+        response.forEach((element) => {
+          if (element.pay_refId === "") {
+            element.pay_refId = 1111111111111111;
+          }
+        });
         this.setState({ orders: response });
       })
       .catch((err) => {
@@ -49,7 +57,7 @@ class Panel extends Component {
             />
             <div className="second-row-panel">
               <Orders
-                order={
+                orders={
                   this.state.orders.length !== 0 ? this.state.orders : false
                 }
                 books={books}
