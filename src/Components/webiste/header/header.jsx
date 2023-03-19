@@ -10,6 +10,7 @@ import lines from "../../../assets/images/svg/lines.svg";
 import cross from "../../../assets/images/svg/cross.svg";
 //import { FaAngleDown } from "react-icons/fa";
 import arrowDown from "../../../assets/images/website/arrow-down-icon.png";
+import tokenPink from "../../../assets/images/token-pink.png";
 class SiteHeader extends Component {
   state = {
     menu_items: [
@@ -57,9 +58,9 @@ class SiteHeader extends Component {
     this.setState({ menu });
   };
   render() {
-    const { cart_count, name, is_logged_in, books } = this.props;
+    const { cart_count, name, is_logged_in, books, yalda, user } = this.props;
     return (
-      <header className="site-header">
+      <header className={!yalda ? "site-header" : "site-header yalda-header"}>
         <div className="first-row">
           <div className="btns-wrapper">
             <span className="enter-btn-wrapper header-btn">
@@ -173,6 +174,18 @@ class SiteHeader extends Component {
               </ul>
             </nav>
           </div>
+        ) : (
+          <></>
+        )}
+        {yalda ? (
+          <span className="yalda_token">
+            <Link to="/invite">
+              <img src={tokenPink} />
+            </Link>
+            <span className="token-count">
+              {user ? user.campaign.user_token : 0}
+            </span>
+          </span>
         ) : (
           <></>
         )}

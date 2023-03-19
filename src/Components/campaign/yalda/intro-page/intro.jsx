@@ -1,51 +1,57 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import SampleHeader from '../sample/sample-header';
-import SampleFooter from '../sample/sample-footer';
-import withYalda from '../../../hoc/with-yalda';
-import banner from "../../../../assets/images/campaign-banner.jpg";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import SampleHeader from "../sample/sample-header";
+import SampleFooter from "../sample/sample-footer";
+import withYalda from "../../../hoc/with-yalda";
+// import banner from "../../../../assets/images/campaign-banner.jpg";
+import banner from "../../../../assets/images/sing-and-win-big-banner.jpg";
+import SiteFooter from "../../../webiste/footer/site-footer";
+import withWebsiteData from "../../../hoc/with-website-data";
+import SiteHeader from "../../../webiste/header/header";
 class CampagingIntro extends Component {
-    state = {  } 
-    render() { 
-        const { user } = this.props;
-        return (
-            <>
-                <SampleHeader tokens={user ? user.campaign.user_token : 0} />
-                <div className="yalda-intro mm-width">
-                <div className="img-wrapper">
-                    <Link to={user ? "./campaign" : "./Clogin"}>
-                        <img src={banner} alt="کمپین زمستانه" />   
-                    </Link>
-                </div>
-                <div className="intro-text">
-                    <h1>
-                        متن معرفی و توضیحی
-                    </h1>
-                    <p>
-                        سلام دوست خوبم ،
-                            به جشنواره
-                        &nbsp;
-                        <b>زمستان داغ</b>
-                        &nbsp;
-                            دریافت یار خوش اومدی !
-                        <br />
-                        قراره جایزه ببری :{")"}&nbsp;کلی جایزه نقدی و تخفیف انتظارتو میکشن. 
-                        <br />
-                        فقط کافیه <b> صندوقا</b> رو باز کنی !
-                        <br />
-                    </p>
-                </div>
-                    <Link
-                        to={user ? "./campaign" : "./Clogin"}
-                        className='go-to-campaging'
-                    >
-                    ورود به کمپین
-                </Link>
-                </div>
-                <SampleFooter />
-            </>
-        );
-    }
+  state = {};
+  render() {
+    const { user, cart, data, books } = this.props;
+    return (
+      <>
+        <SiteHeader
+          cart_count={cart ? cart.cart_summary.items_count : 0}
+          name={user ? user.name : "ورود / ثبت نام"}
+          is_logged_in={data.is_logged_in}
+          books={books}
+          yalda={true}
+          user={user ? user : false}
+        />
+        <div className="yalda-intro mm-width">
+          <div className="img-wrapper">
+            <Link to={user ? "./campaign" : "./Clogin"}>
+              <img src={banner} alt="کمپین زمستانه" />
+            </Link>
+          </div>
+          <div className="intro-text">
+            <h1>متن معرفی و توضیحی</h1>
+            <p>
+              سلام دوست خوبم ، به جشنواره &nbsp;
+              <b>نوروزی دریافت‌یار</b>
+              &nbsp; دریافت یار خوش اومدی !
+              <br />
+              قراره جایزه ببری :{")"}&nbsp;کلی جایزه نقدی و تخفیف انتظارتو
+              میکشن.
+              <br />
+              فقط کافیه <b> صندوقا</b> رو باز کنی !
+              <br />
+            </p>
+          </div>
+          <Link
+            to={user ? "./campaign" : "./Clogin"}
+            className="go-to-campaging">
+            ورود به کمپین
+          </Link>
+        </div>
+        <SiteFooter />
+      </>
+    );
+  }
 }
- 
-export default withYalda(CampagingIntro);
+
+export default withWebsiteData(CampagingIntro);

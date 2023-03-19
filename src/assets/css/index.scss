@@ -1599,7 +1599,7 @@ img {
         border-radius: 8px;
     }
     a{
-        @include styler(#fff , $yalda_red ,24px, 20px);
+        @include styler(#fff , $campaign_color ,24px, 20px);
         @include flexMixin(row,center,center);
         width: calc(100% - 30px);
         margin: 20px 0;
@@ -1608,14 +1608,14 @@ img {
 }
 .yalda-banner{
     width: calc(100% - 30px);
-    border: 3px solid $yalda_red;
+    border: 3px solid $campaign_color;
     border-radius: 8px;
     overflow: hidden;
     margin: 0 0 10px;
 }
 .yalda-btn{
     .back {
-        background-color: $yalda_red;
+        background-color: $campaign_color;
         width: 40px;
         height: 40px;
         border-radius: 8px;
@@ -1635,7 +1635,7 @@ img {
         @include flexMixin(row,center,center);
         height: 80px;
         font-size: 24px;
-        color: $yalda_red;
+        color: $campaign_color;
         font-weight: bold;
     }
     .main-content{
@@ -1648,7 +1648,7 @@ img {
         .read-rules{
             a{
                 font-weight: bold;
-                color: $yalda_red;
+                color: $campaign_color;
             }
         }
     }
@@ -1683,7 +1683,7 @@ img {
         //height: 190px;
         @include flexMixin(column,center,center);
         @include styler(#000 , #fff , 20px , 8px);
-        border: 3px solid $yalda_red;
+        border: 3px solid $campaign_color;
         padding: 20px 20px;
         font-weight: bold;
         position: relative;
@@ -1711,7 +1711,7 @@ img {
             }
         }
         .no{
-            color: $yalda_red;
+            color: $campaign_color;
         }
     }
     .frame-top{
@@ -1735,7 +1735,7 @@ img {
         padding: 10px 30px;
         @include flexMixin(row,space-between,center);
         .back {
-            background-color: $yalda_red;
+            background-color: $campaign_color;
             width: 40px;
             height: 40px;
             border-radius: 8px;
@@ -1747,7 +1747,7 @@ img {
         .user-name{
             font-weight: bold;
             font-size: 16px;
-            color: $yalda_red;
+            color: $campaign_color;
         }
     }
     .main-contet{
@@ -1757,7 +1757,7 @@ img {
         @include flexMixin(column,flex-start,center);
         .prize-wrapper{
             @include styler(#000 , #fff , 14px , 8px);
-            border: 3px solid $yalda_red;
+            border: 3px solid $campaign_color;
             height: 250px;
             @include flexMixin(column,center,center);
             position: relative;
@@ -1808,7 +1808,7 @@ img {
             width: 18px;
         }
         a{
-            color: $yalda_red;
+            color: $campaign_color;
             font-weight: bold;
         }
     }
@@ -1822,7 +1822,7 @@ img {
         @include flexMixin(row, space-between, center);
     
         .back {
-            background-color: $yalda_red;
+            background-color: $campaign_color;
             width: 40px;
             height: 40px;
             border-radius: 8px;
@@ -1836,7 +1836,7 @@ img {
         .user-name {
             font-weight: bold;
             font-size: 16px;
-            color: $yalda_red;
+            color: $campaign_color;
         }
     }
     .main-content {
@@ -1848,7 +1848,7 @@ img {
         .fal-wrapper {
             width: 100%;
             @include styler(#000, #fff, 14px, 8px);
-            border: 3px solid $yalda_red;
+            border: 3px solid $campaign_color;
             height: 400px;
             @include flexMixin(column, flex-start, center);
             position: relative;
@@ -1909,7 +1909,7 @@ img {
         @include flexMixin(row,center,center);
         z-index: 2;
         font-weight: bold;
-        color: $yalda_red;
+        color: $campaign_color;
     }
     .fal-result{
         margin: 30px 0 40px;
@@ -1917,7 +1917,7 @@ img {
         @include flexMixin(column,flex-start,flex-start);
         .title{
             font-weight: bold;
-            color: $yalda_red;
+            color: $campaign_color;
             margin: 0 0 10px;
             width: 100%;
         }
@@ -1928,14 +1928,14 @@ img {
     }
     .to-prize{
         width: 100%;
-        color: $yalda_red;
+        color: $campaign_color;
         text-align: center;
         .arrow{
             position: relative;
             top: 2px;
         }
         a{
-            color: $yalda_red;
+            color: $campaign_color;
             margin: 0 10px;
         }
     }
@@ -1969,7 +1969,7 @@ img {
             @include flexMixin(row, center, center);
         }
         .back{
-            background-color: $yalda_red;
+            background-color: $campaign_color;
             width: 40px;
             height: 40px;
             border-radius: 8px;
@@ -1984,7 +1984,7 @@ img {
             @include flexMixin(row, center, center);
             font-weight: bold;
             font-size: 24px;
-            color: $yalda_red;
+            color: $campaign_color;
         }
     }
     .main-content {
@@ -2009,7 +2009,7 @@ img {
                 height: 12px;
                 content: "";
                 border-radius: 50%;
-                background-color: $yalda_red;
+                background-color: $campaign_color;
                 display: block;
                 position: relative;
                 top: 5px;
@@ -2021,7 +2021,7 @@ img {
             @include flexMixin(column,center,center);
             padding: 0 26px;
             height: 180px;
-            border: 3px solid $yalda_red;
+            border: 3px solid $campaign_color;
             border-radius: 8px;
             margin: 50px 0 0;
         }
@@ -2033,7 +2033,7 @@ img {
         .copy-wrapper{
             @include flexMixin(row,center,center);
             font-weight: bold;
-            color: $yalda_red;
+            color: $campaign_color;
             img{
                 width: 30px;
                 margin-left: 5px;
@@ -2082,7 +2082,7 @@ img {
             }
     
             .back {
-                background-color: $yalda_red;
+                background-color: $campaign_color;
                 width: 40px;
                 height: 40px;
                 border-radius: 8px;
@@ -2098,7 +2098,7 @@ img {
                 @include flexMixin(row, center, center);
                 font-weight: bold;
                 font-size: 24px;
-                color: $yalda_red;
+                color: $campaign_color;
             }
         }
     
@@ -2127,7 +2127,7 @@ img {
                     height: 12px;
                     content: "";
                     border-radius: 50%;
-                    background-color: $yalda_red;
+                    background-color: $campaign_color;
                     display: block;
                     position: relative;
                     top: 5px;
@@ -2150,6 +2150,7 @@ img {
     color: #000;
     img{
         border-radius: 8px;
+        width: 800px;
     }
     .intro-text{
         margin: 30px 0 50px;
@@ -2167,7 +2168,7 @@ img {
         width: 250px;
         @include flexMixin(row,center,center);
         height: 40px;
-        @include styler(#fff , $yalda_red , 16px,16px );
+        @include styler(#fff , $campaign_color , 16px,16px );
 
     }
 }
@@ -2176,7 +2177,7 @@ img {
     @include flexMixin(column,flex-start,center);
     @include styler(#000 , #fff , 16px , 16px );
     position: relative;
-    border: 3px solid $yalda_red;
+    border: 3px solid $campaign_color;
     padding: 20px 60px 60px;
     overflow: hidden!important;
     margin: 50px 0;
@@ -2185,30 +2186,32 @@ img {
         position: absolute;
     }
     .top-right{
-        top: -25px;
+        top: -26px;
         right: -25px;
-        width: 100px;
+        width: 120px;
     }
     .top-left{
-        top: 50px;
+        top: -12px;
         left: 0;
-        width: 50px;
+        width: 120px;
+        transform: rotate(-90deg);
     }
     .bottom-right{
-        bottom: 0;
-        right: 0;
-        width: 100px;
+        bottom: -8px;
+        right: -5px;
+        width: 120px;
+        transform: rotateY(180deg);
     }
     .bottom-left{
-        bottom: 0;
-        left: 0;
-        width: 200px;
+        bottom: -8px;
+        left: -5px;
+        width: 120px;
     }
     .main-content{
         width: 100%;
         @include flexMixin(column,flex-start,center);
         h1{
-            color: $yalda_red;
+            color: $campaign_color;
             font-size: 32px;
            
         }
@@ -2229,7 +2232,7 @@ img {
                 color: #828282;
                 border-radius: 16px;
                 outline: none;
-                border: 0px solid $yalda_red;
+                border: 0px solid $campaign_color;
                 padding: 0 40px 0 20px;
                 font-family: "main-font";
                 &::-webkit-outer-spin-button,
@@ -2240,11 +2243,11 @@ img {
             }
         }
         .error{
-            color: $yalda_red;
+            color: $campaign_color;
             margin: 40px 0 0;
         }
         .code_err{
-            color: $yalda_red;
+            color: $campaign_color;
             margin: 20px 0 10px;
         }
         .code_success {
@@ -2252,7 +2255,7 @@ img {
             margin: 20px 0 10px;
         }
         .submit{
-            @include styler(#fff , $yalda_red , 16px, 16px);
+            @include styler(#fff , $campaign_color , 16px, 16px);
             width: 120px;
             height: 36px;
             @include flexMixin(row,center,center);
@@ -2279,9 +2282,13 @@ img {
                 &::-webkit-inner-spin-button {
                     -webkit-appearance: none;
                 }
+                &:focus{
+                    outline:2px solid $campaign_color;
+                    border: unset;
+                }
             }
             .confirm{
-                @include styler(#fff, $yalda_red , 16px, 16px);
+                @include styler(#fff, $campaign_color , 16px, 16px);
                 width: 120px;
                 height: 36px;
                 @include flexMixin(row, center, center);
@@ -2295,7 +2302,7 @@ img {
     @include flexMixin(column, flex-start, center);
     @include styler(#000, #fff, 16px, 16px);
     position: relative;
-    border: 3px solid $yalda_red;
+    border: 3px solid $campaign_color;
     padding: 20px 60px 60px;
     overflow: hidden !important;
     margin: 50px 0;
@@ -2308,33 +2315,35 @@ img {
     }
 
     .top-right {
-        top: -25px;
+        top: -26px;
         right: -25px;
-        width: 100px;
+        width: 120px;
     }
 
     .top-left {
-        top: 50px;
+        top: -12px;
         left: 0;
-        width: 50px;
+        width: 120px;
+        transform: rotate(-90deg);
     }
 
     .bottom-right {
-        bottom: 0;
-        right: 0;
-        width: 100px;
+        bottom: -8px;
+        right: -5px;
+        width: 120px;
+        transform: rotateY(180deg);
     }
 
     .bottom-left {
-        bottom: 0;
-        left: 0;
-        width: 200px;
+        bottom: -8px;
+        left: -5px;
+        width: 120px;
     }
     .main-content {
         width: 100%;
         @include flexMixin(column, flex-start, center);
         h1 {
-            color: $yalda_red;
+            color: $campaign_color;
             font-size: 32px;
             margin: 0 0 40px 0;
         }
@@ -2356,7 +2365,7 @@ img {
             color: #828282;
             border-radius: 16px;
             outline: none;
-            border: 0px solid $yalda_red;
+            border: 0px solid $campaign_color;
             padding: 0 40px 0 20px;
             font-family: "main-font";
             &::-webkit-outer-spin-button,
@@ -2370,19 +2379,19 @@ img {
         margin: 8px 0;
         .option{
             margin: 0 10px;
-            @include styler($yalda_red , #fff , 16px , 8px);
-            border: 2px solid $yalda_red;
+            @include styler($campaign_color , #fff , 16px , 8px);
+            border: 2px solid $campaign_color;
             width: 70px;
             height: 40px;
             @include flexMixin(row,center,center);
             cursor: pointer;
         }
         .selected{
-            @include styler(#fff , $yalda_red, 16px, 8px);
+            @include styler(#fff , $campaign_color, 16px, 8px);
         }
     }
     .submit {
-        @include styler(#fff, $yalda_red , 16px, 16px);
+        @include styler(#fff, $campaign_color , 16px, 16px);
         width: 120px;
         height: 36px;
         @include flexMixin(row, center, center);
@@ -2390,11 +2399,11 @@ img {
         cursor: pointer;
     }
     .error{
-        color: $yalda_red;
+        color: $campaign_color;
         margin: 20px 0;
         height: 40px;
         padding: 0 20px;
-        border: 1px solid $yalda_red;
+        border: 1px solid $campaign_color;
         border-radius: 8px;
         @include flexMixin(row,center,center);
     }
@@ -2414,7 +2423,7 @@ img {
         .read-rules {
             a {
                 font-weight: bold;
-                color: $yalda_red;
+                color: $campaign_color;
             }
         }
     }
@@ -2467,7 +2476,7 @@ img {
         .fal-wrapper {
             width: 100%;
             @include styler(#000, #fff, 14px, 8px);
-            border: 3px solid $yalda_red;
+            border: 3px solid $campaign_color;
             height: 400px;
             @include flexMixin(column, center, center);
             position: relative;
@@ -2503,27 +2512,29 @@ img {
             position: absolute;
         }
         .top-right {
-            top: -25px;
+            top: -26px;
             right: -25px;
-            width: 100px;
+            width: 120px;
         }
 
         .top-left {
-            top: 50px;
+            top: -12px;
             left: 0;
-            width: 50px;
+            width: 120px;
+            transform: rotate(-90deg);
         }
 
         .bottom-right {
-            bottom: 0;
-            right: 0;
-            width: 100px;
+            bottom: -8px;
+            right: -5px;
+            width: 120px;
+            transform: rotateY(180deg);
         }
 
         .bottom-left {
-            bottom: 0;
-            left: 0;
-            width: 200px;
+            bottom: -8px;
+            left: -5px;
+            width: 120px;
         }
     }
 
@@ -2536,7 +2547,7 @@ img {
         @include flexMixin(row, center, center);
         z-index: 2;
         font-weight: bold;
-        color: $yalda_red;
+        color: $campaign_color;
     }
 
     .fal-result {
@@ -2546,7 +2557,7 @@ img {
 
         .title {
             font-weight: bold;
-            color: $yalda_red;
+            color: $campaign_color;
             margin: 0 0 10px;
             width: 100%;
             font-size: 32px;
@@ -2561,7 +2572,7 @@ img {
 
     .to-prize {
         width: 100%;
-        color: $yalda_red;
+        color: $campaign_color;
         text-align: center;
 
         .arrow {
@@ -2570,7 +2581,7 @@ img {
         }
 
         a {
-            color: $yalda_red;
+            color: $campaign_color;
             margin: 0 10px;
         }
     }
@@ -2585,16 +2596,17 @@ img {
     margin: 20px;
     h1{
         font-size: 32px;
-        color: $yalda_red;
+        color: $campaign_color;
         width: 100%;
         margin: 0 0 40px;
     }
     .main-content {
         width: 100%;
-        padding: 50px 30px;
+        padding: 50px 30px 120px;
         @include styler(#000, #fff, 16px, 20px);
         @include flexMixin(column, flex-start, center);
         position: relative;
+        overflow: hidden;
         .big-pom {
             position: absolute;
             left: 0;
@@ -2613,7 +2625,7 @@ img {
                 height: 12px;
                 content: "";
                 border-radius: 50%;
-                background-color: $yalda_red;
+                background-color: $campaign_color;
                 display: block;
                 position: relative;
                 top: 5px;
@@ -2626,13 +2638,13 @@ img {
             @include flexMixin(column, center, center);
             padding: 0 26px;
             height: 180px;
-            border: 3px solid $yalda_red;
+            border: 3px solid $campaign_color;
             border-radius: 8px;
             margin: 50px 0 0;
         }
 
         .user-link {
-            color: $yalda_green;
+            color: #000;
             font-weight: bold;
             margin-bottom: 40px;
         }
@@ -2640,7 +2652,7 @@ img {
         .copy-wrapper {
             @include flexMixin(row, center, center);
             font-weight: bold;
-            color: $yalda_red;
+            color: $campaign_color;
             cursor: pointer;
             img {
                 width: 30px;
@@ -2648,11 +2660,23 @@ img {
             }
         }
 
-        .big-leaf {
+        .top-left,
+        .bottom-right {
             position: absolute;
-            bottom: -30px;
-            right: 0;
-            width: 150px;
+        }
+
+        .top-left {
+            top: -12px;
+            left: 0;
+            width: 120px;
+            transform: rotate(-90deg);
+        }
+
+        .bottom-right {
+            bottom: -8px;
+            right: -5px;
+            width: 120px;
+            transform: rotateY(180deg);
         }
     }
 }
@@ -2661,7 +2685,7 @@ img {
     margin: 50px 0;
     h1 {
             font-size: 32px;
-            color: $yalda_red;
+            color: $campaign_color;
             width: 100%;
             margin: 0 0 40px;
         }
@@ -2686,7 +2710,7 @@ img {
             margin: 0 0 20px;
             width: 100%;
             a{
-                color: $yalda_red;
+                color: $campaign_color;
             }
             &::before {
                 display: inline-block;
@@ -2694,18 +2718,29 @@ img {
                 height: 12px;
                 content: "";
                 border-radius: 50%;
-                background-color: $yalda_red;
+                background-color: $campaign_color;
                 position: relative;
                 top: 2px;
                 margin-left: 10px;
             }
         }
-
-        .big-leaf {
+        
+        .top-left,
+        .bottom-right {
             position: absolute;
-            bottom: 1px;
-            right: 10px;
-            width: 100px;
+        }
+        .top-left {
+            top: -12px;
+            left: 0;
+            width: 120px;
+            transform: rotate(-90deg);
+        }
+    
+        .bottom-right {
+            bottom: -8px;
+            right: -5px;
+            width: 120px;
+            transform: rotateY(180deg);
         }
     }
 }
@@ -2786,7 +2821,7 @@ img {
         z-index: -1;
     }
     a{
-        color: $yalda_red;
+        color: $campaign_color;
         transition: $transition;
         margin: 0 0 20px;
         display: block;
@@ -2819,6 +2854,26 @@ img {
 }
 
 /* header */
+.yalda-header{
+    .yalda_token{
+        position: absolute;
+        width: 200px;
+        @include flexMixin(row-reverse,center,flex-end);
+        gap: 5px;
+        bottom: 20px;
+        left: -30px;
+        img{
+            width : 30px;
+            margin: 0;
+        }
+        .token-count{
+            @include flexMixin(row,center,center);
+            height: 25px;
+            @include styler(#fff , $campaign_color , 12px , 4px);
+            padding:3px 5px 0;
+        }
+    }
+}
 .site-header{
     max-width: 1200px;
     margin: 30px 0 0 ;
@@ -6558,7 +6613,7 @@ li{
     }
 
     .confirm {
-        @include styler(#fff, $yalda_red , 16px, 16px);
+        @include styler(#fff, $campaign_color , 16px, 16px);
         width: 120px;
         height: 36px;
         @include flexMixin(row, center, center);
@@ -6599,6 +6654,13 @@ li{
     }
 }
 @media (max-width:991px) {
+    .yalda-header{
+        .yalda_token{
+            top: 15px;
+            bottom: unset;
+            left: 10px;
+        }
+    }
     .order-details-wrapper{
         padding: 0 10px;
         .details-header{
