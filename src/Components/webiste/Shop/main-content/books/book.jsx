@@ -3,6 +3,7 @@ import calculate_discount from "../../../../functions/calculate_discount";
 import cartWhite from "../../../../../assets/images/website/cart-icon-white.png";
 import split_in_three from "../../../../functions/spilit_in_three";
 import { Link } from "react-router-dom";
+import scrollToTop from "../../../../functions/scroll";
 class Book extends Component {
   state = {};
   componentDidMount() {}
@@ -43,6 +44,7 @@ class Book extends Component {
               change_active(book);
               //alert();
               add_to_recent_visit(book, "shop");
+              scrollToTop();
             }}>
             <img src={book.img_url} alt={book.name} />
           </Link>
@@ -53,6 +55,7 @@ class Book extends Component {
             onClick={() => {
               change_active(book);
               add_to_recent_visit(book, "shop");
+              scrollToTop();
             }}>
             {book.name}
           </Link>

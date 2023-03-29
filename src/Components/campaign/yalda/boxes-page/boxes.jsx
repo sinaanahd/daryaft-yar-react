@@ -28,7 +28,7 @@ class Campagin extends Component {
     this.setState({ pop_up: true, clicked_chest: num });
   };
   render() {
-    const { user, cart, data, books } = this.props;
+    const { user, cart, data, books, change_active } = this.props;
     return (
       <>
         <SiteHeader
@@ -38,6 +38,7 @@ class Campagin extends Component {
           books={books}
           yalda={true}
           user={user ? user : false}
+          change_active={change_active}
         />
         <div className="yalda-page-w mm-width">
           {/* <div className="yalda-header yalda-btn">

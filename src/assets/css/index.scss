@@ -2162,6 +2162,7 @@ img {
         p{
             font-size: 17px;
             padding: 0 10px;
+            line-height: 35px;
         }
     }
     .go-to-campaging{
@@ -2483,6 +2484,15 @@ img {
             overflow: hidden;
             box-shadow: $boxShadow2;
             padding: 30px 30px 50px;
+            transition: $transition;
+        }
+        .main-wrapper{
+            justify-content: flex-start;
+            padding: 50px 30px;
+        }
+        .more.main-wrapper{
+            padding-bottom: 150px;
+            transition: $transition;
         }
         .prize-text{
             width: 100%;
@@ -2502,7 +2512,14 @@ img {
             width: 100%;
             text-align: center;
             font-size: 35px;
-
+            p{
+                &:nth-child(2n){
+                    margin-left: -50px;
+                }
+                &:nth-child(2n-1) {
+                    margin-left: 50px;
+                }
+            }
         }
 
         .top-right,
@@ -2536,8 +2553,18 @@ img {
             left: -5px;
             width: 120px;
         }
+        .t-r{
+            top: -5px;
+            right: -15px;
+            width: 200px;
+        }
+        .b-l{
+            width: 200px;
+            left: -15px;
+            bottom: -15px;
+            z-index: 3;
+        }
     }
-
     .more-btn {
         width: 100%;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), #fff);
@@ -7336,6 +7363,9 @@ li{
         .main-content {
             .fal-text{
                 font-size: 21px;
+            }
+            .b-l,.t-r{
+                width: 150px;
             }
         }
         .fal-result{

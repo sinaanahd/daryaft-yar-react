@@ -30,7 +30,7 @@ class PrizePage extends Component {
     this.setState({ more });
   };
   render() {
-    const { user, cart, data, books } = this.props;
+    const { user, cart, data, books, change_active } = this.props;
     return (
       <>
         <SiteHeader
@@ -40,29 +40,38 @@ class PrizePage extends Component {
           books={books}
           yalda={true}
           user={user ? user : false}
+          change_active={change_active}
         />
         <div className="fal-page-w">
           <div className="main-content">
-            {/* <div className={this.state.more ? "fal-wrapper more" : "fal-wrapper"}>
-                            <img src={anarBala} alt="" className="top-right" />
-                            <img src={bargBala} alt="" className="top-left" />
-                            <span className="fal-text">
-                                {user ? user.campaign.faal.text.map((t , i) => <p key={i++}>{t }</p>) : "درحال بارگذاری"}
-                            </span>
-                            <img src={anarPaen} alt="" className="bottom-left" />
-                            <img src={bargPaen} alt="" className="bottom-right" />
-                            <span className="more-btn" onClick={()=>{this.handle_open_more()}}>
-                                {!this.state.more ? "بیشتر" : "کمتر"}
-                            </span>
-                        </div>
-                        <div className="fal-result">
-                            <span className="title">
-                                تعبیر:
-                            </span>
-                            <p className="result-text">
-                                {user ? user.campaign.faal.tabir : "در حال بارگذاری"}
-                            </p>
-                        </div> */}
+            <div
+              className={
+                this.state.more
+                  ? "fal-wrapper main-wrapper more"
+                  : "fal-wrapper main-wrapper"
+              }>
+              <img src={topleftFlower} alt="" className="top-right t-r" />
+              <span className="fal-text">
+                {user
+                  ? user.campaign.faal.map((t, i) => <p key={i++}>{t}</p>)
+                  : "درحال بارگذاری"}
+              </span>
+              <img src={bottomleftFlower} alt="" className="bottom-left b-l" />
+              <span
+                className="more-btn"
+                onClick={() => {
+                  this.handle_open_more();
+                }}>
+                {!this.state.more ? "بیشتر" : "کمتر"}
+              </span>
+            </div>
+            {/* <div className="fal-result">
+              <span className="title">تعبیر:</span>
+              <p className="result-text"> */}
+            {/* {user ? user.campaign.faal.tabir : "در حال بارگذاری"} */}
+            {/* تعبیر شعر بهاری */}
+            {/* </p>
+            </div> */}
             <div className="fal-wrapper more">
               <img src={toprightFlower} alt="" className="top-right" />
               <img src={topleftFlower} alt="" className="top-left" />

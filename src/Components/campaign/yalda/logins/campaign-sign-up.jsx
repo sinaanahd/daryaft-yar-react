@@ -101,7 +101,7 @@ class CSignUp extends Component {
       .catch((err) => console.log(err));
   };
   render() {
-    const { user, cart, data, books } = this.props;
+    const { user, cart, data, books, change_active } = this.props;
     return (
       <>
         <SiteHeader
@@ -111,6 +111,7 @@ class CSignUp extends Component {
           books={books}
           yalda={true}
           user={user ? user : false}
+          change_active={change_active}
         />
         <div className="yalda-sing-up mm-width">
           <img src={toprightFlower} className="top-right" />

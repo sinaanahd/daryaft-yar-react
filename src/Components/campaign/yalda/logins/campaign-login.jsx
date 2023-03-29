@@ -118,7 +118,7 @@ class Clogin extends Component {
       .catch((err) => alert(err.message));
   };
   render() {
-    const { user, cart, data, books } = this.props;
+    const { user, cart, data, books, change_active } = this.props;
     return (
       <>
         <SiteHeader
@@ -128,6 +128,7 @@ class Clogin extends Component {
           books={books}
           yalda={true}
           user={user ? user : false}
+          change_active={change_active}
         />
         <div className="yalda-login mm-width">
           <img src={toprightFlower} className="top-right" />

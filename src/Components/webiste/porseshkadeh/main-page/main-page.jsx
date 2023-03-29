@@ -7,6 +7,7 @@ import Question from "../Question/question";
 import make_arr_question from "../../../functions/questions_arr";
 import bigSlider from "../../../../assets/images/website/big-banner-1.jpg";
 import plusQuestion from "../../../../assets/images/svg/plus-question.svg";
+import scrollToTop from "../../../functions/scroll";
 class MainPagePK extends Component {
   state = {
     active: 0,
@@ -92,7 +93,12 @@ class MainPagePK extends Component {
                     <Question key={i} />
                   ))}
                 </div>
-                <Link to="/questions" className="all-question">
+                <Link
+                  onClick={() => {
+                    scrollToTop();
+                  }}
+                  to="/questions"
+                  className="all-question">
                   همه سوال‌ها
                 </Link>
               </div>

@@ -18,7 +18,7 @@ class CodePage extends Component {
     if (!this.state.answer) {
       window.location.href = window.location.href.replace(
         "verification-code",
-        "login"
+        "Login"
       );
     }
   }

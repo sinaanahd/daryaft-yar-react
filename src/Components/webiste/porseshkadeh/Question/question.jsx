@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import scrollToTop from "../../../functions/scroll";
 let place = true;
 class Question extends Component {
   state = {};
@@ -15,7 +16,12 @@ class Question extends Component {
         </h3>
         <span className="question-tags-btn-wrapper">
           <span className="answer-is-my-question">
-            <Link to="/question/:id" className="question-answer-btn">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/question/:id"
+              className="question-answer-btn">
               {place ? "پاسخ دادن" : "مشاهده"}
             </Link>
             <span className="also-my-question">برای منم سواله</span>

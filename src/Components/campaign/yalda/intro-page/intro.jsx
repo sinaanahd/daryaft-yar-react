@@ -8,10 +8,11 @@ import banner from "../../../../assets/images/sing-and-win-big-banner.jpg";
 import SiteFooter from "../../../webiste/footer/site-footer";
 import withWebsiteData from "../../../hoc/with-website-data";
 import SiteHeader from "../../../webiste/header/header";
+import scrollToTop from "../../../functions/scroll";
 class CampagingIntro extends Component {
   state = {};
   render() {
-    const { user, cart, data, books } = this.props;
+    const { user, cart, data, books, change_active } = this.props;
     return (
       <>
         <SiteHeader
@@ -21,18 +22,23 @@ class CampagingIntro extends Component {
           books={books}
           yalda={true}
           user={user ? user : false}
+          change_active={change_active}
         />
         <div className="yalda-intro mm-width">
           <div className="img-wrapper">
-            <Link to={user ? "./campaign" : "./Clogin"}>
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to={user ? "./campaign" : "./Clogin"}>
               <img src={banner} alt="کمپین زمستانه" />
             </Link>
           </div>
           <div className="intro-text">
             <h1>متن معرفی و توضیحی</h1>
             <p>
-              سلام دوست خوبم ، به جشنواره &nbsp;
-              <b>نوروزی دریافت‌یار</b>
+              سلام دوست خوبم ، به جشنواره &nbsp; نوروزی
+              <b> شعر بخون و جایزه ببر</b>
               &nbsp; دریافت یار خوش اومدی !
               <br />
               قراره جایزه ببری :{")"}&nbsp;کلی جایزه نقدی و تخفیف انتظارتو
@@ -43,6 +49,9 @@ class CampagingIntro extends Component {
             </p>
           </div>
           <Link
+            onClick={() => {
+              scrollToTop();
+            }}
             to={user ? "./campaign" : "./Clogin"}
             className="go-to-campaging">
             ورود به کمپین

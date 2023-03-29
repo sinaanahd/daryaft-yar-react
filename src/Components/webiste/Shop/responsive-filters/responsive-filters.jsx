@@ -5,7 +5,7 @@ import filterImg from "../../../../assets/images/website/res-filter.png";
 import orgImg from "../../../../assets/images/website/res-org.png";
 class ResponsiveFilters extends Component {
   state = {
-    active_pop_up: "o",
+    active_pop_up: false,
   };
   handle_active_pop_up = (type) => {
     if (type === "o") {

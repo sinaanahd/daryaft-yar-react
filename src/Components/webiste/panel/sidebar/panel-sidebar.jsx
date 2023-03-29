@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import scrollToTop from "../../../functions/scroll";
 import sideBarIcon1 from "../../../../assets/images/svg/side-bar-icon-1.svg";
 import sideBarIcon2 from "../../../../assets/images/svg/side-bar-icon-2.svg";
 import sideBarIcon3 from "../../../../assets/images/svg/side-bar-icon-3.svg";
@@ -32,34 +33,52 @@ class PanelSideBar extends Component {
         </span>
         <ul>
           <li>
-            <Link to="/main-panel">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/main-panel">
               <img src={sideBarIcon2} alt="" />
               <span className="description">پیشخوان</span>
             </Link>
           </li>
           <li>
-            <Link to="/panel">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/panel">
               <img src={sideBarIcon3} alt="" />
               <span className="description">فروشگاه</span>
             </Link>
           </li>
 
           <li>
-            <Link to="/porseshkadeh">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/porseshkadeh">
               <img src={sideBarIcon4} alt="" />
               <span className="description">پرسشکده</span>
             </Link>
           </li>
 
           {/* <li>
-            <Link to="#">
+            <Link onClick={()=>{
+              scrollToTop()
+            }} to="#">
               <img src={sideBarIcon5} alt="" />
               <span className="description">گزارشیار</span>
             </Link>
           </li> */}
 
           <li>
-            <Link to="/user-info">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/user-info">
               <img src={sideBarIcon1} alt="" />
               <span className="description">تنظیمات</span>
             </Link>
@@ -67,7 +86,11 @@ class PanelSideBar extends Component {
         </ul>
         <span className={loc + "-loc" + " active-item"}></span>
         <span className="return-to-panel">
-          <Link to="/home">
+          <Link
+            onClick={() => {
+              scrollToTop();
+            }}
+            to="/home">
             <img src={backArrow} alt=" خروج از پنل" />
           </Link>
         </span>

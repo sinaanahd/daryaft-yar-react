@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import scrollToTop from "../../../functions/scroll";
 import pkHome from "../../../../assets/images/svg/pk-home.svg";
 import pkAllQuestions from "../../../../assets/images/svg/pk-all-questions.svg";
 import pkMyQuestions from "../../../../assets/images/svg/pk-my-questions.svg";
@@ -33,26 +34,42 @@ class PKSideBar extends Component {
         </span>
         <ul>
           <li>
-            <Link to="/porseshkadeh">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/porseshkadeh">
               <img src={pkHome} alt="پرسشکده" />
               <span className="description">خانه</span>
             </Link>
           </li>
           <li>
-            <Link to="/questions">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/questions">
               <img src={pkAllQuestions} alt="همه سوالات" />
               <span className="description">همه سوال‌ها</span>
             </Link>
           </li>
 
           <li>
-            <Link to="/my-questions">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/my-questions">
               <img src={pkMyQuestions} alt="سوال های من" />
               <span className="description">سوال‌های من</span>
             </Link>
           </li>
           <li>
-            <Link to="/ask-question">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/ask-question">
               <img src={pkAskQuestion} alt="پرسیدن سوال" />
               <span className="description">پرسیدن سوال</span>
             </Link>
@@ -60,7 +77,11 @@ class PKSideBar extends Component {
         </ul>
         <span className={loc + "-loc" + " active-item"}></span>
         <span className="return-to-panel">
-          <Link to="/main-panel">
+          <Link
+            onClick={() => {
+              scrollToTop();
+            }}
+            to="/main-panel">
             <img src={backArrow} alt="بازگشت به پنل" />
           </Link>
         </span>

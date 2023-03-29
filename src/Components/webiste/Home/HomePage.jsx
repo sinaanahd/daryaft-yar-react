@@ -69,6 +69,7 @@ class HomePage extends Component {
           name={user ? user.name : "ورود / ثبت نام"}
           is_logged_in={data.is_logged_in}
           books={books}
+          change_active={change_active}
         />
         <section className="home-page mm-width">
           <section className="banners-wrapper">

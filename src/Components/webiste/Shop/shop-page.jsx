@@ -17,9 +17,9 @@ class ShopPage extends Component {
     this.setState({ active_page });
   };
   componentDidMount() {
-    this.props.books.forEach((element) => {
-      if (element.id === 129009) console.log(element);
-    });
+    // this.props.books.forEach((element) => {
+    //   if (element.id === 129009) console.log(element);
+    // });
   }
   render() {
     const {
@@ -39,6 +39,7 @@ class ShopPage extends Component {
           name={user ? user.name : "ورود / ثبت نام"}
           is_logged_in={data.is_logged_in}
           books={books}
+          change_active={change_active}
         />
         <section className="content-wrapper shop-wrapper mm-width">
           <SideBar

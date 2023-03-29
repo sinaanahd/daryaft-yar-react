@@ -36,7 +36,7 @@ class Login extends Component {
           JSON.stringify(this.state.phone_number)
         );
         window.location.href = window.location.href.replace(
-          "login",
+          "Login",
           "verification-code"
         );
       })

@@ -11,6 +11,7 @@ import cross from "../../../assets/images/svg/cross.svg";
 //import { FaAngleDown } from "react-icons/fa";
 import arrowDown from "../../../assets/images/website/arrow-down-icon.png";
 import tokenPink from "../../../assets/images/token-pink.png";
+import scrollToTop from "../../functions/scroll";
 class SiteHeader extends Component {
   state = {
     menu_items: [
@@ -34,7 +35,7 @@ class SiteHeader extends Component {
       },
       {
         text: "ورود / ثبت نام",
-        link_to: "/login",
+        link_to: "/Login",
         children: [],
         id: 4,
       },
@@ -58,7 +59,15 @@ class SiteHeader extends Component {
     this.setState({ menu });
   };
   render() {
-    const { cart_count, name, is_logged_in, books, yalda, user } = this.props;
+    const {
+      cart_count,
+      name,
+      is_logged_in,
+      books,
+      yalda,
+      user,
+      change_active,
+    } = this.props;
     return (
       <header className={!yalda ? "site-header" : "site-header yalda-header"}>
         <div className="first-row">
@@ -101,7 +110,7 @@ class SiteHeader extends Component {
               <img src={mainLogo} alt="دریافت یار" />
             </Link>
           </div>
-          <Search books={books} />
+          <Search change_active={change_active} books={books} />
         </div>
         <div className="second-row">
           <nav>
@@ -179,7 +188,11 @@ class SiteHeader extends Component {
         )}
         {yalda ? (
           <span className="yalda_token">
-            <Link to="/invite">
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/invite">
               <img src={tokenPink} />
             </Link>
             <span className="token-count">

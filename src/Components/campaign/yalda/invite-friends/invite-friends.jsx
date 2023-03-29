@@ -14,7 +14,7 @@ import withWebsiteData from "../../../hoc/with-website-data";
 class InviteFreinds extends Component {
   state = {};
   render() {
-    const { user, cart, data, books } = this.props;
+    const { user, cart, data, books, change_active } = this.props;
     return (
       <>
         <SiteHeader
@@ -24,6 +24,7 @@ class InviteFreinds extends Component {
           books={books}
           yalda={true}
           user={user ? user : false}
+          change_active={change_active}
         />
         <div className="increase-token-page-w mm-width">
           <div className="main-content">

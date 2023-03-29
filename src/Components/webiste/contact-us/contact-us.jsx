@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import SiteHeader from "../header/header";
 import SiteFooter from "../footer/site-footer";
 import withWebsiteData from "../../hoc/with-website-data";
@@ -9,14 +10,18 @@ import whatsApp from "../../../assets/images/svg/whatsapp.svg";
 class ContactUs extends Component {
   state = {};
   render() {
-    const { cart, user, data, books } = this.props;
+    const { cart, user, data, books, change_active } = this.props;
     return (
       <>
+        <Helmet>
+          <title>تماس با ما</title>
+        </Helmet>
         <SiteHeader
           cart_count={cart ? cart.cart_summary.items_count : 0}
           name={user ? user.name : "ورود / ثبت نام"}
           is_logged_in={data.is_logged_in}
           books={books}
+          change_active={change_active}
         />
         <section className="return-prod mm-width">
           <div className="img-wrapper">

@@ -10,6 +10,7 @@ import headphone from "../../../assets/images/website/headphone-icon.png";
 import pen from "../../../assets/images/website/pen-icon.png";
 import wallet from "../../../assets/images/website/wallet-icon.png";
 import truck from "../../../assets/images/website/truck-icon.png";
+import scrollToTop from "../../functions/scroll";
 
 class SiteFooter extends Component {
   state = {};
@@ -60,10 +61,22 @@ class SiteFooter extends Component {
                   <Link to="./#">نحوه ی ثبت سفارشات</Link>
                 </li> */}
                 <li>
-                  <Link to="/how-to-send">نحوه ارسال سفارشات</Link>
+                  <Link
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                    to="/how-to-send">
+                    نحوه ارسال سفارشات
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/return-prod">نحوه بازگرداندن کالا</Link>
+                  <Link
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                    to="/return-prod">
+                    نحوه بازگرداندن کالا
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -82,10 +95,22 @@ class SiteFooter extends Component {
               <h3 className="footer-title">درباره ما</h3>
               <ul className="footer-links">
                 <li>
-                  <Link to="/contact-us">تماس با ما</Link>
+                  <Link
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                    to="/contact-us">
+                    تماس با ما
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/faq">پرسش های متداول</Link>
+                  <Link
+                    onClick={() => {
+                      scrollToTop();
+                    }}
+                    to="/faq">
+                    پرسش های متداول
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -121,7 +146,13 @@ class SiteFooter extends Component {
         <div className="blue">
           <p>
             تمامی حقوق مادی و معنوی سایت مربوط به &nbsp;
-            <Link to="/home">دریافت یار</Link>
+            <Link
+              onClick={() => {
+                scrollToTop();
+              }}
+              to="/home">
+              دریافت یار
+            </Link>
             &nbsp; هست
           </p>
         </div>

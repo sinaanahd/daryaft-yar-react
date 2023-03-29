@@ -7,7 +7,7 @@ import retrunAsset from "../../../assets/images/svg/return-asset.svg";
 class ReturnProd extends Component {
   state = {};
   render() {
-    const { cart, user, data, books } = this.props;
+    const { cart, user, data, books, change_active } = this.props;
     return (
       <>
         <SiteHeader
@@ -15,6 +15,7 @@ class ReturnProd extends Component {
           name={user ? user.name : "ورود / ثبت نام"}
           is_logged_in={data.is_logged_in}
           books={books}
+          change_active={change_active}
         />
         <section className="return-prod mm-width">
           <div className="img-wrapper">

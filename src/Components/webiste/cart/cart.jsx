@@ -1,4 +1,5 @@
 import React, { Component, useReducer } from "react";
+import { Helmet } from "react-helmet";
 import SiteHeader from "../header/header";
 import SiteFooter from "../footer/site-footer";
 import CartLeftCol from "./left-col/cart-left-col";
@@ -26,14 +27,19 @@ class WebsiteCart extends Component {
       get_user,
       get_cart,
       check_discount,
+      change_active,
     } = this.props;
     return (
       <>
+        <Helmet>
+          <title>سبد خرید</title>
+        </Helmet>
         <SiteHeader
           cart_count={cart ? cart.cart_summary.items_count : 0}
           name={user ? user.name : "ورود / ثبت نام"}
           is_logged_in={data.is_logged_in}
           books={books}
+          change_active={change_active}
         />
         <section className="website-cart mm-width">
           <CartRightCol

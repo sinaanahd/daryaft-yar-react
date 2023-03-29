@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import smallBanner1 from "../../../../assets/images/website/small-banner-1.jpg";
 import smallBanner2 from "../../../../assets/images/website/small-banner-2.jpg";
 import campaignBanner from "../../../../assets/images/sing-and-win-banner.jpg";
+import scrollToTop from "../../../functions/scroll";
 class Slider extends Component {
   state = {
     active: 0,
@@ -45,7 +46,11 @@ class Slider extends Component {
   render() {
     return (
       <div className="small-banner">
-        <Link to={this.state.banners[this.state.active].link}>
+        <Link
+          onClick={() => {
+            scrollToTop();
+          }}
+          to={this.state.banners[this.state.active].link}>
           {
             <img
               src={this.state.banners[this.state.active].banner}

@@ -17,7 +17,7 @@ class YaldaRulesW extends Component {
   };
   componentDidMount() {}
   render() {
-    const { user, cart, data, books } = this.props;
+    const { user, cart, data, books, change_active } = this.props;
     return (
       <>
         <SiteHeader
@@ -27,6 +27,7 @@ class YaldaRulesW extends Component {
           books={books}
           yalda={true}
           user={user ? user : false}
+          change_active={change_active}
         />
         <div className="rules-page-w mm-width">
           <div className="main-content">
