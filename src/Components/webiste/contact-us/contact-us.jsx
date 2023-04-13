@@ -42,17 +42,24 @@ class ContactUs extends Component {
               <br />
               <b>شماره ثابت:</b>
               <br />
-              <a href="tel:+982166950624">021-66950624</a>
+              <a aria-label="شماره ثابت" href="tel:+982166950624">
+                021-66950624
+              </a>
               <b>تماس در شرایط اضطرار:</b>
               <br />
-              <a href="tel:+989051300693">09051300693</a>
+              <a aria-label="شماره اضطراری" href="tel:+989051300693">
+                09051300693
+              </a>
             </p>
             <p className="text">
               <span className="title-with-icon">
                 <img src={telegramIcon} />
                 لینک تلگرام برای دنبال کردن ما:
               </span>
-              <a href="https://telegram.me/daryaftyar_bot" target="_blank">
+              <a
+                aria-label="تلگرام دریافت یار"
+                href="https://telegram.me/daryaftyar_bot"
+                target="_blank">
                 t.me/daryaftyar_bot
               </a>
             </p>
@@ -62,6 +69,7 @@ class ContactUs extends Component {
                 لینک اینستاگرام برای دنبال کردن ما:
               </span>
               <a
+                aria-label="اینتستاگرام دریافت یار"
                 href="https://www.instagram.com/daryaftyar_bot"
                 target="_blank">
                 instagram.com/daryaftyar_bot
@@ -72,7 +80,10 @@ class ContactUs extends Component {
                 <img src={whatsApp} />
                 لینک واتسپ برای دنبال کردن ما:
               </span>
-              <a href="https://wa.me/09051300693" target="_blank">
+              <a
+                aria-label="واتسپ دریافت یار"
+                href="https://wa.me/09051300693"
+                target="_blank">
                 wa.me/9051300693
               </a>
             </p>

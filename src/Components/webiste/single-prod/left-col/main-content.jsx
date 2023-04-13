@@ -3,6 +3,7 @@ import BookTab from "./book-tab";
 import { Link } from "react-router-dom";
 import pubLogo from "../../../../assets/images/website/sample-pub-logo.png";
 import tick from "../../../../assets/images/svg/tick.svg";
+import find_subject from "../../../functions/find-subject";
 class MainContent extends Component {
   state = {};
   render() {
@@ -29,9 +30,18 @@ class MainContent extends Component {
               <ul className="detail">
                 <li className="result">{book.name}</li>
                 <li className="result">{book.publisher}</li>
-                <li className="result">سری</li>
-                <li className="result">مولف</li>
-                <li className="result">{book.subject}</li>
+                <li className="result author-li">
+                  {book.author.map((a, i) => (
+                    <React.Fragment key={i++}>
+                      <span>{a}</span>/
+                    </React.Fragment>
+                  ))}
+                </li>
+                <li className="result">
+                  {book.subject.map((s, i) => (
+                    <span key={i++}>{find_subject(s) + " / "}</span>
+                  ))}
+                </li>
               </ul>
             </div>
           </div>
@@ -57,9 +67,13 @@ class MainContent extends Component {
                 </li>
               </ul>
             </div>
-            <Link className="download-part" to={"#"}>
+            <a
+              aria-label="دانلود بخشی از کتاب"
+              className="download-part"
+              href={book.pdf_link}
+              target="_blank">
               دانلود بخشی از کتاب
-            </Link>
+            </a>
           </div>
         </div>
         <BookTab book={book} />

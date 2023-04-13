@@ -42,7 +42,7 @@ class Search extends Component {
           }}
         />
         <span className="header-search-icon">
-          <img src={magnifier} alt="جستجو" />
+          <img width={20} height={20} src={magnifier} alt="جستجو" />
         </span>
         {this.state.active ? (
           <div className="search-results">

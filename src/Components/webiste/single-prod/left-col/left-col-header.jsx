@@ -11,7 +11,7 @@ class LeftColHeader extends Component {
       <div className="single-book-header">
         <span className="titles">
           <h1 className="book-title">{book.name}</h1>
-          <h2 className="book-secondary-title">{this.state.extra}</h2>
+          {/* <h2 className="book-secondary-title">{this.state.extra}</h2> */}
         </span>
         <span className="btns">
           <span className="like">

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Search from "./search";
 import MenuItem from "./menu/menu-item";
 import account_icon from "../../../assets/images/website/account-icon.png";
-import mainLogo from "../../../assets/images/welcome-photo.png";
+import mainLogo from "../../../assets/images/welcome-photo.webp";
 import cartIcon from "../../../assets/images/website/cart-icon.png";
 import responsiveMenuUser from "../../../assets/images/svg/user-icon-menu.svg";
 import lines from "../../../assets/images/svg/lines.svg";
@@ -73,7 +73,9 @@ class SiteHeader extends Component {
         <div className="first-row">
           <div className="btns-wrapper">
             <span className="enter-btn-wrapper header-btn">
-              <Link to={name !== "ورود / ثبت نام" ? "/panel" : "/Login"}>
+              <Link
+                aria-label="رفتن به صفحه لاگین"
+                to={name !== "ورود / ثبت نام" ? "/panel" : "/Login"}>
                 {!is_logged_in ? (
                   "ثبت‌نام / ورود"
                 ) : (
@@ -81,11 +83,15 @@ class SiteHeader extends Component {
                     <span className="text">{name}</span>
                     <span className="btn-logo">
                       <img
+                        width={16}
+                        height={16}
                         src={account_icon}
                         alt="ورود کاربر"
                         className="normal-icon"
                       />
                       <img
+                        width={16}
+                        height={16}
                         src={responsiveMenuUser}
                         alt="ورود کاربر"
                         className="responsive-icon"
@@ -96,9 +102,9 @@ class SiteHeader extends Component {
               </Link>
             </span>
             <span className="header-btn cart-btn">
-              <Link to="/Cart">
+              <Link aria-label="رفتن به سبد خرید" to="/Cart">
                 <span className="cart-icon">
-                  <img src={cartIcon} alt="سبد خرید" />
+                  <img width={16} height={16} src={cartIcon} alt="سبد خرید" />
                 </span>
                 <span className="cart-text">سبد خرید</span>
                 <span className="cart-count">{cart_count}</span>
@@ -106,8 +112,8 @@ class SiteHeader extends Component {
             </span>
           </div>
           <div className="logo-wrapper">
-            <Link to="/home">
-              <img src={mainLogo} alt="دریافت یار" />
+            <Link aria-label="رفتن به خانه" to="/home">
+              <img width={100} height={100} src={mainLogo} alt="دریافت یار" />
             </Link>
           </div>
           <Search change_active={change_active} books={books} />
@@ -189,6 +195,7 @@ class SiteHeader extends Component {
         {yalda ? (
           <span className="yalda_token">
             <Link
+              aria-label="رفتن به صفحه دعوت از کابران"
               onClick={() => {
                 scrollToTop();
               }}

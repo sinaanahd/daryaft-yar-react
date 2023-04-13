@@ -43,12 +43,16 @@ class HowToSend extends Component {
             <p className="text">
               <b>شماره ثابت:</b>
               <br />
-              <a href="tel:+982166950624">021-66950624</a>
+              <a aria-label="شماره تماس" href="tel:+982166950624">
+                021-66950624
+              </a>
             </p>
             <p className="text">
               <b>تماس در شرایط اضطرار:</b>
               <br />
-              <a href="tel:+989051300693">09051300693</a>
+              <a aria-label="شماره تماس" href="tel:+989051300693">
+                09051300693
+              </a>
             </p>
           </div>
         </section>

@@ -16,7 +16,10 @@ class Book extends Component {
           !ids.includes(book.id) ? (
             <span className="add-to-cart">
               <img
+                width={11}
+                height={11}
                 src={cartWhite}
+                loading="lazy"
                 onClick={() => {
                   add_to_cart(book.id);
                 }}
@@ -29,7 +32,10 @@ class Book extends Component {
         ) : (
           <span className="add-to-cart">
             <img
+              width={11}
+              height={11}
               src={cartWhite}
+              loading="lazy"
               onClick={() => {
                 add_to_cart(book.id);
               }}
@@ -39,6 +45,7 @@ class Book extends Component {
         )}
         <span className="img-wrapper">
           <Link
+            aria-label={book.name || "متن خالی"}
             to={`/single-id/${book.id}`}
             onClick={() => {
               change_active(book);
@@ -46,11 +53,18 @@ class Book extends Component {
               add_to_recent_visit(book, "shop");
               scrollToTop();
             }}>
-            <img src={book.img_url} alt={book.name} />
+            <img
+              width={150}
+              height={211}
+              src={book.image_link}
+              alt={book.name}
+              loading="lazy"
+            />
           </Link>
         </span>
         <h3 className="book-title">
           <Link
+            aria-label={book.name || "متن خالی"}
             to={`/single-id/${book.id}`}
             onClick={() => {
               change_active(book);
@@ -63,6 +77,7 @@ class Book extends Component {
         <span className="price-discount">
           <span className="price-currency">
             <span className="prices">
+              {/* {!book.discounted_price ? ( */}
               {book.price === book.discounted_price ? (
                 <></>
               ) : (
@@ -71,6 +86,7 @@ class Book extends Component {
                 </span>
               )}
               <span
+                // className={!book.discounted_price ? "normal" : "normal dis"}>
                 className={
                   book.price === book.discounted_price ? "normal" : "normal dis"
                 }>
@@ -79,9 +95,13 @@ class Book extends Component {
             </span>
             <span className="curency">تومان</span>
           </span>
-          <span className="discount-precent">
-            {calculate_discount(book.price, book.discounted_price)}%
-          </span>
+          {book.discounted_price ? (
+            <span className="discount-precent">
+              {calculate_discount(book.price, book.discounted_price)}%
+            </span>
+          ) : (
+            <></>
+          )}
         </span>
       </div>
     );

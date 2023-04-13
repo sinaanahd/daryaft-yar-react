@@ -17,9 +17,7 @@ class ShopPage extends Component {
     this.setState({ active_page });
   };
   componentDidMount() {
-    // this.props.books.forEach((element) => {
-    //   if (element.id === 129009) console.log(element);
-    // });
+    console.log(this.props.books[1]);
   }
   render() {
     const {

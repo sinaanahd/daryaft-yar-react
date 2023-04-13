@@ -87,6 +87,7 @@ class CodePage extends Component {
           <p>کد تایید ارسال شده را وارد نمایید</p>
           <span className="inputs-wrapper">
             <input
+              className="w-code-box"
               type="number"
               name="digit-0"
               id="digit-0"
@@ -96,6 +97,7 @@ class CodePage extends Component {
               }}
             />
             <input
+              className="w-code-box"
               type="number"
               name="digit-1"
               id="digit-1"
@@ -104,6 +106,7 @@ class CodePage extends Component {
               }}
             />
             <input
+              className="w-code-box"
               type="number"
               name="digit-2"
               id="digit-2"
@@ -112,6 +115,7 @@ class CodePage extends Component {
               }}
             />
             <input
+              className="w-code-box"
               type="number"
               name="digit-3"
               id="digit-3"

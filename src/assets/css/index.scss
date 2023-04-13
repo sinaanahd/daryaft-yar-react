@@ -3366,6 +3366,7 @@ img {
         @include styler(#000 , #fff , 16px,8px);
         box-shadow: $boxShadow2;
         .move-btn{
+            cursor: pointer;
             flex: 0 0 20%;
             @include flexMixin(row,center,center);
             img{
@@ -3611,6 +3612,10 @@ img {
                 margin-left: 10px;
             }
         }
+        .author-li{
+            @include flexMixin(row,flex-start,center);
+            gap:5px
+        }
     }
     .tab-options{
         width: 100%;
@@ -3668,10 +3673,15 @@ img {
             font-size: 14px;
             margin : 0 0 15px;
             padding: 0 20px 0 0;
+            @include flexMixin(row, flex-start, center);
+            gap: 5px;
         }
         .content{
-            margin-right: 10px;
             font-weight: bold;
+        }
+        .author-wrapper{
+            @include flexMixin(row,flex-start,center);
+            gap: 5px;
         }
     }
 }
@@ -4124,8 +4134,9 @@ li{
         @include flexMixin(row,center,center);
         img{
             border-radius: 8px;
-            height: 500px;
+            max-height: 500px;
             transition: $transition;
+            width: 100%!important;
         }
         a{
             width : 100%;
@@ -6638,9 +6649,15 @@ li{
             -webkit-appearance: none;
         }
     }
+    .w-code-box{
+        &:focus{
+            outline: 0px solid $mainColor1;
+            border: 2px solid $mainColor1;
+        }
+    }
 
     .confirm {
-        @include styler(#fff, $campaign_color , 16px, 16px);
+        @include styler(#fff, $mainColor1 , 16px, 16px);
         width: 120px;
         height: 36px;
         @include flexMixin(row, center, center);
@@ -7450,7 +7467,7 @@ li{
         }
         .circle-title{
             .books-wrapper{
-                width: 4000px;
+                width: 2200px;
             }
         }
     }

@@ -5,7 +5,6 @@ import backIcon from "../../../../../assets/images/website/arrow-back-icon.png";
 class Pagination extends Component {
   state = {};
   componentDidMount() {}
-  test = (len) => {};
   render() {
     const { len, active_page, change_active_page } = this.props;
     const needed_len = Math.ceil(len / 40);
@@ -72,8 +71,15 @@ class Pagination extends Component {
     }
     return (
       <div className="pagination">
-        <div className="next-page move-btn">
-          <img src={forwardIcon} alt="" />
+        <div
+          className="next-page move-btn"
+          onClick={() => {
+            if (needed_len !== active_page) {
+              change_active_page(active_page + 1);
+              scrollToTop();
+            }
+          }}>
+          <img src={forwardIcon} alt="صفحه بعد" width={24} height={20} />
           <span className="text">صفحه بعد</span>
         </div>
         <div className="pages-wrapper">
@@ -99,9 +105,16 @@ class Pagination extends Component {
             <></>
           )}
         </div>
-        <div className="prev-page move-btn">
+        <div
+          className="prev-page move-btn"
+          onClick={() => {
+            if (needed_len !== 1) {
+              change_active_page(active_page - 1);
+              scrollToTop();
+            }
+          }}>
           <span className="text">صفحه قبل</span>
-          <img src={backIcon} alt="" />
+          <img src={backIcon} alt="صفحه قبل" width={24} height={20} />
         </div>
       </div>
     );

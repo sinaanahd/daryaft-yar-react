@@ -3,26 +3,25 @@ import { Link } from "react-router-dom";
 import scrollToTop from "../../functions/scroll";
 class SearchItem extends Component {
   state = {};
-  componentDidMount() {
-    const { change_active } = this.props;
-    console.log(change_active);
-  }
+  componentDidMount() {}
   render() {
     const { item, change_active } = this.props;
     return (
       <div className="search-item">
         <Link
+          aria-label={item.name}
           onClick={() => {
             scrollToTop();
             change_active(item);
           }}
           to={`/single-id/${item.id}`}
           className="img">
-          <img src={item.img_url} alt={item.name} />
+          <img width={43} height={57} src={item.image_link} alt={item.name} />
         </Link>
         <span className="details">
           <h3 className="item-title">
             <Link
+              aria-label={item.name}
               onClick={() => {
                 scrollToTop();
                 change_active(item);

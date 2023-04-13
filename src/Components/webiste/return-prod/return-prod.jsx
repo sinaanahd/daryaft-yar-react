@@ -53,7 +53,9 @@ class ReturnProd extends Component {
               <br />
               <b>شماره ثابت:</b>
               <br />
-              <a href="tel:+982166950624">021-66950624</a>
+              <a aria-label="شماره ثابت" href="tel:+982166950624">
+                021-66950624
+              </a>
             </p>
           </div>
         </section>

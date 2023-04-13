@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../reusables/loading";
+import scrollToTop from "../../functions/scroll";
 import Errors from "../../reusables/errors";
-import logo from "../../../assets/images/welcome-photo.png";
+import logo from "../../../assets/images/welcome-photo.webp";
 import whatsappLogo from "../../../assets/images/website/whats-app.png";
 import telegramLogo from "../../../assets/images/website/instagram.png";
 import instagramLogo from "../../../assets/images/website/telegram.png";
@@ -10,7 +11,6 @@ import headphone from "../../../assets/images/website/headphone-icon.png";
 import pen from "../../../assets/images/website/pen-icon.png";
 import wallet from "../../../assets/images/website/wallet-icon.png";
 import truck from "../../../assets/images/website/truck-icon.png";
-import scrollToTop from "../../functions/scroll";
 
 class SiteFooter extends Component {
   state = {};
@@ -21,14 +21,26 @@ class SiteFooter extends Component {
         <footer className="site-footer mm-width">
           <div className="points">
             <div className="point">
-              <img src={truck} alt="" className="point-img" />
+              <img
+                width={40}
+                height={40}
+                src={truck}
+                alt=""
+                className="point-img"
+              />
               <span className="texts">
                 <h4 className="point-title">ارسال رایگان به کشور</h4>
                 <p>با هر میزان خرید مرسوله خودت رو رایگان بگیر</p>
               </span>
             </div>
             <div className="point">
-              <img src={wallet} alt="" className="point-img" />
+              <img
+                width={40}
+                height={40}
+                src={wallet}
+                alt=""
+                className="point-img"
+              />
               <span className="texts">
                 <h4 className="point-title">قابلیت خرید از کیف پول</h4>
                 <p>
@@ -37,7 +49,13 @@ class SiteFooter extends Component {
               </span>
             </div>
             <div className="point">
-              <img src={pen} alt="" className="point-img" />
+              <img
+                width={40}
+                height={40}
+                src={pen}
+                alt=""
+                className="point-img"
+              />
               <span className="texts">
                 <h4 className="point-title">
                   به روز ترین فروشگاه کتاب و لوازم التحریر
@@ -46,7 +64,13 @@ class SiteFooter extends Component {
               </span>
             </div>
             <div className="point">
-              <img src={headphone} alt="" className="point-img" />
+              <img
+                width={40}
+                height={40}
+                src={headphone}
+                alt=""
+                className="point-img"
+              />
               <span className="texts">
                 <h4 className="point-title">مشاوره و پشتیبانی 24 ساعته</h4>
                 <p>از طریق تلفن و چت آنلاین سایت</p>
@@ -58,10 +82,12 @@ class SiteFooter extends Component {
               <h3 className="footer-title">راهنمای خرید</h3>
               <ul className="footer-links">
                 {/* <li>
-                  <Link to="./#">نحوه ی ثبت سفارشات</Link>
+                  <Link
+                  aria-label="" to="./#">نحوه ی ثبت سفارشات</Link>
                 </li> */}
                 <li>
                   <Link
+                    aria-label="نحوه ارسال سفارشات"
                     onClick={() => {
                       scrollToTop();
                     }}
@@ -71,6 +97,7 @@ class SiteFooter extends Component {
                 </li>
                 <li>
                   <Link
+                    aria-label="نحوه بازگرداندن کالا"
                     onClick={() => {
                       scrollToTop();
                     }}
@@ -84,10 +111,12 @@ class SiteFooter extends Component {
               <h3 className="footer-title">خدمات مشتریان</h3>
               <ul className="footer-links">
                 <li>
-                  <Link to="./#">تخفیف‌ها</Link>
+                  <Link
+                  aria-label="" to="./#">تخفیف‌ها</Link>
                 </li>
                 <li>
-                  <Link to="./#">نحوه بازگرداندن کالا</Link>
+                  <Link
+                  aria-label="" to="./#">نحوه بازگرداندن کالا</Link>
                 </li>
               </ul> 
             </div> */}
@@ -96,6 +125,7 @@ class SiteFooter extends Component {
               <ul className="footer-links">
                 <li>
                   <Link
+                    aria-label="تماس با ما"
                     onClick={() => {
                       scrollToTop();
                     }}
@@ -105,6 +135,7 @@ class SiteFooter extends Component {
                 </li>
                 <li>
                   <Link
+                    aria-label="رفتن به پرسش های متداول"
                     onClick={() => {
                       scrollToTop();
                     }}
@@ -115,19 +146,40 @@ class SiteFooter extends Component {
               </ul>
             </div>
             <div className="footer-col footer-col-4">
-              <img src={logo} alt="انتشارات دریافت" className="logo-footer" />
+              <img
+                width={100}
+                height={100}
+                src={logo}
+                alt="انتشارات دریافت"
+                className="logo-footer"
+              />
               <p className="follow-us-title">
                 ما را در شبکه های اجتماعی دنبال کنید
               </p>
               <span className="follow-icons-wrapper">
                 <span className="icon">
-                  <img src={whatsappLogo} alt="واتسپ انتشارات دریافت" />
+                  <img
+                    width={23}
+                    height={23}
+                    src={whatsappLogo}
+                    alt="واتسپ انتشارات دریافت"
+                  />
                 </span>
                 <span className="icon middle">
-                  <img src={instagramLogo} alt="اینتستاگرام انتشارات دریافت" />
+                  <img
+                    width={23}
+                    height={23}
+                    src={instagramLogo}
+                    alt="اینتستاگرام انتشارات دریافت"
+                  />
                 </span>
                 <span className="icon">
-                  <img src={telegramLogo} alt="تلگرام انتشارات دریافت" />
+                  <img
+                    width={23}
+                    height={23}
+                    src={telegramLogo}
+                    alt="تلگرام انتشارات دریافت"
+                  />
                 </span>
               </span>
             </div>
@@ -147,6 +199,7 @@ class SiteFooter extends Component {
           <p>
             تمامی حقوق مادی و معنوی سایت مربوط به &nbsp;
             <Link
+              aria-label="رفتن به صفحه اصلی"
               onClick={() => {
                 scrollToTop();
               }}

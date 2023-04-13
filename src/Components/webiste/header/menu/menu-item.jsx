@@ -9,6 +9,7 @@ class MenuItem extends Component {
     return (
       <li className={item.children.length !== 0 ? "has-sub" : ""}>
         <Link
+          aria-label={item.text}
           onClick={() => {
             scrollToTop();
           }}

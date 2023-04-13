@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import smallBanner1 from "../../../../assets/images/website/small-banner-1.jpg";
-import smallBanner2 from "../../../../assets/images/website/small-banner-2.jpg";
-import campaignBanner from "../../../../assets/images/sing-and-win-banner.jpg";
+import smallBanner1 from "../../../../assets/images/website/small-banner-1.webp";
+import smallBanner2 from "../../../../assets/images/website/small-banner-2.webp";
+import campaignBanner from "../../../../assets/images/sing-and-win-banner.webp";
 import scrollToTop from "../../../functions/scroll";
 class Slider extends Component {
   state = {
@@ -47,12 +47,16 @@ class Slider extends Component {
     return (
       <div className="small-banner">
         <Link
+          aria-label={this.state.banners[this.state.active].desc}
           onClick={() => {
             scrollToTop();
           }}
           to={this.state.banners[this.state.active].link}>
           {
             <img
+              loading="lazy"
+              width={318}
+              height={476}
               src={this.state.banners[this.state.active].banner}
               alt={this.state.banners[this.state.active].desc}
             />

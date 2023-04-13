@@ -6,9 +6,10 @@ import Book from "../Shop/main-content/books/book";
 import Slider from "./slider/slider";
 import { Link } from "react-router-dom";
 import null_books from "../reusable/null_books";
-import bigBanner1 from "../../../assets/images/website/big-banner-1.jpg";
+import bigBanner1 from "../../../assets/images/big-banner.webp";
 import arrowLeftWhite from "../../../assets/images/website/arrow-left-w-icon.png";
 // import arr from '../../functions/matlan';
+
 class HomePage extends Component {
   state = {
     carousel_states: [
@@ -60,10 +61,9 @@ class HomePage extends Component {
       rad,
       last,
     } = this.props;
-    const needed_book = books ? books.slice(0, 5) : false;
-    const needed_book2 = books ? books.slice(0, 20) : false;
     return (
       <>
+        <link rel="preload" href={bigBanner1} as="image" />
         <SiteHeader
           cart_count={cart ? cart.cart_summary.items_count : 0}
           name={user ? user.name : "ورود / ثبت نام"}
@@ -74,18 +74,23 @@ class HomePage extends Component {
         <section className="home-page mm-width">
           <section className="banners-wrapper">
             <div className="big-banner">
-              <Link to="/shop">
-                <img src={bigBanner1} alt="" />
+              <Link aria-label="رفتن به فروشگاه" to="/shop">
+                <img
+                  width={200}
+                  height={300}
+                  src={bigBanner1}
+                  alt="رفتن به فروشگاه"
+                />
               </Link>
             </div>
             <Slider />
           </section>
 
-          <h3 className="res-title white">پیشنهاد‌های رد ‌نشدنی</h3>
+          <h2 className="res-title white">پیشنهاد‌های رد ‌نشدنی</h2>
           <section className="cant-say-no in">
-            <h3 className="title">پیشنهاد‌های رد ‌نشدنی</h3>
+            <h2 className="title">پیشنهاد‌های رد ‌نشدنی</h2>
             <div className="books-wrapper">
-              {rad
+              {rad.length !== 0 && rad
                 ? rad.map((b) => (
                     <Book
                       book={b}
@@ -106,12 +111,12 @@ class HomePage extends Component {
                   ))}
             </div>
           </section>
-          <h3 className="res-title">محبوب‌ترین کتاب‌ها</h3>
+          <h2 className="res-title">محبوب‌ترین کتاب‌ها</h2>
           <section className="circle-title in">
-            <h3 className="title">محبوب‌ترین کتاب‌ها</h3>
+            <h2 className="title">محبوب‌ترین کتاب‌ها</h2>
             <div
               className={`books-wrapper carousel-type s-${this.state.carousel_states[0].scrolled}`}>
-              {hot
+              {hot.length !== 0 && hot
                 ? hot.map((b) => (
                     <Book
                       ids={cart ? cart.cart_items_ids : []}
@@ -142,15 +147,21 @@ class HomePage extends Component {
               onClick={() => {
                 this.hanle_carousel(1);
               }}>
-              <img src={arrowLeftWhite} alt="" />
+              <img
+                width={11}
+                height={11}
+                src={arrowLeftWhite}
+                alt="جا به جایی"
+                loading="lazy"
+              />
             </div>
           </section>
 
-          <h3 className="res-title">پرفروش ترین کتاب‌ها</h3>
+          <h2 className="res-title">پرفروش ترین کتاب‌ها</h2>
           <section className="most-sale in">
-            <h3 className="title">پرفروش ترین کتاب‌ها</h3>
+            <h2 className="title">پرفروش ترین کتاب‌ها</h2>
             <div className={`books-wrapper`}>
-              {most
+              {most.length !== 0 && most
                 ? most.map((b) => (
                     <Book
                       ids={cart ? cart.cart_items_ids : []}
@@ -182,12 +193,12 @@ class HomePage extends Component {
             </div>
           </section>
 
-          <h3 className="res-title">آخرین کتاب‌ها</h3>
+          <h2 className="res-title">آخرین کتاب‌ها</h2>
           <section className="circle-title in">
-            <h3 className="title">آخرین کتاب‌ها</h3>
+            <h2 className="title">آخرین کتاب‌ها</h2>
             <div
               className={`books-wrapper carousel-type s-${this.state.carousel_states[1].scrolled}`}>
-              {last
+              {last.length !== 0 && last
                 ? last.map((b) => (
                     <Book
                       book={b}
@@ -218,7 +229,13 @@ class HomePage extends Component {
               onClick={() => {
                 this.hanle_carousel(2);
               }}>
-              <img src={arrowLeftWhite} alt="" />
+              <img
+                width={11}
+                height={11}
+                src={arrowLeftWhite}
+                alt="جا به جایی"
+                loading="lazy"
+              />
             </div>
           </section>
         </section>
