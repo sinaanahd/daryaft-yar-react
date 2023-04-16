@@ -25,11 +25,12 @@ class Panel extends Component {
     }
     axios
       .get(`https://daryaftyar.ir/backend/api/user_orders/${user.user_id}`)
+      //.get(`https://daryaftyar.ir/backend/api/user_orders/${341393410}`)
       .then((res) => {
         this.setState({ pause: false });
         const response = res.data;
         console.log(response);
-        localStorage.setItem("orders", JSON.stringify(res.data));
+        //localStorage.setItem("orders", JSON.stringify(res.data));
         response.forEach((element) => {
           if (element.pay_refId === "") {
             element.pay_refId = 1111111111111111;

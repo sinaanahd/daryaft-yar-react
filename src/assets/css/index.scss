@@ -2880,6 +2880,13 @@ img {
     @include flexMixin(column,flex-start,center);
 }
 
+.book-title {
+    height: 50px;
+    overflow: scroll;
+    align-items: flex-start!important;
+}
+
+
 /* header */
 .yalda-header{
     .yalda_token{
@@ -4305,8 +4312,9 @@ li{
             font-size: 15px;
             text-align: center;
             min-height: 45px;
-            @include flexMixin(row, center, center);
-    
+            @include flexMixin(row, center, flex-start);
+            height: 47px;
+            overflow: scroll;
             a {
                 width: 100%;
                 color: #000;

@@ -43,11 +43,11 @@ function withWebsiteData(Component) {
         : [],
     };
     componentDidMount() {
+      this.get_books();
       if (this.state.user) {
         this.get_user(this.state.user.user_id);
         this.get_cart(this.state.user.user_id);
       }
-      this.get_books();
     }
     get_user = (id) => {
       axios
@@ -71,8 +71,8 @@ function withWebsiteData(Component) {
         .get(`https://daryaftyar.ir/backend/api/books`)
         .then((res) => {
           const books = res.data;
-          this.setState({ books });
           localStorage.setItem("website_books", JSON.stringify(books));
+          this.setState({ books });
           this.get_book_cats();
         })
         .catch((err) => {

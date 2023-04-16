@@ -72,6 +72,25 @@ class Book extends Component {
               scrollToTop();
             }}>
             {book.name}
+            {/* <br />
+            {book.publisher}
+            <br />
+            <br />
+            {book.subject.map((s, i) => (
+              <React.Fragment key={i++}>
+                {s}
+                <br />
+              </React.Fragment>
+            ))}
+            <br />
+            <br />
+
+            {book.book_year.map((by, i) => (
+              <React.Fragment key={i++}>
+                {by}
+                <br />
+              </React.Fragment>
+            ))} */}
           </Link>
         </h3>
         <span className="price-discount">

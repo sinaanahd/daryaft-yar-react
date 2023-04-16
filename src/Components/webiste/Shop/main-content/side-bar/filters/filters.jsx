@@ -217,7 +217,49 @@ class Filters extends Component {
         break;
     }
     this.setState({ clicked_id });
+    // this.filter_books(
+    //   this.props.original_books,
+    //   this.state.clicked_id.grades,
+    //   this.state.clicked_id.subjects,
+    //   this.state.clicked_id.publishers,
+    //   this.state.clicked_id.courses
+    // );
+    if (
+      !(
+        clicked_id.courses.length === 0 &&
+        clicked_id.subjects.length === 0 &&
+        clicked_id.grades.length === 0 &&
+        clicked_id.publishers.length === 0
+      )
+    ) {
+      this.handle_filters(clicked_id);
+    } else {
+      this.empty_filters();
+    }
   };
+  // filter_books = (books, book_year, subject, publisher, course) => {
+  //   const filteredBooks = [];
+  //   console.log(
+  //     "by :" + book_year,
+  //     "su : " + subject,
+  //     "pub : " + publisher,
+  //     "c : " + course
+  //   );
+  //   for (const book of books) {
+  //     if (
+  //       (book_year === [] ||
+  //         book.book_year.some((year) => book_year.includes(year))) &&
+  //       (subject === [] || book.subject.some((sub) => subject.includes(sub))) &&
+  //       (publisher === [] || book.publisher === publisher) &&
+  //       (course === [] || book.course === course)
+  //     ) {
+  //       filteredBooks.push(book);
+  //     }
+  //   }
+  //   this.props.handle_needed_book(filteredBooks);
+  //   this.props.change_active_page(1);
+  //   // return filteredBooks;
+  // };
   handle_filters = (clicked_id) => {
     const books = this.props.original_books;
     let filterd_by_pubs = [];
@@ -241,13 +283,14 @@ class Filters extends Component {
     // find all books with selected subhject
     clicked_subjects.forEach((sub) => {
       filterd_by_sub = filterd_by_sub.concat(
-        books.filter((b) => b.subject === el_by_id(subjects, sub).id)
+        //books.filter((b) => b.subject === el_by_id(subjects, sub).id)
+        books.filter((b) => b.subject.includes(el_by_id(subjects, sub).id))
       );
     });
     // find all grades with selected grades
     clicked_grades.forEach((sub) => {
       filtered_by_year = filtered_by_year.concat(
-        books.filter((b) => b.book_year === el_by_id(grades, sub).id)
+        books.filter((b) => b.book_year.includes(el_by_id(grades, sub).id))
       );
     });
     // find all books with selected course
@@ -260,9 +303,17 @@ class Filters extends Component {
     let ids_by_pub = [];
     filterd_by_pubs.forEach((b) => ids_by_pub.push(b.id));
     let ids_by_sub = [];
-    filterd_by_sub.forEach((b) => ids_by_sub.push(b.id));
+    filterd_by_sub.forEach((b) => {
+      if (!ids_by_sub.includes(b.id)) {
+        ids_by_sub.push(b.id);
+      }
+    });
     let ids_by_year = [];
-    filtered_by_year.forEach((b) => ids_by_year.push(b.id));
+    filtered_by_year.forEach((b) => {
+      if (!ids_by_year.includes(b.id)) {
+        ids_by_year.push(b.id);
+      }
+    });
     let ids_by_course = [];
     filtered_by_course.forEach((b) => ids_by_course.push(b.id));
     //console.log(ids_by_course);

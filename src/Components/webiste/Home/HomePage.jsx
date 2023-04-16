@@ -6,7 +6,7 @@ import Book from "../Shop/main-content/books/book";
 import Slider from "./slider/slider";
 import { Link } from "react-router-dom";
 import null_books from "../reusable/null_books";
-import bigBanner1 from "../../../assets/images/big-banner.webp";
+import bigBanner1 from "../../../assets/images/big-banner-3.webp";
 import arrowLeftWhite from "../../../assets/images/website/arrow-left-w-icon.png";
 // import arr from '../../functions/matlan';
 

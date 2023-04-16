@@ -29,7 +29,7 @@ class SiteHeader extends Component {
       },
       {
         text: "سبد خرید",
-        link_to: "/cart",
+        link_to: "/Cart",
         children: [],
         id: 3,
       },
@@ -75,7 +75,7 @@ class SiteHeader extends Component {
             <span className="enter-btn-wrapper header-btn">
               <Link
                 aria-label="رفتن به صفحه لاگین"
-                to={name !== "ورود / ثبت نام" ? "/panel" : "/Login"}>
+                to={name !== "ورود / ثبت نام" ? "/main-panel" : "/Login"}>
                 {!is_logged_in ? (
                   "ثبت‌نام / ورود"
                 ) : (

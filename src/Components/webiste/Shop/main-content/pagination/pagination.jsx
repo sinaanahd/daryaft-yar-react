@@ -108,7 +108,7 @@ class Pagination extends Component {
         <div
           className="prev-page move-btn"
           onClick={() => {
-            if (needed_len !== 1) {
+            if (active_page !== 1) {
               change_active_page(active_page - 1);
               scrollToTop();
             }
