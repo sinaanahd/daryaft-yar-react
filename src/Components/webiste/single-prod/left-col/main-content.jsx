@@ -13,9 +13,9 @@ class MainContent extends Component {
         <div className="pub-details">
           <span className="publisher-details">
             <span className="big-title pub-name">نام ناشر :</span>
-            <h4 className="result">{book.publisher}</h4>
+            <h2 className="result">{book.publisher}</h2>
             <span className="publisher-logo">
-              <img src={pubLogo} alt={book.publisher} />
+              <img width={55} height={55} src={pubLogo} alt={book.publisher} />
             </span>
           </span>
           <span className="user-rate-wrapper">
@@ -50,19 +50,19 @@ class MainContent extends Component {
               <span className="title">کتاب در یک نگاه</span>
               <ul className="book-iols">
                 <li>
-                  <img src={tick} />
+                  <img src={tick} alt="مورد" width={18} height={12} />
                   <span className="iol-text">لورم ایپسوم متن</span>
                 </li>
                 <li>
-                  <img src={tick} />
+                  <img src={tick} alt="مورد" width={18} height={12} />
                   <span className="iol-text">لورم ایپسوم متن</span>
                 </li>
                 <li>
-                  <img src={tick} />
+                  <img src={tick} alt="مورد" width={18} height={12} />
                   <span className="iol-text">لورم ایپسوم متن</span>
                 </li>
                 <li>
-                  <img src={tick} />
+                  <img src={tick} alt="مورد" width={18} height={12} />
                   <span className="iol-text">لورم ایپسوم متن</span>
                 </li>
               </ul>

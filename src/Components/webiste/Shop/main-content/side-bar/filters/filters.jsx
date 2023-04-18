@@ -160,7 +160,9 @@ class Filters extends Component {
         name: "هنر",
       },
     ],
-    publishers: false,
+    publishers: JSON.parse(localStorage.getItem("publishers"))
+      ? JSON.parse(localStorage.getItem("publishers"))
+      : false,
     clicked_id: {
       courses: [],
       grades: [],
@@ -181,6 +183,7 @@ class Filters extends Component {
           publishers.push({ ...p, clicked: false });
         });
         this.setState({ publishers });
+        localStorage.setItem("publsihers", JSON.stringify(publishers));
       })
       .catch((err) => console.log(err));
   }
@@ -531,7 +534,7 @@ class Filters extends Component {
             <></>
           )}
           <div className="filter">
-            <span className="text">مولف</span>
+            <span className="text">انتشارات</span>
             <span
               className={this.state.open_p ? "arrow reverse" : "arrow"}
               onClick={() => {

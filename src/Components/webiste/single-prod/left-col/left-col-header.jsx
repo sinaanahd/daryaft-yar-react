@@ -15,10 +15,15 @@ class LeftColHeader extends Component {
         </span>
         <span className="btns">
           <span className="like">
-            <img src={heartIcon} alt="افزودن به علاقه مندی ها" />
+            <img
+              width={20}
+              height={20}
+              src={heartIcon}
+              alt="افزودن به علاقه مندی ها"
+            />
           </span>
           <span className="mark">
-            <img src={markIcon} alt="نشان کردن" />
+            <img width={20} height={20} src={markIcon} alt="نشان کردن" />
           </span>
         </span>
       </div>

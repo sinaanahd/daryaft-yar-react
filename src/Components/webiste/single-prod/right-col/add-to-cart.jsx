@@ -52,6 +52,8 @@ class SingleCartDetails extends Component {
             <img
               src={minusIcon}
               alt="کم کردن"
+              width={13}
+              height={13}
               onClick={() => {
                 handle_quan(book.id, "-");
               }}
@@ -69,6 +71,8 @@ class SingleCartDetails extends Component {
             <img
               src={plusIcon}
               alt="اضافه کردن"
+              width={13}
+              height={13}
               onClick={() => {
                 handle_quan(book.id, "+");
               }}

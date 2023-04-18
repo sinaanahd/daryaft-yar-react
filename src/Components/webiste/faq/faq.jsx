@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import SiteFooter from "../footer/site-footer";
 import SiteHeader from "../header/header";
 import withWebsiteData from "../../hoc/with-website-data";
-import faqImg from "../../../assets/images/svg/FAQs.svg";
+import { Helmet } from "react-helmet";
+// import faqImg from "../../../assets/images/svg/FAQs.svg";
+import faqImg from "../../../assets/images/FAQs.webp";
 class FAQ extends Component {
   state = {};
   render() {
     const { cart, user, data, books, change_active } = this.props;
     return (
       <>
+        <Helmet>
+          <title>سوالات متدوال</title>
+        </Helmet>
         <SiteHeader
           cart_count={cart ? cart.cart_summary.items_count : 0}
           name={user ? user.name : "ورود / ثبت نام"}
@@ -16,9 +21,15 @@ class FAQ extends Component {
           books={books}
           change_active={change_active}
         />
+        <link rel="preload" href={faqImg} as="image" />
         <section className="return-prod mm-width">
           <div className="img-wrapper">
-            <img src={faqImg} alt="نحوه بازگرداندن کالا" />
+            <img
+              width={371}
+              height={371}
+              src={faqImg}
+              alt="نحوه بازگرداندن کالا"
+            />
           </div>
           <div className="text-content">
             <h1 className="title">سوالات متداول شما </h1>
@@ -58,7 +69,11 @@ class FAQ extends Component {
               <br />
               <b>شماره ثابت:</b>
               <br />
-              <a href="tel:+982166950624">021-66950624</a>
+              <a
+                aria-label="شماره ثابت برای تماس با دریافت یار"
+                href="tel:+982166950624">
+                021-66950624
+              </a>
             </p>
           </div>
         </section>

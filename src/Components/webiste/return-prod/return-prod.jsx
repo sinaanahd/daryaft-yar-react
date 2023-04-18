@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import SiteHeader from "../header/header";
 import SiteFooter from "../footer/site-footer";
 import withWebsiteData from "../../hoc/with-website-data";
-import truckImg from "../../../assets/images/svg/truck.svg";
+// import truckImg from "../../../assets/images/svg/truck.svg";
+import truckImg from "../../../assets/images/truck.webp";
 import retrunAsset from "../../../assets/images/svg/return-asset.svg";
 class ReturnProd extends Component {
   state = {};
@@ -19,11 +20,21 @@ class ReturnProd extends Component {
         />
         <section className="return-prod mm-width">
           <div className="img-wrapper">
-            <img src={truckImg} alt="نحوه بازگرداندن کالا" />
+            <img
+              width={400}
+              height={400}
+              src={truckImg}
+              alt="نحوه بازگرداندن کالا"
+            />
           </div>
           <div className="text-content">
             <h1 className="title">نحوه بازگرداندن</h1>
-            <img src={retrunAsset} />
+            <img
+              width={57}
+              height={57}
+              src={retrunAsset}
+              alt="بازگرداندن کالا"
+            />
             <p className="text">
               فروشگاه دریافت یار خودش رو موظف میدونه تا امکان هر گونه اشتباه در
               روند ارسال سفارشات خودش رو به کم ترین میزان ممکن برسونه اما شما

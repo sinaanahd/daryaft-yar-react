@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import withWebsiteData from "../../hoc/with-website-data";
 import SiteFooter from "../footer/site-footer";
 import SiteHeader from "../header/header";
-import shippingIcon from "../../../assets/images/svg/free-shipping.svg";
+// import shippingIcon from "../../../assets/images/svg/free-shipping.svg";
+import shippingIcon from "../../../assets/images/free-shipping.webp";
 import littleTruck from "../../../assets/images/svg/little-truck.svg";
 import motorCycle from "../../../assets/images/svg/motorcyle.svg";
 
@@ -21,11 +22,16 @@ class HowToSend extends Component {
         />
         <section className="return-prod mm-width">
           <div className="img-wrapper">
-            <img src={shippingIcon} alt="نحوه بازگرداندن کالا" />
+            <img
+              width={400}
+              height={400}
+              src={shippingIcon}
+              alt="نحوه بازگرداندن کالا"
+            />
           </div>
           <div className="text-content">
             <h1 className="title">نحوه ارسال</h1>
-            <img src={littleTruck} />
+            <img src={littleTruck} alt="نحوه ارسال" width={50} height={50} />
             <p className="text">
               در حال حاضر تمامی خرید ها در سایت دریافت یار به صورت رایگان و با
               پست پیشتاز به سراسر کشور ارسال میشود.
@@ -34,7 +40,7 @@ class HowToSend extends Component {
               پست پیشتاز یکی از سریع ترین روش های ارسال مرسولات میباشد که بین 1
               تا 3 روز کاری سفارشات شما به دست شما خواهد رسید
             </p>
-            <img src={motorCycle} />
+            <img src={motorCycle} alt="عکس موتور" width={50} height={50} />
             <p className="text">
               همراهان خوب تهرانی فروشگاه دریافت یار میتونن سفارشات خودشون رو که
               تا قبل از ساعت 16 سفارش دادن رو با پرداخت هزینه پیک در درب منزل

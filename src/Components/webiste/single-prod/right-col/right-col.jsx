@@ -5,12 +5,25 @@ class RightCol extends Component {
   render() {
     const { book, handle_quan, cart } = this.props;
     return (
-      <div className="right-col">
-        <div className="img-wrapper">
-          <img src={book.image_link} alt={book.name} />
+      <>
+        <link rel="preload" href={book.image_link} as="image" />
+        <div className="right-col">
+          <div className="img-wrapper">
+            <img
+              width={280}
+              height={380}
+              src={book.image_link}
+              alt={book.name}
+              className="book-img-light-house"
+            />
+          </div>
+          <SingleCartDetails
+            book={book}
+            handle_quan={handle_quan}
+            cart={cart}
+          />
         </div>
-        <SingleCartDetails book={book} handle_quan={handle_quan} cart={cart} />
-      </div>
+      </>
     );
   }
 }

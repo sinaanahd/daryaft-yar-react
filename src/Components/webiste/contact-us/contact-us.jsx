@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet";
 import SiteHeader from "../header/header";
 import SiteFooter from "../footer/site-footer";
 import withWebsiteData from "../../hoc/with-website-data";
-import mobileIcon from "../../../assets/images/svg/contact-us.svg";
+// import mobileIcon from "../../../assets/images/svg/contact-us.svg";
+import mobileIcon from "../../../assets/images/contact-us.webp";
 import telegramIcon from "../../../assets/images/svg/telegram.svg";
 import instagramIcon from "../../../assets/images/svg/instagram.svg";
 import whatsApp from "../../../assets/images/svg/whatsapp.svg";
@@ -16,6 +17,7 @@ class ContactUs extends Component {
         <Helmet>
           <title>تماس با ما</title>
         </Helmet>
+        <link rel="preload" href={mobileIcon} as="image" />
         <SiteHeader
           cart_count={cart ? cart.cart_summary.items_count : 0}
           name={user ? user.name : "ورود / ثبت نام"}
@@ -25,7 +27,12 @@ class ContactUs extends Component {
         />
         <section className="return-prod mm-width">
           <div className="img-wrapper">
-            <img src={mobileIcon} alt="نحوه بازگرداندن کالا" />
+            <img
+              width={366}
+              height={366}
+              src={mobileIcon}
+              alt="نحوه بازگرداندن کالا"
+            />
           </div>
           <div className="text-content">
             <h1 className="title">تماس با ما</h1>
@@ -53,7 +60,12 @@ class ContactUs extends Component {
             </p>
             <p className="text">
               <span className="title-with-icon">
-                <img src={telegramIcon} />
+                <img
+                  width={17}
+                  height={15}
+                  src={telegramIcon}
+                  alt="تلگرام دریافت یار"
+                />
                 لینک تلگرام برای دنبال کردن ما:
               </span>
               <a
@@ -65,7 +77,12 @@ class ContactUs extends Component {
             </p>
             <p className="text">
               <span className="title-with-icon">
-                <img src={instagramIcon} />
+                <img
+                  width={17}
+                  height={15}
+                  src={instagramIcon}
+                  alt="اینستاگرام دریافت یار "
+                />
                 لینک اینستاگرام برای دنبال کردن ما:
               </span>
               <a
@@ -77,7 +94,12 @@ class ContactUs extends Component {
             </p>
             <p className="text">
               <span className="title-with-icon">
-                <img src={whatsApp} />
+                <img
+                  width={17}
+                  height={15}
+                  src={whatsApp}
+                  alt="واتسپ دریافت یار"
+                />
                 لینک واتسپ برای دنبال کردن ما:
               </span>
               <a

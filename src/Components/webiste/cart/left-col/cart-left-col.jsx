@@ -40,7 +40,13 @@ class CartLeftCol extends Component {
     return (
       <div className="left-col">
         <div className="cart-details">
-          <img src={factorIcon} alt="سبد خرید" className="factor" />
+          <img
+            width={25}
+            height={25}
+            src={factorIcon}
+            alt="سبد خرید"
+            className="factor"
+          />
           <span className="detail-row">
             <h5 className="title-detail">جمع مبلغ کالاها:</h5>
             <span className="result">
@@ -124,6 +130,9 @@ class CartLeftCol extends Component {
           <span className="main-wrapper">
             <span className="text">کد تخفیف</span>
             <img
+              width={14}
+              height={8}
+              alt="باز کردن کد تخفیف"
               src={arrowDown}
               className={this.state.discount ? "arrow down" : "arrow"}
               onClick={() => {
@@ -152,12 +161,12 @@ class CartLeftCol extends Component {
               <span className="error-status">
                 {cart_summary.dis_code_details.status ? (
                   <span className="sucsess">
-                    <img src={tik} alt="" />
+                    <img src={tik} alt="موفق" />
                     <p>کدتخفیف با موفقیت اعمال شد</p>
                   </span>
                 ) : (
                   <span className="fail">
-                    <img src={cross} alt="" />
+                    <img src={cross} alt="ناموفق" />
                     <p>کدتخفیف قابل قبول نمی باشد</p>
                   </span>
                 )}

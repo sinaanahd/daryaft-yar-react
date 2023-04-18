@@ -6,7 +6,7 @@ class SuggestedBooks extends Component {
     const { books, change_active, add_to_recent_visit } = this.props;
     return (
       <div className="suggested-books">
-        <h4 className="similar-title">محصولات مشابه</h4>
+        <h3 className="similar-title">محصولات مشابه</h3>
         <div className="big-wrapper">
           {books.map((book) => (
             <Book

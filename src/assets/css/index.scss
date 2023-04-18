@@ -3426,6 +3426,7 @@ img {
         background-color: #d9d9d9;
         margin: 0 0 40px;
         img{
+            width: 100%!important;
             transition: $transition;
             &:hover{
                 transform: scale(1.1);
@@ -3539,6 +3540,7 @@ img {
         }
         .result {
             margin: 0 30px 0 30px;
+            font-size: 16px;
         }
         .user-rate-wrapper{
             @include flexMixin(row,flex-start,center);
@@ -3918,6 +3920,9 @@ li{
             overflow: hidden;
             background-color: #d9d9d9;
             border-radius: 4px;
+            img{
+                width: 100%!important;
+            }
         }
         .delete-icon{
             position: absolute;
@@ -4409,6 +4414,9 @@ li{
         border-radius:16px;
         box-shadow: $boxShadow;
         padding: 20px;
+        img{
+            max-width: 100%!important;
+        }
     }
     .text-content{
         width: 100%;
@@ -4541,7 +4549,7 @@ li{
         }
     }
     .about-us-footer{
-        font-size: 10px;
+        font-size: 12px;
         line-height: 30px;
         position: relative;
         p{
@@ -7616,7 +7624,7 @@ li{
         }
     }
     .blue{
-        font-size: 10px;
+        font-size: 12px;
     }
     .return-prod{
         .img-wrapper{

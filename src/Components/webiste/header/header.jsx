@@ -170,7 +170,7 @@ class SiteHeader extends Component {
           </nav>
         </div>
         <span className="make-menu-active" onClick={() => this.open_menu()}>
-          <img src={lines} />
+          <img src={lines} alt="منو" width={37} height={20} />
         </span>
         {this.state.menu ? (
           <div className="responsive-menu">
@@ -179,7 +179,7 @@ class SiteHeader extends Component {
               onClick={() => {
                 this.open_menu();
               }}>
-              <img src={cross} />
+              <img width={14} height={14} src={cross} alt="بستن" />
             </span>
             <nav className="responsive-menu-nav">
               <ul>
@@ -200,7 +200,7 @@ class SiteHeader extends Component {
                 scrollToTop();
               }}
               to="/invite">
-              <img src={tokenPink} />
+              <img width={30} height={35} src={tokenPink} alt="تعداد توکن" />
             </Link>
             <span className="token-count">
               {user ? user.campaign.user_token : 0}

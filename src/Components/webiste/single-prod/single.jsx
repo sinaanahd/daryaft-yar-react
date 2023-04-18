@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import SiteHeader from "../header/header";
 import RightCol from "./right-col/right-col";
 import LeftCol from "./left-col/left-col";
@@ -29,6 +30,18 @@ class SingleProdPage extends Component {
     } = this.props;
     return (
       <>
+        <Helmet>
+          <title>
+            {this.state.book ? this.state.book.name : "فروشگاه کتاب دریافت یار"}
+          </title>
+          <meta
+            name="keywords"
+            content={
+              this.state.book
+                ? this.state.book.name + this.state.book.publisher
+                : ""
+            }></meta>
+        </Helmet>
         <SiteHeader
           cart_count={cart ? cart.cart_summary.items_count : 0}
           name={user ? user.name : "ورود / ثبت نام"}
