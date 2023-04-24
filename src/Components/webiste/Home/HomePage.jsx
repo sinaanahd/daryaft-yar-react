@@ -103,6 +103,7 @@ class HomePage extends Component {
                   ))
                 : null_books.map((b) => (
                     <Book
+                      is_null={true}
                       book={b}
                       key={b.id}
                       add_to_cart={add_to_cart}
@@ -129,6 +130,7 @@ class HomePage extends Component {
                   ))
                 : null_books.map((b) => (
                     <Book
+                      is_null={true}
                       ids={cart ? cart.cart_items_ids : []}
                       change_active={change_active}
                       book={b}
@@ -174,6 +176,7 @@ class HomePage extends Component {
                   ))
                 : null_books.map((b) => (
                     <Book
+                      is_null={true}
                       ids={cart ? cart.cart_items_ids : []}
                       change_active={change_active}
                       book={b}
@@ -182,14 +185,6 @@ class HomePage extends Component {
                       add_to_recent_visit={add_to_recent_visit}
                     />
                   ))}
-              {/* <div
-                                className="continue-carousel"
-                            >
-                                <img
-                                    src={arrowLeftWhite}
-                                    alt=""
-                                />
-                            </div> */}
             </div>
           </section>
 
@@ -211,6 +206,7 @@ class HomePage extends Component {
                   ))
                 : null_books.map((b) => (
                     <Book
+                      is_null={true}
                       book={b}
                       key={b.id}
                       add_to_cart={add_to_cart}

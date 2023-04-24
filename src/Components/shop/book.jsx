@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import plus_icon from "../../assets/images/plus-white.png";
 import split_in_three from "../functions/spilit_in_three";
 import calculate_discount from "../functions/calculate_discount";
+import find_year from "../functions/find-year";
 class Book extends Component {
   state = {};
   render() {

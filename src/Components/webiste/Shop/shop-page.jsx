@@ -16,7 +16,9 @@ class ShopPage extends Component {
   change_active_page = (active_page) => {
     this.setState({ active_page });
   };
-  componentDidMount() {}
+  componentDidMount() {
+    console.log(this.props.books[1]);
+  }
   render() {
     const {
       books,

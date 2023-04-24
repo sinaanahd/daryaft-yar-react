@@ -30,6 +30,7 @@ class Books extends Component {
               ))
           : null_books.map((book) => (
               <Book
+                is_null={true}
                 key={book.id}
                 book={book}
                 add_to_cart={add_to_cart}

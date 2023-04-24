@@ -2886,6 +2886,75 @@ img {
     align-items: flex-start!important;
 }
 
+.hover-data-wrapper{
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 10px;
+    transform: rotateY(180deg);
+    .hover-data{
+        width: 100%;
+        @include flexMixin(row,flex-start,center);
+        gap: 5px;
+        margin: 0 0 10px;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+    .hover-btn-wrapper{
+        @include flexMixin(row,center,center);
+        width: 80%;
+        gap: 20px;
+        position: absolute;
+        bottom: 15px;
+    }
+    .hover-img-wrapper{
+        background-color: #fff;
+        padding: 4px;
+        border-radius: 8px;
+        width: 30px;
+        height: 30px;
+        @include flexMixin(row,center,center);
+        img{
+            max-width: 100%;
+            width: 15px!important;
+        }
+    }
+}
+.book{
+    z-index: 10;
+    &:hover{
+        box-shadow: $boxShadow2;
+        cursor: pointer;
+        transform:rotateY(180deg);
+        z-index: 11;
+        .hover-data-wrapper{
+            @include flexMixin(column,flex-start,center);
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+.book-hover-needed-class{
+    width : 100%;
+}
+@keyframes null_animation {
+    from{
+        opacity: 0.5;
+        filter: grayscale(0);
+    }
+    to{
+        opacity: 1;
+        filter: grayscale(1);
+    }
+}
+.book-null{
+animation: null_animation 1s linear 0s infinite alternate;
+}
 
 /* header */
 .yalda-header{
@@ -3160,11 +3229,6 @@ img {
             width: 100%;
             transition: $transition;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0);
-            &:hover{
-                box-shadow: $boxShadow2;
-                cursor: pointer;
-                transform: translateY(-10px) scale(1.1);
-            }
         }
         .book-title{
             width: 100%;
@@ -4194,6 +4258,7 @@ li{
     }
     .books-wrapper{
         @include flexMixin(row,space-between,center);
+        gap: 10px;
     }
     .carousel-type{
         width: 4000px;
@@ -4289,10 +4354,6 @@ li{
     .res-title{
         display: none;
     }
-
-
-
-    
     .book {
         .img-wrapper {
             width: 150px;
@@ -4302,7 +4363,6 @@ li{
             @include flexMixin(row, center, center);
             border-radius: 2px;
         }
-        margin: 0 10px;
         position: relative;
         padding: 10px 20px 20px;
         @include styler(#000, #fff, 16px, 8px);
